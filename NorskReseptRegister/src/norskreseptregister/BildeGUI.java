@@ -4,7 +4,7 @@
  * Sist endret  * 
  */
 
-package norskreseptregister.gui;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +22,7 @@ class BildeGUI extends JFrame
     private JLabel label1, label2;
     private JButton regMain, infoMain, adminMain;
     //JTabbedPane temp = new JTabbedPane();
-    InfoMainGUI f1 = new InfoMainGUI();
+    //InfoMainGUI f1 = new InfoMainGUI();
     JFrame frame = new JFrame();
     
     public BildeGUI()
@@ -36,65 +36,18 @@ class BildeGUI extends JFrame
         setVisible(true);
                         
 
-        setLayout(new GridBagLayout());
-        GridBagConstraints gc = new GridBagConstraints();
-        
-        //Første kolonne 0.0
-        gc.gridx = 0;
-        gc.gridy = 0;
-        //add(label2, gc);
-        
-        //Andre kolonne 0.1
-        infoMain = new JButton("Info");
-        gc.gridx = 0;
-        gc.gridy = 1;
-        add(infoMain, gc);
-        
-        //Tredeje Kolonne 0.2
-        adminMain = new JButton("Admin");
-        gc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gc.weighty = 5;
-        gc.gridx = 0;
-        gc.gridy = 2;
-        add(adminMain, gc);    
-        
-        
-        //Last Row
-        
-        regMain = new JButton("Registrer ");
-        //gc.weighty = 10;
-        //gc.anchor = GridBagConstraints.LAST_LINE_START;
-        gc.gridx = 1;
-        gc.gridy = 1;
-                
-        add(regMain, gc);
+    
         /*
         gc.add(infoMain = new JButton("Info"));
         gc.add(adminMain = new JButton("Admin"));   */    
     }
    
-    public static void main(String args[])
+    /*public static void main(String args[])
     {
         new BildeGUI();
-    }
+    }*/
     
-        private class Knappelytter implements ActionListener
-    {
-        public void actionPerformed( ActionEvent e )
-        {
-           if (e.getSource() ==  regMain)
-           {
-               
-           } 
-           else if (e.getSource() == infoMain)
-           {
-
-           }
-           else if (e.getSource() == adminMain)
-            {
-
-            }
-        }
+        
         
     }
-}
+

@@ -109,8 +109,8 @@ public class RegistrerLege extends JFrame
         
     }//end of class Knappelytter
     
-    public static void main(String args[])
+    /*public static void main(String args[])
     {
         new RegistrerLege(new RegisterSystem());
-    }
+    }*/
 }//end of class RegistrerLege
