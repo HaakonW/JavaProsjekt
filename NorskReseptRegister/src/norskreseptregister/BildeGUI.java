@@ -29,17 +29,48 @@ class BildeGUI extends JFrame
     {
         setTitle("Icon image");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        Icon pille = new ImageIcon( getClass().getResource("pille.png" ) );
-        label2 = new JLabel(pille, SwingConstants.RIGHT );
-        add( label2 ); // add label2 to JFrame
-        setSize(600,400);
+        //Icon pille = new ImageIcon( getClass().getResource("pille.png" ) );
+        //label2 = new JLabel(pille, SwingConstants.RIGHT );
+        //add( label2 ); // add label2 to JFrame
+        setSize(800,500);
         setVisible(true);
                         
-        Container c = getContentPane();
-        c.setLayout(new FlowLayout());
-        c.add(regMain = new JButton("Registrer "));
-        c.add(infoMain = new JButton("Info"));
-        c.add(adminMain = new JButton("Admin"));       
+
+        setLayout(new GridBagLayout());
+        GridBagConstraints gc = new GridBagConstraints();
+        
+        //Første kolonne 0.0
+        gc.gridx = 0;
+        gc.gridy = 0;
+        //add(label2, gc);
+        
+        //Andre kolonne 0.1
+        infoMain = new JButton("Info");
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(infoMain, gc);
+        
+        //Tredeje Kolonne 0.2
+        adminMain = new JButton("Admin");
+        gc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gc.weighty = 5;
+        gc.gridx = 0;
+        gc.gridy = 2;
+        add(adminMain, gc);    
+        
+        
+        //Last Row
+        
+        regMain = new JButton("Registrer ");
+        //gc.weighty = 10;
+        //gc.anchor = GridBagConstraints.LAST_LINE_START;
+        gc.gridx = 1;
+        gc.gridy = 1;
+                
+        add(regMain, gc);
+        /*
+        gc.add(infoMain = new JButton("Info"));
+        gc.add(adminMain = new JButton("Admin"));   */    
     }
    
     public static void main(String args[])

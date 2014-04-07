@@ -25,7 +25,7 @@ public class NorskReseptRegister
         {
             public void run()
             {
-                new RegMainGUI(new RegisterSystem());
+                BildeGUI vindu = new BildeGUI();
                 //RegisterSystem system = new RegisterSystem();
                 //RegMainGUI hjem = new RegMainGUI(system);
                 //RegistrerLege vindu = new RegistrerLege(system);

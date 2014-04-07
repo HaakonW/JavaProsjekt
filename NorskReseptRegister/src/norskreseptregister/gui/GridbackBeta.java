@@ -23,6 +23,7 @@ public class GridbackBeta extends JFrame
         setPreferredSize(size);
         setVisible(true);
         setSize(400,400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //setBorder(BorderFactory.createTiltedBorder("Legedetaljer"));
         
         /*JLabel nameLabel = new JLabel("Navn: ");
@@ -31,39 +32,42 @@ public class GridbackBeta extends JFrame
         JTextField nameField = new JTextField(10);
         JTextField yrke = new JTextField(10);*/
         
-        JButton en = new JButton("BOX 1");
-        JButton to = new JButton("BOX 2");
-        JButton tre = new JButton("BOX 3");
-        JButton fire = new JButton("BOX 4");
-        JButton fem = new JButton("BOX 5");
-        JButton yolo = new JButton("hvor havner du?");// Du havnet bak box4
-        
+        JButton info = new JButton("Info");
+        JButton registrer = new JButton("Register");
+        JButton admin = new JButton("Admin");
+                
         setLayout(new GridBagLayout());
         GridBagConstraints gc = new GridBagConstraints();
         
         //// Første kollonne
         //gc.anchor = GridBagConstraints.LINE_END;
         gc.weightx = 0.5;
-        gc.weighty = 0.5;
-        
+        gc.weighty = 0.5; 
+        gc.anchor = GridBagConstraints.FIRST_LINE_START; 
         gc.gridx = 0;
         gc.gridy = 0;           
-        add(en, gc);
-         
-        gc.gridx = 0;
-        gc.gridy = 1;
-        add(tre, gc);
+        add(info, gc);
         
         ///// ANdre kollonne
-        //gc.anchor = GridBagConstraints.LINE_START;   
+        gc.anchor = GridBagConstraints.EAST;
+         
         gc.gridx = 1;
         gc.gridy = 0;
-        add(to, gc);
+        add(admin, gc);
         
+        //Tredje Kolonnne
+        gc.anchor = GridBagConstraints.SOUTH;
         gc.gridx = 1;
         gc.gridy = 1;
-        add(fire, gc);
-        add(yolo, gc);
+        add(registrer, gc);
+        
+        
+        //Første Rad 
+        gc.gridx = 0;
+        gc.gridy = 1;
+        
+        
+        
         
         /* FINAL ROW
        // gc.weighty = 10;
