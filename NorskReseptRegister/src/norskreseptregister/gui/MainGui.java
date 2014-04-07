@@ -88,7 +88,7 @@ public class MainGui extends JFrame
         {
            if (e.getSource() ==  info)
            {
-              // Kaller på Informasjonsvinduet
+              InfoMainGUI vindu = new InfoMainGUI();
             } 
            else if (e.getSource() == registrer)
            {
