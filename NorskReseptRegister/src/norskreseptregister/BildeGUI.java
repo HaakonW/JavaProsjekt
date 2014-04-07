@@ -1,3 +1,5 @@
+package norskreseptregister;
+
 /*
  * Filen inneholder 
  * Laget av  * 
