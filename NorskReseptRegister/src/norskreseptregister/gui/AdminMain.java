@@ -28,7 +28,7 @@ public class AdminMain extends JPanel
             {
                 super(new GridLayout(1, 1));
                 JTabbedPane tabbedPane = new JTabbedPane();
-                ImageIcon icon = new ImageIcon(getClass().getResource("pille.png"));
+                ImageIcon icon = new ImageIcon(getClass().getResource("bilder/Admin.jpg"));
                 tabbedPane.addTab("Admininstasjon", icon, panel1, "Admin");
                 tabbedPane.addTab("Registrer medisin", icon, panel2, "Medisin");
                 tabbedPane.addTab("Fiks Lege", icon, panel3, "Lege");

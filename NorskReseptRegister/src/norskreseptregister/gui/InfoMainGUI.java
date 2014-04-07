@@ -28,14 +28,14 @@ public class InfoMainGUI extends JPanel
             {
                 super(new GridLayout(1, 1));
                 JTabbedPane tabbedPane = new JTabbedPane();
-                ImageIcon icon = new ImageIcon(getClass().getResource("pille.png"));
+                ImageIcon icon = new ImageIcon(getClass().getResource("bilder/info.png"));
                 tabbedPane.addTab("Informasjon", icon, panel1, "Informasjon");
                 tabbedPane.addTab("LegeInfo", icon, panel2, "Lege");
                 tabbedPane.addTab("PasientInfo", icon, panel3, "Pasient");
                 tabbedPane.addTab("Legemiddel", icon, panel3, "Legemiddel");
                  add(tabbedPane);
             }
-     public static void createAndShowGUI()
+     private static void createAndShowGUI()
   {
     //Create and set up the window.
     JFrame frame = new JFrame("Informasjon");
