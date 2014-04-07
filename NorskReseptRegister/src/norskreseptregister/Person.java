@@ -1,0 +1,36 @@
+/*
+ * Filen inneholder klassen Person som er superklassen til Lege og Pasient.
+ * Laget av  Henrik
+ * Sist endret 31/03/2014 
+ */
+
+package norskreseptregister;
+
+public abstract class Person
+{
+    private String fornavn;
+    private String etternavn;
+
+    public Person(String fornavn, String etternavn)
+    {
+            this.fornavn = fornavn;
+            this.etternavn = etternavn;
+    }
+
+    public String getFornavn()
+    {
+            return fornavn;
+    }
+    
+        public String getEtternavn()
+    {
+            return etternavn;
+    }
+
+    public String toString()
+    {
+            String tekst = "";
+            tekst+= "Navn : " + fornavn + etternavn + "\n";
+            return tekst;
+    }
+}//End of class Person
