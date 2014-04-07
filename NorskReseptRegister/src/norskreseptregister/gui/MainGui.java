@@ -101,9 +101,6 @@ public class MainGui extends JFrame
         }
         
     }//end of class Knappelytter
-        public static void main(String args[])
-    {
-        new MainGui();
-    }
+  
        
 }
