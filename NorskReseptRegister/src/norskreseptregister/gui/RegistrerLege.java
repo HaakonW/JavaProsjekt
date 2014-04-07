@@ -83,20 +83,27 @@ public class RegistrerLege extends JFrame
        Lege lege = new Lege(l_fornavn.getText(), l_etternavn.getText(), l_adresse.getText());
        system.getLegeRegister().SettInn(lege);
     }
+    
+    public void TomFelt()
+    {
+        l_fornavn.setText("");
+        l_etternavn.setText("");
+        l_adresse.setText("");
+    }
         //privat lytteklasse som plukker opp trykk å
         private class Knappelytter implements ActionListener
     {
         
         public void actionPerformed( ActionEvent e )
         {
-            String text = "";
            if (e.getSource() ==  registrer)
            {
                 Commit();
+                TomFelt();
             } 
            else if (e.getSource() == avbryt)
            {
-                 //kalle på metode for å tømme feltene
+                 TomFelt();//kalle på metode for å tømme feltene
            }
         }
         
