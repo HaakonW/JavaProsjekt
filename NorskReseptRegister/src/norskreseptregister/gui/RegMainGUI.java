@@ -44,5 +44,6 @@ public class RegMainGUI extends JFrame
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
     }
+    
        
     }//end of class RegMainGUI

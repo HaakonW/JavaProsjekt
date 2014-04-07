@@ -37,24 +37,9 @@ public class GuiBeta extends JFrame
          setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         
          //checkboxlytter = new Typelytter();
-         a = new JCheckBox("A");
-         Knappelytter handler = new Knappelytter();
-         a.addActionListener (handler);
-         b = new JCheckBox("B");
-         b.addActionListener (handler);
-         c = new JCheckBox("C");
-         c.addActionListener (handler);
          
-         bevilgning = new JRadioButton();
-         bevilgning.setText("Har bevilgning");
-         bevilgningFalse = new JRadioButton();
-         bevilgningFalse.setText("har IKKE bevilgning");
-         p_fornavn = new JTextField(15);
-         p_etternavn = new JTextField(15);
-         p_dato = new JTextField(10);
-         l_fornavn = new JTextField(15);
-         l_etternavn = new JTextField(15);
-         l_dato = new JTextField (15);     
+         
+        
          
          
          getContentPane().add(fane);
@@ -170,6 +155,10 @@ public class GuiBeta extends JFrame
             }
         }
         
+    }
+    public static void main(String args[])
+    {
+        GuiBeta test = new GuiBeta();
     }
 
    
