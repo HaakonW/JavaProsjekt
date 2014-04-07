@@ -1,25 +1,33 @@
+package norskreseptregister;
+
 /*
  * Filen inneholder 
  * Laget av  * 
  * Sist endret  * 
  */
 
-package norskreseptregister.gui;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import norskreseptregister.RegisterSystem;
+import java.awt.image.*;
+import javax.imageio.*;
+import java.io.*;
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
+import javax.swing.SwingUtilities;
+
 
 /**
  *
  * @author Haakon
  */
-public class MainGui extends JFrame
+public class MasterGui  extends JFrame
 {
     JButton info, registrer, admin;
-    public MainGui()
+    public MasterGui()
     {
         Dimension size = getPreferredSize();
         size.width = 250;
@@ -88,7 +96,7 @@ public class MainGui extends JFrame
         {
            if (e.getSource() ==  info)
            {
-              InfoMainGUI vindu = new InfoMainGUI();
+              // Kaller på Informasjonsvinduet
             } 
            else if (e.getSource() == registrer)
            {
@@ -101,6 +109,11 @@ public class MainGui extends JFrame
         }
         
     }//end of class Knappelytter
-  
+        public static void main(String args[])
+    {
+        new MasterGui();
+    }
        
 }
+
+
