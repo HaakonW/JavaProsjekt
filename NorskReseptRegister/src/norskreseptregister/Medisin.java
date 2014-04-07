@@ -20,10 +20,10 @@ public class Medisin
     
     
     //Konstruktør
-    public Medisin(String navn, String atcNr, String anvisning)
+    public Medisin(String navn, String anvisning) //atcNr ikke sendt med
     {
         this.navn = navn;
-        this.atcNr = atcNr;
+        //this.atcNr = atcNr;
         this.anvisning = anvisning;
         neste = null;
     }
