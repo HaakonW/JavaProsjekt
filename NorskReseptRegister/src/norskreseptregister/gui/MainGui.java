@@ -88,7 +88,7 @@ public class MainGui extends JFrame
         {
            if (e.getSource() ==  info)
            {
-              InfoMainGUI vindu = new InfoMainGUI();
+               InfoMainGUI vindu = new InfoMainGUI();
             } 
            else if (e.getSource() == registrer)
            {

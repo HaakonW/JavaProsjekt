@@ -35,7 +35,7 @@ public class InfoMainGUI extends JPanel
                 tabbedPane.addTab("Legemiddel", icon, panel3, "Legemiddel");
                  add(tabbedPane);
             }
-     private static void createAndShowGUI()
+     public static void createAndShowGUI()
   {
     //Create and set up the window.
     JFrame frame = new JFrame("Informasjon");
@@ -48,9 +48,9 @@ public class InfoMainGUI extends JPanel
     frame.setVisible(true);
   }
 
-  public static void main(String[] args)
+  /*public static void main(String[] args)
   {
     createAndShowGUI();
-  }
+  }*/
     
 }
