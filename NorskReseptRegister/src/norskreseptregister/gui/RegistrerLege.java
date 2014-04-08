@@ -19,7 +19,7 @@ import norskreseptregister.RegisterSystem;
  * @author Haakon, Henrik
  */
 
-public class RegistrerLege extends JFrame
+public class RegistrerLege extends JPanel
 {
     private JButton regLege, sjekkLege;
     private JTextField l_fornavn, l_etternavn, l_adresse;
@@ -56,7 +56,6 @@ public class RegistrerLege extends JFrame
         legeutskrift.setEditable(false);
         setSize(600,420);
         setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         //Container c = getContentPane(); 
         JLabel label1 = new JLabel(); // Ukjent hva denne gjør gitt               
         setLayout(new FlowLayout());            

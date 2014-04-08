@@ -42,11 +42,10 @@ class BildeGUI extends JFrame
         gc.add(adminMain = new JButton("Admin"));   */    
     }
    
-<<<<<<< HEAD
-   public static void main(String args[])
-=======
+  // public static void main(String args[])
+
     /*public static void main(String args[])
->>>>>>> FETCH_HEAD
+
     {
         new BildeGUI();
     }*/

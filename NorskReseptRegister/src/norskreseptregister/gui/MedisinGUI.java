@@ -21,7 +21,7 @@ import norskreseptregister.Medisinliste;
  *
  * @author PeterWilhelmsen
  */
-public abstract class MedisinGUI extends JFrame implements ActionListener
+public class MedisinGUI extends JPanel implements ActionListener
 {
     private Medisinliste liste;
     private String lagreListe = "medisinliste.txt";
@@ -33,7 +33,6 @@ public abstract class MedisinGUI extends JFrame implements ActionListener
     
     public MedisinGUI()
     {
-        super("Medisinregister");
         regNavn = new JTextField(10);
         //regAnvisning = new JTextArea(3,20);
         regMedisinnavn = new JButton("Registrer");
@@ -48,21 +47,15 @@ public abstract class MedisinGUI extends JFrame implements ActionListener
         //For å lese listen ved oppstart
         lesObjektFraFil();
         
-        Container c = getContentPane();
-        c.setLayout(new FlowLayout());
-        c.add( new JLabel("Medisinnavn"));
-        c.add(regNavn);
-        //c.add(new JLabel("Anvisning"));
-        //c.add(regAnvisning);
-        c.add(regMedisinnavn);
-        c.add(visListe);
-        c.add(utskrift);
+        add( new JLabel("Medisinnavn"));
+        add(regNavn);
+        //add(new JLabel("Anvisning"));
+        //add(regAnvisning);
+        add(regMedisinnavn);
+        add(visListe);
+        add(utskrift);
         
-        utskrift.setEditable(false);
-        setSize(400,400);
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        utskrift.setEditable(false); 
     }
     
     //Registrere ny medisin
@@ -145,6 +138,7 @@ public abstract class MedisinGUI extends JFrame implements ActionListener
         if(e.getSource() == regMedisinnavn)
         {
             nyMedisin();
+            skrivObjektTilFil();
             tomFelter();
         }
         if(e.getSource() == visListe)
