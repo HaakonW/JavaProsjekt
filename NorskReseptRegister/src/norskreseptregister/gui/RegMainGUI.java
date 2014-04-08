@@ -23,7 +23,7 @@ public class RegMainGUI extends JFrame
     JTabbedPane tabbedPane;
     RegistrerPasient f1;
     RegistrerLege f2;
-    GridbackBeta f3;
+    MainGui f3;
     
     
     public RegMainGUI(RegisterSystem system) 
@@ -44,8 +44,6 @@ public class RegMainGUI extends JFrame
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
     }
-        /*public static void main(String[] args) 
-        {
-            new RegMainGUI(new RegisterSystem());
-        }*/
+    
+       
     }//end of class RegMainGUI

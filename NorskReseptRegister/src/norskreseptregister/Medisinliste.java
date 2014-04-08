@@ -5,14 +5,14 @@
  */
 
 package norskreseptregister;
-
+import java.io.*;
 /**
  *
  * @author Peter
  */
 
     //Medisinliste
-    public class Medisinliste
+    public class Medisinliste implements Serializable
     {
         private Medisin hode;
         
@@ -29,6 +29,21 @@ package norskreseptregister;
                 ny.neste = hode;
                 hode = ny;
             }
+        }
+        
+        
+        //Vise registrert medisin
+        public String toString()
+        {
+            String tekst = "";
+            Medisin hjelp = hode;
+            
+            while(hjelp != null)
+            {
+                tekst += "-" + hjelp.toString() + "\n";
+                hjelp = hjelp.neste;
+            }
+            return tekst;
         }
         
         /*Finn medisin - Kan brukes når vi skal sjekke om medisinen finnes

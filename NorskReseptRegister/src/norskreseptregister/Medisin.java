@@ -11,20 +11,20 @@ package norskreseptregister;
 
 import java.io.*;
 
-public class Medisin 
+public class Medisin implements Serializable
 {
     private String navn;
-    private String atcNr;
-    private String anvisning;
+    //private String atcNr;
+    //private String anvisning;
     Medisin neste;
     
     
     //Konstruktør
-    public Medisin(String navn, String atcNr, String anvisning)
+    public Medisin(String navn) //atcNr og anvisning ikke sendt med
     {
         this.navn = navn;
-        this.atcNr = atcNr;
-        this.anvisning = anvisning;
+        //this.atcNr = atcNr;
+        //this.anvisning = anvisning;
         neste = null;
     }
     
@@ -42,62 +42,12 @@ public class Medisin
     public String toString()
     {
         String tekst = "";
-        tekst += "Navn: " + navn +
+        /*tekst += "Navn: " + navn +
                 "\nAtc-Nummer: " + atcNr +
                 "\nAnvisning: " + anvisning;
-        
+        */
+        tekst += navn;
         return tekst;
     }
-    
-    
-    //Opprette ny medisin
-    public void registrerMedisin()
-    {
-       //Medisin ny = new Medisin();
-       // <hente tekst fra riktig felt, sende me som parameter i medisin>
-        
-        //< Sette inn i medisinregister >
-    }
-    
-    
-    
-    // Lese objekt fra fil  - HUSK Å IMPORTER java.io.*;
-    public boolean lesObjektFraFil(DataInputStream innfil)
-    {
-        try
-        {
-            navn = innfil.readUTF();
-            atcNr = innfil.readUTF();
-            anvisning = innfil.readUTF();
-            return true;
-            
-        }
-        catch(FileNotFoundException fnfe)
-        {
-            System.out.println("Finner ikke filen!");
-            return false;
-        }
-        catch(IOException ioe)
-        {
-            System.out.println("Problemer med filen!");
-            return false;
-        }
-    }
-    
-    
-     //Lagre objektet på fil - try med ressurser
-    
-    public void skrivObjektTilFil(DataOutputStream utfil)
-    {
-        try
-        {
-            utfil.writeUTF(navn);
-            utfil.writeUTF(atcNr);
-            utfil.writeUTF(anvisning);
-        }
-        catch(IOException ioe)
-        {
-            System.out.println("Kan ikke skrive til fil!");
-        }
-    }
+ 
 }// end of class Medisin
