@@ -30,8 +30,8 @@ public class MainGui extends JFrame
         setVisible(true);
         setSize(600,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Klarte ikke "hurtigveien"
-        ImageIcon bilde = new ImageIcon("/Users/Haakon/Desktop/JavaProsjekt/NorskReseptRegister/src/norskreseptregister/gui/bilder/pille.png");
-        ImageIcon footer = new ImageIcon ("/Users/Haakon/Desktop/JavaProsjekt/NorskReseptRegister/src/norskreseptregister/gui/bilder/footer.png");
+        ImageIcon bilde = new ImageIcon("src/norskreseptregister/gui/bilder/pille.png");
+        ImageIcon footer = new ImageIcon ("src/norskreseptregister/gui/bilder/footer.png");
         JLabel footerlabel = new JLabel(footer);
         JLabel pillelabel = new JLabel (bilde);
  
