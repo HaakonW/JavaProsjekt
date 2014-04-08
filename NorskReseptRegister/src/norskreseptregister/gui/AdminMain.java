@@ -36,7 +36,7 @@ public class AdminMain extends JPanel
         tabbedPane.addTab("Registrer medisin", icon, panel2, "Medisin");
         tabbedPane.addTab("Endre Lisens for lege", icon, panel3, "Lege");
         tabbedPane.addTab("Blank", icon, panel4, "blank");
-         add(tabbedPane);
+        add(tabbedPane);
     }
     
   private static void createAndShowGUI()

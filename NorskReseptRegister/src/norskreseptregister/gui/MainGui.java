@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import norskreseptregister.RegisterSystem;
+import java.awt.image.*;
+import javax.imageio.*;
 
 /**
  *
@@ -30,8 +32,8 @@ public class MainGui extends JFrame
         setVisible(true);
         setSize(600,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Klarte ikke "hurtigveien"
-        ImageIcon bilde = new ImageIcon("/Users/Haakon/Desktop/JavaProsjekt/NorskReseptRegister/src/norskreseptregister/gui/bilder/pille.png");
-        ImageIcon footer = new ImageIcon ("/Users/Haakon/Desktop/JavaProsjekt/NorskReseptRegister/src/norskreseptregister/gui/bilder/footer.png");
+        ImageIcon bilde = new ImageIcon( getClass().getResource("pille.png" ) );
+        ImageIcon footer = new ImageIcon( getClass().getResource("footer.png" ) );
         JLabel footerlabel = new JLabel(footer);
         JLabel pillelabel = new JLabel (bilde);
  
