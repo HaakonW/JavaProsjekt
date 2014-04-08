@@ -23,9 +23,9 @@ public class AdminMain extends JPanel
     private	JPanel	panel1;
     //private	JPanel	panel2;
     //private	JPanel	LegeLisensGUI;
-    private	JPanel	panel4;
     LegeLisensGUI panel3 = new LegeLisensGUI();
     MedisinGUI panel2 = new MedisinGUI();
+    BlankGUI panel4 = new BlankGUI();
     
     public AdminMain()
     {

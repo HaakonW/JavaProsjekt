@@ -21,41 +21,81 @@ import norskreseptregister.Medisinliste;
  *
  * @author PeterWilhelmsen
  */
-public class MedisinGUI extends JPanel implements ActionListener
+public class BlankGUI extends JPanel implements ActionListener
 {
     private Medisinliste liste;
     private String lagreListe = "medisinliste.txt";
     private JTextField regNavn;
     private JButton regMedisinnavn, visListe;
     private JTextArea utskrift,regAnvisning;
-    private String medisinlisten = "lagreMedisin.txt";
+    private String medisinlisten = "lagreMedisin.txt";   
     
-    
-    
-    
-    public MedisinGUI()
+    public BlankGUI()
     {
+        
+        
         regNavn = new JTextField(10);
-        //regAnvisning = new JTextArea(3,20);
         regMedisinnavn = new JButton("Registrer");
         visListe = new JButton("Vis liste");
         utskrift = new JTextArea(20,20);
         
         regMedisinnavn.addActionListener(this);
-        visListe.addActionListener(this);
-        
+        visListe.addActionListener(this);        
         liste = new Medisinliste();
         
         //For å lese listen ved oppstart
         lesObjektFraFil();
+        ///// GRID START//////
         
-        add( new JLabel("Medisinnavn"));
-        add(regNavn);
+        JPanel utskriftomrad = new JPanel();
+        utskriftomrad.add(new JTextArea(40,40));
+        utskriftomrad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+               
+       
+        
+        JPanel regMed = new JPanel();
+        regMed.add( new JTextField(10)); 
+        regMed.add(new JButton("Registrer"));
+               
+        regMed.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
+        JPanel header = new JPanel();
+        header.add(new JLabel("VELKOMMEN TIL MEDISINSIDEN"));
+        header.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
+       
+        JPanel visListe = new JPanel();        
+        visListe.add( new JButton("Vis Liste"));
+        visListe.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
+         GridBagConstraints gc = new GridBagConstraints();
+        setLayout(new GridBagLayout());
+        
+        gc.gridx = 0;
+        gc.gridy = 0;
+        add(header, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(regMed, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 2;
+        add(visListe, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 1;
+        add(utskriftomrad, gc);
+        
+        
+        
+        
+        /*add(regNavn);
         //add(new JLabel("Anvisning"));
         //add(regAnvisning);
         add(regMedisinnavn);
         add(visListe);
-        add(utskrift);
+        add(utskrift);*/
         
         utskrift.setEditable(false); 
     }
@@ -148,4 +188,6 @@ public class MedisinGUI extends JPanel implements ActionListener
             visRegister();
         }
     }
-}// end of class MedisinGUI
+    
+   
+}

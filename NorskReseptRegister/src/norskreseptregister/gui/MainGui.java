@@ -29,9 +29,9 @@ public class MainGui extends JFrame
     
     public MainGui()
     {
-        Dimension size = getPreferredSize();
+        /*Dimension size = getPreferredSize();
         size.width = 250;
-        setPreferredSize(size);
+        setPreferredSize(size);*/
         setVisible(true);
         setSize(900,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
