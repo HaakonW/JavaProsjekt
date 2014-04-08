@@ -18,22 +18,23 @@ import norskreseptregister.RegisterSystem;
  */
 public class MainGui extends JFrame
 {
-    JButton info, registrer, admin;
+    JButton info;
+    JButton registrer;
+    JButton admin;
+    
     public MainGui()
     {
         Dimension size = getPreferredSize();
         size.width = 250;
         setPreferredSize(size);
         setVisible(true);
-        setSize(400,400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //setBorder(BorderFactory.createTiltedBorder("Legedetaljer"));
-        
-        /*JLabel nameLabel = new JLabel("Navn: ");
-        JLabel stilling = new JLabel("Stilling: ");
-        
-        JTextField nameField = new JTextField(10);
-        JTextField yrke = new JTextField(10);*/
+        setSize(600,600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Klarte ikke "hurtigveien"
+        ImageIcon bilde = new ImageIcon("/Users/Haakon/Desktop/JavaProsjekt/NorskReseptRegister/src/norskreseptregister/gui/bilder/pille.png");
+        ImageIcon footer = new ImageIcon ("/Users/Haakon/Desktop/JavaProsjekt/NorskReseptRegister/src/norskreseptregister/gui/bilder/footer.png");
+        JLabel footerlabel = new JLabel(footer);
+        JLabel pillelabel = new JLabel (bilde);
+ 
         
         info = new JButton("Info");
         registrer = new JButton("Register");
@@ -44,40 +45,42 @@ public class MainGui extends JFrame
         
         //// Første kollonne
         //gc.anchor = GridBagConstraints.LINE_END;
-        gc.weightx = 0.5;
-        gc.weighty = 0.5; 
-        gc.anchor = GridBagConstraints.FIRST_LINE_START; 
+       
         gc.gridx = 0;
         gc.gridy = 0;           
-        add(info, gc);
-        
-        ///// ANdre kollonne
-        gc.anchor = GridBagConstraints.EAST;
+        add(info, gc);      
+           
          
         gc.gridx = 1;
         gc.gridy = 0;
         add(admin, gc);
         
-        //Tredje Kolonnne
-        gc.anchor = GridBagConstraints.SOUTH;
-        gc.gridx = 1;
-        gc.gridy = 1;
+       
+        gc.gridx = 2;
+        gc.gridy = 0;
         add(registrer, gc);
         
-        
-        //Første Rad 
         gc.gridx = 0;
-        gc.gridy = 1;
+        gc.gridy = 1; 
         
         
         
-        
-        /* FINAL ROW
-       // gc.weighty = 10;
-        //gc.anchor = GridBagConstraints.FIRST_LINE_START;
         gc.gridx = 1;
-        gc.gridy = 2;
-        add(fem, gc);*/
+        gc.gridy = 2; 
+        add(pillelabel, gc);
+        
+        
+      
+        
+        
+        
+        
+        // FINAL ROW
+      
+          
+        gc.gridx = 1;
+        gc.gridy = 3;
+        add(footerlabel, gc);
 
 
     }
