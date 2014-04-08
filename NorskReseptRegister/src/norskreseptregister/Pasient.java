@@ -24,7 +24,7 @@ public class Pasient extends Person
     
     public String toString()
     {
-        String tekst = "";
+        String tekst = super.toString();
         tekst += "Fødselsdato: " + fodselsdato;
         return tekst;
     }

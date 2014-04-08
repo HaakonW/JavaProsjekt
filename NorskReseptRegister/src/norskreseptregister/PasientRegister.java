@@ -8,8 +8,9 @@ package norskreseptregister;
 
 /**
  *
- * @author Bandet
+ * @author Henrik
  */
-public class PasientRegister {
+public class PasientRegister extends Register <Pasient>
+{
 
 }

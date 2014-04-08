@@ -30,7 +30,7 @@ public class RegistrerLege extends JPanel
     //private JRadioButton bevilgning, bevilgningFalse;
     RegisterSystem system;
     
-    public RegistrerLege(RegisterSystem system)
+    public RegistrerLege()
     {
         this.system = system;
         /*a = new JCheckBox("A");
@@ -54,26 +54,16 @@ public class RegistrerLege extends JPanel
         bevilgningFalse.setText("har IKKE bevilgning");*/
         legeutskrift = new JTextArea(15, 45);
         legeutskrift.setEditable(false);
-        setSize(600,420);
-        setVisible(true);
-        //Container c = getContentPane(); 
-        JLabel label1 = new JLabel(); // Ukjent hva denne gjør gitt               
-        setLayout(new FlowLayout());            
+        
         add(etternavnLege);              
         add(l_etternavn);
         add(fornavnLege);
         add(l_fornavn);
         add(adresseLege);
         add(l_adresse);
-        /*add(a);
-        add(b);
-        add(c);
-        add(bevilgning);
-        add(bevilgningFalse);*/
         add(legeutskrift);
         add(registrer);
         add(avbryt);
-        this.legeutskrift = legeutskrift;
     }
     
     private void Commit()
@@ -90,7 +80,7 @@ public class RegistrerLege extends JPanel
         l_adresse.setText("");
     }
         //privat lytteklasse som plukker opp trykk å
-        private class Knappelytter implements ActionListener
+    private class Knappelytter implements ActionListener
     {
         
         public void actionPerformed( ActionEvent e )
@@ -102,14 +92,10 @@ public class RegistrerLege extends JPanel
             } 
            else if (e.getSource() == avbryt)
            {
-                 TomFelt();//kalle på metode for å tømme feltene
+                 TomFelt();
            }
         }
         
     }//end of class Knappelytter
     
-    /*public static void main(String args[])
-    {
-        new RegistrerLege(new RegisterSystem());
-    }*/
 }//end of class RegistrerLege

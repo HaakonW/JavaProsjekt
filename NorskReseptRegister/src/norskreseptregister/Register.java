@@ -40,4 +40,9 @@ public abstract class Register<T>
         }
         return resultat;
     }
+    
+    public List<T> FinnAlle()
+    {
+        return list;
+    }
 }//end of class Register

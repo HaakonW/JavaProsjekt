@@ -146,6 +146,4 @@ public class MedisinGUI extends JPanel implements ActionListener
             visRegister();
         }
     }
-    
-   
-}
+}// end of class MedisinGUI

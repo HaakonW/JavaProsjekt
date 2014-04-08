@@ -30,7 +30,7 @@ public abstract class Person
     public String toString()
     {
             String tekst = "";
-            tekst+= "Navn : " + fornavn + etternavn + "\n";
+            tekst+= "Navn : " + fornavn + " " + etternavn + "\n";
             return tekst;
     }
 }//End of class Person

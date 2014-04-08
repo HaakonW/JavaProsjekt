@@ -31,7 +31,6 @@ import java.io.*;
             }
         }
         
-        
         //Vise registrert medisin
         public String toString()
         {
