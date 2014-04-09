@@ -24,10 +24,13 @@ public class AdminMain extends JPanel
     public AdminMain()
     {
         JTabbedPane tabbedPane = new JTabbedPane();
-        ImageIcon icon = new ImageIcon(getClass().getResource("bilder/Admin.jpg"));
-        tabbedPane.addTab("Hjem", icon, panel1, "Hjem");
-        tabbedPane.addTab("Endre Lisens for lege", icon, panel3, "Lege");
-        tabbedPane.addTab("Registrer medisin", icon, panel4, "Registrer Medisin");
+        ImageIcon elege = new ImageIcon(getClass().getResource("bilder/Refresh-icon.png"));
+        ImageIcon hjem = new ImageIcon(getClass().getResource("bilder/hjem.png"));
+        ImageIcon epille = new ImageIcon(getClass().getResource("bilder/epille.png"));
+        
+        tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
+        tabbedPane.addTab("Endre Lisens for lege", elege, panel3, "Lege");
+        tabbedPane.addTab("Registrer medisin", epille, panel4, "Registrer Medisin");
         add(tabbedPane);
         hei = new JLabel("Dette er for admin. "); 
     }
