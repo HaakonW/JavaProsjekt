@@ -38,7 +38,6 @@ public class RegistrerLege extends JPanel
         adressefelt = new JTextField(20);
         registrer = new JButton("Registrer Lege");
         avbryt = new JButton("Avbryt");
-<<<<<<< HEAD
         legeutskrift = new JTextArea(20, 20);
         legeutskrift.setEditable(false);        
         
@@ -93,37 +92,18 @@ public class RegistrerLege extends JPanel
         gc.gridheight = 6;
         add(panel5, gc);
        
-    }
+    }//end of konstruktør RegistrerLege
     
     private void Commit()
     {
         
        Lege lege = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), adressefelt.getText());
-=======
-        /*bevilgning = new JRadioButton();
-        bevilgning.setText("Har bevilgning");
-        bevilgningFalse = new JRadioButton();
-        bevilgningFalse.setText("har IKKE bevilgning");*/
-        legeutskrift = new JTextArea(15, 45);
-        legeutskrift.setEditable(false);
+
+       system.getLegeRegister().SettInn(lege);       
         
-        add(etternavnLege);              
-        add(l_etternavn);
-        add(fornavnLege);
-        add(l_fornavn);
-        add(adresseLege);
-        add(l_adresse);
-        add(legeutskrift);
-        add(registrer);
-        add(avbryt);
-    }//end of konstruktør RegistrerLege
-    
-    private void Commit()
-    { 
-       Lege lege = new Lege(l_fornavn.getText(), l_etternavn.getText(), l_adresse.getText());
->>>>>>> FETCH_HEAD
-       system.getLegeRegister().SettInn(lege);
     }
+    
+   
     
     public void TomFelt()
     {
