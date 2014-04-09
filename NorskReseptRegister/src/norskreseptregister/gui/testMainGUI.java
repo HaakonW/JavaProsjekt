@@ -35,17 +35,20 @@ public class testMainGUI extends JFrame
         //Tilført for å få internvindu
         super("Testvindu");
         
-        //oppretter desktoppen
-        hovedvindu = new JDesktopPane();
-        getContentPane().add(hovedvindu, BorderLayout.CENTER);
-        setSize(600,400);
-        
         JMenuBar menylinje = new JMenuBar();
         JMenu addmeny = new JMenu("Lag vindu");
         JMenuItem lagVindu = new JMenuItem("Lag interntvindu");
         lagVindu.addActionListener(new Menylytter());
         menylinje.add(addmeny);
         setJMenuBar(menylinje);
+        
+        
+        //oppretter desktoppen
+        hovedvindu = new JDesktopPane();
+        getContentPane().add(hovedvindu, BorderLayout.CENTER);
+        setSize(600,400);
+        
+       
         
         
         testknapp = new JButton("test");
@@ -264,22 +267,62 @@ public class testMainGUI extends JFrame
 
 
     }
-    private class Menylytter implements ActionListener
+    
+class panel extends JPanel
+{
+
+  private ImageIcon bilde;
+  /*private String[] bildefiler =
+  {
+    "yellowflowers.png", "purpleflowers.png",
+    "redflowers.png", "redflowers2.png", "lavenderflowers.png"
+  };*/
+
+  // velger et tilfeldig bilde for panelet
+  public panel()
+  {
+    bilde = new ImageIcon("src/norskreseptregister/gui/bilder/pille.png");
+    /*int randomNumber = (int) (Math.random() * 5);
+    bilde = new ImageIcon(getClass().getResource(
+            "bilder/" + bildefiler[randomNumber]));*/
+  }
+
+  // tegner ut bildet på panelet
+  public void paintComponent(Graphics g)
+  {
+    super.paintComponent(g);
+    bilde.paintIcon(this, g, 0, 0);
+  }
+
+  // returnerer bildets størrelse
+  public Dimension getPreferredSize()
+  {
+    return new Dimension(bilde.getIconWidth(),
+            bilde.getIconHeight());
+  }
+} // slutt på klasse Bildepanel
+    
+    
+    
+    class Menylytter implements ActionListener
     {
         public void actionPerformed(ActionEvent Event)
         {
             JInternalFrame internvindu = new JInternalFrame("Intern",true,true,true,true);
             Container c = internvindu.getContentPane();
             MedisinGUI ny = new MedisinGUI();
+            //panel panel1 = new panel();
             
             c.add(ny,BorderLayout.CENTER);
+            
+            
             hovedvindu.add(internvindu);
             internvindu.setVisible(true);
         }
     }
     
     
-    private class Knappelytter implements ActionListener
+    class Knappelytter implements ActionListener
     {
         // HVA MÅ KALLES PÅ HER FOR Å FÅ OPP DE ANDRE PROGRAMMENE? ///
         public void actionPerformed( ActionEvent e )
