@@ -54,8 +54,7 @@ public class MedisinGUI extends JPanel implements ActionListener
          ///////PANEL START/////             
         JPanel panel1 = new JPanel();
         panel1.add( new JLabel("Medisinnavn"));
-        panel1.add(regNavn);
-               
+        panel1.add(regNavn);               
         panel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         
         JPanel panel2 = new JPanel();
@@ -78,7 +77,7 @@ public class MedisinGUI extends JPanel implements ActionListener
         panel5.add(utskrift);
         panel5.setBorder(BorderFactory.createLineBorder(Color.BLACK)); 
          ///// GRID START//////
-         GridBagConstraints gc = new GridBagConstraints();
+        GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
         
         gc.gridx = 0;

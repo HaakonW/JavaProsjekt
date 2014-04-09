@@ -20,21 +20,47 @@ import javax.swing.*;
 public class AdminMain extends JPanel
 {
     private JTabbedPane tabbedPane;
-    private	JPanel	panel1;
-    //private	JPanel	panel2;
-    //private	JPanel	LegeLisensGUI;
+    private JPanel panel1, panel2;
+    private JLabel hei;
+    private JButton endreLisens, medisin;
     LegeLisensGUI panel3 = new LegeLisensGUI();
-    MedisinGUI panel4 = new MedisinGUI();
+    MedisinGUI panel4 = new MedisinGUI();    
     
     public AdminMain()
     {
-        super(new GridLayout(1, 1));
+        
         JTabbedPane tabbedPane = new JTabbedPane();
         ImageIcon icon = new ImageIcon(getClass().getResource("bilder/Admin.jpg"));
-        tabbedPane.addTab("Admininstasjon", icon, panel1, "Admin");
+        tabbedPane.addTab("Hjem", icon, panel1, "Hjem");
         tabbedPane.addTab("Endre Lisens for lege", icon, panel3, "Lege");
-        tabbedPane.addTab("Registrer medisin", icon, panel4, "blank");
+        tabbedPane.addTab("Registrer medisin", icon, panel4, "Registrer Medisin");
         add(tabbedPane);
+        hei = new JLabel("Dette er for admin. ");
+        endreLisens = new JButton("Endre Lisens");
+        medisin = new JButton("Registrer Medisin");
+        
+        ////PANELS START////
+        panel1 = new JPanel();
+        panel1.add(hei);
+        
+        panel2 = new JPanel();
+        panel2.add(endreLisens);
+        panel2.add(medisin);
+        
+        //// GRID START ////
+        GridBagConstraints gc = new GridBagConstraints();
+        setLayout(new GridBagLayout());
+        gc.gridx = 0;
+        gc.gridy = 0;
+        gc.insets = new Insets(10, 5, 5, 10);
+        gc.anchor = GridBagConstraints.WEST;
+        gc.fill = GridBagConstraints.HORIZONTAL;
+        add(panel1, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(panel2, gc);
+        
     }
     
   private static void createAndShowGUI()
