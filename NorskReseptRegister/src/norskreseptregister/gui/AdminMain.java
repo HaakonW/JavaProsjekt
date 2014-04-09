@@ -24,9 +24,9 @@ public class AdminMain extends JPanel
     public AdminMain()
     {
         JTabbedPane tabbedPane = new JTabbedPane();
-        ImageIcon elege = new ImageIcon(getClass().getResource("bilder/Refresh-icon.png"));
-        ImageIcon hjem = new ImageIcon(getClass().getResource("bilder/hjem.png"));
-        ImageIcon epille = new ImageIcon(getClass().getResource("bilder/epille.png"));
+        ImageIcon elege = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
+        ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
+        ImageIcon epille = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
         
         tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
         tabbedPane.addTab("Endre Lisens for lege", elege, panel3, "Lege");
