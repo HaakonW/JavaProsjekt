@@ -24,6 +24,7 @@ public class RegMainGUI extends JPanel
     RegistrerPasient tab1;
     RegistrerLege tab2;
     private RegisterSystem system;
+    RegMainHjemGUI panel1 = new RegMainHjemGUI();
     
     public RegMainGUI(RegisterSystem system)
     {
@@ -33,6 +34,7 @@ public class RegMainGUI extends JPanel
         tab2 = new RegistrerLege();
         JTabbedPane tabbedPane = new JTabbedPane();
         ImageIcon icon = new ImageIcon(getClass().getResource("bilder/Admin.jpg"));
+        tabbedPane.addTab("Hjem", icon, panel1, "Hjem");
         tabbedPane.addTab("Registrer Pasient", icon, tab1, "Pasient");
         tabbedPane.addTab("Registrer Lege", icon, tab2, "Lege");
         //tabbedPane.addTab("Registrer Resept", icon, tab3, "Resept");
