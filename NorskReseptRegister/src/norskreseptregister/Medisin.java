@@ -14,17 +14,15 @@ import java.io.*;
 public class Medisin implements Serializable
 {
     private String navn;
-    //private String atcNr;
-    //private String anvisning;
+    private String atcNr;
     Medisin neste;
     
     
     //Konstruktør
-    public Medisin(String navn) //atcNr og anvisning ikke sendt med
+    public Medisin(String navn, String atcNr)
     {
         this.navn = navn;
-        //this.atcNr = atcNr;
-        //this.anvisning = anvisning;
+        this.atcNr = atcNr;
         neste = null;
     }
     
@@ -32,6 +30,11 @@ public class Medisin implements Serializable
     public String getNavn()
     {
         return navn;
+    }
+    
+    public String getAtcNr()
+    {
+        return atcNr;
     }
             
     
@@ -46,7 +49,7 @@ public class Medisin implements Serializable
                 "\nAtc-Nummer: " + atcNr +
                 "\nAnvisning: " + anvisning;
         */
-        tekst += navn;
+        tekst += navn + " - " + atcNr;
         return tekst;
     }
  
