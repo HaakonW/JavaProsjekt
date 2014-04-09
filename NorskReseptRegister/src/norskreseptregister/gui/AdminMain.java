@@ -35,7 +35,7 @@ public class AdminMain extends JPanel
         tabbedPane.addTab("Admininstasjon", icon, panel1, "Admin");
         tabbedPane.addTab("Registrer medisin", icon, panel2, "Medisin");
         tabbedPane.addTab("Endre Lisens for lege", icon, panel3, "Lege");
-        tabbedPane.addTab("Blank", icon, panel4, "blank");
+        tabbedPane.addTab("Registrer medisin 2.0", icon, panel4, "blank");
         add(tabbedPane);
     }
     
@@ -44,12 +44,13 @@ public class AdminMain extends JPanel
     //Create and set up the window.
     JFrame frame = new JFrame("Admin");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(800,400);
+    frame.setSize(300,200);
     frame.getContentPane().add(new AdminMain(), BorderLayout.CENTER);
 
     //Display the window.
    
     frame.setVisible(true);
+    frame.pack(); // Litt kranglete med størrelsen
   }
 
   public static void main(String[] args)

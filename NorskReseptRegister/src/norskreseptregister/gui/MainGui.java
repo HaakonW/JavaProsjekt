@@ -84,7 +84,7 @@ public class MainGui extends JFrame
         GridBagConstraints gc = new GridBagConstraints();
         
         //// HEADER ////
-        
+        /*
         gc.gridx = 0;
         gc.gridy = 0;
         add(rad, gc);
@@ -178,38 +178,38 @@ public class MainGui extends JFrame
          gc.gridx=0;
         gc.gridy=10;
         add(k10, gc); 
-        
+        */
        //////////////////    
         
       
    
        
        ///// BUTTON START //// 
-        gc.gridx = 1;
-        gc.gridy = 4;
+        gc.gridx = 0;
+        gc.gridy = 0;
         gc.gridwidth = 5;
         gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.insets = new Insets(10, 10, 10, 10);        
+        gc.insets = new Insets(35, 5, 5, 35);        
         add(info, gc);      
            
          
-        gc.gridx = 1;
-        gc.gridy = 5;
+        gc.gridx = 0;
+        gc.gridy = 1;
         //gc.gridwidth = 6;
         //gc.fill = GridBagConstraints.HORIZONTAL;
         add(registrer, gc);
         
        
-        gc.gridx = 1;
-        gc.gridy = 6;
+        gc.gridx = 0;
+        gc.gridy = 2;
         add(admin, gc);
         
         ////// BUTTON SLUTT /////
         
         /// START LOGO //////
         
-        gc.gridx = 7;
-        gc.gridy = 4; 
+        gc.gridx = 5;
+        gc.gridy = 0; 
         gc.gridheight = 4;/*
         gc.gridwidth = 4;
         gc.fill = GridBagConstraints.VERTICAL;
