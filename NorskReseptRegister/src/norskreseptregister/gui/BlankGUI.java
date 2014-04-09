@@ -128,7 +128,7 @@ public class BlankGUI extends JPanel implements ActionListener
     {
         if(!regNavn.getText().equals(""))
         {
-            Medisin ny = new Medisin(regNavn.getText()); // HUSK Å SENDE MED ATC
+            Medisin ny = new Medisin(regNavn.getText(),regAtc.getText()); // HUSK Å SENDE MED ATC
             // Kaller på medisinliste.settInn
             liste.settInn(ny);
             utskrift.setText("Medisin registrert:\n " + ny.toString());

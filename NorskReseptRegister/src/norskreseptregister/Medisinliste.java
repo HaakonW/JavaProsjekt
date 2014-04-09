@@ -45,8 +45,11 @@ import java.io.*;
             return tekst;
         }
         
+        
         /*Finn medisin - Kan brukes når vi skal sjekke om medisinen finnes
-        i hovedprogrammet*/
+        i hovedprogrammet
+        - Må legge inn muligheten for å søke på atcNr
+        */
         public boolean finnMedisin (String medisinnavn)
         {
             if( hode == null)
