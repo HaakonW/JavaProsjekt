@@ -1,7 +1,7 @@
 /*
- * Filen inneholder 
- * Laget av  * 
- * Sist endret  * 
+ * Filen inneholder klassen RegistrerLege.
+ * Laget av  Henrik 
+ * Sist endret 09-04-2014 
  */
 
 package norskreseptregister.gui;
@@ -14,10 +14,6 @@ import javax.imageio.*;
 import javax.swing.*;
 import norskreseptregister.Lege;
 import norskreseptregister.RegisterSystem;
-/**
- *
- * @author Haakon, Henrik
- */
 
 public class RegistrerLege extends JPanel
 {
@@ -42,6 +38,7 @@ public class RegistrerLege extends JPanel
         adressefelt = new JTextField(20);
         registrer = new JButton("Registrer Lege");
         avbryt = new JButton("Avbryt");
+<<<<<<< HEAD
         legeutskrift = new JTextArea(20, 20);
         legeutskrift.setEditable(false);        
         
@@ -102,6 +99,29 @@ public class RegistrerLege extends JPanel
     {
         
        Lege lege = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), adressefelt.getText());
+=======
+        /*bevilgning = new JRadioButton();
+        bevilgning.setText("Har bevilgning");
+        bevilgningFalse = new JRadioButton();
+        bevilgningFalse.setText("har IKKE bevilgning");*/
+        legeutskrift = new JTextArea(15, 45);
+        legeutskrift.setEditable(false);
+        
+        add(etternavnLege);              
+        add(l_etternavn);
+        add(fornavnLege);
+        add(l_fornavn);
+        add(adresseLege);
+        add(l_adresse);
+        add(legeutskrift);
+        add(registrer);
+        add(avbryt);
+    }//end of konstruktør RegistrerLege
+    
+    private void Commit()
+    { 
+       Lege lege = new Lege(l_fornavn.getText(), l_etternavn.getText(), l_adresse.getText());
+>>>>>>> FETCH_HEAD
        system.getLegeRegister().SettInn(lege);
     }
     
@@ -114,7 +134,6 @@ public class RegistrerLege extends JPanel
         //privat lytteklasse som plukker opp trykk å
     private class Knappelytter implements ActionListener
     {
-        
         public void actionPerformed( ActionEvent e )
         {
            if (e.getSource() ==  registrer)
@@ -124,7 +143,7 @@ public class RegistrerLege extends JPanel
             } 
            else if (e.getSource() == avbryt)
            {
-                 TomFelt();
+                TomFelt();
            }
         }
         

@@ -1,5 +1,3 @@
-package norskreseptregister.gui;
-
 /*
 Filen inneholder GUI for å kunne registere en medisin og legge de i en 
 egenopprettet liste.
@@ -8,6 +6,8 @@ Laget av Peter Wilhelmsen
 Sist endret 07.04.14
  */
 
+package norskreseptregister.gui;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -15,12 +15,6 @@ import javax.swing.*;
 import norskreseptregister.Medisin;
 import norskreseptregister.Medisinliste;
 
-//package norskreseptregister.gui;
-
-/**
- *
- * @author PeterWilhelmsen
- */
 public class MedisinGUI extends JPanel implements ActionListener
 {
     private Medisinliste liste;
@@ -106,7 +100,7 @@ public class MedisinGUI extends JPanel implements ActionListener
         add(panel5, gc);
 
         utskrift.setEditable(false); 
-    }
+    } //end of konstruktør MedisinGUI
     
     private void knappeGruppe()
     {
@@ -130,7 +124,6 @@ public class MedisinGUI extends JPanel implements ActionListener
         }
         return null;  
     }
-    
     
      // Lese objekt fra fil  - HUSK Å IMPORTER java.io.*;
     public void lesObjektFraFil()
@@ -179,18 +172,15 @@ public class MedisinGUI extends JPanel implements ActionListener
         }
     }
     
-    
     public void visRegister()
     {
         utskrift.setText(liste.toString());
     }
     
-    
     public void tomFelter()
     {
         regNavn.setText("");
     }
-    
     
     public void actionPerformed(ActionEvent e)
     {
@@ -205,6 +195,5 @@ public class MedisinGUI extends JPanel implements ActionListener
             visRegister();
         }
     }
-    
-   
-}
+ 
+}//end of class MedisinGUI

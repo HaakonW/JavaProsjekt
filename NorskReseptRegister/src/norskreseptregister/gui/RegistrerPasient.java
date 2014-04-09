@@ -1,7 +1,7 @@
 /*
- * Filen inneholder 
- * Laget av  * 
- * Sist endret  * 
+ * Filen inneholder klassen RegistrerPasient.
+ * Laget av  Henrik
+ * Sist endret 09-04-2014 
  */
 
 package norskreseptregister.gui;
@@ -17,10 +17,6 @@ import norskreseptregister.Pasient;
 import norskreseptregister.PasientRegister;
 import norskreseptregister.RegisterSystem;
 import java.util.List;
-/**
- *
- * @author Henrik
- */
 
 public class RegistrerPasient extends JPanel implements ActionListener
 {
@@ -30,7 +26,6 @@ public class RegistrerPasient extends JPanel implements ActionListener
     private JButton regPasient, visListe;
     private JTextArea utskrift;
     private String medisinlisten = "lagreMedisin.txt";
-    
     
     public RegistrerPasient(PasientRegister pasientRegister)
     {
@@ -61,7 +56,7 @@ public class RegistrerPasient extends JPanel implements ActionListener
         add(visListe);
         
         utskrift.setEditable(false); 
-    }
+    }//end of konstruktør
     
     private void nyPasient()
     {

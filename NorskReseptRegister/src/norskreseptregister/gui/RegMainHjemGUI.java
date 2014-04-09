@@ -1,17 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Filen inneholder klassen RegMainHjemGUI.
+ * Laget av  Henrik 
+ * Sist endret 09-04-2014 
  */
 
 package norskreseptregister.gui;
 
 import java.awt.*;
 import javax.swing.*;
-/**
- *
- * @author Henrik
- */
+
 class RegMainHjemGUI extends JPanel
 {
     private JButton regPasient, regLege, regResept;
@@ -41,4 +38,4 @@ class RegMainHjemGUI extends JPanel
         gc.gridy = 1;
         add(panel2, gc);
     }
-}
+}//end of class RegMainHjemGUI
