@@ -24,9 +24,6 @@ public class RegistrerLege extends JPanel implements ActionListener
     private JLabel fornavnlabel, etternavnlabel, adresselabel; 
     private JTextArea legeutskrift;
     private JPanel panel1, panel2, panel3, panel4, panel5;
-    //private JCheckBox a, b, c;
-    //private JRadioButton bevilgning, bevilgningFalse;
-    RegisterSystem system;
     private LegeRegister legeRegister;
     
     public RegistrerLege(LegeRegister legeRegister)
@@ -41,7 +38,9 @@ public class RegistrerLege extends JPanel implements ActionListener
         regLege = new JButton("Registrer Lege");
         visLege = new JButton("Vis Lege");
         legeutskrift = new JTextArea(20, 20);
-        legeutskrift.setEditable(false);        
+        legeutskrift.setEditable(false);
+        regLege.addActionListener(this);
+        visLege.addActionListener(this);
         
 
         /////PANEL START////
@@ -95,7 +94,7 @@ public class RegistrerLege extends JPanel implements ActionListener
        
     }//end of konstruktør RegistrerLege
 
-     private void nyLege()
+    private void nyLege()
     {
         Lege ny = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), 
                 adressefelt.getText());
@@ -110,8 +109,7 @@ public class RegistrerLege extends JPanel implements ActionListener
         adressefelt.setText("");
     }
 
-
-        private void SkrivUt()
+    private void SkrivUt()
     {
         String legeliste = "";
         List <Lege> list = legeRegister.FinnAlle();

@@ -34,8 +34,8 @@ public class RegistrerPasient extends JPanel implements ActionListener
         fornavnfelt = new JTextField(20);
         etternavnfelt = new JTextField(20);
         fodselsdatofelt = new JTextField(20);
-        fornavnlabel = new JLabel("Fornavn");
-        etternavnlabel = new JLabel("Etternavn");
+        fornavnlabel = new JLabel("Fornavn     ");
+        etternavnlabel = new JLabel("Etternavn   ");
         fodsellabel = new JLabel("Fødselsdato");
         regPasient = new JButton("Registrer");
         visListe = new JButton("Vis liste");

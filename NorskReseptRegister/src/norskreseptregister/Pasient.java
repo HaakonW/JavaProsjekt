@@ -7,9 +7,10 @@
 package norskreseptregister;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 
-public abstract class Pasient extends Person
+public class Pasient extends Person
 {
     private String fodselsdato;
     
@@ -35,7 +36,7 @@ public abstract class Pasient extends Person
         return tekst;
     }
 
-    public void SkrivObjektTilFil(FileInputStream filnavn) 
+    public void SkrivObjektTilFil() 
     {   
         // TODO Auto-generated method stub
     }

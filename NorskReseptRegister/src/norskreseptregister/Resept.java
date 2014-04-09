@@ -6,6 +6,8 @@
 
 package norskreseptregister;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 public class Resept 
 {
@@ -27,8 +29,7 @@ public class Resept
         this.mengde = mengde;
         this.kategori = kategori;
         this.anvisning = anvisning; 
-    }
-        
+    }     
         public String getDato()
         {
             return dato;

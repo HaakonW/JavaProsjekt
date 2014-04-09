@@ -19,6 +19,7 @@ public class RegMainGUI extends JPanel
     private JTabbedPane tabbedPane;
     RegistrerPasient tab1;
     RegistrerLege tab2;
+    RegistrerResept tab3;
     private RegisterSystem system;
     RegMainHjemGUI panel1 = new RegMainHjemGUI();
     
@@ -32,10 +33,12 @@ public class RegMainGUI extends JPanel
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
         ImageIcon doktor = new ImageIcon("src/norskreseptregister/gui/bilder/doktor.png");
         ImageIcon pasienten = new ImageIcon("src/norskreseptregister/gui/bilder/person.png");
+        ImageIcon resept = new ImageIcon("src/norskreseptregister/gui/bilder/person.png");
         
         tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
         tabbedPane.addTab("Registrer Pasient", pasienten, tab1, "Pasient");
         tabbedPane.addTab("Registrer Lege", doktor, tab2, "Lege");
+        tabbedPane.addTab("Registrer Resept", resept, tab3, "Resept");
         //tabbedPane.addTab("Registrer Resept", icon, tab3, "Resept");
         add(tabbedPane);
     }

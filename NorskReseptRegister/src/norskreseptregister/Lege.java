@@ -13,7 +13,7 @@ import java.io.FileOutputStream;
 
 public class Lege extends Person
 {
-    //private String legenummer;
+
     private String arbeidssted;
     private boolean bevillingA;
     private boolean bevillingB;
@@ -24,21 +24,14 @@ public class Lege extends Person
         //parameterløs konstruktør
     }
     
-    public Lege(String fornavn, String etternavn, //String legenummer,
-                String arbeidssted)
+    public Lege(String fornavn, String etternavn, String arbeidssted)
     {
         super(fornavn,etternavn);
-        //this.legenummer = legenummer;
         this.arbeidssted = arbeidssted;
         bevillingA = true;
         bevillingB = true;
         bevillingC = true;
     }
-    
-    /*public String getLegenummer()
-    {
-        return legenummer;
-    }*/
     
     public String getArbeidssted()
     {
@@ -65,32 +58,31 @@ public class Lege extends Person
         String bevilling = "";
         if (bevillingA )
         {
-            bevilling+= "A";
+            bevilling+= "A ";
         }
         if (bevillingB )
         {
-            bevilling+= "B";
+            bevilling+= "B ";
         }
         if (bevillingC )
         {
             bevilling+= "C";
         }
         
-        String tekst = "";
-        tekst += "Legenummer: " + //legenummer +
-                "\nArbeidssted: " + arbeidssted +
+        String tekst = super.toString();
+        tekst += "Arbeidssted: " + arbeidssted +
                 "\nBevilling for medisingruppe: " + bevilling + "\n";
         return tekst;
     }// end of toString
 
-
-    public void SkrivObjektTilFil(FileInputStream filnavn) 
+    public void SkrivObjektTilFil() 
     {
         
     }
-
+    
     public boolean LesObjektFraFil(FileInputStream filnavn) 
     {
         return false;
     }
+
 } //End of class Lege

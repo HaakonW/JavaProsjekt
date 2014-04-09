@@ -10,6 +10,7 @@ package norskreseptregister;
  *
  * @author Bandet
  */
-public class Reseptliste {
+public class Reseptliste 
+{
 
 }

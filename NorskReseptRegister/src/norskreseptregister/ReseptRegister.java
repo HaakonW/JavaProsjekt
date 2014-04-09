@@ -6,10 +6,8 @@
 
 package norskreseptregister;
 
-/**
- *
- * @author Bandet
- */
-public class ReseptRegister {
+
+public class ReseptRegister extends Register <Resept>
+{
 
 }
