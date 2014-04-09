@@ -10,14 +10,11 @@ package norskreseptregister;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+//import javax.swing.ImageIcon;
+//import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -27,24 +24,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import norskreseptregister.gui.AdminMain;
-import norskreseptregister.gui.MainGui;
-import norskreseptregister.gui.hovedVinduGUI;
 
 
 public class hovedVindu extends JFrame
 {
    private JDesktopPane hovedvindu;
-   private hovedVinduGUI maingui;
-   
-   //Hentet fra MAINGUI
-   private JButton info;
-   private JButton registrer;
-   private JButton admin;
-   private JButton rad, rad1, rad2, rad3, rad4, rad5, rad6, rad7, rad8, rad9, rad10, rad11, rad12, rad13, rad14;
-   private JButton k, k1, k2, k3, k4, k5, k6, k7, k8, k9, k10, k11, k12, k13, k14;
-   private JLabel header;
-   /////////////////////////////////////////////////////////////////////////////
-   
+
    //Konstruktør
    public hovedVindu()
    {
@@ -52,21 +37,22 @@ public class hovedVindu extends JFrame
        
       JMenuBar menylinje = new JMenuBar();
       JMenu addmeny = new JMenu("Start");
+      JMenu addmeny2 = new JMenu("Neste");
+      JMenu addmeny3 = new JMenu("Tredje");
+      
       
       JMenuItem AdminGUI = new JMenuItem("Registrere medisin");
       AdminGUI.addActionListener(new Menylytter());
       addmeny.add(AdminGUI);
-      
-      JMenuItem RegMainGUI = new JMenuItem("Registere pasient/lege");
-      RegMainGUI.addActionListener(new Menylytter());
-      addmeny.add(RegMainGUI);
 
       menylinje.add(addmeny);
+      menylinje.add(addmeny2);
+      menylinje.add(addmeny3);
       setJMenuBar(menylinje);
            
       //Opprette hovedvinduet
       hovedvindu = new JDesktopPane();
-      getContentPane().add(hovedvindu); // , BorderLayout.CENTER
+      getContentPane().add(hovedvindu,BorderLayout.CENTER);
      
      ////////////////////////////////////////////////////////////////////////
       /* EKSEMPEL PÅ INTERNALFRAME
@@ -77,12 +63,9 @@ public class hovedVindu extends JFrame
       hovedvindu.add(ramme);*/
       ////////////////////////////////////////////////////////////////////////
       
-      
-     
-        
-      
-      hovedvindu.setBackground(Color.RED); //Sette bakgrunnsfarge på hovedvindu
-      setSize(1300,400);
+
+      hovedvindu.setBackground(Color.BLUE); //Sette bakgrunnsfarge på hovedvindu
+      setSize(1300,600);
       setVisible(true);
        
    }// End of Konstruktør
@@ -108,9 +91,6 @@ public class hovedVindu extends JFrame
           
           hovedvindu.add(internvindu);
           internvindu.setVisible(true);
-          
-          
-          //RegMainGUI nyReg = new RegMainGUI();
       }
    }
    
