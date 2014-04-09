@@ -8,6 +8,8 @@
 
 package norskreseptregister;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 public class Lege extends Person
 {
@@ -16,6 +18,11 @@ public class Lege extends Person
     private boolean bevillingA;
     private boolean bevillingB;
     private boolean bevillingC;
+    
+    public Lege()
+    {
+        //parameterløs konstruktør
+    }
     
     public Lege(String fornavn, String etternavn, //String legenummer,
                 String arbeidssted)
@@ -75,4 +82,15 @@ public class Lege extends Person
                 "\nBevilling for medisingruppe: " + bevilling + "\n";
         return tekst;
     }// end of toString
+
+
+    public void SkrivObjektTilFil(FileInputStream filnavn) 
+    {
+        
+    }
+
+    public boolean LesObjektFraFil(FileInputStream filnavn) 
+    {
+        return false;
+    }
 } //End of class Lege

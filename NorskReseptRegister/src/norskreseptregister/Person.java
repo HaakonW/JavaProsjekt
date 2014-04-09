@@ -6,11 +6,18 @@
 
 package norskreseptregister;
 
-public abstract class Person
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public abstract class Person implements SkriveLeseObjekt
 {
     private String fornavn;
     private String etternavn;
 
+    public Person()
+    {
+        //parameterløs kontruktør
+    }
     public Person(String fornavn, String etternavn)
     {
             this.fornavn = fornavn;
@@ -33,4 +40,16 @@ public abstract class Person
             tekst+= "Navn : " + fornavn + " " + etternavn + "\n";
             return tekst;
     }
+    
+    public void SkrivObjektTilFil(FileOutputStream filnavn)
+    {
+        // TODO Auto-generated method stub
+    }
+    
+    public boolean LesObjektTilFil(FileInputStream filnavn)
+    {
+        // TODO Auto-generated method stub
+        return false;
+    }
+    
 }//End of class Person

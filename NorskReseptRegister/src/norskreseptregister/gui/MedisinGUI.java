@@ -33,7 +33,7 @@ public class MedisinGUI extends JPanel implements ActionListener
     
     public MedisinGUI()
     {
-        
+
         regNavn = new JTextField(10);
         regAtc = new JTextField(10);
         regMedisinnavn = new JButton("Registrer");

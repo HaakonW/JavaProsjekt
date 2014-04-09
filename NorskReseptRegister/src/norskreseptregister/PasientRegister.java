@@ -12,5 +12,5 @@ package norskreseptregister;
  */
 public class PasientRegister extends Register <Pasient>
 {
-
+    
 }

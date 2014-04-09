@@ -66,7 +66,7 @@ public class RegistrerPasient extends JPanel implements ActionListener
     private void nyPasient()
     {
         Pasient ny = new Pasient(fornavnfelt.getText(), etternavnfelt.getText(), 
-                fodselsdatofelt.getText());
+                fodselsdatofelt.getText()) {};
         pasientRegister.SettInn(ny);
         utskrift.setText("Registrert pasient: \n" + ny.toString());
     }

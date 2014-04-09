@@ -20,9 +20,8 @@ import javax.swing.*;
 public class AdminMain extends JPanel
 {
     private JTabbedPane tabbedPane;
-    private JPanel panel1, panel2;
     private JLabel hei;
-    private JButton endreLisens, medisin;
+    AdminMainHjemGUI panel1 = new AdminMainHjemGUI();
     LegeLisensGUI panel3 = new LegeLisensGUI();
     MedisinGUI panel4 = new MedisinGUI();    
     
@@ -36,31 +35,10 @@ public class AdminMain extends JPanel
         tabbedPane.addTab("Registrer medisin", icon, panel4, "Registrer Medisin");
         add(tabbedPane);
         hei = new JLabel("Dette er for admin. ");
-        endreLisens = new JButton("Endre Lisens");
-        medisin = new JButton("Registrer Medisin");
         
         ////PANELS START////
-        panel1 = new JPanel();
-        panel1.add(hei);
-        
-        panel2 = new JPanel();
-        panel2.add(endreLisens);
-        panel2.add(medisin);
-        
-        //// GRID START ////
-        GridBagConstraints gc = new GridBagConstraints();
-        setLayout(new GridBagLayout());
-        gc.gridx = 0;
-        gc.gridy = 0;
-        gc.insets = new Insets(10, 5, 5, 10);
-        gc.anchor = GridBagConstraints.WEST;
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        add(panel1, gc);
-        
-        gc.gridx = 0;
-        gc.gridy = 1;
-        add(panel2, gc);
-        
+        //panel1 = new JPanel();
+        //panel1.add(hei);   
     }
     
   private static void createAndShowGUI()
