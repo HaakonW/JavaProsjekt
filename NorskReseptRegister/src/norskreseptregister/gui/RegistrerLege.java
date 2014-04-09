@@ -13,36 +13,37 @@ import java.io.*;
 import javax.imageio.*;
 import javax.swing.*;
 import norskreseptregister.Lege;
+import norskreseptregister.LegeRegister;
 import norskreseptregister.RegisterSystem;
+import java.util.List;
 
-public class RegistrerLege extends JPanel
+public class RegistrerLege extends JPanel implements ActionListener
 {
-    private JButton regLege, sjekkLege;
+    private JButton regLege, visLege;
     private JTextField fornavnfelt, etternavnfelt, adressefelt;
     private JLabel fornavnlabel, etternavnlabel, adresselabel; 
     private JTextArea legeutskrift;
-    private JButton registrer, avbryt;
     private JPanel panel1, panel2, panel3, panel4, panel5;
     //private JCheckBox a, b, c;
     //private JRadioButton bevilgning, bevilgningFalse;
     RegisterSystem system;
+    private LegeRegister legeRegister;
     
-    public RegistrerLege()
+    public RegistrerLege(LegeRegister legeRegister)
     {
-        this.system = system;
+        this.legeRegister = legeRegister;
         fornavnlabel = new JLabel("Fornavn   ");
         etternavnlabel = new JLabel("Etternavn ");
         adresselabel = new JLabel("Adresse   ");
         etternavnfelt = new JTextField(20);
         fornavnfelt = new JTextField(20);
         adressefelt = new JTextField(20);
-        registrer = new JButton("Registrer Lege");
-        avbryt = new JButton("Avbryt");
+        regLege = new JButton("Registrer Lege");
+        visLege = new JButton("Vis Lege");
         legeutskrift = new JTextArea(20, 20);
         legeutskrift.setEditable(false);        
         
-        
-        
+
         /////PANEL START////
         panel1 = new JPanel();
         panel1.add(fornavnlabel);
@@ -57,8 +58,8 @@ public class RegistrerLege extends JPanel
         panel3.add(adressefelt);
         
         panel4 = new JPanel();
-        panel4.add(registrer);
-        panel4.add(avbryt);
+        panel4.add(regLege);
+        panel4.add(visLege);
         
         panel5 = new JPanel();
         panel5.add(legeutskrift);
@@ -93,40 +94,46 @@ public class RegistrerLege extends JPanel
         add(panel5, gc);
        
     }//end of konstruktør RegistrerLege
-    
-    private void Commit()
-    {
-        
-       Lege lege = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), adressefelt.getText());
 
-       system.getLegeRegister().SettInn(lege);       
-        
+     private void nyLege()
+    {
+        Lege ny = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), 
+                adressefelt.getText());
+        legeRegister.SettInn(ny);
+        legeutskrift.setText("Registrert Lege: \n" + ny.toString());
     }
-    
-   
-    
+
     public void TomFelt()
     {
         fornavnfelt.setText("");
         etternavnfelt.setText("");
         adressefelt.setText("");
     }
-        //privat lytteklasse som plukker opp trykk å
-    private class Knappelytter implements ActionListener
+
+
+        private void SkrivUt()
     {
-        public void actionPerformed( ActionEvent e )
+        String legeliste = "";
+        List <Lege> list = legeRegister.FinnAlle();
+        for (Lege lege : list)
         {
-           if (e.getSource() ==  registrer)
-           {
-                Commit();
-                TomFelt();
-            } 
-           else if (e.getSource() == avbryt)
-           {
-                TomFelt();
-           }
+            legeliste+= lege.toString();
+            legeliste +="\n\n";
         }
+        legeutskrift.setText(legeliste);
+    }
         
-    }//end of class Knappelytter
+    public void actionPerformed( ActionEvent e )
+    {
+       if (e.getSource() ==  regLege)
+       {
+            nyLege();
+            TomFelt();
+        } 
+       else if (e.getSource() == visLege)
+       {
+            SkrivUt();
+       }
+    }
     
 }//end of class RegistrerLege

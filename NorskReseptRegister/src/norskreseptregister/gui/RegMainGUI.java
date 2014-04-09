@@ -27,7 +27,7 @@ public class RegMainGUI extends JPanel
         super(new GridLayout(1, 1));
         this.system = system;
         tab1 = new RegistrerPasient(system.getPasientRegister());
-        tab2 = new RegistrerLege();
+        tab2 = new RegistrerLege(system.getLegeRegister());
         JTabbedPane tabbedPane = new JTabbedPane();
         ImageIcon icon = new ImageIcon(getClass().getResource("bilder/Admin.jpg"));
         tabbedPane.addTab("Hjem", icon, panel1, "Hjem");

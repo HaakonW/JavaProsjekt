@@ -26,7 +26,6 @@ public class RegistrerPasient extends JPanel implements ActionListener
     private JLabel fornavnlabel, etternavnlabel, fodsellabel;
     private JButton regPasient, visListe;
     private JTextArea utskrift;
-    private String medisinlisten = "lagreMedisin.txt";
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
     
     public RegistrerPasient(PasientRegister pasientRegister)
@@ -105,10 +104,10 @@ public class RegistrerPasient extends JPanel implements ActionListener
     
     private void nyPasient()
     {
-        /*Pasient ny = new Pasient(fornavnfelt.getText(), etternavnfelt.getText(), 
-                fodselsdatofelt.getText()) {};
+        Pasient ny = new Pasient(fornavnfelt.getText(), etternavnfelt.getText(), 
+                fodselsdatofelt.getText());
         pasientRegister.SettInn(ny);
-        utskrift.setText("Registrert pasient: \n" + ny.toString());*/
+        utskrift.setText("Registrert pasient: \n" + ny.toString());
     }
     
     private void TomFelt()
