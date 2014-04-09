@@ -314,10 +314,11 @@ class panel extends JPanel
             //panel panel1 = new panel();
             
             c.add(ny,BorderLayout.CENTER);
-            
+            internvindu.setVisible(true);
+            internvindu.setSize(200,200);
             
             hovedvindu.add(internvindu);
-            internvindu.setVisible(true);
+            
         }
     }
     
@@ -333,8 +334,8 @@ class panel extends JPanel
                JInternalFrame internvindu = new JInternalFrame("Intern",true,true,true,true);
                
                Container c = internvindu.getContentPane();
-               //MedisinGUI ny = new MedisinGUI();
-               JButton ny = new JButton();
+               MedisinGUI ny = new MedisinGUI();
+               //JButton ny = new JButton();
                c.add(ny, BorderLayout.CENTER);
                
                hovedvindu.add(internvindu);
