@@ -33,7 +33,7 @@ public class AdminMain extends JPanel
         ImageIcon icon = new ImageIcon(getClass().getResource("bilder/Admin.jpg"));
         tabbedPane.addTab("Admininstasjon", icon, panel1, "Admin");
         tabbedPane.addTab("Endre Lisens for lege", icon, panel3, "Lege");
-        tabbedPane.addTab("Registrer medisin 2.0", icon, panel4, "blank");
+        tabbedPane.addTab("Registrer medisin", icon, panel4, "blank");
         add(tabbedPane);
     }
     

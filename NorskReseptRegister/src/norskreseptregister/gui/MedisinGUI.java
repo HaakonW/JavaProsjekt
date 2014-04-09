@@ -34,7 +34,6 @@ public class MedisinGUI extends JPanel implements ActionListener
     public MedisinGUI()
     {
         
-        
         regNavn = new JTextField(10);
         regAtc = new JTextField(10);
         regMedisinnavn = new JButton("Registrer");
@@ -50,13 +49,12 @@ public class MedisinGUI extends JPanel implements ActionListener
         
         //For å lese listen ved oppstart
         lesObjektFraFil();
-        ///// GRID START//////
-               
-        
+        knappeGruppe();
+       
+         ///////PANEL START/////             
         JPanel panel1 = new JPanel();
         panel1.add( new JLabel("Medisinnavn"));
         panel1.add(regNavn);
-      
                
         panel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         
@@ -78,10 +76,8 @@ public class MedisinGUI extends JPanel implements ActionListener
         
         JPanel panel5 = new JPanel();
         panel5.add(utskrift);
-        panel5.setBorder(BorderFactory.createLineBorder(Color.BLACK));       
-       
-      
-        
+        panel5.setBorder(BorderFactory.createLineBorder(Color.BLACK)); 
+         ///// GRID START//////
          GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
         
@@ -109,18 +105,17 @@ public class MedisinGUI extends JPanel implements ActionListener
         gc.gridy = 0;
         gc.gridheight = 5;
         add(panel5, gc);
-        
-        
-        
-        
-        /*add(regNavn);
-        //add(new JLabel("Anvisning"));
-        //add(regAnvisning);
-        add(regMedisinnavn);
-        add(visListe);
-        add(utskrift);*/
-        
+
         utskrift.setEditable(false); 
+    }
+    
+    private void knappeGruppe()
+    {
+        ButtonGroup knappegruppe = new ButtonGroup();
+        knappegruppe.add(a);
+        knappegruppe.add(b);
+        knappegruppe.add(c);
+        
     }
     
     //Registrere ny medisin 
