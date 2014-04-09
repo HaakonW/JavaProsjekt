@@ -25,47 +25,110 @@ public class MedisinGUI extends JPanel implements ActionListener
 {
     private Medisinliste liste;
     private String lagreListe = "medisinliste.txt";
-    private JTextField regNavn;
+    private JTextField regNavn, regAtc;
     private JButton regMedisinnavn, visListe;
     private JTextArea utskrift,regAnvisning;
-    private String medisinlisten = "lagreMedisin.txt";
-    
-    
-    
+    private String medisinlisten = "lagreMedisin.txt";   
+    private JRadioButton a, b, c;
     
     public MedisinGUI()
     {
+        
+        
         regNavn = new JTextField(10);
-        //regAnvisning = new JTextArea(3,20);
+        regAtc = new JTextField(10);
         regMedisinnavn = new JButton("Registrer");
         visListe = new JButton("Vis liste");
         utskrift = new JTextArea(20,20);
+        a = new JRadioButton("A");
+        b = new JRadioButton("B");
+        c = new JRadioButton("C");
         
         regMedisinnavn.addActionListener(this);
-        visListe.addActionListener(this);
-        
+        visListe.addActionListener(this);        
         liste = new Medisinliste();
         
         //For å lese listen ved oppstart
         lesObjektFraFil();
+        ///// GRID START//////
+               
         
-        add( new JLabel("Medisinnavn"));
-        add(regNavn);
+        JPanel panel1 = new JPanel();
+        panel1.add( new JLabel("Medisinnavn"));
+        panel1.add(regNavn);
+      
+               
+        panel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
+        JPanel panel2 = new JPanel();
+        panel2.add(new JLabel("ATC-Nummer"));
+        panel2.add(regAtc);
+        panel2.setBorder(BorderFactory.createLineBorder(Color.BLACK));  
+        
+        JPanel panel3 = new JPanel();
+        panel3.add(a);
+        panel3.add(b);
+        panel3.add(c);
+        panel3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
+        JPanel panel4 = new JPanel();
+        panel4.add(regMedisinnavn);
+        panel4.add(visListe);
+        panel4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
+        JPanel panel5 = new JPanel();
+        panel5.add(utskrift);
+        panel5.setBorder(BorderFactory.createLineBorder(Color.BLACK));       
+       
+      
+        
+         GridBagConstraints gc = new GridBagConstraints();
+        setLayout(new GridBagLayout());
+        
+        gc.gridx = 0;
+        gc.gridy = 0;
+        gc.insets = new Insets(10, 5, 5, 10);
+        gc.anchor = GridBagConstraints.WEST;
+        gc.fill = GridBagConstraints.HORIZONTAL;
+        add(panel1, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(panel2, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 2;
+        gc.anchor = GridBagConstraints.WEST;
+        add(panel3, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 3;
+        add(panel4, gc);
+        
+        gc.gridx = 2;
+        gc.gridy = 0;
+        gc.gridheight = 5;
+        add(panel5, gc);
+        
+        
+        
+        
+        /*add(regNavn);
         //add(new JLabel("Anvisning"));
         //add(regAnvisning);
         add(regMedisinnavn);
         add(visListe);
-        add(utskrift);
+        add(utskrift);*/
         
         utskrift.setEditable(false); 
     }
     
-    //Registrere ny medisin
+    //Registrere ny medisin 
     public Medisin nyMedisin()
     {
         if(!regNavn.getText().equals(""))
         {
-            Medisin ny = new Medisin(regNavn.getText());
+            Medisin ny = new Medisin(regNavn.getText(),regAtc.getText()); // HUSK Å SENDE MED ATC
             // Kaller på medisinliste.settInn
             liste.settInn(ny);
             utskrift.setText("Medisin registrert:\n " + ny.toString());
@@ -148,4 +211,6 @@ public class MedisinGUI extends JPanel implements ActionListener
             visRegister();
         }
     }
-}// end of class MedisinGUI
+    
+   
+}

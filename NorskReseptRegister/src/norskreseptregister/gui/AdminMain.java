@@ -24,8 +24,7 @@ public class AdminMain extends JPanel
     //private	JPanel	panel2;
     //private	JPanel	LegeLisensGUI;
     LegeLisensGUI panel3 = new LegeLisensGUI();
-    MedisinGUI panel2 = new MedisinGUI();
-    BlankGUI panel4 = new BlankGUI();
+    MedisinGUI panel4 = new MedisinGUI();
     
     public AdminMain()
     {
@@ -33,7 +32,6 @@ public class AdminMain extends JPanel
         JTabbedPane tabbedPane = new JTabbedPane();
         ImageIcon icon = new ImageIcon(getClass().getResource("bilder/Admin.jpg"));
         tabbedPane.addTab("Admininstasjon", icon, panel1, "Admin");
-        tabbedPane.addTab("Registrer medisin", icon, panel2, "Medisin");
         tabbedPane.addTab("Endre Lisens for lege", icon, panel3, "Lege");
         tabbedPane.addTab("Registrer medisin 2.0", icon, panel4, "blank");
         add(tabbedPane);
