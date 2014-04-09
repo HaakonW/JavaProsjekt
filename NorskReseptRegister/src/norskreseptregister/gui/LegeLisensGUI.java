@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Filen inneholder klassen LegeLisensGUI.
+ * Laget av  Haakon
+ * Sist endret 09-04-2014
  */
 
 package norskreseptregister.gui;
@@ -10,10 +10,6 @@ import java.awt.*;
 import javax.swing.*;
 //usikker på om vi bare kan importere swing.*; ????
 
-/**
- *
- * @author Bandet
- */
 public class LegeLisensGUI extends JPanel
 {
    private JLabel fornavnlabel, etternavnlabel;
@@ -101,13 +97,6 @@ public class LegeLisensGUI extends JPanel
         add(panel6, gc);
 
         utskrift.setEditable(false); 
-       
-       
-       
-       
-       
-       
-       
-       
-   }
-}
+ 
+   }//end of konstruktør LegeLisensGUI
+}//end of class LegeLisensGUI

@@ -1,7 +1,7 @@
 /*
- * Filen inneholder 
- * Laget av  * 
- * Sist endret  * 
+ * Filen inneholder klassen MainGui
+ * Laget av  Haakon
+ * Sist endret 09-04-2014
  */
 
 package norskreseptregister.gui;
@@ -14,10 +14,6 @@ import norskreseptregister.RegisterSystem;
 import java.awt.image.*;
 import javax.imageio.*;
 
-/**
- *
- * @author Haakon
- */
 public class MainGui extends JFrame
 {
     JButton info;
@@ -230,8 +226,9 @@ public class MainGui extends JFrame
         add(footerlabel, gc);*/
 
 
-    }
-     private class Knappelytter implements ActionListener
+    } //end of konstruktør MainGui
+    
+    private class Knappelytter implements ActionListener
     {
         // HVA MÅ KALLES PÅ HER FOR Å FÅ OPP DE ANDRE PROGRAMMENE? ///
         public void actionPerformed( ActionEvent e )
@@ -252,5 +249,4 @@ public class MainGui extends JFrame
         
     }//end of class Knappelytter
   
-       
-}
+}//end of class MainGui

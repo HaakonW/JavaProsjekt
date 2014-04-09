@@ -1,7 +1,7 @@
 /*
- * Filen inneholder 
- * Laget av  * 
- * Sist endret  * 
+ * Filen inneholder klassen RegistrerLege.
+ * Laget av  Henrik 
+ * Sist endret 09-04-2014 
  */
 
 package norskreseptregister.gui;
@@ -14,10 +14,6 @@ import javax.imageio.*;
 import javax.swing.*;
 import norskreseptregister.Lege;
 import norskreseptregister.RegisterSystem;
-/**
- *
- * @author Haakon, Henrik
- */
 
 public class RegistrerLege extends JPanel
 {
@@ -64,11 +60,10 @@ public class RegistrerLege extends JPanel
         add(legeutskrift);
         add(registrer);
         add(avbryt);
-    }
+    }//end of konstruktør RegistrerLege
     
     private void Commit()
-    {
-        
+    { 
        Lege lege = new Lege(l_fornavn.getText(), l_etternavn.getText(), l_adresse.getText());
        system.getLegeRegister().SettInn(lege);
     }
@@ -82,7 +77,6 @@ public class RegistrerLege extends JPanel
         //privat lytteklasse som plukker opp trykk å
     private class Knappelytter implements ActionListener
     {
-        
         public void actionPerformed( ActionEvent e )
         {
            if (e.getSource() ==  registrer)
@@ -92,7 +86,7 @@ public class RegistrerLege extends JPanel
             } 
            else if (e.getSource() == avbryt)
            {
-                 TomFelt();
+                TomFelt();
            }
         }
         

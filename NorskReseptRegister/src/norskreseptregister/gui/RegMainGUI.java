@@ -1,7 +1,7 @@
 /*
- * Filen inneholder 
- * Laget av  * 
- * Sist endret  * 
+ * Filen inneholder klassen RegMainGUI.
+ * Laget av  Henrik, Haakon, Peter 
+ * Sist endret 09-04-2014 
  */
 
 package norskreseptregister.gui;
@@ -13,10 +13,6 @@ import java.io.*;
 import javax.imageio.*;
 import javax.swing.*;
 import norskreseptregister.RegisterSystem;
-/**
- *
- * @author Bandet
- */
 
 public class RegMainGUI extends JPanel
 {
@@ -59,4 +55,4 @@ public class RegMainGUI extends JPanel
     createAndShowGUI(system);
   }
     
-}
+}//end of class RegMainGUI
