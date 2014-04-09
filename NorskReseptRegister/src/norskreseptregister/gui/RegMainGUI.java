@@ -48,6 +48,7 @@ public class RegMainGUI extends JPanel
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(650,460);
     frame.getContentPane().add(new RegMainGUI(system), BorderLayout.CENTER);
+    frame.pack();
     //Display the window.
    
     frame.setVisible(true);

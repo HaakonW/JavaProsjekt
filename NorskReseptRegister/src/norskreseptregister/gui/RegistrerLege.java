@@ -22,10 +22,11 @@ import norskreseptregister.RegisterSystem;
 public class RegistrerLege extends JPanel
 {
     private JButton regLege, sjekkLege;
-    private JTextField l_fornavn, l_etternavn, l_adresse;
-    private JLabel etternavnLege, fornavnLege, adresseLege; // hva skjer her egentlig?
+    private JTextField fornavnfelt, etternavnfelt, adressefelt;
+    private JLabel fornavnlabel, etternavnlabel, adresselabel; 
     private JTextArea legeutskrift;
     private JButton registrer, avbryt;
+    private JPanel panel1, panel2, panel3, panel4, panel5;
     //private JCheckBox a, b, c;
     //private JRadioButton bevilgning, bevilgningFalse;
     RegisterSystem system;
@@ -33,51 +34,82 @@ public class RegistrerLege extends JPanel
     public RegistrerLege()
     {
         this.system = system;
-        /*a = new JCheckBox("A");
-        Knappelytter handler = new Knappelytter();
-        a.addActionListener (handler);
-        b = new JCheckBox("B");
-        b.addActionListener (handler);
-        c = new JCheckBox("C");
-        c.addActionListener (handler);*/
-        etternavnLege = new JLabel("Fornavn   ");
-        fornavnLege = new JLabel("Etternavn ");
-        adresseLege = new JLabel("Adresse   ");
-        l_etternavn = new JTextField(40);
-        l_fornavn = new JTextField(40);
-        l_adresse = new JTextField(40);
+        fornavnlabel = new JLabel("Fornavn   ");
+        etternavnlabel = new JLabel("Etternavn ");
+        adresselabel = new JLabel("Adresse   ");
+        etternavnfelt = new JTextField(20);
+        fornavnfelt = new JTextField(20);
+        adressefelt = new JTextField(20);
         registrer = new JButton("Registrer Lege");
         avbryt = new JButton("Avbryt");
-        /*bevilgning = new JRadioButton();
-        bevilgning.setText("Har bevilgning");
-        bevilgningFalse = new JRadioButton();
-        bevilgningFalse.setText("har IKKE bevilgning");*/
-        legeutskrift = new JTextArea(15, 45);
-        legeutskrift.setEditable(false);
+        legeutskrift = new JTextArea(20, 20);
+        legeutskrift.setEditable(false);        
         
-        add(etternavnLege);              
-        add(l_etternavn);
-        add(fornavnLege);
-        add(l_fornavn);
-        add(adresseLege);
-        add(l_adresse);
-        add(legeutskrift);
-        add(registrer);
-        add(avbryt);
+        
+        
+        /////PANEL START////
+        panel1 = new JPanel();
+        panel1.add(fornavnlabel);
+        panel1.add(fornavnfelt);
+        
+        panel2 = new JPanel();
+        panel2.add(etternavnlabel);
+        panel2.add(etternavnfelt);
+        
+        panel3 = new JPanel();
+        panel3.add(adresselabel);
+        panel3.add(adressefelt);
+        
+        panel4 = new JPanel();
+        panel4.add(registrer);
+        panel4.add(avbryt);
+        
+        panel5 = new JPanel();
+        panel5.add(legeutskrift);
+        
+        //// GRID START ////
+        GridBagConstraints gc = new GridBagConstraints();
+        setLayout(new GridBagLayout());
+        
+        gc.gridx = 0;
+        gc.gridy = 0;
+        gc.insets = new Insets(10, 5, 5, 10);
+        gc.anchor = GridBagConstraints.WEST;
+        gc.fill = GridBagConstraints.HORIZONTAL;
+        add(panel1, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(panel2, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 2;
+        gc.anchor = GridBagConstraints.WEST;
+        add(panel3, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 3;
+        add(panel4, gc);
+        
+        gc.gridx = 2;
+        gc.gridy = 0; 
+        gc.gridheight = 6;
+        add(panel5, gc);
+       
     }
     
     private void Commit()
     {
         
-       Lege lege = new Lege(l_fornavn.getText(), l_etternavn.getText(), l_adresse.getText());
+       Lege lege = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), adressefelt.getText());
        system.getLegeRegister().SettInn(lege);
     }
     
     public void TomFelt()
     {
-        l_fornavn.setText("");
-        l_etternavn.setText("");
-        l_adresse.setText("");
+        fornavnfelt.setText("");
+        etternavnfelt.setText("");
+        adressefelt.setText("");
     }
         //privat lytteklasse som plukker opp trykk å
     private class Knappelytter implements ActionListener
