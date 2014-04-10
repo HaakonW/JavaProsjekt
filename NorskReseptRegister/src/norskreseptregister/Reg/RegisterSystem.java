@@ -37,4 +37,11 @@ public class RegisterSystem
     {
         return reseptRegister;
     }
+
+    public void SkrivTilFil() 
+    {
+        legeRegister.SkrivTilFil("LegeRegister.txt");
+        pasientRegister.SkrivTilFil("PasientRegister.txt");
+        reseptRegister.SkrivTilFil("ReseptRegister.txt");
+    }
 }// end of class System

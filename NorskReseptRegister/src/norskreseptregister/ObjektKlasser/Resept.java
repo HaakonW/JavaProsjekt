@@ -6,11 +6,9 @@
 
 package norskreseptregister.ObjektKlasser;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import norskreseptregister.Interface.SkriveLeseObjekt;
+import java.io.Serializable;
 
-public class Resept implements SkriveLeseObjekt
+public class Resept implements Serializable
 {
     private String dato;
     private Pasient pasientdata;
@@ -82,24 +80,4 @@ public class Resept implements SkriveLeseObjekt
                     "\n Anvisning: " + anvisning;
             return tekst;
         } 
-        
-        //@Override
-        public void SkrivObjektTilFil(/*FileOutputStream stream*/)
-        {
-            // TODO Auto-generated method stub
-
-        }
-
-        //@Override
-        public boolean LesObjektFraFil(FileInputStream stream)
-        {
-            // TODO Auto-generated method stub
-            return false;
-        }
-
-    @Override
-    public void SkrivObjektTilFil(FileOutputStream filnavn) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 } // End of class Resept

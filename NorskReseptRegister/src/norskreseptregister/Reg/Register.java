@@ -12,19 +12,18 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import norskreseptregister.Interface.Kriterie;
-import norskreseptregister.Interface.SkriveLeseObjekt;
 
-public abstract class Register<T extends SkriveLeseObjekt>
+public abstract class Register<T>
 {
-    private List<T> list;
-    private Class<T> classObject;
+    private ArrayList<T> list;
     
-    public Register(Class<T> classObject)
+    public Register()
     {
-        this.classObject = classObject;
         list = new ArrayList<T>(); //instansiere en tom liste av <T>
     }
 
@@ -54,15 +53,11 @@ public abstract class Register<T extends SkriveLeseObjekt>
     
     public void SkrivTilFil(String filNavn)
     {
-        try (FileOutputStream filnavn = new FileOutputStream(filNavn))
+        try (ObjectOutputStream utfil = new ObjectOutputStream(
+                                        new FileOutputStream(filNavn)))
         {
-            for (T element : list) 
-            {
-                // objektet skriver selv sine data til fil
-                element.SkrivObjektTilFil(filnavn);
-            }
-            // Lukk filen
-            filnavn.close(); 
+            utfil.writeObject(list);  
+            //utfil.close(); //kanskje denne skal bort? unødvendig?
         }
         catch (FileNotFoundException ex)
         {
@@ -74,23 +69,13 @@ public abstract class Register<T extends SkriveLeseObjekt>
         }
     }
     
-    public void LesTilFil(String filNavn) 
+    public void LesTilFil(String filNavn)  
     {
-        try (FileInputStream filnavn = new FileInputStream(filNavn))
+        try (ObjectInputStream innfil = new ObjectInputStream(
+                                        new FileInputStream(filNavn)))
         {
-            do
-            {
-                T nyttElement = classObject.newInstance();
-                if (nyttElement.LesObjektFraFil(filnavn))
-                {
-                    SettInn(nyttElement);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            while(true);
+           list = ( ArrayList<T> )innfil.readObject();
+           //innfil.close(); //kanskje denne skal bort? unødvendig?
         }
         catch (FileNotFoundException ex)
         {
@@ -99,12 +84,11 @@ public abstract class Register<T extends SkriveLeseObjekt>
         catch (IOException ioe)
         {
             System.out.println("Kan ikke skrive til fil!");
-        } catch (InstantiationException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
+        catch (ClassNotFoundException cnfe)
+        {
+            System.out.println("Finner ikke klassen");
+        }
+    }  
     
 }//end of class Register

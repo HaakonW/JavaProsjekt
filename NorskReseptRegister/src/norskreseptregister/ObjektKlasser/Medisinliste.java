@@ -5,7 +5,7 @@
  */
 
 package norskreseptregister.ObjektKlasser;
-import norskreseptregister.ObjektKlasser.Medisin;
+
 import java.io.*;
 /**
  *

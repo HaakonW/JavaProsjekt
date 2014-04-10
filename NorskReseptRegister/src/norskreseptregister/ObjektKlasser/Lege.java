@@ -8,12 +8,10 @@
 
 package norskreseptregister.ObjektKlasser;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.Serializable;
 
-public class Lege extends Person
+public class Lege extends Person implements Serializable
 {
-
     private String arbeidssted;
     private boolean bevillingA;
     private boolean bevillingB;
@@ -74,16 +72,5 @@ public class Lege extends Person
                 "\nBevilling for medisingruppe: " + bevilling + "\n";
         return tekst;
     }// end of toString
-
-    @Override
-    public void SkrivObjektTilFil(/*FileOutputStream stream*/) 
-    {
-        
-    }
-    @Override
-    public boolean LesObjektFraFil(FileInputStream filnavn) 
-    {
-        return false;
-    }
 
 } //End of class Lege

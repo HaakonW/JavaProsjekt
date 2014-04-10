@@ -6,11 +6,9 @@
 
 package norskreseptregister.ObjektKlasser;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.Serializable;
 
-
-public class Pasient extends Person
+public class Pasient extends Person implements Serializable
 {
     private String fodselsdato;
     
@@ -36,15 +34,4 @@ public class Pasient extends Person
         return tekst;
     }
     
-    @Override
-    public void SkrivObjektTilFil(/*FileOutputStream filnavn*/) 
-    {   
-        // TODO Auto-generated method stub
-    }
-    @Override
-    public boolean LesObjektFraFil(FileInputStream filnavn) 
-    {
-        // TODO Auto-generated method stub
-        return false;
-    }
 }//End of class Pasient

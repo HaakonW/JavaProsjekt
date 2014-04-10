@@ -5,6 +5,8 @@
  */
 
 package norskreseptregister.gui;
+import norskreseptregister.ObjektKlasser.Medisin;
+import norskreseptregister.ObjektKlasser.Medisinliste;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -50,7 +52,7 @@ public class AdminMain extends JPanel
 
       //sakset herfra: http://stackoverflow.com/questions/144892/how-to-center-a-window-in-java
       Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();      
-      int x=(int)((dimension.getWidth() - 450)/2);
+      int x=(int)((dimension.getWidth() - 620)/2);
       int y=(int)((dimension.getHeight() - 450)/2);
       frame.setLocation(x, y);
     }

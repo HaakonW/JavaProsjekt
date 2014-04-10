@@ -9,17 +9,18 @@ package norskreseptregister.gui.regGUI;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import norskreseptregister.ObjektKlasser.Resept;
-import norskreseptregister.Reg.ReseptRegister;
 import norskreseptregister.Reg.RegisterSystem;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import norskreseptregister.Reg.ReseptRegister;
 
 public class RegistrerResept extends JPanel implements ActionListener
 {
@@ -28,7 +29,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private JTextField datofelt, pasientdatafelt, legedatafelt, medisindatafelt, mengdefelt, kategorifelt;
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
     private JButton regResept, visListe;
-    private JTextArea utskrift, anvisning;
+    JTextArea utskrift, anvisning;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
     
     public RegistrerResept(ReseptRegister reseptRegister)
@@ -41,19 +42,19 @@ public class RegistrerResept extends JPanel implements ActionListener
         mengdefelt = new JTextField(20);
         kategorifelt = new JTextField(20);
         
-        datolabel = new JLabel("Dato     ");
-        pasientdatalabel = new JLabel("Pasient   ");
-        legedatalabel = new JLabel("Lege");
-        medisindatalabel = new JLabel("Medisin     ");
+        datolabel = new JLabel("Dato       ");
+        pasientdatalabel = new JLabel("Pasient    ");
+        legedatalabel = new JLabel("Lege       ");
+        medisindatalabel = new JLabel("Medisin   ");
         mengdelabel = new JLabel("Mengde   ");
-        kategorilabel = new JLabel("Kategori");
+        kategorilabel = new JLabel("Kategori  ");
         anvisningslabel = new JLabel("Anvisning");
         
         regResept = new JButton("Registrer");
         visListe = new JButton("Vis liste");
         
         anvisning = new JTextArea(5,20);
-        //JScrollPane sp= new JScrollPane(anvisning); PRøvde å få til scroller
+        //JScrollPane sp = new JScrollPane(anvisning); //PRøvde å få til scroller
         utskrift = new JTextArea(20,20);        
         regResept.addActionListener(this);
         visListe.addActionListener(this);
@@ -85,7 +86,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         panel7 = new JPanel();
         panel7.add(anvisningslabel);
         panel7.add(anvisning);
-        
+              
         panel8 = new JPanel();
         panel8.add(regResept);
         panel8.add(visListe);

@@ -108,7 +108,6 @@ public class RegMedisinGUI extends JPanel implements ActionListener
         knappegruppe.add(a);
         knappegruppe.add(b);
         knappegruppe.add(c);
-        
     }
     
     //Registrere ny medisin 

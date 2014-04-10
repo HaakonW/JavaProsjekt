@@ -10,8 +10,5 @@ import norskreseptregister.ObjektKlasser.Resept;
 
 public class ReseptRegister extends Register <Resept>
 {
-    public ReseptRegister() 
-    {
-        super(Resept.class);
-    }
+
 }   

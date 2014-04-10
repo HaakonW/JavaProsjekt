@@ -49,14 +49,18 @@ public class RegMainGUI extends JPanel
     frame.getContentPane().add(new RegMainGUI(system), BorderLayout.CENTER);
     frame.pack();
     //Display the window.
-   
     frame.setVisible(true);
+    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();      
+    int x=(int)((dimension.getWidth() - 620)/2);
+    int y=(int)((dimension.getHeight() - 450)/2);
+    frame.setLocation(x, y);
   }
 
   public static void main(String[] args)
   {
     RegisterSystem system = new RegisterSystem();
     createAndShowGUI(system);
+    system.SkrivTilFil();
   }
     
 }//end of class RegMainGUI
