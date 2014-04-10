@@ -6,6 +6,9 @@
 
 package norskreseptregister.gui.regGUI;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -26,6 +29,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
     private JButton regResept, visListe;
     private JTextArea utskrift, anvisning;
+    private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
     
     public RegistrerResept(ReseptRegister reseptRegister)
     {
@@ -48,36 +52,103 @@ public class RegistrerResept extends JPanel implements ActionListener
         regResept = new JButton("Registrer");
         visListe = new JButton("Vis liste");
         
-        anvisning = new JTextArea(5,15);
+        anvisning = new JTextArea(5,20);
+        //JScrollPane sp= new JScrollPane(anvisning); PRøvde å få til scroller
         utskrift = new JTextArea(20,20);        
         regResept.addActionListener(this);
         visListe.addActionListener(this);
         
-        add(datolabel);
-        add(datofelt);
+        panel1 = new JPanel();
+        panel1.add(datolabel);
+        panel1.add(datofelt);
         
-        add(pasientdatalabel);
-        add(pasientdatafelt);
+        panel2 = new JPanel();
+        panel2.add(pasientdatalabel);
+        panel2.add(pasientdatafelt);
         
-        add(legedatalabel);
-        add(legedatafelt);
+        panel3 = new JPanel();
+        panel3.add(legedatalabel);
+        panel3.add(legedatafelt);
         
-        add(medisindatalabel);
-        add(medisindatafelt);
+        panel4 = new JPanel();        
+        panel4.add(medisindatalabel);
+        panel4.add(medisindatafelt);
         
-        add(mengdelabel);
-        add(mengdefelt);
+        panel5 = new JPanel();
+        panel5.add(mengdelabel);
+        panel5.add(mengdefelt);
         
-        add(kategorilabel);
-        add(kategorifelt);
+        panel6 = new JPanel();
+        panel6.add(kategorilabel);
+        panel6.add(kategorifelt);
         
-        add(anvisningslabel);
-        add(anvisning);
+        panel7 = new JPanel();
+        panel7.add(anvisningslabel);
+        panel7.add(anvisning);
         
-        add(utskrift);
+        panel8 = new JPanel();
+        panel8.add(regResept);
+        panel8.add(visListe);
         
-        add(regResept);
-        add(visListe);
+        panel9 = new JPanel();
+        panel9.add(utskrift);
+        
+        //////// START GRID ///////////
+        setLayout(new GridBagLayout());
+        GridBagConstraints gc = new GridBagConstraints();
+        int x = 0;
+        int y = 0;
+                
+        gc.gridx = x;
+        gc.gridy = y;
+        gc.insets = new Insets(5, 5, 5, 10);
+        //gc.anchor = GridBagConstraints.EAST; // MÅ FIKSE LAYOUT HER
+        gc.fill = GridBagConstraints.HORIZONTAL; 
+        add(panel1, gc);
+        y++;
+        
+        gc.gridx = x;
+        gc.gridy = y;
+        add(panel2, gc);
+        y++;
+        
+        gc.gridx = x;
+        gc.gridy = y;
+        add(panel3, gc);
+        y++;
+        
+        gc.gridx = x;
+        gc.gridy = y;
+        add(panel4, gc);
+        y++;
+        
+        gc.gridx = x;
+        gc.gridy = y;
+        add(panel5, gc);
+        y++;
+        
+        gc.gridx = x;
+        gc.gridy = y;
+        add(panel6, gc);
+        y++;
+        
+         gc.gridx = x;
+        gc.gridy = y;
+        add(panel7, gc);
+        y++;
+        
+         gc.gridx = x;
+        gc.gridy = y;
+        add(panel8, gc);
+        x++;
+        
+        gc.gridx = x;
+        gc.gridy = 0;
+        gc.gridheight = 10;
+        gc.fill = GridBagConstraints.VERTICAL;
+        add(panel9, gc);
+        
+        
         
     }
     
