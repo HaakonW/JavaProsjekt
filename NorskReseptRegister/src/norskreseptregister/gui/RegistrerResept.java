@@ -6,8 +6,6 @@
 
 package norskreseptregister.gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -17,13 +15,15 @@ import javax.swing.JTextField;
 import norskreseptregister.Resept;
 import norskreseptregister.ReseptRegister;
 import norskreseptregister.RegisterSystem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RegistrerResept extends JPanel implements ActionListener
 {
     private ReseptRegister reseptRegister;
     private String pasientliste = "pasientliste.txt";
     private JTextField datofelt, pasientdatafelt, legedatafelt, medisindatafelt, mengdefelt, kategorifelt;
-    private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel;
+    private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
     private JButton regResept, visListe;
     private JTextArea utskrift, anvisning;
     
@@ -43,24 +43,51 @@ public class RegistrerResept extends JPanel implements ActionListener
         medisindatalabel = new JLabel("Medisin     ");
         mengdelabel = new JLabel("Mengde   ");
         kategorilabel = new JLabel("Kategori");
+        anvisningslabel = new JLabel("Anvisning");
         
         regResept = new JButton("Registrer");
         visListe = new JButton("Vis liste");
         
-        anvisning = new JTextArea(10,10);
+        anvisning = new JTextArea(5,15);
         utskrift = new JTextArea(20,20);        
         regResept.addActionListener(this);
         visListe.addActionListener(this);
+        
+        add(datolabel);
+        add(datofelt);
+        
+        add(pasientdatalabel);
+        add(pasientdatafelt);
+        
+        add(legedatalabel);
+        add(legedatafelt);
+        
+        add(medisindatalabel);
+        add(medisindatafelt);
+        
+        add(mengdelabel);
+        add(mengdefelt);
+        
+        add(kategorilabel);
+        add(kategorifelt);
+        
+        add(anvisningslabel);
+        add(anvisning);
+        
+        add(utskrift);
+        
+        add(regResept);
+        add(visListe);
+        
     }
     
     private void nyResept()
     {
         /*Resept ny = new Resept(datofelt.getText(), pasientdatafelt.getText(), 
-                legedatafelt.getText(), medisindatafelt.getText(), mengdefelt.getText(),
-                kategorifelt.getText());
+                legedatafelt.getText(), medisindatafelt.getText(), 
+                mengdefelt.getText(),kategorifelt.getText(), anvisning.getText());
         reseptRegister.SettInn(ny);
-        utskrift.setText("Registrert pasient: \n" + ny.toString());
-                */
+        utskrift.setText("Registrert pasient: \n" + ny.toString());*/
     }
     
     private void TomFelt()

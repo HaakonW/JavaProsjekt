@@ -9,7 +9,7 @@ package norskreseptregister;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class Resept 
+public class Resept implements SkriveLeseObjekt
 {
     private String dato;
     private Pasient pasientdata;
@@ -95,5 +95,10 @@ public class Resept
             // TODO Auto-generated method stub
             return false;
         }
+
+    @Override
+    public void SkrivObjektTilFil(FileOutputStream filnavn) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 } // End of class Resept

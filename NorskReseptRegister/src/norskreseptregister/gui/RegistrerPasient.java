@@ -7,16 +7,17 @@
 package norskreseptregister.gui;
 
 import java.awt.*;
+import java.io.*;
+import javax.swing.*;
+import java.util.List;
+import javax.imageio.*;
+import java.awt.image.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.*;
-import java.io.*;
-import javax.imageio.*;
-import javax.swing.*;
 import norskreseptregister.Pasient;
 import norskreseptregister.PasientRegister;
 import norskreseptregister.RegisterSystem;
-import java.util.List;
+
 
 public class RegistrerPasient extends JPanel implements ActionListener
 {
