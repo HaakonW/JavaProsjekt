@@ -24,7 +24,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import norskreseptregister.gui.AdminMain;
 
-
 public class hovedVindu extends JFrame
 {
    private JDesktopPane hovedvindu;
@@ -32,8 +31,6 @@ public class hovedVindu extends JFrame
    //Konstruktør
    public hovedVindu()
    {
-       
-       
       JMenuBar menylinje = new JMenuBar();
       JMenu addmeny = new JMenu("Start");
       JMenu addmeny2 = new JMenu("Neste");

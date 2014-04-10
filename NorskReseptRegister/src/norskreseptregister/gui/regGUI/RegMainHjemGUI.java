@@ -1,8 +1,8 @@
 /*
- * Filen inneholder klassen RegMainHjemGUI.
- * Laget av  Henrik 
- * Sist endret 09-04-2014 
- */
+Filen inneholder klassen RegMainHjemGUI.
+Laget av  Henrik Fischer Bjelland
+Sist endret 09-04-2014 
+*/
 
 package norskreseptregister.gui.regGUI;
 

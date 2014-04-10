@@ -7,6 +7,7 @@ Sist endret 09-04-2014
 package norskreseptregister.gui.regGUI;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
 import norskreseptregister.Reg.RegisterSystem;
 
@@ -40,7 +41,7 @@ public class RegMainGUI extends JPanel
         add(tabbedPane);
     }
     
-  private static void createAndShowGUI(RegisterSystem system)
+  private static void createAndShowGUI(final RegisterSystem system)
   {
     //Create and set up the window.
     JFrame frame = new JFrame("Admin");
@@ -54,13 +55,18 @@ public class RegMainGUI extends JPanel
     int x=(int)((dimension.getWidth() - 620)/2);
     int y=(int)((dimension.getHeight() - 450)/2);
     frame.setLocation(x, y);
+    //dette må ligge i main etter hvert
+    frame.addWindowListener(new java.awt.event.WindowAdapter() {
+    public void windowClosing(WindowEvent winEvt) {
+        system.SkrivTilFil();
+    }
+   });
   }
 
   public static void main(String[] args)
   {
     RegisterSystem system = new RegisterSystem();
     createAndShowGUI(system);
-    system.SkrivTilFil();
   }
     
 }//end of class RegMainGUI
