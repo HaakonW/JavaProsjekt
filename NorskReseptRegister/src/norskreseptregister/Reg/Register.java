@@ -1,8 +1,9 @@
 /*
- * Filen inneholder 
- * Laget av Henrik  
- * Sist endret  09-04-2014
- */
+Filen inneholder klassen Register som er den abstrakte superklassen
+til alle registerne i programmet vårt.
+Laget av Henrik Fischer Bjelland
+Sist endret 09-04-2014
+*/
 
 package norskreseptregister.Reg;
 

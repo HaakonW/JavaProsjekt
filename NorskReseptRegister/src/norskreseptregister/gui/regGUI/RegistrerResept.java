@@ -1,8 +1,8 @@
 /*
- * Filen inneholder klassen RegistrerResept.
- * Laget av  Henrik
- * Sist endret 09-04-2014 
- */
+Filen inneholder klassen RegistrerResept.
+Laget av Henrik Fischer Bjelland, Haakon Winther
+Sist endret 09-04-2014 
+*/
 
 package norskreseptregister.gui.regGUI;
 
@@ -148,9 +148,6 @@ public class RegistrerResept extends JPanel implements ActionListener
         gc.gridheight = 10;
         gc.fill = GridBagConstraints.VERTICAL;
         add(panel9, gc);
-        
-        
-        
     }
     
     private void nyResept()

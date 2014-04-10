@@ -1,8 +1,8 @@
 /*
- * Filen inneholder Pasient klassen med info som er unik for en spesiell pasient.
- * Laget av Henrik
- * Sist endret  31/03/2014
- */
+Filen inneholder Pasient klassen med info som er unik for en spesiell pasient.
+Laget av Henrik Fischer Bjelland
+Sist endret 31-03-2014
+*/
 
 package norskreseptregister.ObjektKlasser;
 

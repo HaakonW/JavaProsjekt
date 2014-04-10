@@ -1,15 +1,11 @@
 /*
- * Filen inneholder 
- * Laget av  * 
- * Sist endret  * 
- */
+Filen inneholder klassen RegisterSystem
+Laget av Henrik Fischer Bjelland
+Sist endret 08-04-2014
+*/
 
 package norskreseptregister.Reg;
 
-/**
- *
- * @author Henrik
- */
 public class RegisterSystem 
 {
     private LegeRegister legeRegister;

@@ -1,18 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Filen inneholder klassen NorskReseptRegister som er mainklassen der alle 
+vinduene våre blir kalt opp.
+Laget av Haakon Winter, Henrik Fischer Bjelland, Peter Wilhelmsen.
+Sist endret 10-04-2014 
  */
 
 package norskreseptregister;
+
 import java.awt.event.*;
 import javax.swing.*;
 import norskreseptregister.gui.MainGui;
 import norskreseptregister.gui.regGUI.RegMainGUI;
-/**
- *
- * @author Bandet
- */
+
 public class NorskReseptRegister 
 {
     public static void main(String[] args) {
@@ -32,9 +31,7 @@ public class NorskReseptRegister
                 //hjem.setVisible(true);
             }
         });
-        
     }
-   
 }
 
  /*EventQueue.invokeLater(new Runnable()

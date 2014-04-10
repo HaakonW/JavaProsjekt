@@ -1,8 +1,8 @@
 /*
- Filen inneholder AdminMainHjemGUI klassen.
- Laget av Henrik.
- Sist endret  09-04-2014
- */
+Filen inneholder AdminMainHjemGUI klassen.
+Laget av Henrik Fischer Bjelland
+Sist endret  09-04-2014
+*/
 
 package norskreseptregister.gui;
 
@@ -49,8 +49,6 @@ class AdminMainHjemGUI extends JPanel
         
         gc.gridx = 0;
         gc.gridy = 1;
-        add(panel2, gc);
-        
-        
+        add(panel2, gc);  
     }
 }//end of class AdminMainHjemGUI

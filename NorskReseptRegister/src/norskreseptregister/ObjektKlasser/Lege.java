@@ -1,10 +1,9 @@
 /*
-  Filen inneholder klassen Lege, som er subklasse til superklassen Person.
-  Variabler, getmetoder og toString for lege.
-
-  Laget av  Peter Wilhelmsen* 
-  Sist endret  31/03/14 
- */
+Filen inneholder klassen Lege, som er subklasse til superklassen Person.
+Variabler, getmetoder og toString for lege.
+Laget av  Peter Wilhelmsen, Henrik Fischer Bjelland
+Sist endret 10-04-2014 
+*/
 
 package norskreseptregister.ObjektKlasser;
 

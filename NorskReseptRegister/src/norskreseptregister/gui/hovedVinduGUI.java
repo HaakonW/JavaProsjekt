@@ -1,18 +1,12 @@
 /*
+Filen inneholder GUI for å kunne registere en medisin og legge de i en 
+egenopprettet liste.
+Laget av Peter Wilhelmsen
+Sist endret 07-04-14
 MAINGUI gjort om til å extende JPANEL isteden for JFrame
- */
+*/
 
 package norskreseptregister.gui;
-
-/**
- *
- * @author PeterWilhelmsen
- */
- /*
- * Filen inneholder 
- * Laget av  * 
- * Sist endret  * 
- */
 
 import javax.swing.*;
 import java.awt.*;

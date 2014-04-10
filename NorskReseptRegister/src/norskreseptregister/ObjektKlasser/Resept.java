@@ -1,8 +1,8 @@
 /*
- * Filen inneholder Respetklassen
- * Laget av Haakon * 
- * Sist endret 31. Mars * 
- */
+ilen inneholder Respetklassen
+Laget av Haakon
+Sist endret 31-03-2014
+*/
 
 package norskreseptregister.ObjektKlasser;
 

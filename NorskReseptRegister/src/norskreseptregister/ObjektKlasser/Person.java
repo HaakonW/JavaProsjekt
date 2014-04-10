@@ -1,8 +1,8 @@
 /*
- * Filen inneholder klassen Person som er superklassen til Lege og Pasient.
- * Laget av  Henrik
- * Sist endret 31/03/2014 
- */
+Filen inneholder klassen Person som er superklassen til Lege og Pasient.
+Laget av  Henrik Fischer Bjelland
+Sist endret 31-03-2014 
+*/
 
 package norskreseptregister.ObjektKlasser;
 

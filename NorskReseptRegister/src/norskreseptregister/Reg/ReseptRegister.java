@@ -1,8 +1,8 @@
 /*
- * Filen inneholder klassen ReseptRegister
- * Laget av  Henrik 
- * Sist endret  10-04-2014
- */
+Filen inneholder klassen ReseptRegister
+Laget av  Henrik Fischer Bjelland
+Sist endret 10-04-2014
+*/
 
 package norskreseptregister.Reg;
 

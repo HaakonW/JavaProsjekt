@@ -1,10 +1,9 @@
 /*
 Filen inneholder GUI for å kunne registere en medisin og legge de i en 
 egenopprettet liste.
-
 Laget av Peter Wilhelmsen
-Sist endret 07.04.14
- */
+Sist endret 07-04-14
+*/
 
 package norskreseptregister.gui;
 

@@ -1,8 +1,8 @@
 /*
- Filen inneholder AdminMain klassen.
- Laget av  Peter, Haakon, Henrik.
- Sist endret  09-04-2014
- */
+Filen inneholder AdminMain klassen.
+Laget av  Peter Wilhelmsen, Haakon Winter, Henrik Fischer Bjelland
+Sist endret 09-04-2014
+*/
 
 package norskreseptregister.gui;
 import norskreseptregister.ObjektKlasser.Medisin;

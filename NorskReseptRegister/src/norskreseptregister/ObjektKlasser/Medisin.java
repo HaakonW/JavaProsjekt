@@ -1,10 +1,9 @@
 /*
- Filen inneholder klassen Medisin og metoder/program for at vi kan legge
+Filen inneholder klassen Medisin og metoder/program for at vi kan legge
 inn medisiner på en fil, slik at hovedprogrammet kan sjekke om medisinen finnes
 når en resepet skal skrives ut.
-
- Laget av Peter Wilhelmsen 
- Sist endret 31/03/14 
+Laget av Peter Wilhelmsen 
+Sist endret 10-04-2014
  */
 
 package norskreseptregister.ObjektKlasser;

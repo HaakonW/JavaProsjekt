@@ -1,8 +1,8 @@
 /*
- * Filen inneholder klassen MainGui
- * Laget av  Haakon
- * Sist endret 09-04-2014
- */
+Filen inneholder klassen MainGui
+Laget av Haakon Winther
+Sist endret 09-04-2014
+*/
 
 package norskreseptregister.gui;
 

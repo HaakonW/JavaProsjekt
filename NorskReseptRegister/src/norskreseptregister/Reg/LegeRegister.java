@@ -1,8 +1,8 @@
 /*
- * Filen inneholder 
- * Laget av  * 
- * Sist endret  * 
- */
+Filen inneholder klassen LegeRegister og er en ...
+Laget av Henrik Fischer Bjelland
+Sist endret 08-04-2014
+*/
 
 package norskreseptregister.Reg;
 

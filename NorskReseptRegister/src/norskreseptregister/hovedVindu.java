@@ -1,6 +1,5 @@
 /*
- Inneholder klasse for å kjøre hovedvindu, med MainGUI.
-
+Inneholder klasse for å kjøre hovedvindu, med MainGUI.
 Laget av Peter Wilhelmsen
 Sist endret 08/04/14
  */
