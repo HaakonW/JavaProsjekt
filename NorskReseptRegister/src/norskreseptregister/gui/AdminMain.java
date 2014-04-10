@@ -19,7 +19,7 @@ public class AdminMain extends JPanel
     private JLabel hei;
     AdminMainHjemGUI panel1 = new AdminMainHjemGUI();
     LegeLisensGUI panel3 = new LegeLisensGUI();
-    MedisinGUI panel4 = new MedisinGUI();    
+    RegMedisinGUI panel4 = new RegMedisinGUI();    
     
     public AdminMain()
     {

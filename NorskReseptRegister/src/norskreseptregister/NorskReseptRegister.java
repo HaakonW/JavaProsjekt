@@ -8,8 +8,7 @@ package norskreseptregister;
 import java.awt.event.*;
 import javax.swing.*;
 import norskreseptregister.gui.MainGui;
-import norskreseptregister.gui.RegMainGUI;
-import norskreseptregister.gui.RegistrerLege;
+import norskreseptregister.gui.regGUI.RegMainGUI;
 /**
  *
  * @author Bandet
