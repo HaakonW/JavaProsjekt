@@ -6,11 +6,11 @@
 
 package norskreseptregister;
 
-/**
- *
- * @author Henrik
- */
 public class PasientRegister extends Register <Pasient>
 {
-    
+
+    public PasientRegister() 
+    {
+        super(Pasient.class);
+    }
 }

@@ -12,14 +12,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public abstract class Register<T extends SkriveLeseObjekt>
 {
     private List<T> list;
-
-    public Register()
+    private Class<T> classObject;
+    
+    public Register(Class<T> classObject)
     {
+        this.classObject = classObject;
         list = new ArrayList<T>(); //instansiere en tom liste av <T>
     }
 
@@ -49,7 +52,7 @@ public abstract class Register<T extends SkriveLeseObjekt>
     
     public void SkrivTilFil(String filNavn)
     {
-        try(FileOutputStream filnavn = new FileOutputStream(filNavn))
+        try (FileOutputStream filnavn = new FileOutputStream(filNavn))
         {
             for (T element : list) 
             {
@@ -59,16 +62,47 @@ public abstract class Register<T extends SkriveLeseObjekt>
             // Lukk filen
             filnavn.close(); 
         }
-        catch(IOException ioe)
+        catch (FileNotFoundException ex)
+        {
+            System.out.println("Fant ikke fila");
+        }
+        catch (IOException ioe)
         {
             System.out.println("Kan ikke skrive til fil!");
         }
     }
     
-    /*public Register <T> LesTilFil()
+    public void LesTilFil(String filNavn) 
     {
-        
-    }*/
+        try (FileInputStream filnavn = new FileInputStream(filNavn))
+        {
+            do
+            {
+                T nyttElement = classObject.newInstance();
+                if (nyttElement.LesObjektFraFil(filnavn))
+                {
+                    SettInn(nyttElement);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            while(true);
+        }
+        catch (FileNotFoundException ex)
+        {
+            System.out.println("Fant ikke fila");
+        }
+        catch (IOException ioe)
+        {
+            System.out.println("Kan ikke skrive til fil!");
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
 }//end of class Register

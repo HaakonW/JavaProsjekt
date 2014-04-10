@@ -35,12 +35,13 @@ public class Pasient extends Person
         tekst += "Fødselsdato: " + fodselsdato;
         return tekst;
     }
-
-    public void SkrivObjektTilFil() 
+    
+    @Override
+    public void SkrivObjektTilFil(/*FileOutputStream filnavn*/) 
     {   
         // TODO Auto-generated method stub
     }
-    
+    @Override
     public boolean LesObjektFraFil(FileInputStream filnavn) 
     {
         // TODO Auto-generated method stub

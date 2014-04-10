@@ -55,11 +55,12 @@ public class RegistrerResept extends JPanel implements ActionListener
     
     private void nyResept()
     {
-        Resept ny = new Resept(datofelt.getText(), pasientdatafelt.getText(), 
+        /*Resept ny = new Resept(datofelt.getText(), pasientdatafelt.getText(), 
                 legedatafelt.getText(), medisindatafelt.getText(), mengdefelt.getText(),
                 kategorifelt.getText());
         reseptRegister.SettInn(ny);
         utskrift.setText("Registrert pasient: \n" + ny.toString());
+                */
     }
     
     private void TomFelt()

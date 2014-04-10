@@ -75,11 +75,12 @@ public class Lege extends Person
         return tekst;
     }// end of toString
 
-    public void SkrivObjektTilFil() 
+    @Override
+    public void SkrivObjektTilFil(/*FileOutputStream stream*/) 
     {
         
     }
-    
+    @Override
     public boolean LesObjektFraFil(FileInputStream filnavn) 
     {
         return false;

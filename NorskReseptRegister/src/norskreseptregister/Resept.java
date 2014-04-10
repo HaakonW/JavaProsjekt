@@ -19,6 +19,10 @@ public class Resept
     private String kategori;
     private String anvisning;
     
+    public Resept()
+    {
+    }
+        
     public Resept(String dato, Pasient pasientdata, Lege legedata, 
     String medisindata, String mengde, String kategori, String anvisning)
     {
@@ -76,6 +80,20 @@ public class Resept
                     "\n Kategori: " + kategori + 
                     "\n Anvisning: " + anvisning;
             return tekst;
-        }   
+        } 
+        
+        //@Override
+        public void SkrivObjektTilFil(/*FileOutputStream stream*/)
+        {
+            // TODO Auto-generated method stub
+
+        }
+
+        //@Override
+        public boolean LesObjektFraFil(FileInputStream stream)
+        {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
 } // End of class Resept
