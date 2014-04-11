@@ -4,7 +4,7 @@ Laget av  Henrik Fischer Bjelland, Haakon Winther, Peter Wilhelmsen
 Sist endret 09-04-2014 
 */
 
-package norskreseptregister.gui.regGUI;
+package norskreseptregister.gui.info;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;
@@ -13,6 +13,7 @@ import norskreseptregister.gui.info.LegeInfoGUI;
 import norskreseptregister.gui.info.PasientInfoGUI;
 import norskreseptregister.gui.info.StatestikkGUI;
 import norskreseptregister.gui.info.SuperGUI;
+import norskreseptregister.gui.regGUI.RegMainGUI;
 
 public class InfoMainGUI extends JPanel
 {
@@ -43,7 +44,7 @@ public class InfoMainGUI extends JPanel
         
     }
     
-  private static void createAndShowGUI(final RegisterSystem system)
+  private static void createAndShowGUI()
   {
     //Create and set up the window.
     JFrame frame = new JFrame("Informasjon");
@@ -60,15 +61,15 @@ public class InfoMainGUI extends JPanel
     //dette må ligge i main etter hvert
     frame.addWindowListener(new java.awt.event.WindowAdapter() {
     public void windowClosing(WindowEvent winEvt) {
-        system.SkrivTilFil();
+        
     }
    });
   }
 
   public static void main(String[] args)
   {
-    RegisterSystem system = new RegisterSystem();
-    createAndShowGUI(system);
+    
+    createAndShowGUI();
   }
     
 }//end of class RegMainGUI
