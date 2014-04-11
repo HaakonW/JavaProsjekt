@@ -22,7 +22,7 @@ public class RegMainGUI extends JPanel
     
     public RegMainGUI(RegisterSystem system)
     {
-        super(new GridLayout(1, 1));
+        //super(new GridLayout(1, 1));
         this.system = system;
         tab1 = new RegistrerPasient(system.getPasientRegister());
         tab2 = new RegistrerLege(system.getLegeRegister());
