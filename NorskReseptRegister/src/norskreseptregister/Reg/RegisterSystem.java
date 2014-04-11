@@ -40,4 +40,11 @@ public class RegisterSystem
         pasientRegister.SkrivTilFil("PasientRegister.txt");
         reseptRegister.SkrivTilFil("ReseptRegister.txt");
     }
+    
+    public void LesFraFil()
+    {
+        legeRegister.LesFraFil("LegeRegister.txt");
+        pasientRegister.LesFraFil("PasientRegister.txt");
+        reseptRegister.LesFraFil("ReseptRegister.txt");   
+    }
 }// end of class System

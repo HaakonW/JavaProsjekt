@@ -70,7 +70,7 @@ public abstract class Register<T>
         }
     }
     
-    public void LesTilFil(String filNavn)  
+    public void LesFraFil(String filNavn)  
     {
         try (ObjectInputStream innfil = new ObjectInputStream(
                                         new FileInputStream(filNavn)))

@@ -39,6 +39,7 @@ public class RegMainGUI extends JPanel
         tabbedPane.addTab("Registrer Resept", resept, tab3, "Resept");
         //tabbedPane.addTab("Registrer Resept", icon, tab3, "Resept");
         add(tabbedPane);
+        system.LesFraFil();
     }
     
   private static void createAndShowGUI(final RegisterSystem system)
