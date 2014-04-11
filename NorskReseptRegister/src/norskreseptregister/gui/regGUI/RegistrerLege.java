@@ -80,7 +80,6 @@ public class RegistrerLege extends JPanel implements ActionListener
         
         gc.gridx = 0;
         gc.gridy = 2;
-        gc.anchor = GridBagConstraints.WEST;
         add(panel3, gc);
         
         gc.gridx = 0;

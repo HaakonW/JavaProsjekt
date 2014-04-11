@@ -48,27 +48,27 @@ public class RegMedisinGUI extends JPanel implements ActionListener
         JPanel panel1 = new JPanel();
         panel1.add( new JLabel("Medisinnavn"));
         panel1.add(regNavn);               
-        panel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
         
         JPanel panel2 = new JPanel();
         panel2.add(new JLabel("ATC-Nummer"));
         panel2.add(regAtc);
-        panel2.setBorder(BorderFactory.createLineBorder(Color.BLACK));  
+       
         
         JPanel panel3 = new JPanel();
         panel3.add(a);
         panel3.add(b);
         panel3.add(c);
-        panel3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+       
         
         JPanel panel4 = new JPanel();
         panel4.add(regMedisinnavn);
         panel4.add(visListe);
-        panel4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+   
         
         JPanel panel5 = new JPanel();
         panel5.add(utskrift);
-        panel5.setBorder(BorderFactory.createLineBorder(Color.BLACK)); 
+        
          ///// GRID START//////
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());

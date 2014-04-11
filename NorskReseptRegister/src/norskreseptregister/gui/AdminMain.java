@@ -34,7 +34,7 @@ public class AdminMain extends JPanel
         tabbedPane.addTab("Endre Lisens for lege", elege, panel3, "Lege");
         tabbedPane.addTab("Registrer medisin", epille, panel4, "Registrer Medisin");
         add(tabbedPane);
-        hei = new JLabel("Dette er for admin. "); 
+        
     }
     
     private static void createAndShowGUI()
