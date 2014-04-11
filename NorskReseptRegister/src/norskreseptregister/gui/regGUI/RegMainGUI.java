@@ -48,7 +48,7 @@ public class RegMainGUI extends JPanel
     JFrame frame = new JFrame("Admin");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(650,460);
-    frame.getContentPane().add(new RegMainGUI(system), BorderLayout.CENTER);
+    //frame.getContentPane().add(new RegMainGUI(system), BorderLayout.CENTER);
     frame.pack();
     //Display the window.
     frame.setVisible(true);
@@ -69,5 +69,10 @@ public class RegMainGUI extends JPanel
     RegisterSystem system = new RegisterSystem();
     createAndShowGUI(system);
   }
+
+  // GIR FEIL NÅR HOVEDVINDU SKAL KJØRES.Må settes tom 
+  public RegMainGUI() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }//end of class RegMainGUI

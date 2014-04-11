@@ -24,7 +24,7 @@ public class InfoMainGUI extends JPanel
     {
         super(new GridLayout(1, 1));
         JTabbedPane tabbedPane = new JTabbedPane();
-        ImageIcon icon = new ImageIcon(getClass().getResource("bilder/info.png"));
+        ImageIcon icon = new ImageIcon("src/norskreseptregister/gui/bilder/info.png");
         tabbedPane.addTab("Informasjon", icon, panel1, "Informasjon");
         tabbedPane.addTab("LegeInfo", icon, panel2, "Lege");
         tabbedPane.addTab("PasientInfo", icon, panel3, "Pasient");

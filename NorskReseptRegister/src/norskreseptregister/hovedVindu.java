@@ -12,8 +12,6 @@ import java.awt.Container;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import javax.swing.ImageIcon;
-//import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -23,27 +21,52 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import norskreseptregister.gui.AdminMain;
+import norskreseptregister.gui.InfoMainGUI;
+import norskreseptregister.gui.regGUI.RegMainGUI;
 
 public class hovedVindu extends JFrame
 {
    private JDesktopPane hovedvindu;
+   private Menylytter lytter;
+   
+   private JMenuBar menylinje;
+   private JMenu addmeny;
+   private JMenu addmeny2;
+   private JMenu addmeny3;
+   private JMenu addmeny4;
+   
+   private JMenuItem submeny1;
+   private JMenuItem submeny2;
+   private JMenuItem submeny3;
 
    //Konstruktør
    public hovedVindu()
    {
-      JMenuBar menylinje = new JMenuBar();
-      JMenu addmeny = new JMenu("Start");
-      JMenu addmeny2 = new JMenu("Neste");
-      JMenu addmeny3 = new JMenu("Tredje");
+      lytter = new Menylytter();
+       
+      menylinje = new JMenuBar();
+      addmeny = new JMenu("Admin");
+      addmeny2 = new JMenu("Registrere");
+      addmeny3 = new JMenu("Informasjon");
+      addmeny4 = new JMenu("Statistikk");
+      submeny1 = new JMenuItem("Gå inn");
+      submeny2 = new JMenuItem("Åpne vinduet");
+      submeny3 = new JMenuItem("Klikk videre");
       
-      
-      JMenuItem AdminGUI = new JMenuItem("Registrere medisin");
-      AdminGUI.addActionListener(new Menylytter());
-      addmeny.add(AdminGUI);
-
       menylinje.add(addmeny);
       menylinje.add(addmeny2);
       menylinje.add(addmeny3);
+      menylinje.add(addmeny4);
+      
+      addmeny.add(submeny1);
+      addmeny2.add(submeny2);
+      addmeny3.add(submeny3);
+
+      submeny1.addActionListener(lytter);
+      submeny2.addActionListener(lytter);
+      submeny3.addActionListener(lytter);
+      
+      //Setter inn menylinjen i vinduet.
       setJMenuBar(menylinje);
            
       //Opprette hovedvinduet
@@ -60,8 +83,8 @@ public class hovedVindu extends JFrame
       ////////////////////////////////////////////////////////////////////////
       
 
-      hovedvindu.setBackground(Color.BLUE); //Sette bakgrunnsfarge på hovedvindu
-      setSize(1300,600);
+      hovedvindu.setBackground(Color.GRAY); //Sette bakgrunnsfarge på hovedvindu
+      setSize(1300,700);
       setVisible(true);
        
    }// End of Konstruktør
@@ -70,23 +93,64 @@ public class hovedVindu extends JFrame
    //Skal lytte på trykk i menylinjen.
    private class Menylytter implements ActionListener
    {
+       
       public void actionPerformed(ActionEvent e)
       {
-          JInternalFrame internvindu = new JInternalFrame(
-          "Intern vindu",true,true,true,true);
+          if( e.getSource() == submeny1)
+          {
+            JInternalFrame internvindu = new JInternalFrame(
+            "Admin",true,true,true,true);
           
-          //plassere et panel i det nye interne vinduet
-          Container intern = internvindu.getContentPane();
-          AdminMain ny = new AdminMain();
-          intern.add(ny, BorderLayout.CENTER);
+             //plassere et panel i det nye interne vinduet
+            //Container intern = internvindu.getContentPane();
+            AdminMain ny = new AdminMain();
+            internvindu.add(ny, BorderLayout.CENTER);
           
-          internvindu.setDefaultCloseOperation(
-          JInternalFrame.DISPOSE_ON_CLOSE);
+            internvindu.setDefaultCloseOperation(
+            JInternalFrame.DISPOSE_ON_CLOSE);
       
-          internvindu.pack();
-          
-          hovedvindu.add(internvindu);
-          internvindu.setVisible(true);
+            internvindu.pack();
+            
+            hovedvindu.add(internvindu);
+            internvindu.setVisible(true);
+     
+          }
+          if(e.getSource() == submeny2)
+          {
+              JInternalFrame internvindu2 = new JInternalFrame(
+                      "Registrering",true,true,true,true);
+              
+              RegMainGUI regG = new RegMainGUI();
+              //Container c = internvindu.getContentPane();
+              internvindu2.add(regG,BorderLayout.CENTER);
+              
+              internvindu2.setDefaultCloseOperation(
+              JInternalFrame.DISPOSE_ON_CLOSE);
+              
+              internvindu2.pack();
+              internvindu2.setSize(700,300);
+              
+              hovedvindu.add(internvindu2);
+              internvindu2.setVisible(true);
+              
+          }
+          if( e.getSource() == submeny3 )
+          {
+              JInternalFrame internvindu3 = new JInternalFrame(
+              "Informasjon",true,true,true,true);
+              
+              InfoMainGUI infoG = new InfoMainGUI();
+              internvindu3.add(infoG, BorderLayout.CENTER);
+              
+              internvindu3.setDefaultCloseOperation(
+              JInternalFrame.DISPOSE_ON_CLOSE);
+              
+              internvindu3.pack();
+              internvindu3.setSize(700,300);
+              
+              hovedvindu.add(internvindu3);
+              internvindu3.setVisible(true);
+          }
       }
    }
    
