@@ -9,11 +9,7 @@ package norskreseptregister.gui.info;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
-import norskreseptregister.gui.info.LegeInfoGUI;
-import norskreseptregister.gui.info.PasientInfoGUI;
-import norskreseptregister.gui.info.StatestikkGUI;
-import norskreseptregister.gui.info.SuperGUI;
-import norskreseptregister.gui.regGUI.RegMainGUI;
+import norskreseptregister.Info.InfoSystem;
 
 public class InfoMainGUI extends JPanel
 {
@@ -21,9 +17,10 @@ public class InfoMainGUI extends JPanel
     LegeInfoGUI tab1;
     PasientInfoGUI tab2;
     StatestikkGUI tab3;
+    private InfoSystem system;
     SuperGUI panel1 = new SuperGUI();
     
-    public InfoMainGUI()
+    public InfoMainGUI(InfoSystem system)
     {
         //super(new GridLayout(1, 1));
        
@@ -44,13 +41,13 @@ public class InfoMainGUI extends JPanel
         
     }
     
-  private static void createAndShowGUI()
+  private static void createAndShowGUI(final InfoSystem system)
   {
     //Create and set up the window.
     JFrame frame = new JFrame("Informasjon");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(650,460);
-    frame.getContentPane().add(new RegMainGUI(system), BorderLayout.CENTER);
+    frame.getContentPane().add(new InfoMainGUI(system), BorderLayout.CENTER);
     frame.pack();
     //Display the window.
     frame.setVisible(true);
