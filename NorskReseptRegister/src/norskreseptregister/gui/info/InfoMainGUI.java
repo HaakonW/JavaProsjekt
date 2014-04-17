@@ -63,11 +63,11 @@ public class InfoMainGUI extends JPanel
     }
    });
   }
-
+  /*
   public static void main(String[] args)
   {
     InfoSystem system = new InfoSystem();
     createAndShowGUI(system);
-  }
+  }*/
     
 }//end of class RegMainGUI

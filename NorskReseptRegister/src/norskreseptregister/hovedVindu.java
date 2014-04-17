@@ -1,7 +1,7 @@
 /*
  Inneholder klasse for å kjøre hovedvindu, med MainGUI.
- Laget av Peter Wilhelmsen
- Sist endret 08/04/14
+ Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
+ Sist endret 17/04/14
  */
 package norskreseptregister;
 
@@ -76,9 +76,9 @@ public class hovedVindu extends JFrame
         //Opprette hovedvinduet
         hovedvindu = new JDesktopPane();
         getContentPane().add(hovedvindu, BorderLayout.CENTER);
-        
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent winEvt)
@@ -94,7 +94,7 @@ public class hovedVindu extends JFrame
          ramme.setSize(300,200);
          ramme.setVisible(true);
          hovedvindu.add(ramme);*/
-      ////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
         hovedvindu.setBackground(Color.GRAY); //Sette bakgrunnsfarge på hovedvindu
         setSize(1300, 700);
         setVisible(true);
@@ -105,6 +105,7 @@ public class hovedVindu extends JFrame
     //Skal lytte på trykk i menylinjen.
     private class Menylytter implements ActionListener
     {
+
         public void actionPerformed(ActionEvent e)
         {
             if (e.getSource() == submeny1)
@@ -112,7 +113,7 @@ public class hovedVindu extends JFrame
                 JInternalFrame internvindu = new JInternalFrame(
                         "Admin", true, true, true, true);
 
-             //plassere et panel i det nye interne vinduet
+                //plassere et panel i det nye interne vinduet
                 //Container intern = internvindu.getContentPane();
                 AdminMain ny = new AdminMain();
                 internvindu.add(ny, BorderLayout.CENTER);

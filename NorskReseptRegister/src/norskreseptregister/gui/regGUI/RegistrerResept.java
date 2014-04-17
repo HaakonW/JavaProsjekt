@@ -6,6 +6,7 @@ Sist endret 09-04-2014
 
 package norskreseptregister.gui.regGUI;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -14,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -24,40 +26,45 @@ import norskreseptregister.Reg.ReseptRegister;
 
 public class RegistrerResept extends JPanel implements ActionListener
 {
-    private ReseptRegister reseptRegister;
     private String pasientliste = "pasientliste.txt";
     private JTextField datofelt, pasientdatafelt, legedatafelt, medisindatafelt, mengdefelt, kategorifelt;
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
-    private JButton regResept, visListe;
+    private JButton regResept, visListe, velgPasient;
     JTextArea utskrift, anvisning;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
+    private final RegisterSystem system;
     
-    public RegistrerResept(ReseptRegister reseptRegister)
+    public RegistrerResept(RegisterSystem system)
     {
-        this.reseptRegister = reseptRegister;
+        this.system = system;
         datofelt = new JTextField(20);
-        pasientdatafelt = new JTextField(20);
+        pasientdatafelt = new JTextField(18);
         legedatafelt = new JTextField(20);
         medisindatafelt = new JTextField(20);
         mengdefelt = new JTextField(20);
         kategorifelt = new JTextField(20);
         
         datolabel = new JLabel("Dato       ");
-        pasientdatalabel = new JLabel("Pasient    ");
+        pasientdatalabel = new JLabel("Pasient ");
         legedatalabel = new JLabel("Lege       ");
         medisindatalabel = new JLabel("Medisin   ");
         mengdelabel = new JLabel("Mengde   ");
         kategorilabel = new JLabel("Kategori  ");
         anvisningslabel = new JLabel("Anvisning");
+        pasientdatafelt.setEditable(false);
+
         
         regResept = new JButton("Registrer");
         visListe = new JButton("Vis liste");
+        velgPasient = new JButton("...");
+        velgPasient.setPreferredSize(new Dimension(20, 20));
         
         anvisning = new JTextArea(5,20);
         //JScrollPane sp = new JScrollPane(anvisning); //PRøvde å få til scroller
         utskrift = new JTextArea(20,20);        
         regResept.addActionListener(this);
         visListe.addActionListener(this);
+        velgPasient.addActionListener(this);
         
         panel1 = new JPanel();
         panel1.add(datolabel);
@@ -66,6 +73,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         panel2 = new JPanel();
         panel2.add(pasientdatalabel);
         panel2.add(pasientdatafelt);
+        panel2.add(velgPasient);
         
         panel3 = new JPanel();
         panel3.add(legedatalabel);
@@ -172,13 +180,20 @@ public class RegistrerResept extends JPanel implements ActionListener
     private void SkrivUt()
     {
         String pasientliste = "";
-        List <Resept> list = reseptRegister.FinnAlle();
+        List <Resept> list = system.getReseptRegister().FinnAlle();
         for (Resept resept : list)
         {
             pasientliste+= resept.toString();
             pasientliste +="\n\n";
         }
         utskrift.setText(pasientliste);
+    }
+    
+    private void VelgPasient()
+    {
+       VelgPasientGUI velgPasientGUI = new VelgPasientGUI(this);
+        velgPasientGUI.setLocationRelativeTo(this);
+        velgPasientGUI.setVisible(true);
     }
     
     public void actionPerformed(ActionEvent e)
@@ -191,6 +206,10 @@ public class RegistrerResept extends JPanel implements ActionListener
         if(e.getSource() == visListe)
         {
             SkrivUt();
+        }
+        if (e.getSource() == velgPasient)
+        {
+            VelgPasient();
         }
     }
 }//end of class RegistrerResept
