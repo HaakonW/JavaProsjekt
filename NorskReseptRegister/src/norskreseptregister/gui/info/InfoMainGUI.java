@@ -1,7 +1,7 @@
 /*
 Filen inneholder klassen RegMainGUI.
 Laget av  Henrik Fischer Bjelland, Haakon Winther, Peter Wilhelmsen 
-Sist endret 09-04-2014 
+Sist endret 11-04-2014 
 */
 
 package norskreseptregister.gui.info;
@@ -18,14 +18,15 @@ public class InfoMainGUI extends JPanel
     PasientInfoGUI tab2;
     StatestikkGUI tab3;
     private InfoSystem system;
-    SuperGUI panel1 = new SuperGUI();
+    InfoMainHjemGUI panel1 = new InfoMainHjemGUI();
+    //SuperGUI panel1 = new SuperGUI();
     
     public InfoMainGUI(InfoSystem system)
     {
         //super(new GridLayout(1, 1));
        
-        tab1 = new LegeInfoGUI();
-        tab2 = new PasientInfoGUI();
+        tab1 = new LegeInfoGUI(system.getLegeInfo());
+        tab2 = new PasientInfoGUI(system.getPasientInfo());
         tab3 = new StatestikkGUI();
         JTabbedPane tabbedPane = new JTabbedPane();
         
@@ -65,8 +66,8 @@ public class InfoMainGUI extends JPanel
 
   public static void main(String[] args)
   {
-    
-    createAndShowGUI();
+    InfoSystem system = new InfoSystem();
+    createAndShowGUI(system);
   }
     
 }//end of class RegMainGUI

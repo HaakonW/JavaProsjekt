@@ -1,15 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Filen inneholder klassen LegeInfo
+Laget av Henrik Fischer Bjelland
+Sist endret 12-04-2014 
+*/
 
 package norskreseptregister.Info;
 
-/**
- *
- * @author Bandet
- */
-public class LegeInfo {
+public class LegeInfo extends Info 
+{
 
 }

@@ -71,8 +71,9 @@ public class RegMainGUI extends JPanel
   }
 
   // GIR FEIL NÅR HOVEDVINDU SKAL KJØRES.Må settes tom 
-  public RegMainGUI() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  public RegMainGUI() 
+  {
+    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
     
 }//end of class RegMainGUI

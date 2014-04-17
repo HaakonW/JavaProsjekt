@@ -1,15 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Filen inneholder klassen PasientRegister
+Laget av Henrik Fischer Bjelland
+Sist endret 10-04-2014 
+*/
 
 package norskreseptregister.Info;
 
-/**
- *
- * @author Bandet
- */
-public class PasientInfo {
+import javax.swing.JPanel;
+
+public class PasientInfo 
+{
 
 }

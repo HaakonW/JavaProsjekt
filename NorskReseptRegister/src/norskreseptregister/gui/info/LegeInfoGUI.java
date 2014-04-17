@@ -1,15 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Filen inneholder klassen LegeInfoGUI
+Laget av Henrik Fischer Bjelland
+Sist endret 11-04-2014 
+*/
 
 package norskreseptregister.gui.info;
 
-/**
- *
- * @author Bandet
- */
-public class LegeInfoGUI {
+import javax.swing.JPanel;
+
+public class LegeInfoGUI extends JPanel
+{
 
 }
