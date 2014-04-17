@@ -9,6 +9,7 @@ package norskreseptregister;
 
 import java.awt.event.*;
 import javax.swing.*;
+import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.MainGui;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
@@ -23,7 +24,9 @@ public class NorskReseptRegister
         {
             public void run()
             {
-                hovedVindu vindu = new hovedVindu();
+                RegisterSystem system = new RegisterSystem();
+                system.LesFraFil();
+                hovedVindu vindu = new hovedVindu(system);
                 //MainGui vindu = new MainGui();
                 //RegisterSystem system = new RegisterSystem();
                 //RegMainGUI hjem = new RegMainGUI(system);

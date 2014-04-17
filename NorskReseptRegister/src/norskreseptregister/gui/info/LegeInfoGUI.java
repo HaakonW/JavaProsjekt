@@ -6,23 +6,10 @@ Sist endret 11-04-2014
 
 package norskreseptregister.gui.info;
 
-<<<<<<< HEAD
 import javax.swing.JPanel;
+import javax.swing.*;
 
 public class LegeInfoGUI extends JPanel
-{
-=======
-/**
- *
- * @author Bandet
- */
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import javax.swing.*;
->>>>>>> FETCH_HEAD
-
-public class LegeInfoGUI 
 {
     private JTextField fornavnfelt, etternavnfelt;
     private JTextArea utskrift;
@@ -42,9 +29,6 @@ public class LegeInfoGUI
         a = new JRadioButton("A");
         b = new JRadioButton("B");
         c = new JRadioButton("C");
-        
-        
-        
-    }
-    
-}
+  
+    } 
+}//end of class LegeInfoGUI

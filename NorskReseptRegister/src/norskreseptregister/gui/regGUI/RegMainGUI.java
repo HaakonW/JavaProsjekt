@@ -22,7 +22,7 @@ public class RegMainGUI extends JPanel
     
     public RegMainGUI(RegisterSystem system)
     {
-        //super(new GridLayout(1, 1));
+        super(new GridLayout(1, 1));
         this.system = system;
         tab1 = new RegistrerPasient(system.getPasientRegister());
         tab2 = new RegistrerLege(system.getLegeRegister());
@@ -39,7 +39,6 @@ public class RegMainGUI extends JPanel
         tabbedPane.addTab("Registrer Resept", resept, tab3, "Resept");
         //tabbedPane.addTab("Registrer Resept", icon, tab3, "Resept");
         add(tabbedPane);
-        system.LesFraFil();
     }
     
   private static void createAndShowGUI(final RegisterSystem system)
@@ -48,27 +47,22 @@ public class RegMainGUI extends JPanel
     JFrame frame = new JFrame("Admin");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(650,460);
-    //frame.getContentPane().add(new RegMainGUI(system), BorderLayout.CENTER);
-    frame.pack();
+    frame.getContentPane().add(new RegMainGUI(system), BorderLayout.CENTER);
     //Display the window.
     frame.setVisible(true);
+    frame.pack();
     Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();      
-    int x=(int)((dimension.getWidth() - 620)/2);
-    int y=(int)((dimension.getHeight() - 450)/2);
+    int x=(int)((dimension.getWidth() - 650)/2);
+    int y=(int)((dimension.getHeight() - 460)/2);
     frame.setLocation(x, y);
     //dette må ligge i main etter hvert
-    frame.addWindowListener(new java.awt.event.WindowAdapter() {
-    public void windowClosing(WindowEvent winEvt) {
-        system.SkrivTilFil();
-    }
-   });
   }
 
-  public static void main(String[] args)
+  /*public static void main(String[] args)
   {
     RegisterSystem system = new RegisterSystem();
     createAndShowGUI(system);
-  }
+  }*/
 
   // GIR FEIL NÅR HOVEDVINDU SKAL KJØRES.Må settes tom 
   public RegMainGUI() 

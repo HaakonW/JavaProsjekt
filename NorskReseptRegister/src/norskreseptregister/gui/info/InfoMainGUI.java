@@ -25,8 +25,8 @@ public class InfoMainGUI extends JPanel
     {
         //super(new GridLayout(1, 1));
        
-        tab1 = new LegeInfoGUI(system.getLegeInfo());
-        tab2 = new PasientInfoGUI(system.getPasientInfo());
+        //tab1 = new LegeInfoGUI(system.getLegeInfo());
+        //tab2 = new PasientInfoGUI(system.getPasientInfo());
         tab3 = new StatestikkGUI();
         JTabbedPane tabbedPane = new JTabbedPane();
         
@@ -53,8 +53,8 @@ public class InfoMainGUI extends JPanel
     //Display the window.
     frame.setVisible(true);
     Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();      
-    int x=(int)((dimension.getWidth() - 620)/2);
-    int y=(int)((dimension.getHeight() - 450)/2);
+    int x=(int)((dimension.getWidth() - 650)/2);
+    int y=(int)((dimension.getHeight() - 460)/2);
     frame.setLocation(x, y);
     //dette må ligge i main etter hvert
     frame.addWindowListener(new java.awt.event.WindowAdapter() {
