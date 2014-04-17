@@ -57,8 +57,8 @@ public class AdminMain extends JPanel
       frame.setLocation(x, y);
     }
 
-    public static void main(String[] args)
+    /*public static void main(String[] args)
     {
       createAndShowGUI();
-    }
+    }*/
 }//end of class AdminMain

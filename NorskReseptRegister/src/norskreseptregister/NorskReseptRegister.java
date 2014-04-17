@@ -23,7 +23,8 @@ public class NorskReseptRegister
         {
             public void run()
             {
-                MainGui vindu = new MainGui();
+                hovedVindu vindu = new hovedVindu();
+                //MainGui vindu = new MainGui();
                 //RegisterSystem system = new RegisterSystem();
                 //RegMainGUI hjem = new RegMainGUI(system);
                 //RegistrerLege vindu = new RegistrerLege(system);
