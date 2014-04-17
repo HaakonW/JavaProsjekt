@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.Reg.ReseptRegister;
@@ -33,6 +34,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     JTextArea utskrift, anvisning;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
     private final RegisterSystem system;
+    private Pasient pasient;
     
     public RegistrerResept(RegisterSystem system)
     {
@@ -191,9 +193,11 @@ public class RegistrerResept extends JPanel implements ActionListener
     
     private void VelgPasient()
     {
-       VelgPasientGUI velgPasientGUI = new VelgPasientGUI(this);
+        VelgPasientGUI velgPasientGUI = new VelgPasientGUI(this, system);
         velgPasientGUI.setLocationRelativeTo(this);
         velgPasientGUI.setVisible(true);
+        pasient = system.getPasientRegister().HentEttElement(velgPasientGUI.getValgtIndex());
+        pasientdatafelt.setText(pasient.getNavn());
     }
     
     public void actionPerformed(ActionEvent e)

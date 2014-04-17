@@ -34,7 +34,7 @@ public abstract class Register<T>
     }
 
     // Finner alle elemente i lista som oppfyller kriterie
-    public List<T> Finn(Kriterie<T> kriterie)
+    public ArrayList<T> Finn(Kriterie<T> kriterie)
     {
         ArrayList<T> resultat = new ArrayList<T>();
         for (T element : list) 
@@ -47,7 +47,12 @@ public abstract class Register<T>
         return resultat;
     }
     
-    public List<T> FinnAlle()
+    public T HentEttElement(int index)
+    {
+        return list.get(index);
+    }
+    
+    public ArrayList<T> FinnAlle()
     {
         return list;
     }
@@ -84,7 +89,7 @@ public abstract class Register<T>
         }
         catch (IOException ioe)
         {
-            System.out.println("Kan ikke skrive til fil!");
+            System.out.println("Kan ikke lese fra fil!");
         }
         catch (ClassNotFoundException cnfe)
         {

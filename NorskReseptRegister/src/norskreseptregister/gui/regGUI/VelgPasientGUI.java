@@ -15,42 +15,46 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 import javax.swing.*;
+import norskreseptregister.ObjektKlasser.Pasient;
+import norskreseptregister.Reg.PasientRegister;
+import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.regGUI.RegistrerResept;
 
 public class VelgPasientGUI extends JDialog
 {
   private JList<String> navneliste;
-  private String[] navn =
-  {
-    "Tjuven", "Cpt. Redbeard", "HønefossPrisen", "Solli.Prins",
-    "Blæsert.Prins","Ekeberg.Prins"
-  };
-  private JButton ok, dropp;
+  private JButton ok, avbryt;
   //private Navnevalg forelder;
   private Knappelytter kLytter;
   private Muselytter mLytter;
+  private int valgtIndex;
 
-  public VelgPasientGUI(RegistrerResept registrerResept/*Navnevalg f*/)
+  public VelgPasientGUI(RegistrerResept registrerResept, RegisterSystem system)
   {
-    //super(registrerResept,"Navnevelger", true); //modalt dialogvindu
+    //super(registrerResept.get,"Navnevelger", true); //modalt dialogvindu
     //forelder = f;
-    navneliste = new JList<>(navn);
+    setModal(true);
+    PasientRegister pasientRegister = system.getPasientRegister();
+    DefaultListModel model = new DefaultListModel();
+    navneliste = new JList<>(model);
+    for (Pasient p : pasientRegister.FinnAlle())
+    {
+        model.addElement(p.toString());
+    }
     //skal bare kunne velge ett navn om gangen:
     navneliste.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    //velger et tilfeldig startnavn i lista:
-    Random velger = new Random();
-    int start = velger.nextInt(navn.length);
-    navneliste.setSelectedIndex(start);
+    valgtIndex = 0;//velger.nextInt(navn.length);
+    navneliste.setSelectedIndex(valgtIndex);
     String startnavn = navneliste.getSelectedValue();
     //forelder.settNavn(startnavn);
     
     JPanel listepanel = new JPanel();
     listepanel.setLayout(new BoxLayout(listepanel, 
             BoxLayout.PAGE_AXIS));
-    listepanel.add(new JLabel("Jentenavn som slutter på e:"));
+    listepanel.add(new JLabel("Liste over alle pasienter:"));
     listepanel.add(Box.createRigidArea(new Dimension(0, 5)));
     JScrollPane listeskroller = new JScrollPane(navneliste);
-    listeskroller.setPreferredSize(new Dimension(250, 80));
+    listeskroller.setPreferredSize(new Dimension(350, 200));
     listeskroller.setMinimumSize(new Dimension(250, 80));
     listeskroller.setAlignmentX(LEFT_ALIGNMENT); 
                                 //ønsker venstrejustering
@@ -64,15 +68,15 @@ public class VelgPasientGUI extends JDialog
     knappepanel.setBorder(
             BorderFactory.createEmptyBorder(0, 10, 10, 10));
     knappepanel.add(Box.createHorizontalGlue());
-    ok = new JButton("OK");
-    dropp = new JButton("Dropp å velge");
-    knappepanel.add(dropp);
+    ok = new JButton("Velg Pasient");
+    avbryt = new JButton("Avbryt");
+    knappepanel.add(avbryt);
     knappepanel.add(Box.createRigidArea(new Dimension(10, 0)));
     knappepanel.add(ok);
 
     kLytter = new Knappelytter();
     ok.addActionListener(kLytter);
-    dropp.addActionListener(kLytter);
+    avbryt.addActionListener(kLytter);
     mLytter = new Muselytter();
     navneliste.addMouseListener(mLytter);
 
@@ -82,7 +86,12 @@ public class VelgPasientGUI extends JDialog
     pack();
     //sikrer at det valgte navnet er synlig i navnelista når 
     //dialogvinduet blir åpnet:
-    navneliste.ensureIndexIsVisible(start);
+    navneliste.ensureIndexIsVisible(valgtIndex);
+  }
+  
+  public int getValgtIndex()
+  {
+    return valgtIndex;
   }
 
   private class Knappelytter implements ActionListener
@@ -91,11 +100,10 @@ public class VelgPasientGUI extends JDialog
     {
       if (e.getSource() == ok)
       {
-        String navn = navneliste.getSelectedValue();
-        //forelder.settNavn(navn);
+        valgtIndex = navneliste.getSelectedIndex();
         setVisible(false);
       }
-      else if (e.getSource() == dropp)
+      else if (e.getSource() == avbryt)
       {
         setVisible(false);
       }
