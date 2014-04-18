@@ -87,7 +87,7 @@ public class VelgPasientGUI extends JDialog
     //sikrer at det valgte navnet er synlig i navnelista når 
     //dialogvinduet blir åpnet:
     navneliste.ensureIndexIsVisible(valgtIndex);
-  }
+  }//end of Konstruktør
   
   public int getValgtIndex()
   {
@@ -121,4 +121,4 @@ public class VelgPasientGUI extends JDialog
       }
     }
   }
-}
+}//end of class VelgPasientGUI

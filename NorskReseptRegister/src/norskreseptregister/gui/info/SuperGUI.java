@@ -48,4 +48,4 @@ public abstract class SuperGUI extends JPanel
         
     }
 
-}
+}//end of class SuperGUI

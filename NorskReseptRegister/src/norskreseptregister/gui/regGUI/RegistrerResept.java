@@ -30,7 +30,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private String pasientliste = "pasientliste.txt";
     private JTextField datofelt, pasientdatafelt, legedatafelt, medisindatafelt, mengdefelt, kategorifelt;
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
-    private JButton regResept, visListe, velgPasient;
+    private JButton regResept, visListe, velgPasient, velgLege, velgMedisin;
     JTextArea utskrift, anvisning;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
     private final RegisterSystem system;
@@ -58,15 +58,25 @@ public class RegistrerResept extends JPanel implements ActionListener
         
         regResept = new JButton("Registrer");
         visListe = new JButton("Vis liste");
+        
         velgPasient = new JButton("...");
+        velgLege = new JButton("...");
+        velgMedisin = new JButton("...");
+        
         velgPasient.setPreferredSize(new Dimension(20, 20));
+        velgLege.setPreferredSize(new Dimension(20, 20));
+        velgMedisin.setPreferredSize(new Dimension(20, 20));
+        
         
         anvisning = new JTextArea(5,20);
         //JScrollPane sp = new JScrollPane(anvisning); //PRøvde å få til scroller
-        utskrift = new JTextArea(20,20);        
+        utskrift = new JTextArea(20,20);
+        
         regResept.addActionListener(this);
         visListe.addActionListener(this);
         velgPasient.addActionListener(this);
+        velgLege.addActionListener(this);
+        velgMedisin.addActionListener(this);
         
         panel1 = new JPanel();
         panel1.add(datolabel);
@@ -80,10 +90,12 @@ public class RegistrerResept extends JPanel implements ActionListener
         panel3 = new JPanel();
         panel3.add(legedatalabel);
         panel3.add(legedatafelt);
+        panel3.add(velgLege);
         
         panel4 = new JPanel();        
         panel4.add(medisindatalabel);
         panel4.add(medisindatafelt);
+        panel4.add(velgMedisin);;
         
         panel5 = new JPanel();
         panel5.add(mengdelabel);
@@ -158,7 +170,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         gc.gridheight = 10;
         gc.fill = GridBagConstraints.VERTICAL;
         add(panel9, gc);
-    }
+    }//end of Konstruktør
     
     private void nyResept()
     {

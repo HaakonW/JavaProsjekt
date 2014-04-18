@@ -27,4 +27,4 @@ public class InfoSystem
         return pasientInfo;
     }
 
-}
+}//end of class InfoSystem

@@ -162,11 +162,7 @@ public class hovedVindu extends JFrame
                 hovedvindu.add(internvindu3);
                 internvindu3.setVisible(true);
             }
-        }
-    }
+        }//end of method actionPerformed
+    } //end of Menylytter
 
-    /*public static void main(String[] args)
-     {
-     hovedVindu ny = new hovedVindu();
-     }*/
-}
+}//end of class hovedVindu
