@@ -15,6 +15,7 @@ class AdminMainHjemGUI extends JPanel
     private JButton endreLisens, medisin;
     private JPanel panel2, panel1;
     private JLabel label1, label2;
+    private JButton knapp1, knapp2;
     LegeLisensGUI paneltest = new LegeLisensGUI();
 
     public AdminMainHjemGUI()
@@ -23,6 +24,9 @@ class AdminMainHjemGUI extends JPanel
         medisin = new JButton("Registrer Medisin");
         ImageIcon modLeg = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
         ImageIcon regPill = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
+        
+        knapp1 = new JButton("Endre lisens på lege");
+        knapp2 = new JButton("Legg til medisin");
         
         label1 = new JLabel();        
         label1.setIcon(modLeg); 
@@ -70,6 +74,14 @@ class AdminMainHjemGUI extends JPanel
         gc.gridx = 1;
         gc.gridy = 0;
         add(panel2, gc);  
+        
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(knapp1, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 1;
+        add(knapp2, gc);
     }
     
   

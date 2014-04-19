@@ -13,7 +13,7 @@ import norskreseptregister.gui.LegeLisensGUI;
 
 class InfoMainHjemGUI extends JPanel
 {
-    private JButton knapp1, knapp2, knapp3;
+    private JButton knapp1, knapp2, knapp3, knapp4, knapp5, knapp6;
     private JPanel panel3, panel2, panel1;
     private JLabel label1, label2, label3;
     LegeLisensGUI paneltest = new LegeLisensGUI();
@@ -24,6 +24,10 @@ class InfoMainHjemGUI extends JPanel
         ImageIcon legeinf = new ImageIcon("src/norskreseptregister/gui/bilder/docinfo.png");
         ImageIcon pasinf = new ImageIcon("src/norskreseptregister/gui/bilder/pasinfo.png");
         ImageIcon medinf = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
+        
+        knapp1 = new JButton("Info om lege");
+        knapp2 = new JButton("Info om pasient");
+        knapp3 = new JButton("Info om medisin");
         
         label1 = new JLabel();        
         label1.setIcon(legeinf); 
@@ -93,6 +97,18 @@ class InfoMainHjemGUI extends JPanel
         gc.gridx = 2;
         gc.gridy = 0;
         add(panel3, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(knapp1, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 1;
+        add(knapp2, gc);
+        
+        gc.gridx = 2;
+        gc.gridy = 1;
+        add(knapp3, gc);
     }
     
   

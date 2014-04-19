@@ -94,7 +94,15 @@ class RegMainHjemGUI extends JPanel
         
         gc.gridx = 0;
         gc.gridy = 1;
-        add(panel2, gc);
+        add(regLege, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 1;
+        add(regPasient, gc);
+        
+        gc.gridx = 2;
+        gc.gridy = 1;
+        add(regResept, gc);
         
         
         
