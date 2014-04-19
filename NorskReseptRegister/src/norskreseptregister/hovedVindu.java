@@ -23,7 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.AdminMain;
-import norskreseptregister.gui.InfoMainGUI;
+import norskreseptregister.gui.info.InfoMainGUI;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
 public class hovedVindu extends JFrame
