@@ -1,5 +1,5 @@
 /*
-Filen inneholder klassen VelgPasientGUI
+Filen inneholder klassen VelgMedisinGUI
 Laget av  Henrik Fischer Bjelland
 Sist endret 17-04-2014  
 */
@@ -7,6 +7,7 @@ Sist endret 17-04-2014
 package norskreseptregister.gui.regGUI;
 
 import java.awt.BorderLayout;
+import static java.awt.Component.LEFT_ALIGNMENT;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -15,12 +16,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 import javax.swing.*;
-import norskreseptregister.ObjektKlasser.Pasient;
-import norskreseptregister.Reg.PasientRegister;
-import norskreseptregister.Reg.RegisterSystem;
+import norskreseptregister.ObjektKlasser.Medisin;
+import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.gui.regGUI.RegistrerResept;
 
-public class VelgPasientGUI extends JDialog
+public class VelgMedisinGUI extends JDialog
 {
   private JList<String> navneliste;
   private JButton ok, avbryt;
@@ -29,16 +29,22 @@ public class VelgPasientGUI extends JDialog
   private Muselytter mLytter;
   private int valgtIndex;
 
-  public VelgPasientGUI(DefaultListModel model)
+  public VelgMedisinGUI(RegistrerResept registrerResept, Medisinliste medisinliste)
   {
     //super(registrerResept.get,"Navnevelger", true); //modalt dialogvindu
     //forelder = f;
     setModal(true);
+    //Medisinliste medisinliste = medisinliste.toString();
+    DefaultListModel model = new DefaultListModel();
     navneliste = new JList<>(model);
+    //for (Medisin m : medisinliste)
+    {
+        //model.addElement(m.toString());
+    }
     //skal bare kunne velge ett navn om gangen:
     navneliste.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    valgtIndex = -1;
-    navneliste.setSelectedIndex(0);
+    valgtIndex = 0;//velger.nextInt(navn.length);
+    navneliste.setSelectedIndex(valgtIndex);
     String startnavn = navneliste.getSelectedValue();
     //forelder.settNavn(startnavn);
     

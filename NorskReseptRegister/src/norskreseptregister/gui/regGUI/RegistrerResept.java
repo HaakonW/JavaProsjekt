@@ -13,6 +13,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,8 +21,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
+import norskreseptregister.Reg.LegeRegister;
+import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.Reg.ReseptRegister;
 
@@ -35,6 +39,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
     private final RegisterSystem system;
     private Pasient pasient;
+    private Lege lege;
     
     public RegistrerResept(RegisterSystem system)
     {
@@ -205,12 +210,44 @@ public class RegistrerResept extends JPanel implements ActionListener
     
     private void VelgPasient()
     {
-        VelgPasientGUI velgPasientGUI = new VelgPasientGUI(this, system);
+        PasientRegister pasientRegister = system.getPasientRegister();
+        DefaultListModel model = new DefaultListModel();
+        for (Pasient p : pasientRegister.FinnAlle())
+        {
+            model.addElement(p.toString());
+        }
+
+        VelgPasientGUI velgPasientGUI = new VelgPasientGUI(model);
         velgPasientGUI.setLocationRelativeTo(this);
         velgPasientGUI.setVisible(true);
-        pasient = system.getPasientRegister().HentEttElement(velgPasientGUI.getValgtIndex());
-        pasientdatafelt.setText(pasient.getNavn());
+        int valgtIndex = velgPasientGUI.getValgtIndex();
+        if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
+        {
+            pasient = pasientRegister.HentEttElement(valgtIndex);
+            pasientdatafelt.setText(pasient.getNavn());
+        }
     }
+    
+    /*private void VelgLege()
+    {
+        // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
+        LegeRegister legeRegister = system.getLegeRegister();
+        DefaultListModel model = new DefaultListModel();
+        for (Lege l : legeRegister.FinnAlle())
+        {
+            model.addElement(l.toString());
+        }
+
+        VelgLegeGUI velgLegeGUI = new VelgLegeGUI(model);
+        velgLegeGUI.setLocationRelativeTo(this);
+        velgLegeGUI.setVisible(true);
+        int valgtIndex = velgLegeGUI.getValgtIndex();
+        if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
+        {
+            lege = legeRegister.HentEttElement(valgtIndex);
+            legedatafelt.setText(lege.getNavn());
+        }
+    }*/
     
     public void actionPerformed(ActionEvent e)
     {
@@ -226,6 +263,10 @@ public class RegistrerResept extends JPanel implements ActionListener
         if (e.getSource() == velgPasient)
         {
             VelgPasient();
+        }
+        if (e.getSource() == velgLege)
+        {
+            //VelgLege();
         }
     }
 }//end of class RegistrerResept

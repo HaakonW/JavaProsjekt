@@ -96,7 +96,7 @@ public class hovedVindu extends JFrame
          hovedvindu.add(ramme);*/
         ////////////////////////////////////////////////////////////////////////
         hovedvindu.setBackground(Color.GRAY); //Sette bakgrunnsfarge på hovedvindu
-        setSize(1300, 700);
+        setSize(1450, 900);
         setVisible(true);
         this.system = system;
 

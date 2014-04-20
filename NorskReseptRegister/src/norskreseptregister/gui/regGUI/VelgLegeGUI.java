@@ -1,26 +1,26 @@
 /*
-Filen inneholder klassen VelgPasientGUI
+Filen inneholder klassen VelgLegeGUI
 Laget av  Henrik Fischer Bjelland
-Sist endret 17-04-2014  
+Sist endret 18-04-2014  
 */
 
 package norskreseptregister.gui.regGUI;
 
 import java.awt.BorderLayout;
+import static java.awt.Component.LEFT_ALIGNMENT;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Random;
 import javax.swing.*;
-import norskreseptregister.ObjektKlasser.Pasient;
-import norskreseptregister.Reg.PasientRegister;
+import norskreseptregister.ObjektKlasser.Lege;
+import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.regGUI.RegistrerResept;
 
-public class VelgPasientGUI extends JDialog
+public class VelgLegeGUI extends JDialog
 {
   private JList<String> navneliste;
   private JButton ok, avbryt;
@@ -29,23 +29,29 @@ public class VelgPasientGUI extends JDialog
   private Muselytter mLytter;
   private int valgtIndex;
 
-  public VelgPasientGUI(DefaultListModel model)
+  public VelgLegeGUI()
   {
     //super(registrerResept.get,"Navnevelger", true); //modalt dialogvindu
     //forelder = f;
     setModal(true);
+    /*LegeRegister legeRegister = system.getLegeRegister();
+    DefaultListModel model = new DefaultListModel();
     navneliste = new JList<>(model);
+    for (Lege l : legeRegister.FinnAlle())
+    {
+        model.addElement(l.toString());
+    }*/
     //skal bare kunne velge ett navn om gangen:
     navneliste.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    valgtIndex = -1;
-    navneliste.setSelectedIndex(0);
+    valgtIndex = 0;//velger.nextInt(navn.length);
+    navneliste.setSelectedIndex(valgtIndex);
     String startnavn = navneliste.getSelectedValue();
     //forelder.settNavn(startnavn);
     
     JPanel listepanel = new JPanel();
     listepanel.setLayout(new BoxLayout(listepanel, 
             BoxLayout.PAGE_AXIS));
-    listepanel.add(new JLabel("Liste over alle pasienter:"));
+    listepanel.add(new JLabel("Liste over alle leger:"));
     listepanel.add(Box.createRigidArea(new Dimension(0, 5)));
     JScrollPane listeskroller = new JScrollPane(navneliste);
     listeskroller.setPreferredSize(new Dimension(350, 200));
@@ -62,7 +68,7 @@ public class VelgPasientGUI extends JDialog
     knappepanel.setBorder(
             BorderFactory.createEmptyBorder(0, 10, 10, 10));
     knappepanel.add(Box.createHorizontalGlue());
-    ok = new JButton("Velg Pasient");
+    ok = new JButton("Velg Lege");
     avbryt = new JButton("Avbryt");
     knappepanel.add(avbryt);
     knappepanel.add(Box.createRigidArea(new Dimension(10, 0)));
