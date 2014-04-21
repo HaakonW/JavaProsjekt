@@ -12,7 +12,7 @@ import javax.swing.*;
 
 class AdminMainHjemGUI extends JPanel
 {
-    private JButton endreLisens, medisin;
+    //private JButton endreLisens, medisin;
     private JPanel panel2, panel1;
     private JLabel label1, label2;
     private JButton knapp1, knapp2;
@@ -20,15 +20,18 @@ class AdminMainHjemGUI extends JPanel
 
     public AdminMainHjemGUI()
     {
-        endreLisens = new JButton("Endre Lisens");
-        medisin = new JButton("Registrer Medisin");
+        //endreLisens = new JButton("Endre Lisens");
+        //medisin = new JButton("Registrer Medisin");
         ImageIcon modLeg = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
         ImageIcon regPill = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
         
-        knapp1 = new JButton("Endre lisens på lege");
-        knapp2 = new JButton("Legg til medisin");
+        knapp1 = new JButton(modLeg);
+        knapp2 = new JButton(regPill);
         
-        label1 = new JLabel();        
+        knapp1.setFocusPainted(false);
+        knapp2.setFocusPainted(false);
+        
+        /*label1 = new JLabel();        
         label1.setIcon(modLeg); 
         label1.setBorder(BorderFactory.createRaisedBevelBorder());        
 
@@ -62,18 +65,18 @@ class AdminMainHjemGUI extends JPanel
         }
         );
         
-        //panel1.add(regPill):
+        //panel1.add(regPill):*/
         
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
-        gc.gridx = 0;
+       /* gc.gridx = 0;
         gc.gridy = 0;
         gc.insets = new Insets(10, 5, 5, 10);
         add(panel1, gc);
         
         gc.gridx = 1;
         gc.gridy = 0;
-        add(panel2, gc);  
+        add(panel2, gc);*/  
         
         gc.gridx = 0;
         gc.gridy = 1;

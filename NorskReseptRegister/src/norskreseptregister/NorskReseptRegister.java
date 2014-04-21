@@ -8,6 +8,7 @@ package norskreseptregister;
 
 import java.awt.event.*;
 import javax.swing.*;
+import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.MainGui;
 import norskreseptregister.gui.regGUI.RegMainGUI;
@@ -24,7 +25,8 @@ public class NorskReseptRegister
             {
                 RegisterSystem system = new RegisterSystem();
                 system.LesFraFil();
-                hovedVindu vindu = new hovedVindu(system);
+                Medisinliste medisinliste = Medisinliste.lesObjektFraFil();
+                hovedVindu vindu = new hovedVindu(system, medisinliste);
             }
         });
     }

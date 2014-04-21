@@ -20,7 +20,7 @@ public class AdminMain extends JPanel
     private JTabbedPane tabbedPane;
     AdminMainHjemGUI panel1 = new AdminMainHjemGUI();
     LegeLisensGUI panel3 = new LegeLisensGUI();
-    RegMedisinGUI panel4 = new RegMedisinGUI();    
+    RegistrerMedisinGUI panel4 = new RegistrerMedisinGUI();    
     
     public AdminMain()
     {

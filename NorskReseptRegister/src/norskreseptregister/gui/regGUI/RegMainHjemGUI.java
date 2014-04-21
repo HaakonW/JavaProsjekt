@@ -7,11 +7,13 @@ Sist endret 09-04-2014
 package norskreseptregister.gui.regGUI;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
 
-class RegMainHjemGUI extends JPanel
+class RegMainHjemGUI extends JPanel implements ActionListener
 {
     private JButton regPasient, regLege, regResept;
     private JPanel panel1, panel2;
@@ -19,14 +21,24 @@ class RegMainHjemGUI extends JPanel
 
     public RegMainHjemGUI()
     {
-        regPasient= new JButton("Registrer Pasient");
-        regLege = new JButton("Registrer Lege");
-        regResept = new JButton("Registrer Resept");
-        ImageIcon regleg = new ImageIcon("src/norskreseptregister/gui/bilder/doktor.png");
+        //regPasient= new JButton("Registrer Pasient");
+        //regLege = new JButton("Registrer Lege");
+        //regResept = new JButton("Registrer Resept");
+        ImageIcon regLeg = new ImageIcon("src/norskreseptregister/gui/bilder/doktor.png");
         ImageIcon regPas = new ImageIcon("src/norskreseptregister/gui/bilder/person.png");
         ImageIcon regRes = new ImageIcon("src/norskreseptregister/gui/bilder/Resept.png");
+        regPasient= new JButton(regPas);
+        regLege = new JButton(regLeg);
+        regResept = new JButton(regRes);
         
-        label1 = new JLabel();
+        regPasient.setFocusPainted(false);
+        regLege.setFocusPainted(false);
+        regResept.setFocusPainted(false);
+        
+        regPasient.addActionListener(this);
+        regLege.addActionListener(this);
+        regResept.addActionListener(this);
+        /*label1 = new JLabel();
         label1.setIcon(regleg);
         label1.setBorder(BorderFactory.createRaisedBevelBorder());
         label1.addMouseListener(new MouseAdapter() 
@@ -63,7 +75,7 @@ class RegMainHjemGUI extends JPanel
                 System.out.println("DU TRYKKET PÅ REGISTER RESPET");
             }
         }
-        );
+        );*/
         
         panel2 = new JPanel();
         panel2.add(regPasient);
@@ -80,7 +92,7 @@ class RegMainHjemGUI extends JPanel
         gc.fill = GridBagConstraints.HORIZONTAL;
         //add(panel1, gc);
         
-        gc.gridx = 0;
+        /*gc.gridx = 0;
         gc.gridy = 0;
         add(label1, gc);
         
@@ -90,15 +102,15 @@ class RegMainHjemGUI extends JPanel
         
         gc.gridx = 2;
         gc.gridy = 0;
-        add(label3, gc);
+        add(label3, gc);*/
         
         gc.gridx = 0;
         gc.gridy = 1;
-        add(regLege, gc);
+        add(regPasient, gc);
         
         gc.gridx = 1;
         gc.gridy = 1;
-        add(regPasient, gc);
+        add(regLege, gc);
         
         gc.gridx = 2;
         gc.gridy = 1;
@@ -106,5 +118,21 @@ class RegMainHjemGUI extends JPanel
         
         
         
+    }
+
+    public void actionPerformed( ActionEvent e )
+    {
+       if (e.getSource() ==  regPasient)
+       {
+           //RegMainGUI.tabbedPane.getSelectedIndex(RegMainGUI.tab1);
+       } 
+       else if (e.getSource() == regLege)
+       {
+            
+       }
+        else if (e.getSource() == regResept)
+       {
+            
+       }
     }
 }//end of class RegMainHjemGUI

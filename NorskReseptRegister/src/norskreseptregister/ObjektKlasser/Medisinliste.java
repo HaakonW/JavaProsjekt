@@ -1,17 +1,20 @@
 /*
-Filen inneholder klassen Midisinliste og er en egendefinert liste over
-alle medisine i programmet vårt. 
-Laget av  Peter WIlhelmsen
-Sist endret  31-03-2014 
+ Filen inneholder klassen Midisinliste og er en egendefinert liste over
+ alle medisine i programmet vårt. 
+ Laget av  Peter Wilhelmsen, Henrik Fischer Bjelland
+ Sist endret  21-04-2014 
  */
-
 package norskreseptregister.ObjektKlasser;
 
 import java.io.*;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 //Medisinliste
 public class Medisinliste implements Serializable
 {
+    private static final long serialVersionUID = 6L;
+    private static String medisinlisten = "lagreMedisin.txt";    
     private Medisin hode;
 
     public Medisinliste()
@@ -22,7 +25,7 @@ public class Medisinliste implements Serializable
     //Sette inn medisiner i lista
     public void settInn(Medisin ny)
     {
-        if( ny != null)
+        if (ny != null)
         {
             ny.neste = hode;
             hode = ny;
@@ -35,7 +38,7 @@ public class Medisinliste implements Serializable
         String tekst = "";
         Medisin hjelp = hode;
 
-        while(hjelp != null)
+        while (hjelp != null)
         {
             tekst += "-" + hjelp.toString() + "\n";
             hjelp = hjelp.neste;
@@ -43,39 +46,87 @@ public class Medisinliste implements Serializable
         return tekst;
     }
 
-
     /*Finn medisin - Kan brukes når vi skal sjekke om medisinen finnes
-    i hovedprogrammet
-    - Må legge inn muligheten for å søke på atcNr
-    */
-    public boolean finnMedisin (String medisinnavn)
+     i hovedprogrammet
+     - Må legge inn muligheten for å søke på atcNr
+     */
+    public boolean finnMedisin(String medisinnavn)
     {
-        if( hode == null)
+        if (hode == null)
         {
-           return false;
+            return false;
         }
-
-        if(hode.getNavn().equals(medisinnavn) )
+        if (hode.getNavn().equals(medisinnavn))
         {
             //return hode.toString();
             return true;
         }
-
+        Medisin hjelp = hode;
+        
+        while (hjelp != null)
+        {
+            if (hjelp.getNavn().equals(medisinnavn))
+            {
+                return true;
+            }
+            hjelp = hjelp.neste;
+        }
+        //return "Finner ikke medisin med navn " + medisinnavn;
+        return false;
+    }
+    
+    //FinnAlle brukes for finne alle medisiner
+    public ArrayList<Medisin> FinnAlle()
+    {
+        ArrayList<Medisin> liste = new ArrayList();
+        
         Medisin hjelp = hode;
 
-       while( hjelp.neste != null)
-       {
-           if(hjelp.neste.getNavn().equals(medisinnavn) )
-           {
-               //return hjelp.neste.toString();
-               return true;
-           }
-
-           hjelp.neste = hjelp.neste.neste;
-       }
-
-       //return "Finner ikke medisin med navn " + medisinnavn;
-       return false;
+        while (hjelp != null)
+        {
+            liste.add(hjelp);
+            hjelp = hjelp.neste;
+        }
+        return liste;
+    }
+    
+    public Medisin HentEttElement(int index)
+    {
+        Medisin hjelp = hode;
+        int elementindex = 0;
+        
+        while (hjelp != null)
+        {
+            if ( elementindex == index)
+            {
+                return hjelp;
+            }
+            hjelp = hjelp.neste;
+            elementindex++;
+        }
+        return null;
     }
 
+    public static Medisinliste lesObjektFraFil()
+    {
+        try(ObjectInputStream innfil = new ObjectInputStream(
+                                        new FileInputStream(medisinlisten)))
+        {
+          return (Medisinliste)innfil.readObject(); 
+            
+        }
+        catch(ClassNotFoundException cnfe)
+        {
+           JOptionPane.showMessageDialog(null,cnfe.getMessage());
+           /* Må kanskje legge inn muligheten for å opprette ny liste
+           om det ikke finnes en: liste = new Medisinliste();*/
+        }
+        catch(IOException ioe)
+        {
+          JOptionPane.showMessageDialog(null, "Feil ved lesing, "
+                                         + "ny liste blir opprettet");
+          //Kan opprette ny tom liste her også. Som forslaget i kommentar over
+        }
+        return null;
+    }
 }// end of class Medisinliste

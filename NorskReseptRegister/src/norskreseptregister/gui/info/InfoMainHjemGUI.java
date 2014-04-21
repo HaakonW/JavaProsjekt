@@ -29,6 +29,8 @@ class InfoMainHjemGUI extends JPanel
         knapp2 = new JButton("Info om pasient");
         knapp3 = new JButton("Info om medisin");
         
+        knapp1.setFocusPainted(false);
+        
         label1 = new JLabel();        
         label1.setIcon(legeinf); 
         label1.setBorder(BorderFactory.createRaisedBevelBorder());

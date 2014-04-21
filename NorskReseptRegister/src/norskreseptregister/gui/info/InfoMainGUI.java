@@ -42,7 +42,7 @@ public class InfoMainGUI extends JPanel
         //Create and set up the window.
         JFrame frame = new JFrame("Informasjon");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300,200);
+        frame.setSize(500,400);
         frame.getContentPane().add(new InfoMainGUI(), BorderLayout.CENTER);
         
         frame.setVisible(true);
