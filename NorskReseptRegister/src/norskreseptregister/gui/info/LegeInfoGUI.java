@@ -19,11 +19,7 @@ public class LegeInfoGUI extends JPanel
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
     private JLabel fornavnlabel, etternavnlabel;
     private JButton knapp1, knapp2, knapp3;
-<<<<<<< HEAD
-    private JRadioButton a, b, c;
-=======
     private JCheckBox a, b, c;
->>>>>>> FETCH_HEAD
 
     public LegeInfoGUI()
     {
@@ -34,13 +30,7 @@ public class LegeInfoGUI extends JPanel
         knapp1 = new JButton("Vis alle leger");
         knapp2 = new JButton("Vis alle resepeter på lege");
         knapp3 = new JButton("Vis resepter i kategori");
-<<<<<<< HEAD
-        a = new JRadioButton("A");
-        b = new JRadioButton("B");
-        c = new JRadioButton("C");
-
-    }
-=======
+        
         utskrift = new JTextArea(20,20);
         a = new JCheckBox("A");
         b = new JCheckBox("B");
@@ -101,10 +91,5 @@ public class LegeInfoGUI extends JPanel
         add(panel5, gc);
 
         utskrift.setEditable(false); 
-       
-
     }
-    
- 
->>>>>>> FETCH_HEAD
 }//end of class LegeInfoGUI

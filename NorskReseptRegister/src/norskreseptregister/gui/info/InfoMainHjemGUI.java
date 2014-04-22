@@ -18,12 +18,8 @@ class InfoMainHjemGUI extends JPanel
     private JLabel label1, label2, label3;
     LegeLisensGUI paneltest = new LegeLisensGUI();
 
-<<<<<<< HEAD
-}
-=======
     public InfoMainHjemGUI()
     {
-     
         ImageIcon legeinf = new ImageIcon("src/norskreseptregister/gui/bilder/docinfo.png");
         ImageIcon pasinf = new ImageIcon("src/norskreseptregister/gui/bilder/pasinfo.png");
         ImageIcon medinf = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
@@ -83,9 +79,7 @@ class InfoMainHjemGUI extends JPanel
             }
         }
         );
-        
-        
-        
+
         //panel1.add(regPill):
         
         GridBagConstraints gc = new GridBagConstraints();
@@ -115,8 +109,5 @@ class InfoMainHjemGUI extends JPanel
         gc.gridy = 1;
         add(knapp3, gc);
     }
-    
-  
-    
+
 }//end of class AdminMainHjemGUI
->>>>>>> FETCH_HEAD

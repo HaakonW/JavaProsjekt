@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
 Filen inneholder klassen PasientInfoGUI
 Laget av Henrik Fischer Bjelland
@@ -13,5 +12,3 @@ public class PasientInfoGUI extends JPanel
 {
 
 }
-=======
->>>>>>> FETCH_HEAD

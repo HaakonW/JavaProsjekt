@@ -13,17 +13,12 @@ import javax.swing.*;
 
 public class StatestikkGUI extends JPanel
 {
-
-<<<<<<< HEAD
-}
-=======
     private JTextField medisinfelt;
     private JTextArea utskrift;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
     private JLabel medisinlabel;
     private JButton knapp1, knapp2, knapp3;
    
-
     public StatestikkGUI()
     {
         
@@ -69,8 +64,6 @@ public class StatestikkGUI extends JPanel
         add(panel4, gc);
 
         utskrift.setEditable(false); 
-       
 
     }
 }//end of class LegeInfoGUI
->>>>>>> FETCH_HEAD
