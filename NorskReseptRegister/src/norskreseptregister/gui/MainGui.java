@@ -6,6 +6,7 @@ Sist endret 09-04-2014
 
 package norskreseptregister.gui;
 
+import norskreseptregister.gui.info.InfoMainGUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

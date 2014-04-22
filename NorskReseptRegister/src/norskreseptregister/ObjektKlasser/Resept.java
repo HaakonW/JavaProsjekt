@@ -77,7 +77,7 @@ public class Resept implements Serializable
                     "\nLege: " + legedata +  
                     "\n Medisin" + medisindata + 
                     "\n Mengde; " + mengde +
-                    "\n Kategori: " + kategori + 
+                    //"\n Kategori: " + kategori + 
                     "\n Anvisning: " + anvisning;
             return tekst;
         } 

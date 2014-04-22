@@ -18,10 +18,9 @@ import javax.swing.*;
 public class AdminMain extends JPanel
 {
     private JTabbedPane tabbedPane;
-    private JLabel hei;
     AdminMainHjemGUI panel1 = new AdminMainHjemGUI();
     LegeLisensGUI panel3 = new LegeLisensGUI();
-    RegMedisinGUI panel4 = new RegMedisinGUI();    
+    RegistrerMedisinGUI panel4 = new RegistrerMedisinGUI();    
     
     public AdminMain()
     {
@@ -51,10 +50,10 @@ public class AdminMain extends JPanel
       frame.pack(); // Litt kranglete med størrelsen
 
       //sakset herfra: http://stackoverflow.com/questions/144892/how-to-center-a-window-in-java
-      Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();      
+      /*Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();      
       int x=(int)((dimension.getWidth() - 620)/2);
       int y=(int)((dimension.getHeight() - 450)/2);
-      frame.setLocation(x, y);
+      frame.setLocation(x, y);*/
     }
 
     /*public static void main(String[] args)

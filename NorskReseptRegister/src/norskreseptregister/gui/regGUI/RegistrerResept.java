@@ -13,6 +13,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,8 +21,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+<<<<<<< HEAD
+=======
+import norskreseptregister.ObjektKlasser.Lege;
+import norskreseptregister.ObjektKlasser.Medisin;
+import norskreseptregister.ObjektKlasser.Medisinliste;
+>>>>>>> FETCH_HEAD
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
+import norskreseptregister.Reg.LegeRegister;
+import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.Reg.ReseptRegister;
 
@@ -31,6 +40,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private JTextField datofelt, pasientdatafelt, legedatafelt, medisindatafelt, mengdefelt, kategorifelt;
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin;
+<<<<<<< HEAD
     JTextArea utskrift, anvisning;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
     private final RegisterSystem system;
@@ -41,20 +51,46 @@ public class RegistrerResept extends JPanel implements ActionListener
         this.system = system;
         datofelt = new JTextField(20);
         pasientdatafelt = new JTextField(18);
+=======
+    private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
+    JTextArea utskrift, anvisning;
+    private final RegisterSystem system;
+    private final Medisinliste medisinliste;
+    private Pasient pasient;
+    private Lege lege;
+    private Medisin medisin;
+    
+    public RegistrerResept(RegisterSystem system, Medisinliste medisinliste)
+    {
+        this.system = system;
+        this.medisinliste = medisinliste;
+        datofelt = new JTextField(20);
+        pasientdatafelt = new JTextField(21);
+>>>>>>> FETCH_HEAD
         legedatafelt = new JTextField(20);
         medisindatafelt = new JTextField(20);
         mengdefelt = new JTextField(20);
-        kategorifelt = new JTextField(20);
+        //kategorifelt = new JTextField(20);
         
+<<<<<<< HEAD
         datolabel = new JLabel("Dato       ");
         pasientdatalabel = new JLabel("Pasient ");
+=======
+        datolabel = new JLabel("Dato  ");
+        pasientdatalabel = new JLabel("Pasient      ");
+>>>>>>> FETCH_HEAD
         legedatalabel = new JLabel("Lege       ");
         medisindatalabel = new JLabel("Medisin   ");
         mengdelabel = new JLabel("Mengde   ");
         kategorilabel = new JLabel("Kategori  ");
         anvisningslabel = new JLabel("Anvisning");
         pasientdatafelt.setEditable(false);
+<<<<<<< HEAD
 
+=======
+        legedatafelt.setEditable(false);
+        medisindatafelt.setEditable(false);
+>>>>>>> FETCH_HEAD
         
         regResept = new JButton("Registrer");
         visListe = new JButton("Vis liste");
@@ -101,9 +137,9 @@ public class RegistrerResept extends JPanel implements ActionListener
         panel5.add(mengdelabel);
         panel5.add(mengdefelt);
         
-        panel6 = new JPanel();
+        /*panel6 = new JPanel();
         panel6.add(kategorilabel);
-        panel6.add(kategorifelt);
+        panel6.add(kategorifelt);*/
         
         panel7 = new JPanel();
         panel7.add(anvisningslabel);
@@ -150,10 +186,10 @@ public class RegistrerResept extends JPanel implements ActionListener
         add(panel5, gc);
         y++;
         
-        gc.gridx = x;
+       /* gc.gridx = x;
         gc.gridy = y;
         add(panel6, gc);
-        y++;
+        y++;*/
         
          gc.gridx = x;
         gc.gridy = y;
@@ -174,11 +210,10 @@ public class RegistrerResept extends JPanel implements ActionListener
     
     private void nyResept()
     {
-        /*Resept ny = new Resept(datofelt.getText(), pasientdatafelt.getText(), 
-                legedatafelt.getText(), medisindatafelt.getText(), 
-                mengdefelt.getText(),kategorifelt.getText(), anvisning.getText());
-        reseptRegister.SettInn(ny);
-        utskrift.setText("Registrert pasient: \n" + ny.toString());*/
+        Resept ny = new Resept(datofelt.getText(), pasient, 
+                lege, medisin.getNavn(), mengdefelt.getText(),"", anvisning.getText());
+        system.getReseptRegister().SettInn(ny);
+        utskrift.setText("Registrert resept: \n" + ny.toString());
     }
     
     private void TomFelt()
@@ -188,7 +223,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         legedatafelt.setText("");
         medisindatafelt.setText("");
         mengdefelt.setText("");
-        kategorifelt.setText("");
+        //kategorifelt.setText("");
     }
     
     private void SkrivUt()
@@ -205,11 +240,69 @@ public class RegistrerResept extends JPanel implements ActionListener
     
     private void VelgPasient()
     {
+<<<<<<< HEAD
         VelgPasientGUI velgPasientGUI = new VelgPasientGUI(this, system);
         velgPasientGUI.setLocationRelativeTo(this);
         velgPasientGUI.setVisible(true);
         pasient = system.getPasientRegister().HentEttElement(velgPasientGUI.getValgtIndex());
         pasientdatafelt.setText(pasient.getNavn());
+=======
+        PasientRegister pasientRegister = system.getPasientRegister();
+        DefaultListModel model = new DefaultListModel();
+        for (Pasient p : pasientRegister.FinnAlle())
+        {
+            model.addElement(p.toString());
+        }
+
+        VelgPersonGUI velgPasient = new VelgPersonGUI(model);
+        velgPasient.setLocationRelativeTo(this);
+        velgPasient.setVisible(true);
+        int valgtIndex = velgPasient.getValgtIndex();
+        if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
+        {
+            pasient = pasientRegister.HentEttElement(valgtIndex);
+            pasientdatafelt.setText(pasient.getNavn());
+        }
+    }
+    
+    private void VelgLege()
+    {
+        // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
+        LegeRegister legeRegister = system.getLegeRegister();
+        DefaultListModel model = new DefaultListModel();
+        for (Lege l : legeRegister.FinnAlle())
+        {
+            model.addElement(l.toString());
+        }
+
+        VelgPersonGUI velgLege = new VelgPersonGUI(model);
+        velgLege.setLocationRelativeTo(this);
+        velgLege.setVisible(true);
+        int valgtIndex = velgLege.getValgtIndex();
+        if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
+        {
+            lege = legeRegister.HentEttElement(valgtIndex);
+            legedatafelt.setText(lege.getNavn());
+        }
+    }
+    
+    private void VelgMedisin()
+    {
+        DefaultListModel model = new DefaultListModel();
+        for (Medisin m : medisinliste.FinnAlle())
+        {
+            model.addElement(m.toString());
+        }
+        VelgPersonGUI velgMedisin = new VelgPersonGUI(model);
+        velgMedisin.setLocationRelativeTo(this);
+        velgMedisin.setVisible(true);
+        int valgtIndex = velgMedisin.getValgtIndex();
+        if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
+        {
+            medisin = medisinliste.HentEttElement(valgtIndex);
+            medisindatafelt.setText(medisin.getNavn());
+        }
+>>>>>>> FETCH_HEAD
     }
     
     public void actionPerformed(ActionEvent e)
@@ -227,5 +320,16 @@ public class RegistrerResept extends JPanel implements ActionListener
         {
             VelgPasient();
         }
+<<<<<<< HEAD
+=======
+        if (e.getSource() == velgLege)
+        {
+            VelgLege();
+        }
+        if (e.getSource() == velgMedisin)
+        {
+            VelgMedisin();
+        }
+>>>>>>> FETCH_HEAD
     }
 }//end of class RegistrerResept

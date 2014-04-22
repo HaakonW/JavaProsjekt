@@ -7,48 +7,86 @@ Sist endret  09-04-2014
 package norskreseptregister.gui;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 class AdminMainHjemGUI extends JPanel
 {
-    private JButton endreLisens, medisin;
+    //private JButton endreLisens, medisin;
     private JPanel panel2, panel1;
-    private JLabel test1, test2;
+    private JLabel label1, label2;
+    private JButton knapp1, knapp2;
+    LegeLisensGUI paneltest = new LegeLisensGUI();
 
     public AdminMainHjemGUI()
     {
-        endreLisens = new JButton("Endre Lisens");
-        medisin = new JButton("Registrer Medisin");
+        //endreLisens = new JButton("Endre Lisens");
+        //medisin = new JButton("Registrer Medisin");
         ImageIcon modLeg = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
         ImageIcon regPill = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
         
-        test1 = new JLabel();
-        test1.setIcon(modLeg);
+        knapp1 = new JButton(modLeg);
+        knapp2 = new JButton(regPill);
         
-        test2 = new JLabel();        
-        test2.setIcon(regPill);
+        knapp1.setFocusPainted(false);
+        knapp2.setFocusPainted(false);
         
-        panel2 = new JPanel();
-        panel2.add(endreLisens);
-        panel2.add(medisin);
+        /*label1 = new JLabel();        
+        label1.setIcon(modLeg); 
+        label1.setBorder(BorderFactory.createRaisedBevelBorder());        
+
+        
+        label2 = new JLabel();        
+        label2.setIcon(regPill);
+        label2.setBorder(BorderFactory.createRaisedBevelBorder());
+       
         
         panel1 = new JPanel();
-        panel1.add(test1);
-        panel1.add(test2);
+        panel1.add(label1);
+        panel1.addMouseListener(new MouseAdapter() 
+        {
+        //@Override        
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("DU TRYKKET PÅ ENDRE LEGE");
+            }
+        }
+        );
         
-        //panel1.add(regPill):
+        panel2 = new JPanel();
+        panel2.add(label2);
+        panel2.addMouseListener(new MouseAdapter() 
+        {
+        //@Override        
+            public void mouseClicked(MouseEvent e) 
+            {
+                System.out.println("DU TRYKKET PÅ ENDRE LISENS");
+            }
+        }
+        );
+        
+        //panel1.add(regPill):*/
         
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
-        gc.gridx = 0;
+       /* gc.gridx = 0;
         gc.gridy = 0;
         gc.insets = new Insets(10, 5, 5, 10);
-        gc.anchor = GridBagConstraints.WEST;
-        gc.fill = GridBagConstraints.HORIZONTAL;
         add(panel1, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 0;
+        add(panel2, gc);*/  
         
         gc.gridx = 0;
         gc.gridy = 1;
-        add(panel2, gc);  
+        add(knapp1, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 1;
+        add(knapp2, gc);
     }
+    
+  
+    
 }//end of class AdminMainHjemGUI

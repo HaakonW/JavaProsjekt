@@ -21,9 +21,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.AdminMain;
-import norskreseptregister.gui.InfoMainGUI;
+import norskreseptregister.gui.info.InfoMainGUI;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
 public class hovedVindu extends JFrame
@@ -42,9 +43,10 @@ public class hovedVindu extends JFrame
     private JMenuItem submeny2;
     private JMenuItem submeny3;
     private RegisterSystem system;
+    private final Medisinliste medisinliste;
 
     //Konstruktør
-    public hovedVindu(final RegisterSystem system)
+    public hovedVindu(final RegisterSystem system, Medisinliste medisinliste)
     {
         lytter = new Menylytter();
 
@@ -96,9 +98,10 @@ public class hovedVindu extends JFrame
          hovedvindu.add(ramme);*/
         ////////////////////////////////////////////////////////////////////////
         hovedvindu.setBackground(Color.GRAY); //Sette bakgrunnsfarge på hovedvindu
-        setSize(1300, 700);
+        setSize(1450, 900);
         setVisible(true);
         this.system = system;
+        this.medisinliste = medisinliste;
 
     }// End of Konstruktør
 
@@ -132,7 +135,7 @@ public class hovedVindu extends JFrame
                 JInternalFrame internvindu2 = new JInternalFrame(
                         "Registrering", true, true, true, true);
 
-                RegMainGUI regG = new RegMainGUI(system);
+                RegMainGUI regG = new RegMainGUI(system, medisinliste);
                 //Container c = internvindu.getContentPane();
                 internvindu2.add(regG, BorderLayout.CENTER);
 
@@ -157,7 +160,6 @@ public class hovedVindu extends JFrame
                         JInternalFrame.DISPOSE_ON_CLOSE);
 
                 internvindu3.pack();
-                internvindu3.setSize(700, 300);
 
                 hovedvindu.add(internvindu3);
                 internvindu3.setVisible(true);

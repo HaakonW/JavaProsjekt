@@ -14,7 +14,7 @@ public class LegeLisensGUI extends JPanel
 {
    private JLabel fornavnlabel, etternavnlabel;
    private JTextField fornavnfelt, etternavnfelt;
-   private JButton sokLege, endreLisens;
+   private JButton sokLege, endreLisens, hjelp;
    private JTextArea utskrift;
    private JCheckBox a, b, c;
    private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
@@ -23,8 +23,9 @@ public class LegeLisensGUI extends JPanel
    {
        fornavnfelt = new JTextField(20);
        etternavnfelt = new JTextField(20);
-       sokLege = new JButton("Vis lege");
+       sokLege = new JButton("Søk etter lege");
        endreLisens = new JButton("Endre bevilling");
+       hjelp = new JButton("Hjelp");
        fornavnlabel = new JLabel("Fornavn:");
        etternavnlabel = new JLabel("Etternavn:");
        utskrift = new JTextArea(20,20);
@@ -52,16 +53,14 @@ public class LegeLisensGUI extends JPanel
        panel4.add(a);
        panel4.add(b);
        panel4.add(c);
-      
-       
+       panel4.add(endreLisens);
+              
        panel5 = new JPanel();
-       panel5.add(endreLisens);
-     
+       panel5.add(hjelp);    
        
        panel6 = new JPanel();
        panel6.add(utskrift);
-       
-       
+         
        
        /// GRID START ///
        GridBagConstraints gc = new GridBagConstraints();
@@ -89,8 +88,13 @@ public class LegeLisensGUI extends JPanel
         add(panel4, gc);
         
         gc.gridx = 0;
-        gc.gridy = 4;        
+        gc.gridy = 4;  
+        gc.anchor = GridBagConstraints.WEST;
         add(panel5, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 5;
+        //add(hjelp, gc);
         
         gc.gridx = 2;
         gc.gridy = 0;
