@@ -27,13 +27,17 @@ class InfoMainHjemGUI extends JPanel
         ImageIcon pasinf = new ImageIcon("src/norskreseptregister/gui/bilder/pasinfo.png");
         ImageIcon medinf = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
         
-        knapp1 = new JButton("Info om lege");
-        knapp2 = new JButton("Info om pasient");
-        knapp3 = new JButton("Info om medisin");
+        knapp1 = new JButton(pasinf);
+        knapp2 = new JButton(legeinf);
+        knapp3 = new JButton(medinf);
         
         knapp1.setFocusPainted(false);
         
-        label1 = new JLabel();        
+        knapp1.setToolTipText("Info om pasient");
+        knapp2.setToolTipText("Info om lege");
+        knapp3.setToolTipText("Info om medisin");
+        
+        /*label1 = new JLabel();        
         label1.setIcon(legeinf); 
         label1.setBorder(BorderFactory.createRaisedBevelBorder());
         
@@ -81,13 +85,13 @@ class InfoMainHjemGUI extends JPanel
                 System.out.println("DU TRYKKET PÅ MEDISININFO");
             }
         }
-        );
+        );*/
 
         //panel1.add(regPill):
         
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
-        gc.gridx = 0;
+        /*gc.gridx = 0;
         gc.gridy = 0;
         gc.insets = new Insets(10, 5, 5, 10);
         add(panel1, gc);
@@ -98,7 +102,7 @@ class InfoMainHjemGUI extends JPanel
         
         gc.gridx = 2;
         gc.gridy = 0;
-        add(panel3, gc);
+        add(panel3, gc);*/
         
         gc.gridx = 0;
         gc.gridy = 1;

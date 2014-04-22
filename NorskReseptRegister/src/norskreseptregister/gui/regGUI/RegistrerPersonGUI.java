@@ -6,10 +6,12 @@ Sist endret 17-04-2014
 
 package norskreseptregister.gui.regGUI;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -36,6 +38,8 @@ public abstract class RegistrerPersonGUI extends JPanel
         vis = new JButton("Vis");
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
+        
+        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
 
         /////PANEL START////
         panel1 = new JPanel();

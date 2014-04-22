@@ -30,6 +30,21 @@ public class Lege extends Person implements Serializable
         bevillingB = true;
         bevillingC = true;
     }
+
+    public void setBevillingA(boolean bevillingA)
+    {
+        this.bevillingA = bevillingA;
+    }
+
+    public void setBevillingB(boolean bevillingB)
+    {
+        this.bevillingB = bevillingB;
+    }
+
+    public void setBevillingC(boolean bevillingC)
+    {
+        this.bevillingC = bevillingC;
+    }
     
     public String getArbeidssted()
     {
@@ -53,6 +68,16 @@ public class Lege extends Person implements Serializable
     
     public String toString()
     {
+        String bevilling = getBevilling();
+        
+        String tekst = super.toString();
+        tekst += "Arbeidssted: " + arbeidssted +
+                "\nBevilling for medisingruppe: " + bevilling + "\n";
+        return tekst;
+    }// end of toString
+    
+    public String getBevilling()
+    {
         String bevilling = "";
         if (bevillingA )
         {
@@ -66,11 +91,8 @@ public class Lege extends Person implements Serializable
         {
             bevilling+= "C";
         }
-        
-        String tekst = super.toString();
-        tekst += "Arbeidssted: " + arbeidssted +
-                "\nBevilling for medisingruppe: " + bevilling + "\n";
-        return tekst;
-    }// end of toString
+        return bevilling;
+    }
+    
 
 } //End of class Lege

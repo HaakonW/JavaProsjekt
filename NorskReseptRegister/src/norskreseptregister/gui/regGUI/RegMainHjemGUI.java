@@ -38,6 +38,11 @@ class RegMainHjemGUI extends JPanel implements ActionListener
         regPasient.addActionListener(this);
         regLege.addActionListener(this);
         regResept.addActionListener(this);
+        
+        regPasient.setToolTipText("Registrer pasient");
+        regLege.setToolTipText("Registrer lege");
+        regResept.setToolTipText("Registrer resept");
+        
         /*label1 = new JLabel();
         label1.setIcon(regleg);
         label1.setBorder(BorderFactory.createRaisedBevelBorder());

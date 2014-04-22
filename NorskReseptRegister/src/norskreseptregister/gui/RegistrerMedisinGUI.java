@@ -31,6 +31,8 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         regMedisinnavn = new JButton("Registrer");
         visListe = new JButton("Vis liste");
         utskrift = new JTextArea(20, 20);
+        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        
         a = new JRadioButton("A");
         b = new JRadioButton("B");
         c = new JRadioButton("C");

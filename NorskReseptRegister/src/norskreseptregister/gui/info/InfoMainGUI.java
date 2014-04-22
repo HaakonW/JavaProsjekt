@@ -12,18 +12,23 @@ import java.awt.image.*;
 import java.io.*;
 import javax.imageio.*;
 import javax.swing.*;
+import norskreseptregister.Reg.RegisterSystem;
 
 public class InfoMainGUI extends JPanel
 {
     private JTabbedPane tabbedPane;
-    InfoMainHjemGUI panel1 = new InfoMainHjemGUI();
-    LegeInfoGUI panel2 = new LegeInfoGUI();
+    InfoMainHjemGUI panel1;
+    LegeInfoGUI panel2;
     //PasientInfoGUI panel3 = new PasientInfoGUI();
-    StatestikkGUI panel4 = new StatestikkGUI();
+    MedisinInfoGUI panel4;
+    private RegisterSystem system;
 
     
-    public InfoMainGUI()
-    {       
+    public InfoMainGUI(RegisterSystem system)
+    {
+        panel1 = new InfoMainHjemGUI();
+        panel2 = new LegeInfoGUI(system);
+        panel4 = new MedisinInfoGUI();
         JTabbedPane tabbedPane = new JTabbedPane();
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
         ImageIcon epille = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
@@ -37,13 +42,13 @@ public class InfoMainGUI extends JPanel
         add(tabbedPane);
     }
     
-    private static void createAndShowGUI()
+    private static void createAndShowGUI(RegisterSystem system)
     {
         //Create and set up the window.
         JFrame frame = new JFrame("Informasjon");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500,400);
-        frame.getContentPane().add(new InfoMainGUI(), BorderLayout.CENTER);
+        frame.getContentPane().add(new InfoMainGUI(system), BorderLayout.CENTER);
         
         frame.setVisible(true);
         frame.pack(); 

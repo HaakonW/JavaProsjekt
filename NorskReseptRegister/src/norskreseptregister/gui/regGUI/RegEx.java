@@ -14,7 +14,7 @@ public class RegEx
     
     private void testFornavn()
     {
-        fornavn = fornavnfelt.getText();
+        //fornavn = fornavnfelt.getText();
         fornavn.matches("[a-zA-Z]");
     }
     

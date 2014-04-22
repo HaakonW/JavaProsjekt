@@ -6,6 +6,7 @@ Sist endret 09-04-2014
 
 package norskreseptregister.gui.regGUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,6 +14,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -90,6 +92,8 @@ public class RegistrerResept extends JPanel implements ActionListener
         anvisning = new JTextArea(5,20);
         //JScrollPane sp = new JScrollPane(anvisning); //PRøvde å få til scroller
         utskrift = new JTextArea(20,20);
+        
+        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         
         regResept.addActionListener(this);
         visListe.addActionListener(this);

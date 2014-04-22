@@ -36,7 +36,7 @@ public class AdminMain extends JPanel
         ImageIcon epille = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
         
         tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
-        tabbedPane.addTab("Endre Lisens for lege", elege, panel3, "Lege");
+        tabbedPane.addTab("Endre Lisens for lege", elege, panel3, "Endre lisens for Lege");
         tabbedPane.addTab("Registrer medisin", epille, panel4, "Registrer Medisin");
         add(tabbedPane);
         
