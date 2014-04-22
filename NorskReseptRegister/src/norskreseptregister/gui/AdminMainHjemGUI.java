@@ -15,7 +15,7 @@ class AdminMainHjemGUI extends JPanel
 {
     //private JButton endreLisens, medisin;
     private JPanel panel2, panel1;
-    private JLabel label1, label2;
+    private JLabel label1;
     private JButton knapp1, knapp2;
     LegeLisensGUI paneltest;
     private RegisterSystem system;
@@ -28,65 +28,39 @@ class AdminMainHjemGUI extends JPanel
         ImageIcon modLeg = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
         ImageIcon regPill = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
         
+        label1 = new JLabel("Velkommen til Admindelen av programmet. Her kan du oppdatere en lege sin lisens eller legge inn nye medisiner");
+        label1.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        
         knapp1 = new JButton(modLeg);
         knapp2 = new JButton(regPill);
         
         knapp1.setFocusPainted(false);
         knapp2.setFocusPainted(false);
         
-        /*label1 = new JLabel();        
-        label1.setIcon(modLeg); 
-        label1.setBorder(BorderFactory.createRaisedBevelBorder());        
-
-        
-        label2 = new JLabel();        
-        label2.setIcon(regPill);
-        label2.setBorder(BorderFactory.createRaisedBevelBorder());
+        knapp1.setToolTipText("Endre lisens for lege");
+        knapp2.setToolTipText("Registrer ny medisin");        
        
-        
-        panel1 = new JPanel();
-        panel1.add(label1);
-        panel1.addMouseListener(new MouseAdapter() 
-        {
-        //@Override        
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("DU TRYKKET PÅ ENDRE LEGE");
-            }
-        }
-        );
-        
-        panel2 = new JPanel();
-        panel2.add(label2);
-        panel2.addMouseListener(new MouseAdapter() 
-        {
-        //@Override        
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("DU TRYKKET PÅ ENDRE LISENS");
-            }
-        }
-        );
-        
-        //panel1.add(regPill):*/
         
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
-       /* gc.gridx = 0;
-        gc.gridy = 0;
-        gc.insets = new Insets(10, 5, 5, 10);
-        add(panel1, gc);
         
-        gc.gridx = 1;
-        gc.gridy = 0;
-        add(panel2, gc);*/  
+        gc.gridx= 0;
+        gc.gridy= 0;
+        gc.insets = new Insets(0,20,40,20);
+        gc.gridwidth = 3;         
+        gc.fill = GridBagConstraints.HORIZONTAL;
+        add(label1, gc);
         
         gc.gridx = 0;
-        gc.gridy = 1;
+        gc.gridy = 1; 
+        gc.gridwidth = 1;
+        gc.insets = new Insets(0,100,0,0);
         add(knapp1, gc);
         
-        gc.gridx = 1;
+        gc.gridx = 2;
         gc.gridy = 1;
+        gc.gridwidth = 1;
+        gc.fill = GridBagConstraints.NONE;
         add(knapp2, gc);
     }
     
