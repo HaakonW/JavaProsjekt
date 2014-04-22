@@ -9,6 +9,7 @@ package norskreseptregister.gui.info;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.LegeLisensGUI;
 
 class InfoMainHjemGUI extends JPanel
@@ -16,10 +17,12 @@ class InfoMainHjemGUI extends JPanel
     private JButton knapp1, knapp2, knapp3, knapp4, knapp5, knapp6;
     private JPanel panel3, panel2, panel1;
     private JLabel label1, label2, label3;
-    LegeLisensGUI paneltest = new LegeLisensGUI();
+    LegeLisensGUI paneltest;
+    private RegisterSystem system;
 
     public InfoMainHjemGUI()
     {
+        this.paneltest = new LegeLisensGUI(system);
         ImageIcon legeinf = new ImageIcon("src/norskreseptregister/gui/bilder/docinfo.png");
         ImageIcon pasinf = new ImageIcon("src/norskreseptregister/gui/bilder/pasinfo.png");
         ImageIcon medinf = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");

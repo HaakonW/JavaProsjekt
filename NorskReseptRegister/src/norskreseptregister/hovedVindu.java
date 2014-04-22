@@ -118,7 +118,7 @@ public class hovedVindu extends JFrame
 
                 //plassere et panel i det nye interne vinduet
                 //Container intern = internvindu.getContentPane();
-                AdminMain ny = new AdminMain();
+                AdminMain ny = new AdminMain(system);
                 internvindu.add(ny, BorderLayout.CENTER);
 
                 internvindu.setDefaultCloseOperation(

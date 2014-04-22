@@ -7,22 +7,32 @@ Sist endret 09-04-2014
 package norskreseptregister.gui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
-//usikker på om vi bare kan importere swing.*; ????
+import norskreseptregister.ObjektKlasser.Lege;
+import norskreseptregister.Reg.LegeRegister;
+import norskreseptregister.Reg.RegisterSystem;
+import norskreseptregister.gui.regGUI.RegistrerResept;
+import norskreseptregister.gui.regGUI.VelgPersonGUI;
 
-public class LegeLisensGUI extends JPanel
+public class LegeLisensGUI extends JPanel implements ActionListener
 {
    private JLabel fornavnlabel, etternavnlabel;
-   private JTextField fornavnfelt, etternavnfelt;
-   private JButton sokLege, endreLisens, hjelp;
+   private JTextField legedatafelt, etternavnfelt;
+   private JButton velgLege, sokLege, endreLisens, hjelp;
    private JTextArea utskrift;
    private JCheckBox a, b, c;
    private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
+   private Lege lege;
+   private final RegisterSystem system;
    
-   public LegeLisensGUI()
+   public LegeLisensGUI(RegisterSystem system)
    {
-       fornavnfelt = new JTextField(20);
+       this.system = system;
+       legedatafelt = new JTextField(20);
        etternavnfelt = new JTextField(20);
+       velgLege = new JButton("...");
        sokLege = new JButton("Søk etter lege");
        endreLisens = new JButton("Endre bevilling");
        hjelp = new JButton("Hjelp");
@@ -34,11 +44,14 @@ public class LegeLisensGUI extends JPanel
        b = new JCheckBox("B");
        c = new JCheckBox("C");
        
+       velgLege.addActionListener(this);
+       
        ////PANEL START///
        
        panel1 = new JPanel();
        panel1.add(fornavnlabel);
-       panel1.add(fornavnfelt);
+       panel1.add(legedatafelt);
+       panel1.add(velgLege);
        
        
        panel2 = new JPanel();
@@ -102,7 +115,34 @@ public class LegeLisensGUI extends JPanel
         gc.gridheight = 6;
         add(panel6, gc);
 
-        utskrift.setEditable(false); 
- 
+        utskrift.setEditable(false);
    }//end of konstruktør LegeLisensGUI
+    
+   public void VelgLege()
+    {
+        // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
+        LegeRegister legeRegister = system.getLegeRegister();
+        DefaultListModel model = new DefaultListModel();
+        for (Lege l : legeRegister.FinnAlle())
+        {
+            model.addElement(l.toString());
+        }
+
+        VelgPersonGUI velgLege = new VelgPersonGUI(model);
+        velgLege.setLocationRelativeTo(this);
+        velgLege.setVisible(true);
+        int valgtIndex = velgLege.getValgtIndex();
+        if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
+        {
+            lege = legeRegister.HentEttElement(valgtIndex);
+            legedatafelt.setText(lege.getNavn());
+        }
+    }
+   public void actionPerformed(ActionEvent e)
+   {
+       if (e.getSource() == velgLege)
+       {
+           VelgLege();
+       }
+   }
 }//end of class LegeLisensGUI

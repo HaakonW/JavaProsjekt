@@ -1,8 +1,8 @@
 /*
  Filen inneholder GUI for å kunne registere en medisin og legge de i en 
  egenopprettet liste.
- Laget av Peter Wilhelmsen
- Sist endret 07-04-14
+ Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
+ Sist endret 22-04-14
  */
 package norskreseptregister.gui;
 
@@ -17,6 +17,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
 {
 
     private Medisinliste medisinliste;
+    private Medisin medisin;
     private JTextField regNavn, regAtc;
     private JButton regMedisinnavn, visListe;
     private JTextArea utskrift, regAnvisning;
@@ -25,7 +26,6 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
 
     public RegistrerMedisinGUI()
     {
-
         regNavn = new JTextField(10);
         regAtc = new JTextField(10);
         regMedisinnavn = new JButton("Registrer");
@@ -109,8 +109,8 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
     {
         if (!regNavn.getText().equals(""))
         {
-            Medisin ny = new Medisin(regNavn.getText(), regAtc.getText()); // HUSK Å SENDE MED ATC
-
+            Medisin ny = new Medisin(regNavn.getText(), regAtc.getText());
+            SetMedisinGruppe(ny);
             medisinliste.settInn(ny);
             utskrift.setText("Medisin registrert:\n " + ny.toString());
             return ny;
@@ -118,25 +118,21 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         return null;
     }
 
-    /*public boolean MedisinGruppe()
-     {
-     if (a.isSelected())
-     {
-     Medisin.getGruppeA();
-     return true;
-     }
-     else if (b.isSelected())
-     {
-     Medisin.getGruppeB();
-     return true;
-     }
-     else if (c.isSelected())
-     {
-     Medisin.getGruppeC();
-     return true;
-     }
-     return false;
-     }*/
+    public void SetMedisinGruppe(Medisin medisin)
+    {
+        if (a.isSelected())
+        {
+            medisin.setGruppeA(true);
+        }
+        else if (b.isSelected())
+        {
+            medisin.setGruppeB(true);
+        }
+        else if (c.isSelected())
+        {
+            medisin.setGruppeC(true);
+        }
+    }
     // Lese objekt fra fil  - HUSK Å IMPORTER java.io.*;
     public void lesObjektFraFil()
     {
@@ -186,6 +182,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
     public void tomFelter()
     {
         regNavn.setText("");
+        regAtc.setText("");
     }
 
     public void actionPerformed(ActionEvent e)

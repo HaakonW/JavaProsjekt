@@ -247,7 +247,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         }
     }
     
-    private void VelgLege()
+    public void VelgLege()
     {
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
         LegeRegister legeRegister = system.getLegeRegister();

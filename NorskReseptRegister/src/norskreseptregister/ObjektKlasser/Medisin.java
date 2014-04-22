@@ -3,7 +3,7 @@ Filen inneholder klassen Medisin og metoder/program for at vi kan legge
 inn medisiner på en fil, slik at hovedprogrammet kan sjekke om medisinen finnes
 når en resepet skal skrives ut.
 Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
-Sist endret 11-04-2014
+Sist endret 22-04-2014
  */
 
 package norskreseptregister.ObjektKlasser;
@@ -30,6 +30,21 @@ public class Medisin implements Serializable
         gruppeA = false;
         gruppeB = false;
         gruppeC = false;
+    }
+
+    public void setGruppeA(boolean gruppeA)
+    {
+        this.gruppeA = gruppeA;
+    }
+
+    public void setGruppeB(boolean gruppeB)
+    {
+        this.gruppeB = gruppeB;
+    }
+
+    public void setGruppeC(boolean gruppeC)
+    {
+        this.gruppeC = gruppeC;
     }
     
     //For å kunne sjekke navnet i medisinliste
@@ -76,10 +91,9 @@ public class Medisin implements Serializable
         {
             medisinGruppe+= "C ";
         }
-        
         String tekst = "";
         tekst += navn + " - " + atcNr
-              + "Medisingruppe: " + medisinGruppe;
+              + " - Medisingruppe: " + medisinGruppe;
         return tekst;
     }
  
