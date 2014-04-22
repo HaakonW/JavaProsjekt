@@ -29,6 +29,7 @@ public class LegeLisensGUI extends JPanel
        fornavnlabel = new JLabel("Fornavn:");
        etternavnlabel = new JLabel("Etternavn:");
        utskrift = new JTextArea(20,20);
+       utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
        a = new JCheckBox("A");
        b = new JCheckBox("B");
        c = new JCheckBox("C");
