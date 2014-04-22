@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class Pasient extends Person implements Serializable
 {
+    private static final long serialVersionUID = 3L;
     private String fodselsdato;
     
     public Pasient()

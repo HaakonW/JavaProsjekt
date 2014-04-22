@@ -12,6 +12,7 @@ import java.io.*;
 
 public class Medisin implements Serializable
 {
+    private static final long serialVersionUID = 5L;
     private String navn;
     private String atcNr;
     private boolean gruppeA;

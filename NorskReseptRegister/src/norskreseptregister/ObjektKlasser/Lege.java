@@ -11,6 +11,7 @@ import java.io.Serializable;
 
 public class Lege extends Person implements Serializable
 {
+    private static final long serialVersionUID = 2L;
     private String arbeidssted;
     private boolean bevillingA;
     private boolean bevillingB;

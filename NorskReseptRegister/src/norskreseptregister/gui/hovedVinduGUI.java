@@ -152,7 +152,3 @@ public class hovedVinduGUI extends JPanel
         }*/
         
     //}//end of class Knappelytter
-  
-       
-
-

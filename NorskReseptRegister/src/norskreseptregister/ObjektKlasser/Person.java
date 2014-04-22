@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public abstract class Person implements Serializable
 {
+    private static final long serialVersionUID = 1L;
     private String fornavn;
     private String etternavn;
 
@@ -32,11 +33,16 @@ public abstract class Person implements Serializable
     {
             return etternavn;
     }
+    
+    public String getNavn()
+    {
+        return etternavn + " , " + fornavn;
+    }
 
     public String toString()
     {
             String tekst = "";
-            tekst+= "Navn : " + fornavn + " " + etternavn + "\n";
+            tekst+=fornavn + " " + etternavn + ",\n";
             return tekst;
     }  
 }//End of class Person

@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class Resept implements Serializable
 {
+    private static final long serialVersionUID = 4L;
     private String dato;
     private Pasient pasientdata;
     private Lege legedata;
