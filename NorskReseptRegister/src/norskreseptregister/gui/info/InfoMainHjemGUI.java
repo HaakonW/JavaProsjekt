@@ -18,6 +18,9 @@ class InfoMainHjemGUI extends JPanel
     private JLabel label1, label2, label3;
     LegeLisensGUI paneltest = new LegeLisensGUI();
 
+<<<<<<< HEAD
+}
+=======
     public InfoMainHjemGUI()
     {
      
@@ -116,3 +119,4 @@ class InfoMainHjemGUI extends JPanel
   
     
 }//end of class AdminMainHjemGUI
+>>>>>>> FETCH_HEAD

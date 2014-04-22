@@ -45,6 +45,19 @@ public class InfoMainGUI extends JPanel
         frame.setSize(500,400);
         frame.getContentPane().add(new InfoMainGUI(), BorderLayout.CENTER);
         
+<<<<<<< HEAD
+    }
+   });
+  }
+  /*
+  public static void main(String[] args)
+  {
+    InfoSystem system = new InfoSystem();
+    createAndShowGUI(system);
+  }*/
+    
+}//end of class RegMainGUI
+=======
         frame.setVisible(true);
         frame.pack(); 
 
@@ -55,3 +68,4 @@ public class InfoMainGUI extends JPanel
   }
     
 }//end of class InfoMainGUI
+>>>>>>> FETCH_HEAD
