@@ -74,7 +74,7 @@ public class Medisin implements Serializable
         }
         if (gruppeC )
         {
-            medisinGruppe+= "C";
+            medisinGruppe+= "C ";
         }
         
         String tekst = "";
