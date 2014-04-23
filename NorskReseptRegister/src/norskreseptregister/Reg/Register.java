@@ -23,11 +23,12 @@ public abstract class Register<T>
 {
     private ArrayList<T> list;
     
+    //I konstruktøren instansieres en tom liste av <T>
     public Register()
     {
-        list = new ArrayList<T>(); //instansiere en tom liste av <T>
+        list = new ArrayList<T>(); 
     }
-
+    //Meotde for å sette inn et objekt
     public void SettInn(T nyttObjekt)
     {
         list.add(nyttObjekt);
@@ -46,17 +47,17 @@ public abstract class Register<T>
         }
         return resultat;
     }
-    
+    //Metode for å hente ut et objekt av valgt index
     public T HentEttObjekt(int index)
     {
         return list.get(index);
     }
-    
+    //Metode som returnerer alle objektene i listen ArrayList av type T
     public ArrayList<T> FinnAlleObjekter()
     {
         return list;
     }
-    
+    //Metode for å skrive til en tekstfil
     public void SkrivTilFil(String filNavn)
     {
         try (ObjectOutputStream utfil = new ObjectOutputStream(
@@ -74,7 +75,7 @@ public abstract class Register<T>
             System.out.println("Kan ikke skrive til fil!");
         }
     }
-    
+    //Metode for å lese fra en tekstfil.
     public void LesFraFil(String filNavn)  
     {
         try (ObjectInputStream innfil = new ObjectInputStream(

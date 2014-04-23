@@ -23,7 +23,7 @@ public abstract class Person implements Serializable
             this.fornavn = fornavn;
             this.etternavn = etternavn;
     }
-
+    //Get metoder
     public String getFornavn()
     {
             return fornavn;
@@ -38,7 +38,7 @@ public abstract class Person implements Serializable
     {
         return etternavn + " , " + fornavn;
     }
-
+    //toString metoden returnerer en informativ tekst om den aktuelle personen
     public String toString()
     {
             String tekst = "";

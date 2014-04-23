@@ -66,8 +66,6 @@ class AdminMainHjemGUI extends JPanel
         gc.gridx = 1;
         gc.gridy = 2;
         add(label2, gc);
-    }
-    
-  
-    
+    }//end of konstruktør
+
 }//end of class AdminMainHjemGUI

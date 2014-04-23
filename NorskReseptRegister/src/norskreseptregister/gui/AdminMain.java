@@ -1,5 +1,5 @@
 /*
-Filen inneholder AdminMain klassen.
+Filen inneholder AdminMain klassen. AdminMain 
 Laget av  Peter Wilhelmsen, Haakon Winter, Henrik Fischer Bjelland
 Sist endret 09-04-2014
 */
@@ -24,6 +24,7 @@ public class AdminMain extends JPanel
     RegistrerMedisinGUI panel4;    
     private RegisterSystem system;
     
+    //Newer opp GUI klasser og legger disse til å forskjellige tabbedPanes
     public AdminMain(RegisterSystem system)
     {
         this.system = system;
@@ -41,7 +42,7 @@ public class AdminMain extends JPanel
         add(tabbedPane);
         
     }
-    
+    //Metode for å vise og sette størrelse på vinudet
     private static void createAndShowGUI(RegisterSystem system)
     {
       //Create and set up the window.
@@ -49,8 +50,6 @@ public class AdminMain extends JPanel
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setSize(300,200);
       frame.getContentPane().add(new AdminMain(system), BorderLayout.CENTER);
-
-      //Display the window.
 
       frame.setVisible(true);
       frame.pack(); // Litt kranglete med størrelsen
@@ -62,8 +61,4 @@ public class AdminMain extends JPanel
       frame.setLocation(x, y);*/
     }
 
-    /*public static void main(String[] args)
-    {
-      createAndShowGUI();
-    }*/
 }//end of class AdminMain

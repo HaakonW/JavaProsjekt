@@ -32,6 +32,7 @@ public class Medisin implements Serializable
         gruppeC = false;
     }
 
+    //Set metoder for medisingruppene
     public void setGruppeA(boolean gruppeA)
     {
         this.gruppeA = gruppeA;
@@ -52,12 +53,12 @@ public class Medisin implements Serializable
     {
         return navn;
     }
-    
+    //Get metode for AtcNr
     public String getAtcNr()
     {
         return atcNr;
     }
-    
+    //get metoder for medisingruppene
     public boolean getGruppeA()
     {
         return gruppeA;
@@ -73,9 +74,7 @@ public class Medisin implements Serializable
         return gruppeC;
     }
             
-    /* Vet ikke om vi får bruk for denne
-    MÅ returnere navn eller atcnr, sjekk 
-    */
+    //Denne metoden returnerer en informativ tekst om en medisin.
     public String toString()
     {
         String medisinGruppe = "";
@@ -96,5 +95,4 @@ public class Medisin implements Serializable
               + " - Medisingruppe: " + medisinGruppe;
         return tekst;
     }
- 
 }// end of class Medisin

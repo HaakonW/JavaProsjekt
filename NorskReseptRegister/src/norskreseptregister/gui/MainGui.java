@@ -1,5 +1,5 @@
 /*
-Filen inneholder klassen MainGui
+Filen inneholder klassen MainGui som er en test. 
 Laget av Haakon Winther
 Sist endret 09-04-2014
 */

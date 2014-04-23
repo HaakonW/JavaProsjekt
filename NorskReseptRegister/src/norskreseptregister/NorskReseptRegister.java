@@ -15,10 +15,9 @@ import norskreseptregister.gui.regGUI.RegMainGUI;
 
 public class NorskReseptRegister
 {
-
+    //Dette er main-metoden der hovedVindu blir kalt og programmet starer
     public static void main(String[] args)
     {
-        
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run()

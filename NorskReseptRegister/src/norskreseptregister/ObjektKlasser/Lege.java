@@ -1,6 +1,6 @@
 /*
 Filen inneholder klassen Lege, som er subklasse til superklassen Person.
-Variabler, getmetoder og toString for lege.
+Variabler, get- og setmetoder og toString for lege.
 Laget av  Peter Wilhelmsen, Henrik Fischer Bjelland
 Sist endret 10-04-2014 
 */
@@ -30,7 +30,7 @@ public class Lege extends Person implements Serializable
         bevillingB = true;
         bevillingC = true;
     }
-
+    //Set metoder for de forskjellige bevillingene
     public void setBevillingA(boolean bevillingA)
     {
         this.bevillingA = bevillingA;
@@ -46,11 +46,12 @@ public class Lege extends Person implements Serializable
         this.bevillingC = bevillingC;
     }
     
+    //Get metode for arbeidssted
     public String getArbeidssted()
     {
         return arbeidssted;
     }
-    
+    //Get metoder for de forskjellige bevillingene
     public boolean getBevillingA()
     {
         return bevillingA;
@@ -66,6 +67,7 @@ public class Lege extends Person implements Serializable
         return bevillingC;
     }
     
+    //Denne metoden returnerer en informativ tekst om legen som blir opprettet.
     public String toString()
     {
         String bevilling = getBevilling();
@@ -76,6 +78,7 @@ public class Lege extends Person implements Serializable
         return tekst;
     }// end of toString
     
+    //Denne metoden henter og skriver den valgte bevillingen for en lege.
     public String getBevilling()
     {
         String bevilling = "";

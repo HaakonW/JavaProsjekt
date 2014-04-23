@@ -1,6 +1,6 @@
 /*
  Filen inneholder klassen Midisinliste og er en egendefinert liste over
- alle medisine i programmet vårt. 
+ alle medisinene i programmet vårt. 
  Laget av  Peter Wilhelmsen, Henrik Fischer Bjelland
  Sist endret  21-04-2014 
  */
@@ -22,7 +22,7 @@ public class Medisinliste implements Serializable
         hode = null;
     }
 
-    //Sette inn medisiner i lista
+    //Metoden sette inn medisiner i lista
     public void settInn(Medisin ny)
     {
         if (ny != null)
@@ -90,6 +90,7 @@ public class Medisinliste implements Serializable
         return liste;
     }
     
+    //HentEttElement brukes til å søke igjennom medisinlisten vår og finne en bestemt medisin
     public Medisin HentEttElement(int index)
     {
         Medisin hjelp = hode;
@@ -106,7 +107,7 @@ public class Medisinliste implements Serializable
         }
         return null;
     }
-
+    //Metode for å lese fra tekstfilen medisinliste.
     public static Medisinliste lesObjektFraFil()
     {
         try(ObjectInputStream innfil = new ObjectInputStream(

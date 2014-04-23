@@ -22,12 +22,12 @@ public class Pasient extends Person implements Serializable
         super(fornavn,etternavn);
         this.fodselsdato = fodselsdato;
     }
-    
+    //Get metode for fødselsdato
     public String getFodselsdato()
     {
         return fodselsdato;
     }
-    
+    //toString metoden returnerer en informativ tekst om en spesifikk pasient
     public String toString()
     {
         String tekst = super.toString();

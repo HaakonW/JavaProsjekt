@@ -75,8 +75,8 @@ public class Resept implements Serializable
             tekst += "Utskrevet dato: " + dato + 
                     "\nPasient: " + pasientdata + 
                     "\nLege: " + legedata +  
-                    "\n Medisin" + medisindata + 
-                    "\n Mengde; " + mengde +
+                    "\n Medisin: " + medisindata + 
+                    "\n Mengde: " + mengde +
                     //"\n Kategori: " + kategori + 
                     "\n Anvisning: " + anvisning;
             return tekst;

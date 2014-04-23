@@ -1,7 +1,8 @@
 /*
- Filen inneholder klassen LegeLisensGUI.
- Laget av  Haakon Winther
- Sist endret 09-04-2014
+Filen inneholder klassen LegeLisensGUI. Klassen er ment for å kunne velge en lege og endre lisensen
+på denne legen.
+Laget av  Haakon Winther, Henrik Fischer Bjelland
+Sist endret 22-04-2014
  */
 package norskreseptregister.gui;
 
@@ -17,7 +18,6 @@ import norskreseptregister.gui.regGUI.VelgPersonGUI;
 
 public class LegeLisensGUI extends JPanel implements ActionListener
 {
-
     private JLabel fornavnlabel, etternavnlabel;
     private JTextField legedatafelt;
     private JButton velgLege, endreLisens, hjelp;
@@ -36,7 +36,6 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         hjelp = new JButton("?");
         hjelp.setPreferredSize(new Dimension(20, 20));
         
-
         fornavnlabel = new JLabel("Fornavn:");
         etternavnlabel = new JLabel("Etternavn:");
 
@@ -52,7 +51,6 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         endreLisens.addActionListener(this);
         hjelp.addActionListener(this);
 
-        
         velgLege.setToolTipText("Velg lege");
 
         ////PANEL START///
@@ -104,7 +102,8 @@ public class LegeLisensGUI extends JPanel implements ActionListener
 
         utskrift.setEditable(false);
     }//end of konstruktør LegeLisensGUI
-
+    
+    //Denne metoden søker igjennom hele legeregisterer og viser et nytt vindu med alle legene der du kan velge en av disse.
     public void VelgLege()
     {
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
@@ -125,7 +124,10 @@ public class LegeLisensGUI extends JPanel implements ActionListener
             legedatafelt.setText(lege.getNavn());
         }
     }
-    
+    /*Metoden sjekker om noen av JCheckboxene er trykket på og endrer
+    da bevilligen til false. Den skriver også ut informasjon i tekstfeltet 
+    om hvilke endringer som har blitt gjort.
+    */
     public void endreLisens()
     {
         if (a.isSelected())
@@ -135,7 +137,6 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         else if (b.isSelected())
         {
             lege.setBevillingB(false);
-
         }
         else if (c.isSelected())
         {
@@ -145,7 +146,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         "Legen: " + lege.getNavn() + "\nHar nå bevilling i følgede reseptgrupper: \n"+ 
         lege.getBevilling());
     }
-
+    //Metodene som lytter på knappene og utfører de forskjellige metodene i programmet.
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == velgLege)

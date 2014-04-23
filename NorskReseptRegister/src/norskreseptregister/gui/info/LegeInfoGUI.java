@@ -116,7 +116,6 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     
     public void VelgLege()
     {
-        // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
         LegeRegister legeRegister = system.getLegeRegister();
         DefaultListModel model = new DefaultListModel();
         for (Lege l : legeRegister.FinnAlleObjekter())
@@ -151,7 +150,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     {
         if ( lege != null)
         {
-                FinnResepterForLege query = new FinnResepterForLege(lege);
+            FinnResepterForLege query = new FinnResepterForLege(lege);
             ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
             String alleResepterForLege ="";
             for (Resept r : reseptene)

@@ -213,5 +213,4 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
             JOptionPane.showMessageDialog(null, "HJELP Pille");
         }
     }
-
 }//end of class MedisinGUI

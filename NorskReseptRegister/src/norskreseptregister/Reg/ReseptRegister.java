@@ -1,7 +1,7 @@
 /*
-Filen inneholder klassen ReseptRegister
+Filen inneholder klassen ReseptRegister som arvaer av Register klassen.
 Laget av  Henrik Fischer Bjelland
-Sist endret 10-04-2014
+Sist endret 22-04-2014
 */
 
 package norskreseptregister.Reg;
