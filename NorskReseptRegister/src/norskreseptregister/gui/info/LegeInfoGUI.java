@@ -6,12 +6,14 @@
 package norskreseptregister.gui.info;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.JPanel;
 import norskreseptregister.ObjektKlasser.Lege;
@@ -27,19 +29,21 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     private JTextArea utskrift;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
     private JLabel fornavnlabel, etternavnlabel;
-    private JButton knapp1, knapp2, knapp3, velgLege;
+    private JButton visAlleLeger, visAlleResepterPaaLege, visResepteriGruppe, velgLege;
     private JCheckBox a, b, c;
     private Lege lege;
     private RegisterSystem system;
+    private LegeRegister legeRegister;
 
-    public LegeInfoGUI(RegisterSystem system)
+    public LegeInfoGUI(RegisterSystem system, LegeRegister legeRegister)
     {
         this.system = system;
+        this.legeRegister = legeRegister;
         fornavnlabel = new JLabel("Fornavn   ");
         legedatafelt = new JTextField(20);
-        knapp1 = new JButton("Vis alle leger");
-        knapp2 = new JButton("Vis alle resepeter på lege");
-        knapp3 = new JButton("Vis resepter i kategori");
+        visAlleLeger = new JButton("Vis alle leger i registeret");
+        visAlleResepterPaaLege = new JButton("Vis resepter legen har skrevet ut");
+        visResepteriGruppe = new JButton("Vis resepter i gruppe");
         velgLege = new JButton("...");
         
         utskrift = new JTextArea(20,20);
@@ -50,7 +54,10 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         c = new JCheckBox("C");
         
         velgLege.addActionListener(this);
-        knapp2.addActionListener(this);
+        visAlleLeger.addActionListener(this);
+        visAlleResepterPaaLege.addActionListener(this);
+        
+        velgLege.setPreferredSize(new Dimension(20, 20));
         
         ///PANELS START ////
         
@@ -61,14 +68,14 @@ public class LegeInfoGUI extends JPanel implements ActionListener
        
        
        panel3 = new JPanel();
-       panel3.add(knapp1);
-       panel3.add(knapp2);
+       panel3.add(visAlleLeger);
+       panel3.add(visAlleResepterPaaLege);
        
        panel4 = new JPanel();
        panel4.add(a);
        panel4.add(b);
        panel4.add(c);
-       panel4.add(knapp3);
+       panel4.add(visResepteriGruppe);
        
        panel5 = new JPanel();
        panel5.add(utskrift);
@@ -104,7 +111,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         add(panel5, gc);
 
         utskrift.setEditable(false); 
-    }
+    }//end of Konstruktør
     
     public void VelgLege()
     {
@@ -127,6 +134,18 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         }
     }
     
+    private void visAlleLeger()
+    {
+        String legeliste = "";
+        List <Lege> list = system.getLegeRegister().FinnAlleObjekter();
+        for (Lege lege : list)
+        {
+            legeliste+= lege.toString();
+            legeliste +="\n\n";
+        }
+        utskrift.setText(legeliste);
+    }
+        
     public void visResepterForLege()
     {
         if ( lege != null)
@@ -153,7 +172,11 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         {
             VelgLege();
         }
-        else if (e.getSource() == knapp2)
+        else if (e.getSource() == visAlleLeger)
+        {
+            visAlleLeger();
+        }
+        else if (e.getSource() == visAlleResepterPaaLege)
         {
             visResepterForLege();
         }

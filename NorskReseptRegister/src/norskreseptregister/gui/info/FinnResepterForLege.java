@@ -1,5 +1,5 @@
 /*
-Filen inneholder klassen FinnResepterForLege
+Filen inneholder klassen FinnResepterForLege. 
 Laget av  Henrik Fischer Bjelland
 Sist endret 22-04-2014
 */

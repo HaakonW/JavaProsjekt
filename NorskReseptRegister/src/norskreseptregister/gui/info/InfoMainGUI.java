@@ -12,6 +12,8 @@ import java.awt.image.*;
 import java.io.*;
 import javax.imageio.*;
 import javax.swing.*;
+import norskreseptregister.Reg.LegeRegister;
+import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
 
 public class InfoMainGUI extends JPanel
@@ -19,15 +21,18 @@ public class InfoMainGUI extends JPanel
     private JTabbedPane tabbedPane;
     InfoMainHjemGUI panel1;
     LegeInfoGUI panel2;
-    //PasientInfoGUI panel3 = new PasientInfoGUI();
+    PasientInfoGUI panel3;
     MedisinInfoGUI panel4;
     private RegisterSystem system;
+    private LegeRegister legeRegister;
+    private PasientRegister pasientRegister;
 
     
     public InfoMainGUI(RegisterSystem system)
     {
         panel1 = new InfoMainHjemGUI();
-        panel2 = new LegeInfoGUI(system);
+        panel2 = new LegeInfoGUI(system, legeRegister);
+        panel3 = new PasientInfoGUI(system, pasientRegister);
         panel4 = new MedisinInfoGUI();
         JTabbedPane tabbedPane = new JTabbedPane();
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
@@ -37,7 +42,7 @@ public class InfoMainGUI extends JPanel
         
         tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
         tabbedPane.addTab("Legeinfo", docinfo, panel2, "Lege");
-        //tabbedPane.addTab("PasientInfo", pasinfo, panel3, "Pasient");
+        tabbedPane.addTab("PasientInfo", pasinfo, panel3, "Pasient");
         tabbedPane.addTab("Medisininfo", epille, panel4, "Legemiddel");
         add(tabbedPane);
     }
