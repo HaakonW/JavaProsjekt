@@ -49,34 +49,29 @@ public class RegistrerResept extends JPanel implements ActionListener
     private Medisin medisin;
     
     public RegistrerResept(RegisterSystem system, Medisinliste medisinliste)
-    {
+        {
         this.system = system;
         this.medisinliste = medisinliste;
-        datofelt = new JTextField(20); // LYTTERKLASSE SOM KALLER PÅ .GETTIME() ?
-        pasientdatafelt = new JTextField(21);
-
+        datofelt = new JTextField(20);
+        pasientdatafelt = new JTextField(20);
+        pasientdatafelt.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black)); //?????///
         legedatafelt = new JTextField(20);
         medisindatafelt = new JTextField(20);
         mengdefelt = new JTextField(20);
-        //kategorifelt = new JTextField(20);     
-
-        datolabel = new JLabel("Dato");
+        //kategorifelt = new JTextField(20);
+        
+        datolabel = new JLabel("Dato  ");
         pasientdatalabel = new JLabel("Pasient");
-
         legedatalabel = new JLabel("Lege");
         medisindatalabel = new JLabel("Medisin");
         mengdelabel = new JLabel("Mengde");
         kategorilabel = new JLabel("Kategori");
-        anvisningslabel = new JLabel("Anvisning");
         pasientdatafelt.setEditable(false);
-
         legedatafelt.setEditable(false);
         medisindatafelt.setEditable(false);
         
         regResept = new JButton("Registrer");
         visListe = new JButton("Vis liste");
-        hjelper = new JButton("?");
-        hjelper.setPreferredSize(new Dimension(25, 25));
         
         velgPasient = new JButton("...");
         velgLege = new JButton("...");
@@ -89,16 +84,16 @@ public class RegistrerResept extends JPanel implements ActionListener
         
         anvisning = new JTextArea(5,20);
         //JScrollPane sp = new JScrollPane(anvisning); //PRøvde å få til scroller
+        anvisning.setBorder(BorderFactory.createTitledBorder(null, "Anvisning", 1, 2, null, Color.black));
         utskrift = new JTextArea(20,20);
-        
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        utskrift.setEditable(false);
         
         regResept.addActionListener(this);
         visListe.addActionListener(this);
         velgPasient.addActionListener(this);
         velgLege.addActionListener(this);
         velgMedisin.addActionListener(this);
-        hjelper.addActionListener(this);
         
         panel1 = new JPanel();
         panel1.add(datolabel);
@@ -106,25 +101,21 @@ public class RegistrerResept extends JPanel implements ActionListener
         
         panel2 = new JPanel();
         panel2.add(pasientdatalabel);
-        panel2.add(pasientdatafelt);
-        panel2.add(velgPasient);
+        panel2.add(pasientdatafelt);        
         
         panel3 = new JPanel();
         panel3.add(legedatalabel);
-        panel3.add(legedatafelt);
-        panel3.add(velgLege);
+        panel3.add(legedatafelt);        
         
         panel4 = new JPanel();        
         panel4.add(medisindatalabel);
-        panel4.add(medisindatafelt);
-        panel4.add(velgMedisin);;
+        panel4.add(medisindatafelt);        
         
         panel5 = new JPanel();
         panel5.add(mengdelabel);
         panel5.add(mengdefelt);
-        
+                
         panel7 = new JPanel();
-        panel7.add(anvisningslabel);
         panel7.add(anvisning);
               
         panel8 = new JPanel();
@@ -142,8 +133,7 @@ public class RegistrerResept extends JPanel implements ActionListener
                 
         gc.gridx = x;
         gc.gridy = y;
-        gc.insets = new Insets(5, 5, 5, 10);
-        //gc.anchor = GridBagConstraints.EAST; // MÅ FIKSE LAYOUT HER
+        gc.insets = new Insets(5, 5, 5, 10);        
         gc.fill = GridBagConstraints.HORIZONTAL; 
         add(panel1, gc);
         y++;
@@ -166,32 +156,41 @@ public class RegistrerResept extends JPanel implements ActionListener
         gc.gridx = x;
         gc.gridy = y;
         add(panel5, gc);
-        y++;     
+        y++;
         
         gc.gridx = x;
         gc.gridy = y;
         add(panel7, gc);
         y++;
-        //Slutt på første kolonne//
-        
-        //Start kolonne 2//
         
         gc.gridx = x;
         gc.gridy = y;
         add(panel8, gc);
-        x++;
+        
+        
+        // SLUTT PÅ FØRSTE KOLONNE//
+        //KOLONNE 2 STARTER//
+        x=0;
+        y=1;
+        
+        gc.gridx = ++x;
+        gc.gridy = y;
+        gc.fill = GridBagConstraints.NONE; 
+        add(velgPasient, gc);
         
         gc.gridx = x;
+        gc.gridy = ++y;
+        add(velgLege, gc);
+        
+        gc.gridx = x;
+        gc.gridy = ++y;
+        add(velgMedisin, gc);        
+        
+        gc.gridx = 3;
         gc.gridy = 0;
         gc.gridheight = 10;
         gc.fill = GridBagConstraints.VERTICAL;
         add(panel9, gc);
-        x++;
-        
-        gc.gridx = x;
-        gc.gridy = 6;
-        gc.fill = GridBagConstraints.NONE;
-        add(hjelper,gc);
     }//end of Konstruktør
     
     private void nyResept()
