@@ -54,7 +54,6 @@ public class RegistrerResept extends JPanel implements ActionListener
         this.medisinliste = medisinliste;
         datofelt = new JTextField(20);
         pasientdatafelt = new JTextField(20);
-        pasientdatafelt.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black)); //?????///
         legedatafelt = new JTextField(20);
         medisindatafelt = new JTextField(20);
         mengdefelt = new JTextField(20);
@@ -76,16 +75,19 @@ public class RegistrerResept extends JPanel implements ActionListener
         velgPasient = new JButton("...");
         velgLege = new JButton("...");
         velgMedisin = new JButton("...");
+        hjelper = new JButton("?");
+        hjelper.addActionListener(this);
         
+        hjelper.setPreferredSize(new Dimension(25, 25));
         velgPasient.setPreferredSize(new Dimension(20, 20));
         velgLege.setPreferredSize(new Dimension(20, 20));
         velgMedisin.setPreferredSize(new Dimension(20, 20));
         
         
-        anvisning = new JTextArea(5,20);
+        anvisning = new JTextArea(6,25);
         //JScrollPane sp = new JScrollPane(anvisning); //PRøvde å få til scroller
         anvisning.setBorder(BorderFactory.createTitledBorder(null, "Anvisning", 1, 2, null, Color.black));
-        utskrift = new JTextArea(20,20);
+        utskrift = new JTextArea(25,22);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         utskrift.setEditable(false);
         
@@ -133,7 +135,7 @@ public class RegistrerResept extends JPanel implements ActionListener
                 
         gc.gridx = x;
         gc.gridy = y;
-        gc.insets = new Insets(5, 5, 5, 10);        
+        gc.insets = new Insets(0, 0, 10, 0);        
         gc.fill = GridBagConstraints.HORIZONTAL; 
         add(panel1, gc);
         y++;
@@ -175,7 +177,9 @@ public class RegistrerResept extends JPanel implements ActionListener
         
         gc.gridx = ++x;
         gc.gridy = y;
+        gc.insets = new Insets(0, 0, 10, 10); 
         gc.fill = GridBagConstraints.NONE; 
+        
         add(velgPasient, gc);
         
         gc.gridx = x;
@@ -191,6 +195,12 @@ public class RegistrerResept extends JPanel implements ActionListener
         gc.gridheight = 10;
         gc.fill = GridBagConstraints.VERTICAL;
         add(panel9, gc);
+        
+        //KOLLONNE 3 STARTER//
+        gc.gridx = 4;
+        gc.gridy = 6;
+        gc.fill = GridBagConstraints.NONE;
+        add(hjelper, gc);
     }//end of Konstruktør
     
     private void nyResept()

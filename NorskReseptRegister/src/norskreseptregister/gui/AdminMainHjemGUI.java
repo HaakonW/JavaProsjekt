@@ -36,9 +36,9 @@ class AdminMainHjemGUI extends JPanel
         knapp2 = new JButton(regPill);
         
         label1 = new JLabel("Endre lisens");
-        label1.setFont(new Font ("Papyrus", Font.ITALIC, 30)); // Evig DØLL MÅ SKIFTES SENERE
+        label1.setFont(new Font ("Arial", Font.ITALIC, 30)); // Evig DØLL MÅ SKIFTES SENERE
         label2 = new JLabel("Registrer medisin");
-        label2.setFont(new Font ("Papyrus", Font.ITALIC, 30)); // Evig DØLL MÅ SKIFTES SENERE
+        label2.setFont(new Font ("Arial", Font.ITALIC, 30)); // Evig DØLL MÅ SKIFTES SENERE
         
         knapp1.setFocusPainted(false);
         knapp2.setFocusPainted(false);

@@ -23,7 +23,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     private JButton velgLege, endreLisens, hjelp;
     private JTextArea utskrift;
     private JCheckBox a, b, c;
-    private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
+    private JPanel panel1, panel2, panel3, panel4, panel6;
     private Lege lege;
     private final RegisterSystem system;
 
@@ -31,9 +31,11 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     {
         this.system = system;
         velgLege = new JButton("...");
-        endreLisens = new JButton("Endre bevilling");
-        hjelp = new JButton("Hjelp");
         velgLege.setPreferredSize(new Dimension(20, 20));
+        endreLisens = new JButton("Endre bevilling");
+        hjelp = new JButton("?");
+        hjelp.setPreferredSize(new Dimension(20, 20));
+        
 
         fornavnlabel = new JLabel("Fornavn:");
         etternavnlabel = new JLabel("Etternavn:");
@@ -48,8 +50,9 @@ public class LegeLisensGUI extends JPanel implements ActionListener
 
         velgLege.addActionListener(this);
         endreLisens.addActionListener(this);
+        hjelp.addActionListener(this);
 
-        hjelp.setToolTipText("Trykk her hvis du lurer på noe");
+        
         velgLege.setToolTipText("Velg lege");
 
         ////PANEL START///
@@ -66,9 +69,6 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         panel4.add(c);
         panel4.add(endreLisens);
 
-        panel5 = new JPanel();
-        panel5.add(hjelp);
-
         panel6 = new JPanel();
         panel6.add(utskrift);
 
@@ -78,7 +78,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
 
         gc.gridx = 0;
         gc.gridy = 0;
-        gc.insets = new Insets(10, 5, 5, 10);
+        gc.insets = new Insets(10, 10, 10, 10);
         gc.anchor = GridBagConstraints.WEST;
         gc.fill = GridBagConstraints.HORIZONTAL;
         add(panel1, gc);
@@ -93,14 +93,9 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         gc.gridy = 3;
         add(panel4, gc);
 
-        gc.gridx = 0;
-        gc.gridy = 4;
-        gc.anchor = GridBagConstraints.WEST;
-        add(panel5, gc);
-
-        gc.gridx = 0;
-        gc.gridy = 5;
-        //add(hjelp, gc);
+        gc.gridx = 3;
+        gc.gridy = 6;
+        add(hjelp, gc);
 
         gc.gridx = 2;
         gc.gridy = 0;
@@ -160,6 +155,10 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         if (e.getSource() == endreLisens)
         {
             endreLisens();
+        }
+        if(e.getSource() == hjelp)
+        {
+            JOptionPane.showMessageDialog(null, "HJELP LISENS");
         }
     }
 }//end of class LegeLisensGUI

@@ -19,17 +19,20 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
     private Medisinliste medisinliste;
     private Medisin medisin;
     private JTextField regNavn, regAtc;
-    private JButton regMedisinnavn, visListe;
+    private JButton regMedisinnavn, visListe, hjelp;
     private JTextArea utskrift, regAnvisning;
     private String medisinlisten = "lagreMedisin.txt";
     private JRadioButton a, b, c;
 
     public RegistrerMedisinGUI()
     {
-        regNavn = new JTextField(10);
-        regAtc = new JTextField(10);
+        regNavn = new JTextField(20);
+        regAtc = new JTextField(20);
         regMedisinnavn = new JButton("Registrer");
         visListe = new JButton("Vis liste");
+        hjelp = new JButton("?");
+        hjelp.setPreferredSize(new Dimension(20, 20));
+        
         utskrift = new JTextArea(20, 20);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         
@@ -39,6 +42,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
 
         regMedisinnavn.addActionListener(this);
         visListe.addActionListener(this);
+        hjelp.addActionListener(this);
         medisinliste = new Medisinliste();
 
         //For å lese listen ved oppstart
@@ -94,6 +98,11 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         gc.gridy = 0;
         gc.gridheight = 5;
         add(panel5, gc);
+        
+        gc.gridx = 3;
+        gc.gridy = 6;
+        gc.insets = new Insets(0, 10, 0, 0);
+        add(hjelp, gc);
 
         utskrift.setEditable(false);
     } //end of konstruktør MedisinGUI
@@ -198,6 +207,10 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         if (e.getSource() == visListe)
         {
             visRegister();
+        }
+        if(e.getSource() == hjelp)
+        {
+            JOptionPane.showMessageDialog(null, "HJELP Pille");
         }
     }
 
