@@ -37,84 +37,49 @@ class InfoMainHjemGUI extends JPanel
         knapp2.setToolTipText("Info om lege");
         knapp3.setToolTipText("Info om medisin");
         
-        /*label1 = new JLabel();        
-        label1.setIcon(legeinf); 
-        label1.setBorder(BorderFactory.createRaisedBevelBorder());
+        label1 = new JLabel("LegeInfo");
+        label1.setFont(new Font ("georgia", Font.BOLD, 20)); // Evig DØLL MÅ SKIFTES SENERE
+        label2 = new JLabel("PasientInfo");
+        label2.setFont(new Font ("palatino", Font.ITALIC, 20)); // Evig DØLL MÅ SKIFTES SENERE
+        label3 = new JLabel("MedisinInfo");
+        label3.setFont(new Font ("baskerville", Font.ROMAN_BASELINE, 20)); // Evig DØLL MÅ SKIFTES SENERE
         
-        label2 = new JLabel();        
-        label2.setIcon(pasinf);
-        label2.setBorder(BorderFactory.createRaisedBevelBorder());
         
-        label3 = new JLabel();        
-        label3.setIcon(medinf);
-        label3.setBorder(BorderFactory.createRaisedBevelBorder());
-              
-       
-        
-        panel1 = new JPanel();
-        panel1.add(label1);
-        panel1.addMouseListener(new MouseAdapter() 
-        {
-        //@Override        
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("DU TRYKKET PÅ LEGEINFO");
-            }
-        }
-        );
-        
-        panel2 = new JPanel();
-        panel2.add(label2);
-        panel2.addMouseListener(new MouseAdapter() 
-        {
-        //@Override        
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("DU TRYKKET PÅ PASIENTINFO");
-            }
-        }
-        );
-        
-        panel3 = new JPanel();
-        panel3.add(label3);
-        panel3.addMouseListener(new MouseAdapter() 
-        {
-        //@Override        
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("DU TRYKKET PÅ MEDISININFO");
-            }
-        }
-        );*/
-
-        //panel1.add(regPill):
+   
         
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
-        /*gc.gridx = 0;
-        gc.gridy = 0;
-        gc.insets = new Insets(10, 5, 5, 10);
-        add(panel1, gc);
         
-        gc.gridx = 1;
-        gc.gridy = 0;
-        add(panel2, gc);  
-        
-        gc.gridx = 2;
-        gc.gridy = 0;
-        add(panel3, gc);*/
+        int x = 0;
+        int y= 0;
+     
         
         gc.gridx = 0;
-        gc.gridy = 1;
+        gc.gridy = ++y;
+        gc.insets = new Insets(10,10,10,10);
         add(knapp1, gc);
         
-        gc.gridx = 1;
-        gc.gridy = 1;
+        gc.gridx = ++x;
+        gc.gridy = y;
         add(knapp2, gc);
         
-        gc.gridx = 2;
-        gc.gridy = 1;
+        gc.gridx = ++x;
+        gc.gridy = y;
         add(knapp3, gc);
+        
+        x = 0;
+        
+        gc.gridx = x;
+        gc.gridy = ++y;
+        add(label1,gc);
+                
+        gc.gridx = ++x;
+        gc.gridy = y;
+        add(label2, gc); 
+        
+        gc.gridx = ++x;
+        gc.gridy = y;
+        add(label3,gc);
     }
 
 }//end of class AdminMainHjemGUI

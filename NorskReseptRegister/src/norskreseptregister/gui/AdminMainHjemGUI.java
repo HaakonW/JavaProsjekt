@@ -8,6 +8,7 @@ package norskreseptregister.gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import static java.awt.font.TextAttribute.FONT;
 import javax.swing.*;
 import norskreseptregister.Reg.RegisterSystem;
 
@@ -15,7 +16,7 @@ class AdminMainHjemGUI extends JPanel
 {
     //private JButton endreLisens, medisin;
     private JPanel panel2, panel1;
-    private JLabel label1;
+    private JLabel label1, label2, label3;
     private JButton knapp1, knapp2;
     LegeLisensGUI paneltest;
     private RegisterSystem system;
@@ -34,6 +35,11 @@ class AdminMainHjemGUI extends JPanel
         knapp1 = new JButton(modLeg);
         knapp2 = new JButton(regPill);
         
+        label1 = new JLabel("Endre lisens");
+        label1.setFont(new Font ("Papyrus", Font.ITALIC, 30)); // Evig DØLL MÅ SKIFTES SENERE
+        label2 = new JLabel("Registrer medisin");
+        label2.setFont(new Font ("Papyrus", Font.ITALIC, 30)); // Evig DØLL MÅ SKIFTES SENERE
+        
         knapp1.setFocusPainted(false);
         knapp2.setFocusPainted(false);
         
@@ -42,26 +48,24 @@ class AdminMainHjemGUI extends JPanel
        
         
         GridBagConstraints gc = new GridBagConstraints();
-        setLayout(new GridBagLayout());
-        
-        gc.gridx= 0;
-        gc.gridy= 0;
-        gc.insets = new Insets(0,20,40,20);
-        gc.gridwidth = 3;         
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        add(label1, gc);
+        setLayout(new GridBagLayout());      
         
         gc.gridx = 0;
         gc.gridy = 1; 
-        gc.gridwidth = 1;
-        gc.insets = new Insets(0,100,0,0);
+        gc.insets = new Insets(10,10,10,10);
         add(knapp1, gc);
         
-        gc.gridx = 2;
+        gc.gridx = 1;
         gc.gridy = 1;
-        gc.gridwidth = 1;
-        gc.fill = GridBagConstraints.NONE;
         add(knapp2, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 2;
+        add(label1, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 2;
+        add(label2, gc);
     }
     
   

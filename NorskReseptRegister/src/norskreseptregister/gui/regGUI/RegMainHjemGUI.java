@@ -43,44 +43,13 @@ class RegMainHjemGUI extends JPanel implements ActionListener
         regLege.setToolTipText("Registrer lege");
         regResept.setToolTipText("Registrer resept");
         
-        /*label1 = new JLabel();
-        label1.setIcon(regleg);
-        label1.setBorder(BorderFactory.createRaisedBevelBorder());
-        label1.addMouseListener(new MouseAdapter() 
-        {
-        //@Override        
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("DU TRYKKET PÅ ENDRE REGISTRER LISENS");
-            }
-        }
-        );
-        
-        label2 = new JLabel();
-        label2.setIcon(regPas);
-        label2.setBorder(BorderFactory.createRaisedBevelBorder());
-        label2.addMouseListener(new MouseAdapter() 
-        {
-        //@Override        
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("DU TRYKKET PÅ REGISTRER PASIENT");
-            }
-        }
-        );
-        
-        label3 = new JLabel();
-        label3.setIcon(regRes);
-        label3.setBorder(BorderFactory.createRaisedBevelBorder()); 
-        label3.addMouseListener(new MouseAdapter() 
-        {
-        //@Override        
-            public void mouseClicked(MouseEvent e) 
-            {
-                System.out.println("DU TRYKKET PÅ REGISTER RESPET");
-            }
-        }
-        );*/
+        label1 = new JLabel("Registrer Pasient");
+        label1.setFont(new Font ("georgia", Font.BOLD, 20)); // Evig DØLL MÅ SKIFTES SENERE
+        label2 = new JLabel("Registrer Lege");
+        label2.setFont(new Font ("palatino", Font.ITALIC, 20)); // Evig DØLL MÅ SKIFTES SENERE
+        label3 = new JLabel("Registrer Resept");
+        label3.setFont(new Font ("baskerville", Font.ROMAN_BASELINE, 20)); // Evig DØLL MÅ SKIFTES SENERE
+               
         
         panel2 = new JPanel();
         panel2.add(regPasient);
@@ -90,39 +59,37 @@ class RegMainHjemGUI extends JPanel implements ActionListener
         
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
-        gc.gridx = 0;
-        gc.gridy = 0;
-        gc.insets = new Insets(10, 5, 5, 10);
-        gc.anchor = GridBagConstraints.WEST;
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        //add(panel1, gc);
-        
-        /*gc.gridx = 0;
-        gc.gridy = 0;
-        add(label1, gc);
-        
-        gc.gridx = 1;
-        gc.gridy = 0;
-        add(label2, gc);        
-        
-        gc.gridx = 2;
-        gc.gridy = 0;
-        add(label3, gc);*/
+       
+        int x = 0;
+        int y= 0;
+     
         
         gc.gridx = 0;
-        gc.gridy = 1;
+        gc.gridy = ++y;
+        gc.insets = new Insets(10,10,10,10);
         add(regPasient, gc);
         
-        gc.gridx = 1;
-        gc.gridy = 1;
+        gc.gridx = ++x;
+        gc.gridy = y;
         add(regLege, gc);
         
-        gc.gridx = 2;
-        gc.gridy = 1;
+        gc.gridx = ++x;
+        gc.gridy = y;
         add(regResept, gc);
         
+        x = 0;
         
+        gc.gridx = x;
+        gc.gridy = ++y;
+        add(label1,gc);
+                
+        gc.gridx = ++x;
+        gc.gridy = y;
+        add(label2, gc); 
         
+        gc.gridx = ++x;
+        gc.gridy = y;
+        add(label3,gc);
     }
 
     public void actionPerformed( ActionEvent e )
