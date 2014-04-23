@@ -44,7 +44,7 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
     private void SkrivUt()
     {
         String pasientliste = "";
-        List <Pasient> list = pasientRegister.FinnAlle();
+        List <Pasient> list = pasientRegister.FinnAlleObjekter();
         for (Pasient pasient : list)
         {
             pasientliste+= pasient.toString();

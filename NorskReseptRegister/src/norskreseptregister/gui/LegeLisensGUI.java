@@ -115,7 +115,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
         LegeRegister legeRegister = system.getLegeRegister();
         DefaultListModel model = new DefaultListModel();
-        for (Lege l : legeRegister.FinnAlle())
+        for (Lege l : legeRegister.FinnAlleObjekter())
         {
             model.addElement(l.toString());
         }
@@ -126,7 +126,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         int valgtIndex = velgLege.getValgtIndex();
         if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
         {
-            lege = legeRegister.HentEttElement(valgtIndex);
+            lege = legeRegister.HentEttObjekt(valgtIndex);
             legedatafelt.setText(lege.getNavn());
         }
     }

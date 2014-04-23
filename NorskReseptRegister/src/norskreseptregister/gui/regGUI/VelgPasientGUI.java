@@ -37,7 +37,7 @@ public class VelgPasientGUI extends JDialog
     PasientRegister pasientRegister = system.getPasientRegister();
     DefaultListModel model = new DefaultListModel();
     navneliste = new JList<>(model);
-    for (Pasient p : pasientRegister.FinnAlle())
+    for (Pasient p : pasientRegister.FinnAlleObjekter())
     {
         model.addElement(p.toString());
     }

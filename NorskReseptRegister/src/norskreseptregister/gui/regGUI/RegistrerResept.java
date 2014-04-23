@@ -216,7 +216,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private void SkrivUt()
     {
         String pasientliste = "";
-        List <Resept> list = system.getReseptRegister().FinnAlle();
+        List <Resept> list = system.getReseptRegister().FinnAlleObjekter();
         for (Resept resept : list)
         {
             pasientliste+= resept.toString();
@@ -230,12 +230,12 @@ public class RegistrerResept extends JPanel implements ActionListener
         VelgPasientGUI velgPasientGUI = new VelgPasientGUI(this, system);
         velgPasientGUI.setLocationRelativeTo(this);
         velgPasientGUI.setVisible(true);
-        pasient = system.getPasientRegister().HentEttElement(velgPasientGUI.getValgtIndex());
+        pasient = system.getPasientRegister().HentEttObjekt(velgPasientGUI.getValgtIndex());
         pasientdatafelt.setText(pasient.getNavn());
 
         PasientRegister pasientRegister = system.getPasientRegister();
         DefaultListModel model = new DefaultListModel();
-        for (Pasient p : pasientRegister.FinnAlle())
+        for (Pasient p : system.getPasientRegister().FinnAlleObjekter())
         {
             model.addElement(p.toString());
         }
@@ -246,7 +246,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         int valgtIndex = velgPasient.getValgtIndex();
         if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
         {
-            pasient = pasientRegister.HentEttElement(valgtIndex);
+            pasient = pasientRegister.HentEttObjekt(valgtIndex);
             pasientdatafelt.setText(pasient.getNavn());
         }
     }
@@ -256,7 +256,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
         LegeRegister legeRegister = system.getLegeRegister();
         DefaultListModel model = new DefaultListModel();
-        for (Lege l : legeRegister.FinnAlle())
+        for (Lege l : system.getLegeRegister().FinnAlleObjekter())
         {
             model.addElement(l.toString());
         }
@@ -267,7 +267,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         int valgtIndex = velgLege.getValgtIndex();
         if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
         {
-            lege = legeRegister.HentEttElement(valgtIndex);
+            lege = legeRegister.HentEttObjekt(valgtIndex);
             legedatafelt.setText(lege.getNavn());
         }
     }

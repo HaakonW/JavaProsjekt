@@ -6,11 +6,11 @@ Sist endret 22-04-2014
 
 package norskreseptregister.gui.info;
 
-import norskreseptregister.Interface.Kriterie;
+import norskreseptregister.Interface.UtvalgsKriterie;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.ObjektKlasser.Resept;
 
-public class FinnResepterForLege implements Kriterie <Resept>
+public class FinnResepterForLege implements UtvalgsKriterie <Resept>
 {
     private Lege lege;
     
@@ -19,8 +19,14 @@ public class FinnResepterForLege implements Kriterie <Resept>
         this.lege = lege;
     }
 
-    public boolean erOppfyltFor(Resept element)
+    public boolean objektetSkalVaereMed(Resept objekt)
     {
-        return element.getLegedata().getNavn().equals(lege.getNavn());
+        String reseptLegeNavn = objekt.getLegedata().getNavn();
+        String legeNavn = lege.getNavn();
+        if (reseptLegeNavn.equals(legeNavn))
+        {
+            return true;
+        }
+        return false;
     }
-}
+}//end of class FinnResepterForLege

@@ -41,7 +41,7 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
     private void SkrivUt()
     {
         String legeliste = "";
-        List <Lege> list = legeRegister.FinnAlle();
+        List <Lege> list = legeRegister.FinnAlleObjekter();
         for (Lege lege : list)
         {
             legeliste+= lege.toString();

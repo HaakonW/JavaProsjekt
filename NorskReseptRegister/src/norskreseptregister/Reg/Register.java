@@ -17,7 +17,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import norskreseptregister.Interface.Kriterie;
+import norskreseptregister.Interface.UtvalgsKriterie;
 
 public abstract class Register<T>
 {
@@ -28,31 +28,31 @@ public abstract class Register<T>
         list = new ArrayList<T>(); //instansiere en tom liste av <T>
     }
 
-    public void SettInn(T nyttElement)
+    public void SettInn(T nyttObjekt)
     {
-        list.add(nyttElement);
+        list.add(nyttObjekt);
     }
 
     // Finner alle elemente i lista som oppfyller kriterie
-    public ArrayList<T> Finn(Kriterie<T> kriterie)
+    public ArrayList FinnObjekterSomMatcher(UtvalgsKriterie<T> utvalgsKriteriet)
     {
         ArrayList<T> resultat = new ArrayList<T>();
-        for (T element : list) 
+        for (T objekt : list) 
         {
-            if (kriterie.erOppfyltFor(element))
+            if (utvalgsKriteriet.objektetSkalVaereMed(objekt))
             {
-                    resultat.add(element);
+                    resultat.add(objekt);
             }
         }
         return resultat;
     }
     
-    public T HentEttElement(int index)
+    public T HentEttObjekt(int index)
     {
         return list.get(index);
     }
     
-    public ArrayList<T> FinnAlle()
+    public ArrayList<T> FinnAlleObjekter()
     {
         return list;
     }
