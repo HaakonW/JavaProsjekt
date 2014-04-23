@@ -7,6 +7,7 @@ Sist endret 17-04-2014
 package norskreseptregister.gui.regGUI;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -18,9 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public abstract class RegistrerPersonGUI extends JPanel
+public abstract class RegistrerPersonGUI extends JPanel implements ActionListener 
 {
-    protected JButton reg, vis; 
+    protected JButton reg, hjelper; 
     protected JTextField fornavnfelt, etternavnfelt, infofelt;
     protected JTextArea utskrift;
     private JLabel fornavnlabel, etternavnlabel, infolabel; 
@@ -35,9 +36,14 @@ public abstract class RegistrerPersonGUI extends JPanel
         etternavnfelt = new JTextField(20);
         infofelt = new JTextField(20);
         reg = new JButton("Registrer");
-        vis = new JButton("Vis");
+     
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
+        
+        hjelper = new JButton("?");
+        hjelper.setPreferredSize(new Dimension(25, 25));
+        hjelper.addActionListener(this);
+        
         
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
 
@@ -56,7 +62,7 @@ public abstract class RegistrerPersonGUI extends JPanel
         
         panel4 = new JPanel();
         panel4.add(reg);
-        panel4.add(vis);
+       
         
         panel5 = new JPanel();
         panel5.add(utskrift);
@@ -67,9 +73,9 @@ public abstract class RegistrerPersonGUI extends JPanel
         
         gc.gridx = 0;
         gc.gridy = 0;
-        gc.insets = new Insets(10, 5, 5, 10);
-        gc.anchor = GridBagConstraints.WEST;
-        gc.fill = GridBagConstraints.HORIZONTAL;
+        gc.insets = new Insets(5, 5, 5, 10);
+        //gc.anchor = GridBagConstraints.WEST;
+        //gc.fill = GridBagConstraints.HORIZONTAL;
         add(panel1, gc);
         
         gc.gridx = 0;
@@ -87,7 +93,13 @@ public abstract class RegistrerPersonGUI extends JPanel
         gc.gridx = 2;
         gc.gridy = 0; 
         gc.gridheight = 6;
-        add(panel5, gc);      
+        add(panel5, gc);  
+        
+        gc.gridx = 3;
+        gc.gridy = 6;       
+        add(hjelper, gc);
+        
+        
     }//end of konstruktør RegistrerLege
 
     public void TomFelt()

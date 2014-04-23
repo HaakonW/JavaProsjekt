@@ -38,7 +38,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private String pasientliste = "pasientliste.txt";
     private JTextField datofelt, pasientdatafelt, legedatafelt, medisindatafelt, mengdefelt, kategorifelt;
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
-    private JButton regResept, visListe, velgPasient, velgLege, velgMedisin;
+    private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper;
 
     JTextArea utskrift, anvisning;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
@@ -52,25 +52,21 @@ public class RegistrerResept extends JPanel implements ActionListener
     {
         this.system = system;
         this.medisinliste = medisinliste;
-        datofelt = new JTextField(20);
+        datofelt = new JTextField(20); // LYTTERKLASSE SOM KALLER PÅ .GETTIME() ?
         pasientdatafelt = new JTextField(21);
 
         legedatafelt = new JTextField(20);
         medisindatafelt = new JTextField(20);
         mengdefelt = new JTextField(20);
-        //kategorifelt = new JTextField(20);
-        
+        //kategorifelt = new JTextField(20);     
 
-        datolabel = new JLabel("Dato       ");
-        pasientdatalabel = new JLabel("Pasient ");
+        datolabel = new JLabel("Dato");
+        pasientdatalabel = new JLabel("Pasient");
 
-        datolabel = new JLabel("Dato  ");
-        pasientdatalabel = new JLabel("Pasient      ");
-
-        legedatalabel = new JLabel("Lege       ");
-        medisindatalabel = new JLabel("Medisin   ");
-        mengdelabel = new JLabel("Mengde   ");
-        kategorilabel = new JLabel("Kategori  ");
+        legedatalabel = new JLabel("Lege");
+        medisindatalabel = new JLabel("Medisin");
+        mengdelabel = new JLabel("Mengde");
+        kategorilabel = new JLabel("Kategori");
         anvisningslabel = new JLabel("Anvisning");
         pasientdatafelt.setEditable(false);
 
@@ -79,6 +75,8 @@ public class RegistrerResept extends JPanel implements ActionListener
         
         regResept = new JButton("Registrer");
         visListe = new JButton("Vis liste");
+        hjelper = new JButton("?");
+        hjelper.setPreferredSize(new Dimension(25, 25));
         
         velgPasient = new JButton("...");
         velgLege = new JButton("...");
@@ -100,6 +98,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         velgPasient.addActionListener(this);
         velgLege.addActionListener(this);
         velgMedisin.addActionListener(this);
+        hjelper.addActionListener(this);
         
         panel1 = new JPanel();
         panel1.add(datolabel);
@@ -123,10 +122,6 @@ public class RegistrerResept extends JPanel implements ActionListener
         panel5 = new JPanel();
         panel5.add(mengdelabel);
         panel5.add(mengdefelt);
-        
-        /*panel6 = new JPanel();
-        panel6.add(kategorilabel);
-        panel6.add(kategorifelt);*/
         
         panel7 = new JPanel();
         panel7.add(anvisningslabel);
@@ -171,19 +166,17 @@ public class RegistrerResept extends JPanel implements ActionListener
         gc.gridx = x;
         gc.gridy = y;
         add(panel5, gc);
-        y++;
+        y++;     
         
-       /* gc.gridx = x;
-        gc.gridy = y;
-        add(panel6, gc);
-        y++;*/
-        
-         gc.gridx = x;
+        gc.gridx = x;
         gc.gridy = y;
         add(panel7, gc);
         y++;
+        //Slutt på første kolonne//
         
-         gc.gridx = x;
+        //Start kolonne 2//
+        
+        gc.gridx = x;
         gc.gridy = y;
         add(panel8, gc);
         x++;
@@ -193,6 +186,12 @@ public class RegistrerResept extends JPanel implements ActionListener
         gc.gridheight = 10;
         gc.fill = GridBagConstraints.VERTICAL;
         add(panel9, gc);
+        x++;
+        
+        gc.gridx = x;
+        gc.gridy = 6;
+        gc.fill = GridBagConstraints.NONE;
+        add(hjelper,gc);
     }//end of Konstruktør
     
     private void nyResept()
@@ -312,6 +311,10 @@ public class RegistrerResept extends JPanel implements ActionListener
         if (e.getSource() == velgMedisin)
         {
             VelgMedisin();
+        }
+        if (e.getSource() == hjelper)
+        {
+            JOptionPane.showMessageDialog(null, "HJELP RESEPT");
         }
     }
 }//end of class RegistrerResept

@@ -23,7 +23,7 @@ import norskreseptregister.gui.regGUI.RegistrerResept;
 public class VelgPasientGUI extends JDialog
 {
   private JList<String> navneliste;
-  private JButton ok, avbryt;
+  private JButton ok, avbryt, hjelper;
   //private Navnevalg forelder;
   private Knappelytter kLytter;
   private Muselytter mLytter;
@@ -79,6 +79,9 @@ public class VelgPasientGUI extends JDialog
     avbryt.addActionListener(kLytter);
     mLytter = new Muselytter();
     navneliste.addMouseListener(mLytter);
+    
+     hjelper = new JButton("?");
+     hjelper.setPreferredSize(new Dimension(25, 25));
 
     Container c = getContentPane();
     c.add(listepanel, BorderLayout.CENTER);

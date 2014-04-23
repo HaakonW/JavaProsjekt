@@ -29,7 +29,7 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
         super("Fødselsdato");
         this.pasientRegister = pasientRegister;       
         reg.addActionListener(this);
-        vis.addActionListener(this);
+        
  
     }//end of konstruktør
     
@@ -60,9 +60,10 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
             nyPasient();
             TomFelt();
         }
-        if(e.getSource() == vis)
+      
+        if (e.getSource() == hjelper)
         {
-            SkrivUt();
+            JOptionPane.showMessageDialog(null, "HJELP PASIENT");
         }
     }
 }//end of class Registrer Pasient

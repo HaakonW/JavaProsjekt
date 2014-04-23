@@ -26,7 +26,7 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
         super("Adresse    ");
         this.legeRegister = legeRegister;
         reg.addActionListener(this);
-        vis.addActionListener(this);
+        
        
     }//end of konstruktør RegistrerLege
 
@@ -57,9 +57,10 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
             nyLege();
             TomFelt();
         } 
-       else if (e.getSource() == vis)
+     
+       if (e.getSource() == hjelper);
        {
-            SkrivUt();
+          JOptionPane.showMessageDialog(null, "HJELP LEGE"); 
        }
     }
     
