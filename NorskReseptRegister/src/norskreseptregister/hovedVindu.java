@@ -163,7 +163,7 @@ public class hovedVindu extends JFrame
                 JInternalFrame internvindu3 = new JInternalFrame(
                         "Informasjon", true, true, true, true);
 
-                InfoMainGUI infoG = new InfoMainGUI(system);
+                InfoMainGUI infoG = new InfoMainGUI(system, medisinliste);
                 internvindu3.add(infoG, BorderLayout.CENTER);
 
                 internvindu3.setDefaultCloseOperation(

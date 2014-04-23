@@ -28,7 +28,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     private JTextField legedatafelt;
     private JTextArea utskrift;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
-    private JLabel fornavnlabel, etternavnlabel;
+    private JLabel fornavnlabel;
     private JButton visAlleLeger, visAlleResepterPaaLege, visResepteriGruppe, velgLege;
     private JCheckBox a, b, c;
     private Lege lege;
@@ -58,6 +58,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         visAlleResepterPaaLege.addActionListener(this);
         
         velgLege.setPreferredSize(new Dimension(20, 20));
+        legedatafelt.setEditable(false);
         
         ///PANELS START ////
         
@@ -150,7 +151,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     {
         if ( lege != null)
         {
-            FinnResepterForLege query = new FinnResepterForLege(lege);
+                FinnResepterForLege query = new FinnResepterForLege(lege);
             ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
             String alleResepterForLege ="";
             for (Resept r : reseptene)

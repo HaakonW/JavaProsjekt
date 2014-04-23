@@ -14,7 +14,7 @@ public class FinnResepterForPasient implements UtvalgsKriterie <Resept>
 {
     private Pasient pasient;
     
-    public FinnResepterForPasient(Pasient Pasient)
+    public FinnResepterForPasient(Pasient pasient)
     {
         this.pasient = pasient;
     }
@@ -29,4 +29,4 @@ public class FinnResepterForPasient implements UtvalgsKriterie <Resept>
         }
         return false;
     }
-}//end of class FinnResepterForLege
+}//end of class FinnResepterForPasient

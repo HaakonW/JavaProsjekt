@@ -60,6 +60,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         visAlleResepterPaaPasient.addActionListener(this);
         
         velgPasient.setPreferredSize(new Dimension(20, 20));
+        pasientdatafelt.setEditable(false);
         
         ///PANELS START ////
         
@@ -136,7 +137,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         }
     }
     
-    private void visAlleLeger()
+    private void visAllePasienter()
     {
         String legeliste = "";
         List <Pasient> list = system.getPasientRegister().FinnAlleObjekter();
@@ -154,13 +155,13 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         {
             FinnResepterForPasient query = new FinnResepterForPasient(pasient);
             ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
-            String alleResepterForLege ="";
+            String alleResepterForPasient ="";
             for (Resept r : reseptene)
             {
-                alleResepterForLege += r.toString();
+                alleResepterForPasient += r.toString();
             }
             utskrift.setText("Fant følgende resepter for :\n"
-                    + pasient.getNavn() + "\n" + alleResepterForLege);
+                    + pasient.getNavn() + "\n" + alleResepterForPasient);
         }
         else
         {
@@ -176,7 +177,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == visAllePasienter)
         {
-            visAlleLeger();
+            visAllePasienter();
         }
         else if (e.getSource() == visAlleResepterPaaPasient)
         {
