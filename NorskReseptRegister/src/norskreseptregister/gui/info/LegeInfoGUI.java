@@ -29,7 +29,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     private JTextArea utskrift;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
     private JLabel fornavnlabel;
-    private JButton visAlleLeger, visAlleResepterPaaLege, visResepteriGruppe, velgLege;
+    private JButton visAlleLeger, visAlleResepterPaaLege, visResepteriGruppe, velgLege, hjelp;
     private JCheckBox a, b, c;
     private Lege lege;
     private RegisterSystem system;
@@ -39,11 +39,13 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     {
         this.system = system;
         this.legeRegister = legeRegister;
-        fornavnlabel = new JLabel("Fornavn   ");
+        fornavnlabel = new JLabel("Legenavn   ");
         legedatafelt = new JTextField(20);
         visAlleLeger = new JButton("Vis alle leger i registeret");
+        legedatafelt.setText("Velg lege ved å på knappen til høyre");
         visAlleResepterPaaLege = new JButton("Vis resepter legen har skrevet ut");
         visResepteriGruppe = new JButton("Vis resepter i gruppe");
+        hjelp = new JButton("?");
         velgLege = new JButton("...");
         
         utskrift = new JTextArea(20,20);
@@ -56,9 +58,11 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         velgLege.addActionListener(this);
         visAlleLeger.addActionListener(this);
         visAlleResepterPaaLege.addActionListener(this);
+        hjelp.addActionListener(this);
         
         velgLege.setPreferredSize(new Dimension(20, 20));
         legedatafelt.setEditable(false);
+        hjelp.setPreferredSize(new Dimension(20, 20));
         
         ///PANELS START ////
         
@@ -90,26 +94,25 @@ public class LegeInfoGUI extends JPanel implements ActionListener
        gc.anchor = GridBagConstraints.WEST;
        gc.fill = GridBagConstraints.HORIZONTAL;
        add(panel1, gc);
-       
-     
-       /*gc.gridx = 0;
-       gc.gridy = 1;
-       add(panel2, gc);*/
-       
-        gc.gridx = 0;
-        gc.gridy = 2;
-        gc.fill = 0;
-        gc.anchor = GridBagConstraints.EAST;
-        add(panel3, gc);
+
+       gc.gridx = 0;
+       gc.gridy = 2;
+       gc.fill = 0;
+       gc.anchor = GridBagConstraints.EAST;
+       add(panel3, gc);
         
-        gc.gridx = 0;
-        gc.gridy = 3;
-        add(panel4, gc);
+       gc.gridx = 0;
+       gc.gridy = 3;
+       add(panel4, gc);
         
-        gc.gridx = 1;
-        gc.gridy = 0;
-        gc.gridheight = 6;
-        add(panel5, gc);
+       gc.gridx = 1;
+       gc.gridy = 0;
+       gc.gridheight = 6;
+       add(panel5, gc);
+        
+       gc.gridx = 2;
+       gc.gridy = 6;
+       add(hjelp, gc);
 
         utskrift.setEditable(false); 
     }//end of Konstruktør
@@ -179,6 +182,10 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         else if (e.getSource() == visAlleResepterPaaLege)
         {
             visResepterForLege();
+        }
+        else if (e.getSource() == hjelp)
+        {
+            JOptionPane.showMessageDialog(null, "HJELP LEGEINFO");
         }
     }
     

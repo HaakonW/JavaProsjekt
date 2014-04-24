@@ -28,7 +28,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
     private JTextArea utskrift;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
     private JLabel medisinlabel;
-    private JButton knapp1, knapp2, knapp3, velgMedisin;
+    private JButton knapp1, knapp2, knapp3, velgMedisin, hjelp;
     private final Medisinliste medisinliste;
     private Medisin medisin;
     private final RegisterSystem system;
@@ -39,9 +39,11 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         this.medisinliste = medisinliste;
         medisinlabel = new JLabel("Medisin");
         medisindatafelt = new JTextField(20);
+        medisindatafelt.setText("Velg medisin fra listen til høyre");
         velgMedisin = new JButton("...");
         knapp1 = new JButton("Vis pasienter ");
         knapp2 = new JButton("Vis Leger");
+        hjelp = new JButton ("?");
         utskrift = new JTextArea(20,20);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         ///PANELS START ////
@@ -62,9 +64,10 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
        velgMedisin.addActionListener(this);
        knapp1.addActionListener(this);
        knapp2.addActionListener(this);
-       
+       hjelp.addActionListener(this);
        medisindatafelt.setEditable(false);
        velgMedisin.setPreferredSize(new Dimension(20, 20));
+       hjelp.setPreferredSize(new Dimension(20, 20));
 
        ///GRID START ////
        GridBagConstraints gc = new GridBagConstraints();
@@ -86,6 +89,10 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         gc.gridy = 0;
         gc.gridheight = 6;
         add(panel4, gc);
+        
+        gc.gridx = 2;
+        gc.gridy = 6;
+        add(hjelp, gc);
 
         utskrift.setEditable(false); 
     }
@@ -134,6 +141,11 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         {
             visLeger();
         }
+        else if (e.getSource() == hjelp)
+        {
+            JOptionPane.showMessageDialog(null, "HJELP Medisininfo");
+        }
+        
     }
     
 }//end of class LegeInfoGUI

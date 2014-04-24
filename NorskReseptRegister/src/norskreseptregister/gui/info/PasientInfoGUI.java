@@ -31,7 +31,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
     private JTextArea utskrift;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
     private JLabel pasientlabel;
-    private JButton visAllePasienter, visAlleResepterPaaPasient, visResepteriGruppe, velgPasient;
+    private JButton visAllePasienter, visAlleResepterPaaPasient, visResepteriGruppe, velgPasient, hjelp;
     private JCheckBox a, b, c;
     private RegisterSystem system;
     private PasientRegister pasientRegister;
@@ -43,9 +43,11 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         this.pasientRegister = pasientRegister;
         pasientlabel = new JLabel("Pasient   ");
         pasientdatafelt = new JTextField(20);
+        pasientdatafelt.setText("Velg pasient med knappen til høyre");
         visAllePasienter = new JButton("Vis alle pasienter i registeret");
         visAlleResepterPaaPasient = new JButton("Vis resepter pasienter har mottatt");
         visResepteriGruppe = new JButton("Vis resepter i gruppe");
+        hjelp = new JButton("?");
         velgPasient = new JButton("...");
         
         utskrift = new JTextArea(20,20);
@@ -58,8 +60,10 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         velgPasient.addActionListener(this);
         visAllePasienter.addActionListener(this);
         visAlleResepterPaaPasient.addActionListener(this);
+        hjelp.addActionListener(this);
         
         velgPasient.setPreferredSize(new Dimension(20, 20));
+        hjelp.setPreferredSize(new Dimension(20, 20));
         pasientdatafelt.setEditable(false);
         
         ///PANELS START ////
@@ -93,11 +97,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
        gc.fill = GridBagConstraints.HORIZONTAL;
        add(panel1, gc);
        
-     
-       /*gc.gridx = 0;
-       gc.gridy = 1;
-       add(panel2, gc);*/
-       
+   
         gc.gridx = 0;
         gc.gridy = 2;
         gc.fill = 0;
@@ -112,6 +112,10 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         gc.gridy = 0;
         gc.gridheight = 6;
         add(panel5, gc);
+        
+        gc.gridx = 2;
+        gc.gridy = 6;
+        add(hjelp, gc);
 
         utskrift.setEditable(false); 
     }//end of Konstruktør
@@ -182,6 +186,10 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         else if (e.getSource() == visAlleResepterPaaPasient)
         {
             visResepterForPasient();
+        }
+        else if (e.getSource() == hjelp)
+        {
+            JOptionPane.showMessageDialog(null, "HJELP PASIENTINFO");
         }
     }
     
