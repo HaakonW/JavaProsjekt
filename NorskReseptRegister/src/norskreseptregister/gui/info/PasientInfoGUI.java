@@ -189,7 +189,9 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "HJELP PASIENTINFO");
+            JOptionPane.showMessageDialog(null, "Pasient info. \n"+
+                                                 "Velg lege ved å trykke på ...\n" +
+                                                  "For mere informasjon trykk HER");
         }
     }
     
