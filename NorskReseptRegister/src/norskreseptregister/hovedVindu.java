@@ -75,7 +75,7 @@ public class hovedVindu extends JFrame
         valg3.add(submeny3);
         valg4.add(submeny4);
         valg4.addSeparator(); //Legger inn skillelinje i submeny
-        valg4.add(submeny1); //Kun for å teste/se resultat av skillelinje
+        //valg4.add(); //Kun for å teste/se resultat av skillelinje
 
         submeny1.addActionListener(lytter);
         submeny2.addActionListener(lytter);
