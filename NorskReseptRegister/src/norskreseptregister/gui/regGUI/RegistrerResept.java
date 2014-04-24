@@ -40,7 +40,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper;
 
-    JTextArea utskrift, anvisning;
+    private JTextArea utskrift, anvisning;
     private JScrollPane anvisningscroll;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
     private final RegisterSystem system;
