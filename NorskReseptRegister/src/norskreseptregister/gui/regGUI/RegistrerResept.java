@@ -41,6 +41,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper;
 
     JTextArea utskrift, anvisning;
+    private JScrollPane anvisningscroll;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
     private final RegisterSystem system;
     private Pasient pasient;
@@ -85,7 +86,9 @@ public class RegistrerResept extends JPanel implements ActionListener
         
         
         anvisning = new JTextArea(6,25);
-        //JScrollPane sp = new JScrollPane(anvisning); //PRøvde å få til scroller
+        anvisningscroll = new JScrollPane(anvisning); //PRøvde å få til scroller
+        anvisning.setLineWrap(true);
+        anvisning.setWrapStyleWord(true);
         anvisning.setBorder(BorderFactory.createTitledBorder(null, "Anvisning", 1, 2, null, Color.black));
         utskrift = new JTextArea(25,22);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
@@ -118,7 +121,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         panel5.add(mengdefelt);
                 
         panel7 = new JPanel();
-        panel7.add(anvisning);
+        panel7.add(anvisningscroll);
               
         panel8 = new JPanel();
         panel8.add(regResept);
