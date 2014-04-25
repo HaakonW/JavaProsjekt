@@ -105,10 +105,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
        
        gc.gridx = 0;
        gc.gridy = 2;       
-       add(panel3, gc);       
-   
-       
-        
+       add(panel3, gc);      
        
         
         gc.gridx = 1;
