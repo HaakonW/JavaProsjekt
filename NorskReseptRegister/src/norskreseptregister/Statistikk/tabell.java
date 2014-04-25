@@ -171,7 +171,8 @@ class tabellFrame extends JFrame
             {
                 /*tabellet.print(JTable.PrintMode.NORMAL,
                         new MessageFormat("Medisinstatistikk"),
-                        new MessageFormat("side{0,number}"));*/
+                        new MessageFormat("side{0,number}"));
+                Dinne kan sette topptekst og bunntekst tror e*/
                 tabellet.print(JTable.PrintMode.NORMAL);
             }
             catch(PrinterException pep)
