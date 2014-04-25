@@ -38,7 +38,6 @@ import norskreseptregister.Reg.ReseptRegister;
 
 public class RegistrerResept extends JPanel implements ActionListener
 {
-
     private String pasientliste = "pasientliste.txt";
     private JTextField datofelt, pasientdatafelt, legedatafelt, medisindatafelt, mengdefelt, kategorifelt;
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
@@ -55,6 +54,7 @@ public class RegistrerResept extends JPanel implements ActionListener
 
     public RegistrerResept(RegisterSystem system, Medisinliste medisinliste)
     {
+        //super();
         Calendar cal = Calendar.getInstance();
         String dateFormat = new SimpleDateFormat("dd/MM/yyyy/ HH:mm").format(new Date());
         this.system = system;
@@ -244,12 +244,6 @@ public class RegistrerResept extends JPanel implements ActionListener
 
     private void VelgPasient()
     {
-        VelgPasientGUI velgPasientGUI = new VelgPasientGUI(this, system);
-        velgPasientGUI.setLocationRelativeTo(this);
-        velgPasientGUI.setVisible(true);
-        pasient = system.getPasientRegister().HentEttObjekt(velgPasientGUI.getValgtIndex());
-        pasientdatafelt.setText(pasient.getNavn());
-
         PasientRegister pasientRegister = system.getPasientRegister();
         DefaultListModel model = new DefaultListModel();
         for (Pasient p : system.getPasientRegister().FinnAlleObjekter())
