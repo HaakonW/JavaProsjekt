@@ -108,9 +108,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         gc.gridx = 3;
         gc.gridy = 6;
         add(hjelp, gc);
-      
 
-        
     }//end of konstruktør LegeLisensGUI
     
     //Denne metoden søker igjennom hele legeregisterer og viser et nytt vindu med alle legene der du kan velge en av disse.

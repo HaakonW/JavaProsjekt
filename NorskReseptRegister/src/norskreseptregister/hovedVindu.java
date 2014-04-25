@@ -27,7 +27,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.Statistikk.StatistikkTabell;
 import norskreseptregister.gui.AdminMain;
 import norskreseptregister.gui.info.InfoMainGUI;
 import norskreseptregister.gui.regGUI.RegMainGUI;
@@ -194,7 +193,7 @@ public class hovedVindu extends JFrame
                 hovedvindu.add(internvindu3);
                 internvindu3.setVisible(true);
             }
-            if(e.getSource() == submeny4)
+            /*if(e.getSource() == submeny4)
             {
                 JInternalFrame internvindu4 = new JInternalFrame(
                 "Statistikk",true, true, true,true);
@@ -206,7 +205,7 @@ public class hovedVindu extends JFrame
                 internvindu4.pack();
                 hovedvindu.add(internvindu4);
                 internvindu4.setVisible(true);
-            }
+            }*/
         }//end of method actionPerformed
     } //end of Menylytter
 
