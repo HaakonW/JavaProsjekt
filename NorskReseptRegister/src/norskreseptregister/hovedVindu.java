@@ -1,7 +1,7 @@
 /*
  Inneholder klasse for å kjøre hovedvindu, med MainGUI.
  Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
- Sist endret 17/04/14
+ Sist endret 25/04/14
  */
 package norskreseptregister;
 
@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -26,13 +27,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
+import norskreseptregister.Statistikk.StatistikkTabell;
 import norskreseptregister.gui.AdminMain;
 import norskreseptregister.gui.info.InfoMainGUI;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
 public class hovedVindu extends JFrame
 {
-
     private JDesktopPane hovedvindu;
     private Menylytter lytter;
 
@@ -92,17 +93,19 @@ public class hovedVindu extends JFrame
         //Setter inn menylinjen i vinduet.
         setJMenuBar(menylinje);
 
+        ImageIcon footer = new ImageIcon ("src/norskreseptregister/gui/bilder/pille.png");
+        final Image img = footer.getImage();
+        
         //Opprette hovedvinduet
-        hovedvindu = new JDesktopPane();
-        getContentPane().add(hovedvindu, BorderLayout.CENTER);
+        hovedvindu = new JDesktopPane(){
+             public void paintComponent(Graphics g){
+                super.paintComponent(g);
+                g.drawImage(img,400,170,450,350,this);
+            }
+        };
         
 
-        ImageIcon footer = new ImageIcon ("src/norskreseptregister/gui/bilder/footer.png");
-        Image img = footer.getImage();
-
-        
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        //Skriver til alle register, ikke medisin.
         addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent winEvt)
@@ -119,7 +122,10 @@ public class hovedVindu extends JFrame
          ramme.setVisible(true);
          hovedvindu.add(ramme);*/
         ////////////////////////////////////////////////////////////////////////
-        hovedvindu.setBackground(Color.GRAY); //Sette bakgrunnsfarge på hovedvindu
+
+        getContentPane().add(hovedvindu, BorderLayout.CENTER);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        hovedvindu.setBackground(Color.WHITE); //Sette bakgrunnsfarge på hovedvindu
         setSize(1450, 900);
         setVisible(true);
         this.system = system;
@@ -193,6 +199,9 @@ public class hovedVindu extends JFrame
             {
                 JInternalFrame internvindu4 = new JInternalFrame(
                 "Statistikk",true, true, true,true);
+                
+                StatistikkTabell statistikk = new StatistikkTabell();
+                //internvindu4.add(statistikk);
                 
                 internvindu4.setSize(300,300);
                 internvindu4.pack();
