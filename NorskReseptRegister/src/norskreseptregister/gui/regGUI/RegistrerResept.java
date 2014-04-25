@@ -41,7 +41,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper;
 
     private JTextArea utskrift, anvisning;
-    private JScrollPane anvisningscroll;
+    private JScrollPane anvisningscroll,utskriftscroll;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
     private final RegisterSystem system;
     private Pasient pasient;
@@ -93,6 +93,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         utskrift = new JTextArea(25,22);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         utskrift.setEditable(false);
+        utskriftscroll = new JScrollPane(utskrift);
         
         regResept.addActionListener(this);
         visListe.addActionListener(this);
@@ -128,7 +129,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         panel8.add(visListe);
         
         panel9 = new JPanel();
-        panel9.add(utskrift);
+        panel9.add(utskriftscroll);
         
         //////// START GRID ///////////
         setLayout(new GridBagLayout());
@@ -231,7 +232,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         for (Resept resept : list)
         {
             pasientliste+= resept.toString();
-            pasientliste +="\n\n";
+            pasientliste +="\n------------------------\n";
         }
         utskrift.setText(pasientliste);
     }

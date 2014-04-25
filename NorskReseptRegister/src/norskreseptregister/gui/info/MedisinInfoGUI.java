@@ -30,6 +30,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
 {
     private JTextField medisindatafelt;
     private JTextArea utskrift;
+    private JScrollPane utskriftscroll;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
     private JLabel medisinlabel;
     private JButton knapp1, knapp2, knapp3, velgMedisin, hjelp;
@@ -50,6 +51,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         hjelp = new JButton ("?");
         utskrift = new JTextArea(20,20);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        utskriftscroll = new JScrollPane(utskrift);
         ///PANELS START ////
         
         panel1 = new JPanel();
@@ -63,7 +65,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
        
        
        panel4 = new JPanel();
-       panel4.add(utskrift);
+       panel4.add(utskriftscroll);
        
        velgMedisin.addActionListener(this);
        knapp1.addActionListener(this);

@@ -26,6 +26,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
 {
     private JTextField legedatafelt;
     private JTextArea utskrift;
+    private JScrollPane utskriftscroll;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
     private JLabel fornavnlabel, gruppelabel;
     private JButton visAlleLeger, visResepteriGruppe, velgLege, hjelp;
@@ -50,6 +51,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         
         utskrift = new JTextArea(20,20);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        utskriftscroll = new JScrollPane(utskrift);
         
         a = new JCheckBox("A", true);        
         b = new JCheckBox("B", true);
@@ -82,7 +84,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
        panel4.add(visResepteriGruppe);
        
        panel5 = new JPanel();
-       panel5.add(utskrift);
+       panel5.add(utskriftscroll);
 
        ///GRID START ////
        GridBagConstraints gc = new GridBagConstraints();
