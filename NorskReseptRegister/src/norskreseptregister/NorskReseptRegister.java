@@ -10,7 +10,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.MainGui;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
 public class NorskReseptRegister

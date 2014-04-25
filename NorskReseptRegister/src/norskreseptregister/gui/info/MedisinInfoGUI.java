@@ -119,7 +119,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
     }
     
-    /*private void visPasienter()
+    private void visPasienter()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
         ArrayList <Resept> resepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
@@ -127,25 +127,28 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         String pasienter="";
         for (Resept r : resepter)
         {
-            unikePasientResepter.put(r.getPasientdata(), r);
+            unikePasientResepter.put(r.getPasientdata().getNavn(), r);
         }
-        Iterator <Map.Entry<String, Resept>> iterator = unikePasientResepter.entrySet().iterator();
-        while (iterator.hasNext())
+        for (Map.Entry<String, Resept> e : unikePasientResepter.entrySet())
         {
-            Map.Entry<String,Resept> entry = iterator.next();
-            pasienter+= entry.getKey().getNavn() + "\n";
+            pasienter += e.getValue().getPasientdata().getNavn() + "\n";
         }
         utskrift.setText("Pasienter som har mottat " + medisin.getNavn() + ":\n" + pasienter);
-    }*/
+    }
     
     private void visLeger()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
         ArrayList <Resept> resepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
+        HashMap <String, Resept> unikeLegeResepter = new HashMap<>();
         String leger="";
         for (Resept r : resepter)
         {
-            leger+= r.getLegedata().getNavn() + "\n";
+            unikeLegeResepter.put(r.getLegedata().getNavn(), r);
+        }
+        for (Map.Entry<String, Resept> e : unikeLegeResepter.entrySet())
+        {
+            leger += e.getValue().getLegedata().getNavn() + "\n";
         }
         utskrift.setText("Leger som har skrevet ut " + medisin.getNavn() + ":\n" + leger);
     }
@@ -159,7 +162,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == knapp1)
         {
-            //visPasienter();
+            visPasienter();
         }
         else if (e.getSource() == knapp2)
         {
