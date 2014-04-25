@@ -7,11 +7,15 @@
 package norskreseptregister.Statistikk;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
 
 public class tabell
 {
@@ -123,20 +127,48 @@ class Medisintabell extends AbstractTableModel
     }
 }
 
+// Legger tabellen inn i en frame
 class tabellFrame extends JFrame
 {
+    private Radalterneringstabell tabellet;
+    
     public tabellFrame()
     {
         setTitle("Statistikktabell");
-        setSize(500,300);
+        setSize(900,210);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         Medisintabell tab = new Medisintabell();
-        JTable tabellen = new JTable(tab);
+        tabellet = new Radalterneringstabell(tab);
         
         Container c = getContentPane();
-        c.add(new JScrollPane(tabellen), BorderLayout.CENTER);
+        c.add(new JScrollPane(tabellet), BorderLayout.CENTER);
     }   
+}
+
+// Setter farge på annenhver rad i tabellen
+class Radalterneringstabell extends JTable
+{
+    public Radalterneringstabell(TableModel tab)
+    {
+        super(tab);
+    }
+    
+    public Component prepareRenderer(
+        TableCellRenderer rendrer, int rad, int kolonne)
+    {
+        Component c = super.prepareRenderer(rendrer, rad, kolonne);
+        
+        if( rad % 2 == 0 && !isCellSelected(rad,kolonne))
+        {
+            c.setBackground(getBackground());
+        }
+        else
+        {
+            c.setBackground(Color.CYAN);
+        }
+        return c;
+    }
 }
 
 
