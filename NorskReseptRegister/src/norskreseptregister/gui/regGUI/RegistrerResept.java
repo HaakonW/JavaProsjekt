@@ -301,6 +301,8 @@ public class RegistrerResept extends JPanel implements ActionListener
             medisindatafelt.setText(medisin.getNavn());
         }
     }
+    
+    //Metode som får opp bekreftboks for ny resept. Ved yes_Option vil en ny repept bli registrert.
     private void bekreft()
     {
         int bekreft = JOptionPane.showConfirmDialog(null, "Du vil registrere denne resepten: " +
@@ -321,9 +323,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     {
         if (e.getSource() == regResept)
         {
-            bekreft();
-           /* ;
-            ;*/
+            bekreft();       
         }
         if (e.getSource() == visListe)
         {
