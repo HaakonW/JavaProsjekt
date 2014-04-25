@@ -117,7 +117,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
     }
     
-    private void visPasienter()
+    /*private void visPasienter()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
         ArrayList <Resept> resepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
@@ -134,7 +134,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
             pasienter+= entry.getKey().getNavn() + "\n";
         }
         utskrift.setText("Pasienter som har mottat " + medisin.getNavn() + ":\n" + pasienter);
-    }
+    }*/
     
     private void visLeger()
     {
@@ -157,7 +157,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == knapp1)
         {
-            visPasienter();
+            //visPasienter();
         }
         else if (e.getSource() == knapp2)
         {
