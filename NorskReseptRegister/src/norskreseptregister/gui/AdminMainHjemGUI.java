@@ -14,7 +14,7 @@ import static java.awt.font.TextAttribute.FONT;
 import javax.swing.*;
 import norskreseptregister.Reg.RegisterSystem;
 
-class AdminMainHjemGUI extends JPanel
+class AdminMainHjemGUI extends JPanel implements ActionListener
 {
     //private JButton endreLisens, medisin;
     private JPanel panel2, panel1;
@@ -47,9 +47,11 @@ class AdminMainHjemGUI extends JPanel
         knapp2.setFocusPainted(false);
         
         knapp1.setToolTipText("Endre lisens for lege");
-        knapp2.setToolTipText("Registrer ny medisin");        
-       
+        knapp2.setToolTipText("Registrer ny medisin");     
         
+        knapp1.addActionListener(this);
+        knapp2.addActionListener(this);
+
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());      
         
@@ -70,5 +72,15 @@ class AdminMainHjemGUI extends JPanel
         gc.gridy = 2;
         add(label2, gc);
     }//end of konstruktør
+    
+    //Metode for å lytte på om knapp1 eller knapp2 er trykket på
+    public void actionPerformed(ActionEvent e)
+    {
+        if (e.getSource() == knapp1)
+        {
+            
+        }
+    }
+    
 
 }//end of class AdminMainHjemGUI

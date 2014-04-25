@@ -60,9 +60,9 @@ public class RegistrerResept extends JPanel implements ActionListener
         mengdefelt = new JTextField(20);
         //kategorifelt = new JTextField(20);
         
-        datolabel = new JLabel("Dato  ");
+        datolabel = new JLabel("Dato    ");
         pasientdatalabel = new JLabel("Pasient");
-        legedatalabel = new JLabel("Lege");
+        legedatalabel = new JLabel("Lege    ");
         medisindatalabel = new JLabel("Medisin");
         mengdelabel = new JLabel("Mengde");
         kategorilabel = new JLabel("Kategori");
