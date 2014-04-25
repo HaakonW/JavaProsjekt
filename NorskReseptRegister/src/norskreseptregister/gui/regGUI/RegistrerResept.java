@@ -227,6 +227,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         legedatafelt.setText("");
         medisindatafelt.setText("");
         mengdefelt.setText("");
+        anvisning.setText("");
         //kategorifelt.setText("");
     }
 
@@ -300,13 +301,29 @@ public class RegistrerResept extends JPanel implements ActionListener
             medisindatafelt.setText(medisin.getNavn());
         }
     }
+    private void bekreft()
+    {
+        int bekreft = JOptionPane.showConfirmDialog(null, "Du vil registrere denne resepten: " +
+                                                          "\nPasient: " + pasient.getNavn() +
+                                                          "\nLege: " + lege.getNavn() +
+                                                          "\nLegemiddel: " + medisin.getNavn() +
+                                                          "\nMengde: " + mengdefelt.getText() +
+                                                          "\nAnvisning: " + utskrift.getText(), "Bekreft Resept", JOptionPane.YES_NO_OPTION);
+        if (bekreft == JOptionPane.YES_OPTION)
+                {
+                    nyResept();
+                    TomFelt();
+                    
+                }
+    }
 
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == regResept)
         {
-            nyResept();
-            TomFelt();
+            bekreft();
+           /* ;
+            ;*/
         }
         if (e.getSource() == visListe)
         {
