@@ -42,7 +42,6 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
         label2 = new JLabel("Registrer medisin");
         label2.setFont(new Font ("PT Serif", Font.PLAIN, 20));
         
-        
         knapp1.setFocusPainted(false);
         knapp2.setFocusPainted(false);
         
@@ -81,6 +80,5 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
             
         }
     }
-    
 
 }//end of class AdminMainHjemGUI

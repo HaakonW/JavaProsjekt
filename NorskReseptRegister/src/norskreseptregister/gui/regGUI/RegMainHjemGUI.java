@@ -44,11 +44,11 @@ class RegMainHjemGUI extends JPanel implements ActionListener
         regResept.setToolTipText("Registrer resept");
         
         label1 = new JLabel("Registrer Pasient");
-        label1.setFont(new Font ("georgia", Font.BOLD, 20)); // Evig DØLL MÅ SKIFTES SENERE
+        label1.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
         label2 = new JLabel("Registrer Lege");
-        label2.setFont(new Font ("palatino", Font.ITALIC, 20)); // Evig DØLL MÅ SKIFTES SENERE
+        label2.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
         label3 = new JLabel("Registrer Resept");
-        label3.setFont(new Font ("baskerville", Font.ROMAN_BASELINE, 20)); // Evig DØLL MÅ SKIFTES SENERE
+        label3.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
                
         
         panel2 = new JPanel();

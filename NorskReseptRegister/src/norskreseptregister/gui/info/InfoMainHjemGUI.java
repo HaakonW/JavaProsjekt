@@ -28,22 +28,22 @@ class InfoMainHjemGUI extends JPanel
         ImageIcon pasinf = new ImageIcon("src/norskreseptregister/gui/bilder/pasinfo.png");
         ImageIcon medinf = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
         
-        knapp1 = new JButton(pasinf);
-        knapp2 = new JButton(legeinf);
+        knapp1 = new JButton(legeinf);
+        knapp2 = new JButton(pasinf);
         knapp3 = new JButton(medinf);
         
         knapp1.setFocusPainted(false);
         
-        knapp1.setToolTipText("Info om pasient");
-        knapp2.setToolTipText("Info om lege");
+        knapp1.setToolTipText("Info om lege");
+        knapp2.setToolTipText("Info om pasient");
         knapp3.setToolTipText("Info om medisin");
         
         label1 = new JLabel("LegeInfo");
-        label1.setFont(new Font ("georgia", Font.BOLD, 20)); // Evig DØLL MÅ SKIFTES SENERE
+        label1.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
         label2 = new JLabel("PasientInfo");
-        label2.setFont(new Font ("palatino", Font.ITALIC, 20)); // Evig DØLL MÅ SKIFTES SENERE
+        label2.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
         label3 = new JLabel("MedisinInfo");
-        label3.setFont(new Font ("baskerville", Font.ROMAN_BASELINE, 20)); // Evig DØLL MÅ SKIFTES SENERE
+        label3.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
         
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());

@@ -104,7 +104,6 @@ public class hovedVindu extends JFrame
             }
         };
         
-
         //Skriver til alle register, ikke medisin.
         addWindowListener(new WindowAdapter()
         {
