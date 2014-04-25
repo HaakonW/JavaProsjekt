@@ -27,8 +27,8 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     private JTextField legedatafelt;
     private JTextArea utskrift;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
-    private JLabel fornavnlabel;
-    private JButton visAlleLeger, visAlleResepterPaaLege, visResepteriGruppe, velgLege, hjelp;
+    private JLabel fornavnlabel, gruppelabel;
+    private JButton visAlleLeger, visResepteriGruppe, velgLege, hjelp;
     private JCheckBox a, b, c;
     private Lege lege;
     private RegisterSystem system;
@@ -39,24 +39,25 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         this.system = system;
         this.legeRegister = legeRegister;
         fornavnlabel = new JLabel("Legenavn   ");
+        gruppelabel = new JLabel("Reseptgruppe");
         legedatafelt = new JTextField(20);
         visAlleLeger = new JButton("Vis alle leger i registeret");
         legedatafelt.setText("Velg lege ved å på knappen til høyre");
-        visAlleResepterPaaLege = new JButton("Vis resepter legen har skrevet ut");
-        visResepteriGruppe = new JButton("Vis resepter i gruppe");
+        
+        visResepteriGruppe = new JButton("Vis resepter");
         hjelp = new JButton("?");
         velgLege = new JButton("...");
         
         utskrift = new JTextArea(20,20);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         
-        a = new JCheckBox("A");
-        b = new JCheckBox("B");
-        c = new JCheckBox("C");
+        a = new JCheckBox("A", true);        
+        b = new JCheckBox("B", true);
+        c = new JCheckBox("C", true);
         
         velgLege.addActionListener(this);
         visAlleLeger.addActionListener(this);
-        visAlleResepterPaaLege.addActionListener(this);
+       
         hjelp.addActionListener(this);
         
         velgLege.setPreferredSize(new Dimension(20, 20));
@@ -70,11 +71,11 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         panel1.add(legedatafelt);
         panel1.add(velgLege);
 
-       panel3 = new JPanel();
-       panel3.add(visAlleLeger);
-       panel3.add(visAlleResepterPaaLege);
+      
        
        panel4 = new JPanel();
+       panel4.setBorder(BorderFactory.createEtchedBorder());
+       panel4.add(gruppelabel);
        panel4.add(a);
        panel4.add(b);
        panel4.add(c);
@@ -89,19 +90,15 @@ public class LegeInfoGUI extends JPanel implements ActionListener
        gc.gridx = 0;
        gc.gridy = 0;
        gc.insets = new Insets(10, 5, 5, 10);
-       gc.anchor = GridBagConstraints.WEST;
-       gc.fill = GridBagConstraints.HORIZONTAL;
        add(panel1, gc);
-
+       
+       gc.gridx = 0;
+       gc.gridy = 1;
+       add(panel4, gc);
+       
        gc.gridx = 0;
        gc.gridy = 2;
-       gc.fill = 0;
-       gc.anchor = GridBagConstraints.EAST;
-       add(panel3, gc);
-        
-       gc.gridx = 0;
-       gc.gridy = 3;
-       add(panel4, gc);
+       add(visAlleLeger, gc);
         
        gc.gridx = 1;
        gc.gridy = 0;
@@ -182,10 +179,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         {
             visAlleLeger();
         }
-        else if (e.getSource() == visAlleResepterPaaLege)
-        {
-            visResepterForLege();
-        }
+     
         else if (e.getSource() == hjelp)
         {
             JOptionPane.showMessageDialog(null, "HJELP LEGEINFO");
