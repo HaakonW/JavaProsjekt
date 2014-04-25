@@ -1,5 +1,7 @@
 /*
-Filen inneholder AdminMainHjemGUI klassen.
+Filen inneholder AdminMainHjemGUI klassen. 
+Dette er det første vinduet du kommer til hvis du åpner Admin siden.
+Her får du oversikt over hvilke funksjoner du kan gjøre i Adminvinduet.
 Laget av Henrik Fischer Bjelland
 Sist endret  09-04-2014
 */

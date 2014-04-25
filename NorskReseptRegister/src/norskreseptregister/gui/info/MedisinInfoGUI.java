@@ -13,10 +13,14 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.swing.*;
 import javax.swing.JPanel;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
+import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.regGUI.VelgMedisinGUI;
@@ -78,13 +82,11 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
        gc.anchor = GridBagConstraints.WEST;
        gc.fill = GridBagConstraints.HORIZONTAL;
        add(panel1, gc);   
-    
-       
+
        gc.gridx = 0;
        gc.gridy = 1;
        add(panel3, gc);
-               
-        
+
         gc.gridx = 1;
         gc.gridy = 0;
         gc.gridheight = 6;
@@ -118,12 +120,32 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
     private void visPasienter()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
-        ArrayList <Resept> resept = system.getReseptRegister().FinnObjekterSomMatcher(query);
+        ArrayList <Resept> resepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
+        HashMap <String, Resept> unikePasientResepter = new HashMap<>(); 
+        String pasienter="";
+        for (Resept r : resepter)
+        {
+            unikePasientResepter.put(r.getPasientdata(), r);
+        }
+        Iterator <Map.Entry<String, Resept>> iterator = unikePasientResepter.entrySet().iterator();
+        while (iterator.hasNext())
+        {
+            Map.Entry<String,Resept> entry = iterator.next();
+            pasienter+= entry.getKey().getNavn() + "\n";
+        }
+        utskrift.setText("Pasienter som har mottat " + medisin.getNavn() + ":\n" + pasienter);
     }
     
     private void visLeger()
     {
-        
+        FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
+        ArrayList <Resept> resepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
+        String leger="";
+        for (Resept r : resepter)
+        {
+            leger+= r.getLegedata().getNavn() + "\n";
+        }
+        utskrift.setText("Leger som har skrevet ut " + medisin.getNavn() + ":\n" + leger);
     }
     
 

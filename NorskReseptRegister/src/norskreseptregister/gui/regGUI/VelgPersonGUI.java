@@ -86,7 +86,7 @@ public class VelgPersonGUI extends JDialog
   {
     return valgtIndex;
   }
-
+  //Privat lytteklassse som lytter på om knappene er trykket på. 
   private class Knappelytter implements ActionListener
   {
     public void actionPerformed(ActionEvent e)

@@ -50,6 +50,7 @@ public class InfoMainGUI extends JPanel
         add(tabbedPane);
     }
     
+    //Metoden oppretter vinduet
     private static void createAndShowGUI(RegisterSystem system, Medisinliste medisinliste)
     {
         //Create and set up the window.

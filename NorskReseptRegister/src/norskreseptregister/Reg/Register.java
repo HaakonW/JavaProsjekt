@@ -28,10 +28,16 @@ public abstract class Register<T>
     {
         list = new ArrayList<T>(); 
     }
-    //Meotde for å sette inn et objekt
+    //Metode for å sette inn et objekt
     public void SettInn(T nyttObjekt)
     {
         list.add(nyttObjekt);
+    }
+    
+    //Metode for å slette et objekt
+    public boolean SlettEttObjekt(T objekt)
+    {
+        return list.remove(objekt);
     }
 
     // Finner alle elemente i lista som oppfyller kriterie

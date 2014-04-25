@@ -24,7 +24,6 @@ import norskreseptregister.gui.regGUI.VelgPersonGUI;
 
 public class LegeInfoGUI extends JPanel implements ActionListener
 {
-
     private JTextField legedatafelt;
     private JTextArea utskrift;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
@@ -70,8 +69,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         panel1.add(fornavnlabel);
         panel1.add(legedatafelt);
         panel1.add(velgLege);
-       
-       
+
        panel3 = new JPanel();
        panel3.add(visAlleLeger);
        panel3.add(visAlleResepterPaaLege);
@@ -117,6 +115,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         utskrift.setEditable(false); 
     }//end of Konstruktør
     
+    //Metoden velger en lege.
     public void VelgLege()
     {
         LegeRegister legeRegister = system.getLegeRegister();
@@ -137,6 +136,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         }
     }
     
+    //Metoden går igjennom listen med leger og returnerer disse i utskriftfeltet
     private void visAlleLeger()
     {
         String legeliste = "";
@@ -148,7 +148,8 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         }
         utskrift.setText(legeliste);
     }
-        
+    
+    //Metoden viser hvilke resepter en spesifikk lege har skrevet ut
     public void visResepterForLege()
     {
         if ( lege != null)
@@ -169,6 +170,8 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         }
     }
     
+    /*Metode for å lytte på hvilken knapp som er trykket på og kaller da 
+    på metoden knyttet til denne knappen*/
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == velgLege)

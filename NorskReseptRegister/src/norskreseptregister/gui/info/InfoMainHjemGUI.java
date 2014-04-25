@@ -1,5 +1,6 @@
 /*
-Filen inneholder AdminMainHjemGUI klassen.
+Filen inneholder AdminMainHjemGUI klassen som er første siden du kommer til 
+ved å trykke på Admin i vårt hovedprogram.
 Laget av Henrik Fischer Bjelland
 Sist endret  09-04-2014
 */
@@ -44,16 +45,12 @@ class InfoMainHjemGUI extends JPanel
         label3 = new JLabel("MedisinInfo");
         label3.setFont(new Font ("baskerville", Font.ROMAN_BASELINE, 20)); // Evig DØLL MÅ SKIFTES SENERE
         
-        
-   
-        
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
         
         int x = 0;
         int y= 0;
-     
-        
+
         gc.gridx = 0;
         gc.gridy = ++y;
         gc.insets = new Insets(10,10,10,10);

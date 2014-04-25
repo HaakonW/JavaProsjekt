@@ -20,7 +20,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
 {
     private JLabel fornavnlabel, etternavnlabel;
     private JTextField legedatafelt;
-    private JButton velgLege, endreLisens, hjelp;
+    private JButton velgLege, endreLisens, slettLege, hjelp;
     private JTextArea utskrift;
     private JCheckBox a, b, c;
     private JPanel panel1, panel2, panel3, panel4, panel6;
@@ -31,6 +31,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     {
         this.system = system;
         velgLege = new JButton("...");
+        slettLege = new JButton("Slett lege");
         velgLege.setPreferredSize(new Dimension(20, 20));
         endreLisens = new JButton("Endre bevilling");
         hjelp = new JButton("?");
@@ -49,6 +50,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
 
         velgLege.addActionListener(this);
         endreLisens.addActionListener(this);
+        slettLege.addActionListener(this);
         hjelp.addActionListener(this);
 
         velgLege.setToolTipText("Velg lege");
@@ -66,6 +68,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         panel4.add(b);
         panel4.add(c);
         panel4.add(endreLisens);
+        panel4.add(slettLege);
 
         panel6 = new JPanel();
         panel6.add(utskrift);
@@ -104,6 +107,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     }//end of konstruktør LegeLisensGUI
     
     //Denne metoden søker igjennom hele legeregisterer og viser et nytt vindu med alle legene der du kan velge en av disse.
+    // Hvis valgtIndex er større en 0 har brukeren faktisk har gjort et valg
     public void VelgLege()
     {
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
@@ -113,38 +117,68 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         {
             model.addElement(l.toString());
         }
-
         VelgPersonGUI velgLege = new VelgPersonGUI(model);
         velgLege.setLocationRelativeTo(this);
         velgLege.setVisible(true);
         int valgtIndex = velgLege.getValgtIndex();
-        if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
+        if (valgtIndex >= 0)
         {
             lege = legeRegister.HentEttObjekt(valgtIndex);
             legedatafelt.setText(lege.getNavn());
+            setKnapperForBevilling();
         }
     }
+    
+    //Metode som getter bevillingen til en lege og setter denne i checkboksene avhenging av resultatet
+    public void setKnapperForBevilling()
+    {
+        a.setSelected(lege.getBevillingA());
+        b.setSelected(lege.getBevillingB());
+        c.setSelected(lege.getBevillingC());
+    }
+    
     /*Metoden sjekker om noen av JCheckboxene er trykket på og endrer
-    da bevilligen til false. Den skriver også ut informasjon i tekstfeltet 
+    bevilligen til false hvis de ikke er huket av. Den skriver også ut informasjon i tekstfeltet 
     om hvilke endringer som har blitt gjort.
     */
     public void endreLisens()
     {
-        if (a.isSelected())
+        lege.setBevillingA(a.isSelected());
+        lege.setBevillingB(b.isSelected());
+        lege.setBevillingC(c.isSelected());
+        
+        /*if (!a.isSelected())
         {
             lege.setBevillingA(false);
         }
-        else if (b.isSelected())
+        if (!b.isSelected())
         {
             lege.setBevillingB(false);
         }
-        else if (c.isSelected())
+        if (!c.isSelected())
         {
             lege.setBevillingC(false);
-        }
+        }*/
         utskrift.setText("Bevilling er nå endret. \n" + 
         "Legen: " + lege.getNavn() + "\nHar nå bevilling i følgede reseptgrupper: \n"+ 
         lege.getBevilling());
+    }
+    
+    //Metode for å slette en lege
+    private void slettLege()
+    {
+        if ( lege != null)
+        {
+            if (system.getLegeRegister().SlettEttObjekt(lege))
+            {
+                utskrift.setText("Legen" + lege.getNavn() + 
+                        "\n er nå slettet.");
+            } 
+        }
+        else
+        {
+            utskrift.setText("Du må velge en lege først");
+        }
     }
     //Metodene som lytter på knappene og utfører de forskjellige metodene i programmet.
     public void actionPerformed(ActionEvent e)
@@ -153,13 +187,17 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         {
             VelgLege();
         }
-        if (e.getSource() == endreLisens)
+        else if (e.getSource() == endreLisens)
         {
             endreLisens();
         }
-        if(e.getSource() == hjelp)
+        else if(e.getSource() == hjelp)
         {
             JOptionPane.showMessageDialog(null, "HJELP LISENS");
+        }
+        else if (e.getSource() == slettLege)
+        {
+            slettLege();
         }
     }
 }//end of class LegeLisensGUI

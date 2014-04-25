@@ -15,7 +15,6 @@ import norskreseptregister.ObjektKlasser.Medisinliste;
 
 public class RegistrerMedisinGUI extends JPanel implements ActionListener
 {
-
     private Medisinliste medisinliste;
     private Medisin medisin;
     private JTextField regNavn, regAtc;
@@ -128,7 +127,9 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         }
         return null;
     }
-
+    
+    /*Metoden setter Medisin i en bestemt gruppe (a, b eller c) 
+    avneging av hvilken knapp som er huket av*/
     public void SetMedisinGruppe(Medisin medisin)
     {
         if (a.isSelected())
@@ -144,6 +145,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
             medisin.setGruppeC(true);
         }
     }
+    
     // Lese objekt fra fil  - HUSK Å IMPORTER java.io.*;
     public void lesObjektFraFil()
     {
@@ -184,18 +186,22 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
             System.out.println("Kan ikke skrive til fil!");
         }
     }
-
+    
+    //Metoden viser hele medisinlisten i tekstfeltet Utskrift.
     public void visRegister()
     {
         utskrift.setText(medisinliste.toString());
     }
-
+    
+    //Metoden tømmer feltene for Navn og Atc nummer.
     public void tomFelter()
     {
         regNavn.setText("");
         regAtc.setText("");
     }
-
+    
+    /*Metoden lytter på hvilke knapp som er trykket på og utfører metodekall
+    utfra hvilken knapp som er valgt*/
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == regMedisinnavn)
