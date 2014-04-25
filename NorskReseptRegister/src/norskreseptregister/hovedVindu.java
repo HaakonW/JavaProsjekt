@@ -8,11 +8,14 @@ package norskreseptregister;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -43,6 +46,10 @@ public class hovedVindu extends JFrame
     private JMenuItem submeny2;
     private JMenuItem submeny3;
     private JMenuItem submeny4;
+    
+    private ImageIcon footer;
+    private JDesktopPane p;
+    
     private RegisterSystem system;
     private final Medisinliste medisinliste;
 
@@ -88,7 +95,12 @@ public class hovedVindu extends JFrame
         //Opprette hovedvinduet
         hovedvindu = new JDesktopPane();
         getContentPane().add(hovedvindu, BorderLayout.CENTER);
+        
 
+        ImageIcon footer = new ImageIcon ("src/norskreseptregister/gui/bilder/footer.png");
+        Image img = footer.getImage();
+
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         addWindowListener(new WindowAdapter()
