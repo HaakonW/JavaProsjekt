@@ -18,7 +18,7 @@ import norskreseptregister.gui.regGUI.VelgPersonGUI;
 
 public class LegeLisensGUI extends JPanel implements ActionListener
 {
-    private JLabel fornavnlabel, etternavnlabel;
+    private JLabel navnlabel, lisenslabel;
     private JTextField legedatafelt;
     private JButton velgLege, endreLisens, slettLege, hjelp;
     private JTextArea utskrift;
@@ -37,11 +37,14 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         hjelp = new JButton("?");
         hjelp.setPreferredSize(new Dimension(20, 20));
         
-        fornavnlabel = new JLabel("Fornavn:");
-        etternavnlabel = new JLabel("Etternavn:");
+        navnlabel = new JLabel("Legens navn:");
+        
+        lisenslabel = new JLabel("Godkjent lisens for:    ");
 
         legedatafelt = new JTextField(20);
+        legedatafelt.setText("Velg lege med knappen til høyre");
         utskrift = new JTextArea(20, 20);
+        utskrift.setEditable(false);
 
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         a = new JCheckBox("A");
@@ -57,53 +60,57 @@ public class LegeLisensGUI extends JPanel implements ActionListener
 
         ////PANEL START///
         panel1 = new JPanel();
-        panel1.add(fornavnlabel);
+        panel1.add(navnlabel);
         panel1.add(legedatafelt);
         panel1.add(velgLege);
 
+        panel2 = new JPanel();
+        panel2.setBorder(BorderFactory.createEtchedBorder());
+        panel2.add(lisenslabel);
+        panel2.add(a);
+        panel2.add(b);
+        panel2.add(c);        
+
         panel3 = new JPanel();
+        panel3.setBorder(BorderFactory.createEtchedBorder());
+        panel3.add(endreLisens);
+        panel3.add(slettLege);
 
         panel4 = new JPanel();
-        panel4.add(a);
-        panel4.add(b);
-        panel4.add(c);
-        panel4.add(endreLisens);
-        panel4.add(slettLege);
-
-        panel6 = new JPanel();
-        panel6.add(utskrift);
+        panel4.add(utskrift);
 
         /// GRID START ///
+        //Legger inn Panelene i rutenettet. Først kolonner så rader//
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
 
         gc.gridx = 0;
         gc.gridy = 0;
-        gc.insets = new Insets(10, 10, 10, 10);
-        gc.anchor = GridBagConstraints.WEST;
-        gc.fill = GridBagConstraints.HORIZONTAL;
+        gc.insets = new Insets(5, 10, 5, 10);      
         add(panel1, gc);
 
         gc.gridx = 0;
         gc.gridy = 1;
-        gc.fill = 0;
-        gc.anchor = GridBagConstraints.EAST;
-        add(panel3, gc);
+        gc.fill = GridBagConstraints.HORIZONTAL;          
+        add(panel2, gc);
+        //Kolonne 2 starter 
 
         gc.gridx = 0;
         gc.gridy = 3;
-        add(panel4, gc);
-
-        gc.gridx = 3;
-        gc.gridy = 6;
-        add(hjelp, gc);
-
+        add(panel3, gc);
+        
         gc.gridx = 2;
         gc.gridy = 0;
         gc.gridheight = 6;
-        add(panel6, gc);
+        add(panel4, gc);
+        
+        //Ny kolonne for hjelpboxen
+        gc.gridx = 3;
+        gc.gridy = 6;
+        add(hjelp, gc);
+      
 
-        utskrift.setEditable(false);
+        
     }//end of konstruktør LegeLisensGUI
     
     //Denne metoden søker igjennom hele legeregisterer og viser et nytt vindu med alle legene der du kan velge en av disse.

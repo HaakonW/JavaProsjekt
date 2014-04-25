@@ -25,8 +25,9 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
 
     public RegistrerMedisinGUI()
     {
-        regNavn = new JTextField(20);
+        regNavn = new JTextField(20);        
         regAtc = new JTextField(20);
+        regAtc.setText("f.eks G04B E03");
         regMedisinnavn = new JButton("Registrer");
         visListe = new JButton("Vis liste");
         hjelp = new JButton("?");
@@ -50,7 +51,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
 
         ///////PANEL START/////             
         JPanel panel1 = new JPanel();
-        panel1.add(new JLabel("Medisinnavn"));
+        panel1.add(new JLabel("Legemiddel  "));
         panel1.add(regNavn);
 
         JPanel panel2 = new JPanel();
@@ -58,11 +59,14 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         panel2.add(regAtc);
 
         JPanel panel3 = new JPanel();
+        panel3.setBorder(BorderFactory.createEtchedBorder());
+        panel3.add(new JLabel("Reseptgruppe"));
         panel3.add(a);
         panel3.add(b);
         panel3.add(c);
 
         JPanel panel4 = new JPanel();
+        panel4.setBorder(BorderFactory.createEtchedBorder());
         panel4.add(regMedisinnavn);
         panel4.add(visListe);
 
@@ -75,9 +79,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
 
         gc.gridx = 0;
         gc.gridy = 0;
-        gc.insets = new Insets(10, 5, 5, 10);
-        gc.anchor = GridBagConstraints.WEST;
-        gc.fill = GridBagConstraints.HORIZONTAL;
+        gc.insets = new Insets(5, 10, 5, 10);      
         add(panel1, gc);
 
         gc.gridx = 0;
@@ -86,7 +88,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
 
         gc.gridx = 0;
         gc.gridy = 2;
-        gc.anchor = GridBagConstraints.WEST;
+        gc.fill = GridBagConstraints.HORIZONTAL; 
         add(panel3, gc);
 
         gc.gridx = 0;
