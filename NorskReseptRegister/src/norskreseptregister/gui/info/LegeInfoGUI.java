@@ -41,7 +41,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         fornavnlabel = new JLabel("Legenavn   ");
         gruppelabel = new JLabel("Reseptgruppe");
         legedatafelt = new JTextField(20);
-        visAlleLeger = new JButton("Vis alle leger i registeret");
+        visAlleLeger = new JButton("Vis alle leger");
         legedatafelt.setText("Velg lege ved å på knappen til høyre");
         
         visResepteriGruppe = new JButton("Vis resepter");

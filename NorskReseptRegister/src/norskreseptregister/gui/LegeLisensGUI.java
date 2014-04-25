@@ -194,7 +194,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         {
             VelgLege();
         }
-        else if (e.getSource() == endreLisens)
+        else if (e.getSource() == endreLisens) 
         {
             endreLisens();
         }

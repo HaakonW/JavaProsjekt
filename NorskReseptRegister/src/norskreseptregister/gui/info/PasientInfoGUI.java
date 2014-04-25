@@ -31,7 +31,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
     private JTextArea utskrift;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
     private JLabel pasientlabel;
-    private JButton visAllePasienter, visAlleResepterPaaPasient, visResepteriGruppe, velgPasient, hjelp;
+    private JButton visAllePasienter, visResepteriGruppe, velgPasient, hjelp;
     private JCheckBox a, b, c;
     private RegisterSystem system;
     private PasientRegister pasientRegister;
@@ -44,22 +44,22 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         pasientlabel = new JLabel("Pasient   ");
         pasientdatafelt = new JTextField(20);
         pasientdatafelt.setText("Velg pasient med knappen til høyre");
-        visAllePasienter = new JButton("Vis alle pasienter i registeret");
-        visAlleResepterPaaPasient = new JButton("Vis resepter pasienter har mottatt");
-        visResepteriGruppe = new JButton("Vis resepter i gruppe");
+        visAllePasienter = new JButton("Vis alle pasienter");
+
+        visResepteriGruppe = new JButton("Vis resepter");
         hjelp = new JButton("?");
         velgPasient = new JButton("...");
         
         utskrift = new JTextArea(20,20);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         
-        a = new JCheckBox("A");
-        b = new JCheckBox("B");
-        c = new JCheckBox("C");
+        a = new JCheckBox("A", true);
+        b = new JCheckBox("B", true);
+        c = new JCheckBox("C", true);
         
         velgPasient.addActionListener(this);
         visAllePasienter.addActionListener(this);
-        visAlleResepterPaaPasient.addActionListener(this);
+        
         hjelp.addActionListener(this);
         
         velgPasient.setPreferredSize(new Dimension(20, 20));
@@ -76,9 +76,10 @@ public class PasientInfoGUI extends JPanel implements ActionListener
        
        panel3 = new JPanel();
        panel3.add(visAllePasienter);
-       panel3.add(visAlleResepterPaaPasient);
+       
        
        panel4 = new JPanel();
+       panel4.setBorder(BorderFactory.createEtchedBorder());
        panel4.add(a);
        panel4.add(b);
        panel4.add(c);
@@ -92,21 +93,21 @@ public class PasientInfoGUI extends JPanel implements ActionListener
        setLayout(new GridBagLayout());
        gc.gridx = 0;
        gc.gridy = 0;
-       gc.insets = new Insets(10, 5, 5, 10);
-       gc.anchor = GridBagConstraints.WEST;
-       gc.fill = GridBagConstraints.HORIZONTAL;
+       gc.insets = new Insets(5, 10, 5, 10);       
        add(panel1, gc);
        
+       gc.gridx = 0;
+       gc.gridy = 1;  
+       gc.fill = GridBagConstraints.HORIZONTAL;
+       add(panel4, gc);
+       
+       gc.gridx = 0;
+       gc.gridy = 2;       
+       add(panel3, gc);       
    
-        gc.gridx = 0;
-        gc.gridy = 2;
-        gc.fill = 0;
-        gc.anchor = GridBagConstraints.EAST;
-        add(panel3, gc);
+       
         
-        gc.gridx = 0;
-        gc.gridy = 3;
-        add(panel4, gc);
+       
         
         gc.gridx = 1;
         gc.gridy = 0;
@@ -183,10 +184,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         {
             visAllePasienter();
         }
-        else if (e.getSource() == visAlleResepterPaaPasient)
-        {
-            visResepterForPasient();
-        }
+      
         else if (e.getSource() == hjelp)
         {
             JOptionPane.showMessageDialog(null, "Pasient info. \n"+
