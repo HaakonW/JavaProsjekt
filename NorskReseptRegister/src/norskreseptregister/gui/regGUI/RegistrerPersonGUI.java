@@ -36,6 +36,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         fornavnfelt = new JTextField(20);
         etternavnfelt = new JTextField(20);
         infofelt = new JTextField(20);
+        //infofelt.setText("dd/mm/åååå");
         reg = new JButton("Registrer");
      
         utskrift = new JTextArea(20, 20);
