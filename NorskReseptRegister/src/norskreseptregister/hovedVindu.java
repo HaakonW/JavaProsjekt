@@ -35,7 +35,6 @@ public class hovedVindu extends JFrame
 {
     private JDesktopPane hovedvindu;
     private Menylytter lytter;
-
     private JMenuBar menylinje;
     private JMenu valg1;
     private JMenu valg2;
