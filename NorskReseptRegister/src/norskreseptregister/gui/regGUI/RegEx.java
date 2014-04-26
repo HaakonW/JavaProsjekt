@@ -11,11 +11,53 @@ package norskreseptregister.gui.regGUI;
 public class RegEx
 {
     private String fornavn;
+    private String etternavn;
+    private String adresse;
+    private int fodselsdato;
+    private String legemiddel;
+    private String atcNr;
     
-    private void testFornavn()
+    
+    //Metode for å sjekke fornavn
+    public boolean sjekkFornavn(String fornavn)
     {
-        //fornavn = fornavnfelt.getText();
-        fornavn.matches("[a-zA-Z]");
+        
+        if(fornavn.matches("[a-zæøåA-ZÆØÅ]"))
+        {
+            return true;
+        }
+        else
+        {
+            return false; 
+        } 
+    }
+    
+    
+    //Metode for å sjekke etternavn
+    public boolean sjekkEtternavn(String etternavn)
+    {
+        if(etternavn.matches("a-zæøåA-ZÆØÅ"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    
+    //Metode for å sjekke adresse
+    public boolean sjekkAdresse(String adresse)
+    {
+        if(adresse.matches("a-zæøåA-zÆØÅ"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     
 }

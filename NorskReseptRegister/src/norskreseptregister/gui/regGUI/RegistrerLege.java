@@ -6,20 +6,16 @@ Sist endret 09-04-2014
 
 package norskreseptregister.gui.regGUI;
 
-import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.*;
-import java.io.*;
-import javax.imageio.*;
 import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.Reg.LegeRegister;
-import norskreseptregister.Reg.RegisterSystem;
 import java.util.List;
 
 public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
 {
     private LegeRegister legeRegister;
+    private RegEx regex;
     
     public RegistrerLege(LegeRegister legeRegister)
     {
@@ -32,10 +28,22 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
 
     private void nyLege()
     {
-        Lege ny = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), 
+        if(regex.sjekkFornavn(fornavnfelt.getText()) && regex.sjekkEtternavn(
+                etternavnfelt.getText()) && regex.sjekkAdresse(infofelt.getText()))
+        {
+            Lege ny = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), 
+                                infofelt.getText());
+            legeRegister.SettInn(ny);
+            utskrift.setText("Registrert Lege: \n" + ny.toString());
+        }
+        else
+        {
+            utskrift.setText("Feil!");
+        }
+       /* Lege ny = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), 
                 infofelt.getText());
         legeRegister.SettInn(ny);
-        utskrift.setText("Registrert Lege: \n" + ny.toString());
+        utskrift.setText("Registrert Lege: \n" + ny.toString()); */
     }
 
     private void SkrivUt()
