@@ -201,7 +201,7 @@ public class RegistrerResept extends JPanel implements ActionListener
 
         gc.gridx = 3;
         gc.gridy = 0;
-        gc.gridheight = 10;
+        gc.gridheight = 7;
         gc.fill = GridBagConstraints.VERTICAL;
         add(panel9, gc);
 
