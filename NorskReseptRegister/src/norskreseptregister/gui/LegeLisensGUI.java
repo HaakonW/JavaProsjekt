@@ -54,11 +54,8 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         lisenslabel = new JLabel("Godkjent lisens for:    ");
         a = new JCheckBox("A");
         b = new JCheckBox("B");
-<<<<<<< HEAD
         c = new JCheckBox("C");        
-=======
-        c = new JCheckBox("C");
->>>>>>> c3c1e31bd033371eecf2db785e0e705feed514eb
+
         
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
