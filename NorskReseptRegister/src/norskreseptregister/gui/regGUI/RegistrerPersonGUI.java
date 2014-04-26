@@ -26,6 +26,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
     protected JTextArea utskrift;
     private JLabel fornavnlabel, etternavnlabel, infolabel; 
     private JPanel panel1, panel2, panel3, panel4, panel5;
+    private String fornavn;
     
     public RegistrerPersonGUI(String infolabeltekst)
     {
@@ -102,48 +103,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         
     }//end of konstruktør RegistrerLege
 
-    public boolean sjekkFornavn()
-    {  
-        if(fornavnfelt.getText().matches("[a-zæøåA-ZÆØÅ]"))
-        {
-            return true;
-        }
-        else
-        {
-            utskrift.setText("Fornavnet må være kun bokstaver.");
-            return false;
-        } 
-    }
-    
-    public boolean sjekkEtternavn()
-    {
-        if(etternavnfelt.getText().matches("a-zæøåA-ZÆØÅ"))
-        {
-            return true;
-        }
-        else
-        {
-            utskrift.setText("Etternavnet må være kun bokstaver.");
-            return false;
-        }
-    }
-    
-    
-    //Metode for å sjekke adresse
-    public boolean sjekkAdresse()
-    {
-        if(infofelt.getText().matches("a-zæøåA-zÆØÅ"))
-        {
-            return true;
-        }
-        else
-        {
-            utskrift.setText("Adresse må være kun bokstaver.");
-            return false;
-        }
-    }
-    
-    
+
     public void TomFelt()
     {
         fornavnfelt.setText("");

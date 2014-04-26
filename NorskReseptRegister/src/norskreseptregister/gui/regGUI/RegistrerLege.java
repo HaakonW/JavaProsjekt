@@ -15,7 +15,7 @@ import java.util.List;
 public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
 {
     private LegeRegister legeRegister;
-    private RegEx regex;
+    //private RegEx regex;
     
     public RegistrerLege(LegeRegister legeRegister)
     {
@@ -69,6 +69,51 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
        {
           JOptionPane.showMessageDialog(null, "HJELP LEGE"); 
        }
+    }
+    
+    
+    public boolean sjekkFornavn()
+    {  
+        //fornavn = fornavnfelt.getText();
+        
+        if(fornavnfelt.getText().matches("\\w"))
+        {
+            return true;
+        }
+        else
+        {
+            utskrift.setText("Fornavnet må være kun bokstaver.");
+            return false;
+        } 
+    }
+    
+    public boolean sjekkEtternavn()
+    {
+        
+        if(etternavnfelt.getText().matches("\\w"))
+        {
+            return true;
+        }
+        else
+        {
+            utskrift.setText("Etternavnet må være kun bokstaver.");
+            return false;
+        }
+    }
+    
+    
+    //Metode for å sjekke adresse
+    public boolean sjekkAdresse()
+    {
+       if(infofelt.getText().matches("\\w"))
+        {
+            return true;
+        }
+        else
+        {
+            utskrift.setText("Adresse må være kun bokstaver.");
+            return false;
+        }
     }
     
 }//end of class RegistrerLege
