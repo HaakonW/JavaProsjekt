@@ -50,8 +50,9 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         knapp2 = new JButton("Vis Leger");
         hjelp = new JButton ("?");
         utskrift = new JTextArea(20,20);
-        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         utskriftscroll = new JScrollPane(utskrift);
+        utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
         ///PANELS START ////
         
         panel1 = new JPanel();

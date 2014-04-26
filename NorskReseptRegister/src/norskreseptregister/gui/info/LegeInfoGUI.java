@@ -44,74 +44,70 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         legedatafelt = new JTextField(20);
         visAlleLeger = new JButton("Vis alle leger");
         legedatafelt.setText("Velg lege ved å på knappen til høyre");
-        
+
         visResepteriGruppe = new JButton("Vis resepter");
         hjelp = new JButton("?");
         velgLege = new JButton("...");
-        
+
         utskrift = new JTextArea(20,20);
-        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        utskrift.setEditable(false); 
         utskriftscroll = new JScrollPane(utskrift);
-        
+        utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
         a = new JCheckBox("A", true);        
         b = new JCheckBox("B", true);
         c = new JCheckBox("C", true);
-        
+
         velgLege.addActionListener(this);
+        visResepteriGruppe.addActionListener(this);
         visAlleLeger.addActionListener(this);
-       
         hjelp.addActionListener(this);
-        
+
         velgLege.setPreferredSize(new Dimension(20, 20));
         legedatafelt.setEditable(false);
         hjelp.setPreferredSize(new Dimension(20, 20));
-        
+
         ///PANELS START ////
-        
         panel1 = new JPanel();
         panel1.add(fornavnlabel);
         panel1.add(legedatafelt);
         panel1.add(velgLege);
 
-      
-       
-       panel4 = new JPanel();
-       panel4.setBorder(BorderFactory.createEtchedBorder());
-       panel4.add(gruppelabel);
-       panel4.add(a);
-       panel4.add(b);
-       panel4.add(c);
-       panel4.add(visResepteriGruppe);
-       
-       panel5 = new JPanel();
-       panel5.add(utskriftscroll);
+        panel4 = new JPanel();
+        panel4.setBorder(BorderFactory.createEtchedBorder());
+        panel4.add(gruppelabel);
+        panel4.add(a);
+        panel4.add(b);
+        panel4.add(c);
+        panel4.add(visResepteriGruppe);
 
-       ///GRID START ////
-       GridBagConstraints gc = new GridBagConstraints();
-       setLayout(new GridBagLayout());
-       gc.gridx = 0;
-       gc.gridy = 0;
-       gc.insets = new Insets(10, 5, 5, 10);
-       add(panel1, gc);
-       
-       gc.gridx = 0;
-       gc.gridy = 1;
-       add(panel4, gc);
-       
-       gc.gridx = 0;
-       gc.gridy = 2;
-       add(visAlleLeger, gc);
-        
-       gc.gridx = 1;
-       gc.gridy = 0;
-       gc.gridheight = 6;
-       add(panel5, gc);
-        
-       gc.gridx = 2;
-       gc.gridy = 6;
-       add(hjelp, gc);
+        panel5 = new JPanel();
+        panel5.add(utskriftscroll);
 
-        utskrift.setEditable(false); 
+        ///GRID START ////
+        GridBagConstraints gc = new GridBagConstraints();
+        setLayout(new GridBagLayout());
+        gc.gridx = 0;
+        gc.gridy = 0;
+        gc.insets = new Insets(10, 5, 5, 10);
+        add(panel1, gc);
+
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(panel4, gc);
+
+        gc.gridx = 0;
+        gc.gridy = 2;
+        add(visAlleLeger, gc);
+
+        gc.gridx = 1;
+        gc.gridy = 0;
+        gc.gridheight = 6;
+        add(panel5, gc);
+
+        gc.gridx = 2;
+        gc.gridy = 6;
+        add(hjelp, gc);
     }//end of Konstruktør
     
     //Metoden velger en lege.
@@ -153,15 +149,31 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     {
         if ( lege != null)
         {
+            if ( a.isSelected())
+            {
+                //gjøre noe
+                
+                if(b.isSelected())
+                {
+                    
+                    //gjøre noe
+                    
+                    
+                  if (c.isSelected())
+                  {
+                      
+                  }
+                }
             FinnResepterForLege query = new FinnResepterForLege(lege);
             ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
             String alleResepterForLege ="";
             for (Resept r : reseptene)
             {
-                alleResepterForLege += r.toString();
+                alleResepterForLege += r.toString() + "\n-----------------\n";
             }
             utskrift.setText("Fant følgende resepter for :\n"
-                    + lege.getNavn() + "\n" + alleResepterForLege);
+                    + lege.getNavn() + "\n-----------------\n" + alleResepterForLege);   
+            }
         }
         else
         {
@@ -180,6 +192,10 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         else if (e.getSource() == visAlleLeger)
         {
             visAlleLeger();
+        }
+        else if (e.getSource() == visResepteriGruppe)
+        {
+            visResepterForLege();
         }
      
         else if (e.getSource() == hjelp)

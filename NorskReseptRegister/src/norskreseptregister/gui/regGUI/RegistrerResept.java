@@ -97,9 +97,9 @@ public class RegistrerResept extends JPanel implements ActionListener
         anvisning.setWrapStyleWord(true);
         anvisning.setBorder(BorderFactory.createTitledBorder(null, "Anvisning", 1, 2, null, Color.black));
         utskrift = new JTextArea(25, 22);
-        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         utskrift.setEditable(false);
         utskriftscroll = new JScrollPane(utskrift);
+        utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         regResept.addActionListener(this);
         visListe.addActionListener(this);

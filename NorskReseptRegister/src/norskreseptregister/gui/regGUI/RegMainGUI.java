@@ -55,13 +55,8 @@ public class RegMainGUI extends JPanel
         frame.setSize(650, 460);
         frame.getContentPane().add(new RegMainGUI(system, medisinliste), BorderLayout.CENTER);
         //Display the window.
-        frame.setVisible(true);
         frame.pack();
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (int) ((dimension.getWidth() - 650) / 2);
-        int y = (int) ((dimension.getHeight() - 460) / 2);
-        frame.setLocation(x, y);
-        //dette må ligge i main etter hvert
+        frame.setVisible(true);
     }
 
     /*public static void main(String[] args)

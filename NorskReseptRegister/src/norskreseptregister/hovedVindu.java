@@ -150,7 +150,7 @@ public class hovedVindu extends JFrame
                         JInternalFrame.DISPOSE_ON_CLOSE);
 
                 internvindu.pack();
-                internvindu.setLocation(0,0);
+                internvindu.setLocation(-10,-2);
 
                 hovedvindu.add(internvindu);
                 internvindu.setVisible(true);
@@ -169,7 +169,7 @@ public class hovedVindu extends JFrame
 
                 internvindu2.pack();
                 
-                internvindu2.setLocation(500,0);
+                internvindu2.setLocation(700,-2);
                 hovedvindu.add(internvindu2);
                 internvindu2.setVisible(true);
             }
@@ -186,7 +186,7 @@ public class hovedVindu extends JFrame
 
                 internvindu3.pack();
                 
-                internvindu3.setLocation(0,250);    
+                internvindu3.setLocation(-10,310);    
                 hovedvindu.add(internvindu3);
                 internvindu3.setVisible(true);
             }

@@ -58,14 +58,8 @@ public class InfoMainGUI extends JPanel
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500,400);
         frame.getContentPane().add(new InfoMainGUI(system, medisinliste), BorderLayout.CENTER);
-        
+        frame.pack();
         frame.setVisible(true);
-        frame.pack(); 
-
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();      
-        int x=(int)((dimension.getWidth() - 620)/2);
-        int y=(int)((dimension.getHeight() - 450)/2);
-        frame.setLocation(x, y); 
   }
     
 }//end of class InfoMainGUI

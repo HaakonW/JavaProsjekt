@@ -55,9 +55,8 @@ public class AdminMain extends JPanel
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setSize(300,200);
       frame.getContentPane().add(new AdminMain(system), BorderLayout.CENTER);
-
-      frame.setVisible(true);
       frame.pack();
+      frame.setVisible(true);
     }
 
 }//end of class AdminMain

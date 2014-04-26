@@ -52,8 +52,8 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         velgPasient = new JButton("...");
         
         utskrift = new JTextArea(20,20);
-        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         utskriftscroll = new JScrollPane(utskrift);
+        utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
         a = new JCheckBox("A", true);
         b = new JCheckBox("B", true);
