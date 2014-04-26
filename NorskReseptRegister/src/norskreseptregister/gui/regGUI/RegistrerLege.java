@@ -28,7 +28,9 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
 
     private void nyLege()
     {
-        if(sjekkFornavn() && sjekkEtternavn() && sjekkAdresse())
+        String tekst="";
+        
+        if(sjekkFornavn(fornavnfelt.getText()) && sjekkEtternavn(etternavnfelt.getText()) && sjekkAdresse(infofelt.getText()))
         {
             Lege ny = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), 
                                 infofelt.getText());
@@ -37,7 +39,19 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
         }
         else
         {
-            utskrift.setText("Feil!");
+            if(!sjekkFornavn(fornavnfelt.getText()))
+            {
+                tekst += "Feil i fornavn\n";
+            }
+            if(!sjekkEtternavn(etternavnfelt.getText()))
+            {
+                tekst += "Feil i etternavn\n";
+            }
+            if(!sjekkAdresse(infofelt.getText()))
+            {
+                tekst += "Feil i adresse\n";
+            }
+            utskrift.setText("Feil!\n" + tekst);
         }
        /* Lege ny = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), 
                 infofelt.getText());
@@ -72,11 +86,10 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
     }
     
     
-    public boolean sjekkFornavn()
+    public boolean sjekkFornavn(String fornavn)
     {  
-        //fornavn = fornavnfelt.getText();
-        
-        if(fornavnfelt.getText().matches("\\w"))
+ 
+        if(fornavn.matches("\\w.*"))
         {
             return true;
         }
@@ -87,10 +100,10 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
         } 
     }
     
-    public boolean sjekkEtternavn()
+    public boolean sjekkEtternavn(String etternavn)
     {
         
-        if(etternavnfelt.getText().matches("\\w"))
+        if(etternavn.matches("\\w.*"))
         {
             return true;
         }
@@ -103,9 +116,9 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
     
     
     //Metode for å sjekke adresse
-    public boolean sjekkAdresse()
+    public boolean sjekkAdresse(String adresse)
     {
-       if(infofelt.getText().matches("\\w"))
+       if(infofelt.getText().matches("\\w.*"))
         {
             return true;
         }

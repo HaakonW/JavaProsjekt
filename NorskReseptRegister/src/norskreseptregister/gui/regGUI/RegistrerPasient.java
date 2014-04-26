@@ -35,10 +35,15 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
     
     private void nyPasient()
     {
-        Pasient ny = new Pasient(fornavnfelt.getText(), etternavnfelt.getText(), 
+        if(sjekkFornavn(fornavnfelt.getText()) && sjekkEtternavn(etternavnfelt.getText())
+                        && sjekkFodselsdato(infofelt.getText()))
+        {
+            Pasient ny = new Pasient(fornavnfelt.getText(), etternavnfelt.getText(), 
                 infofelt.getText());
         pasientRegister.SettInn(ny);
         utskrift.setText("Registrert pasient: \n" + ny.toString());
+        }
+        
     }
     
     private void SkrivUt()
@@ -51,6 +56,50 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
             pasientliste +="\n\n";
         }
         utskrift.setText(pasientliste);
+    }
+    
+    //RegEx for fornavn
+    public boolean sjekkFornavn(String fornavn)
+    {  
+ 
+        if(fornavn.matches("\\w.*"))
+        {
+            return true;
+        }
+        else
+        {
+            utskrift.setText("Fornavnet må være kun bokstaver.");
+            return false;
+        } 
+    }
+    
+    public boolean sjekkEtternavn(String etternavn)
+    {
+        
+        if(etternavn.matches("\\w.*"))
+        {
+            return true;
+        }
+        else
+        {
+            utskrift.setText("Etternavnet må være kun bokstaver.");
+            return false;
+        }
+    }
+    
+    
+    //Metode for å sjekke adresse
+    public boolean sjekkFodselsdato(String fodselsdato)
+    {
+       if(infofelt.getText().matches("\\d.*"))
+        {
+            return true;
+        }
+        else
+        {
+            utskrift.setText("Adresse må være kun bokstaver.");
+            return false;
+        }
     }
     
     public void actionPerformed(ActionEvent e)
