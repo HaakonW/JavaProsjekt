@@ -30,34 +30,36 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     public LegeLisensGUI(RegisterSystem system)
     {
         this.system = system;
+        
         velgLege = new JButton("...");
-        slettLege = new JButton("Slett lege");
+        velgLege.addActionListener(this);
+        velgLege.setToolTipText("Velg lege");
         velgLege.setPreferredSize(new Dimension(20, 20));
+        
+        slettLege = new JButton("Slett lege");
+        slettLege.addActionListener(this);
+        slettLege.setToolTipText("Slett lege");        
+        
         endreLisens = new JButton("Endre bevilling");
+        endreLisens.addActionListener(this);
+        
         hjelp = new JButton("?");
+        hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
         
         navnlabel = new JLabel("Legens navn:");
+        legedatafelt.setText("Velg lege med knappen til høyre");
         
         lisenslabel = new JLabel("Godkjent lisens for:    ");
-
-        legedatafelt = new JTextField(20);
-        legedatafelt.setText("Velg lege med knappen til høyre");
-        utskrift = new JTextArea(20, 20);
-        utskrift.setEditable(false);
-
-        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         a = new JCheckBox("A");
         b = new JCheckBox("B");
         c = new JCheckBox("C");
-
-        velgLege.addActionListener(this);
-        endreLisens.addActionListener(this);
-        slettLege.addActionListener(this);
-        hjelp.addActionListener(this);
-
-        velgLege.setToolTipText("Velg lege");
-
+        legedatafelt = new JTextField(20);
+        
+        utskrift = new JTextArea(20, 20);
+        utskrift.setEditable(false);
+        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        
         ////PANEL START///
         panel1 = new JPanel();
         panel1.add(navnlabel);

@@ -16,75 +16,85 @@ import norskreseptregister.Reg.RegisterSystem;
 
 class AdminMainHjemGUI extends JPanel implements ActionListener
 {
-    //private JButton endreLisens, medisin;
-    private JPanel panel2, panel1;
+    
+    private JPanel panel1, panel2;
     private JLabel label1, label2, label3;
-    private JButton knapp1, knapp2, knapp3;
+    private JButton endreLisens, regMed, statestikk;
     LegeLisensGUI paneltest;
     private RegisterSystem system;
 
     public AdminMainHjemGUI()
     {
         this.paneltest = new LegeLisensGUI(system);
-        //endreLisens = new JButton("Endre Lisens");
-        //medisin = new JButton("Registrer Medisin");
         ImageIcon modLeg = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
         ImageIcon regPill = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
-        ImageIcon statistikk = new ImageIcon("src/norskreseptregister/gui/bilder/statistikk.png");
+        ImageIcon statistikk = new ImageIcon("src/norskreseptregister/gui/bilder/statistikk.png");        
         
-        label1 = new JLabel("Velkommen til Admindelen av programmet. Her kan du oppdatere en lege sin lisens eller legge inn nye medisiner");
-        label1.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
-        
-        knapp1 = new JButton(modLeg);
-        knapp2 = new JButton(regPill);
-        knapp3 = new JButton(statistikk);
-        
-        label1 = new JLabel("Endre lisens");
-        label1.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
+        label1 = new JLabel("Endre Lisens");
+        label1.setFont(new Font ("PT Serif", Font.PLAIN, 20));
         label2 = new JLabel("Registrer medisin");
         label2.setFont(new Font ("PT Serif", Font.PLAIN, 20));
+        label3 = new JLabel("Statestikk");
+        label3.setFont(new Font ("PT Serif", Font.PLAIN, 20));
         
-        knapp1.setFocusPainted(false);
-        knapp2.setFocusPainted(false);
-        knapp3.setFocusPainted(false);
+        endreLisens = new JButton(modLeg);
+        endreLisens.setFocusPainted(false);
+        endreLisens.addActionListener(this);
+        endreLisens.setToolTipText("Endre lisens for lege");
         
-        knapp1.setToolTipText("Endre lisens for lege");
-        knapp2.setToolTipText("Registrer ny medisin");
-        knapp3.setToolTipText("Statistikk"); 
+        regMed = new JButton(regPill);
+        regMed.setFocusPainted(false);
+        regMed.addActionListener(this);
+        regMed.setToolTipText("Registrer ny medisin");
         
-        knapp1.addActionListener(this);
-        knapp2.addActionListener(this);
-        knapp3.addActionListener(this);
+        statestikk = new JButton(statistikk);
+        statestikk.setFocusPainted(false);
+        statestikk.addActionListener(this);
+        statestikk.setToolTipText("Statistikk"); 
+               
+        //GRID STARTER ///
 
         GridBagConstraints gc = new GridBagConstraints();
-        setLayout(new GridBagLayout());      
+        setLayout(new GridBagLayout());  
         
-        gc.gridx = 0;
-        gc.gridy = 1; 
+        int x = 0;
+        int y = 0;
+        //FØRSTE RAD
+        gc.gridx = x;
+        gc.gridy = y; 
         gc.insets = new Insets(10,10,10,10);
-        add(knapp1, gc);
+        add(endreLisens, gc);
         
-        gc.gridx = 1;
-        gc.gridy = 1;
-        add(knapp2, gc);
+        gc.gridx = ++x;
+        gc.gridy = y;
+        add(regMed, gc);
         
-        gc.gridx = 2;
-        gc.gridy = 1;
-        add(knapp3, gc);
+        gc.gridx = ++x;
+        gc.gridy = y;
+        add(statestikk, gc);
         
-        gc.gridx = 0;
-        gc.gridy = 2;
+        //ANDRE RAD Nullstiller x//
+        x = 0;  
+        
+        gc.gridx = x;
+        gc.gridy = ++y;
         add(label1, gc);
         
-        gc.gridx = 1;
-        gc.gridy = 2;
+        gc.gridx = ++x;
+        gc.gridy = y;
         add(label2, gc);
+        
+        gc.gridx = ++x;
+        gc.gridy = y;
+        add(label3, gc);
+        
+        
     }//end of konstruktør
     
     //Metode for å lytte på om knapp1 eller knapp2 er trykket på
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == knapp1)
+        if (e.getSource() == endreLisens)
         {
             
         }
