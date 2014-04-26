@@ -28,7 +28,7 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
 
     private void nyLege()
     {
-        if(sjekkFornavn(fornavnfelt.getText()) && sjekkEtternavn() && sjekkAdresse())
+        if(sjekkFornavn() && sjekkEtternavn() && sjekkAdresse())
         {
             Lege ny = new Lege(fornavnfelt.getText(), etternavnfelt.getText(), 
                                 infofelt.getText());
