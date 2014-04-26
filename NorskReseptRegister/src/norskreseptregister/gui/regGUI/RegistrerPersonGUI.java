@@ -102,6 +102,48 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         
     }//end of konstruktør RegistrerLege
 
+    public boolean sjekkFornavn()
+    {  
+        if(fornavnfelt.getText().matches("[a-zæøåA-ZÆØÅ]"))
+        {
+            return true;
+        }
+        else
+        {
+            utskrift.setText("Fornavnet må være kun bokstaver.");
+            return false;
+        } 
+    }
+    
+    public boolean sjekkEtternavn()
+    {
+        if(etternavnfelt.getText().matches("a-zæøåA-ZÆØÅ"))
+        {
+            return true;
+        }
+        else
+        {
+            utskrift.setText("Etternavnet må være kun bokstaver.");
+            return false;
+        }
+    }
+    
+    
+    //Metode for å sjekke adresse
+    public boolean sjekkAdresse()
+    {
+        if(infofelt.getText().matches("a-zæøåA-zÆØÅ"))
+        {
+            return true;
+        }
+        else
+        {
+            utskrift.setText("Adresse må være kun bokstaver.");
+            return false;
+        }
+    }
+    
+    
     public void TomFelt()
     {
         fornavnfelt.setText("");

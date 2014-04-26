@@ -20,8 +20,7 @@ public class RegEx
     
     //Metode for å sjekke fornavn
     public boolean sjekkFornavn(String fornavn)
-    {
-        
+    {  
         if(fornavn.matches("[a-zæøåA-ZÆØÅ]"))
         {
             return true;

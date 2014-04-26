@@ -134,7 +134,6 @@ public class hovedVindu extends JFrame
     //Skal lytte på trykk i menylinjen.
     private class Menylytter implements ActionListener
     {
-
         public void actionPerformed(ActionEvent e)
         {
             if (e.getSource() == submeny1)
@@ -155,7 +154,6 @@ public class hovedVindu extends JFrame
 
                 hovedvindu.add(internvindu);
                 internvindu.setVisible(true);
-
             }
             if (e.getSource() == submeny2)
             {
@@ -174,7 +172,6 @@ public class hovedVindu extends JFrame
                 internvindu2.setLocation(500,0);
                 hovedvindu.add(internvindu2);
                 internvindu2.setVisible(true);
-
             }
             if (e.getSource() == submeny3)
             {
