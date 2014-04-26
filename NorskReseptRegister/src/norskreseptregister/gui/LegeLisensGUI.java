@@ -48,13 +48,13 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         hjelp.setPreferredSize(new Dimension(20, 20));
         
         navnlabel = new JLabel("Legens navn:");
+        legedatafelt = new JTextField(20);
         legedatafelt.setText("Velg lege med knappen til høyre");
         
         lisenslabel = new JLabel("Godkjent lisens for:    ");
         a = new JCheckBox("A");
         b = new JCheckBox("B");
-        c = new JCheckBox("C");
-        legedatafelt = new JTextField(20);
+        c = new JCheckBox("C");        
         
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
@@ -85,24 +85,29 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         //Legger inn Panelene i rutenettet. Først kolonner så rader//
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
+        
+        int x = 0;
+        int y = 0;
 
-        gc.gridx = 0;
-        gc.gridy = 0;
+        gc.gridx = x;
+        gc.gridy = y;
         gc.insets = new Insets(5, 10, 5, 10);      
         add(panel1, gc);
 
-        gc.gridx = 0;
-        gc.gridy = 1;
+        gc.gridx = x;
+        gc.gridy = ++y;
         gc.fill = GridBagConstraints.HORIZONTAL;          
         add(panel2, gc);
         //Kolonne 2 starter 
 
-        gc.gridx = 0;
-        gc.gridy = 3;
+        gc.gridx = x;
+        gc.gridy = ++y;
         add(panel3, gc);
         
-        gc.gridx = 2;
-        gc.gridy = 0;
+        /// NY KOLONNE
+        y = 0;
+        gc.gridx = ++x;
+        gc.gridy = y;
         gc.gridheight = 6;
         add(panel4, gc);
         

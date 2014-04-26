@@ -17,32 +17,37 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
 {
     private Medisinliste medisinliste;
     private Medisin medisin;
-    private JTextField regNavn, regAtc;
-    private JButton regMedisinnavn, visListe, hjelp;
+    private JTextField regNavnFelt, regAtcFelt;
+    private JButton regMedisin, visListe, hjelp;
     private JTextArea utskrift, regAnvisning;
     private String medisinlisten = "lagreMedisin.txt";
     private JRadioButton a, b, c;
 
     public RegistrerMedisinGUI()
     {
-        regNavn = new JTextField(20);        
-        regAtc = new JTextField(20);
-        regAtc.setText("f.eks G04B E03");
-        regMedisinnavn = new JButton("Registrer");
-        visListe = new JButton("Vis liste");
-        hjelp = new JButton("?");
-        hjelp.setPreferredSize(new Dimension(20, 20));
+        regNavnFelt = new JTextField(20);
         
-        utskrift = new JTextArea(20, 20);
-        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        regAtcFelt = new JTextField(20);
+        regAtcFelt.setText("f.eks G04B E03");
+        
+        regMedisin = new JButton("Registrer");
+        regMedisin.addActionListener(this);
+        
+        visListe = new JButton("Vis liste");
+        visListe.addActionListener(this);
         
         a = new JRadioButton("A");
         b = new JRadioButton("B");
         c = new JRadioButton("C");
-
-        regMedisinnavn.addActionListener(this);
-        visListe.addActionListener(this);
-        hjelp.addActionListener(this);
+        
+        hjelp = new JButton("?");
+        hjelp.addActionListener(this);        
+        hjelp.setPreferredSize(new Dimension(20, 20));
+        
+        utskrift = new JTextArea(20, 20);
+        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        utskrift.setEditable(false);
+        
         medisinliste = new Medisinliste();
 
         //For å lese listen ved oppstart
@@ -52,11 +57,11 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         ///////PANEL START/////             
         JPanel panel1 = new JPanel();
         panel1.add(new JLabel("Legemiddel  "));
-        panel1.add(regNavn);
+        panel1.add(regNavnFelt);
 
         JPanel panel2 = new JPanel();
         panel2.add(new JLabel("ATC-Nummer"));
-        panel2.add(regAtc);
+        panel2.add(regAtcFelt);
 
         JPanel panel3 = new JPanel();
         panel3.setBorder(BorderFactory.createEtchedBorder());
@@ -67,7 +72,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
 
         JPanel panel4 = new JPanel();
         panel4.setBorder(BorderFactory.createEtchedBorder());
-        panel4.add(regMedisinnavn);
+        panel4.add(regMedisin);
         panel4.add(visListe);
 
         JPanel panel5 = new JPanel();
@@ -76,36 +81,39 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         ///// GRID START//////
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
+        
+        int x = 0;
+        int y = 0;
 
-        gc.gridx = 0;
-        gc.gridy = 0;
+        gc.gridx = x;
+        gc.gridy = y;
         gc.insets = new Insets(5, 10, 5, 10);      
         add(panel1, gc);
 
-        gc.gridx = 0;
-        gc.gridy = 1;
+        gc.gridx = x;
+        gc.gridy = ++y;
         add(panel2, gc);
 
-        gc.gridx = 0;
-        gc.gridy = 2;
+        gc.gridx = x;
+        gc.gridy = ++y;
         gc.fill = GridBagConstraints.HORIZONTAL; 
         add(panel3, gc);
 
-        gc.gridx = 0;
-        gc.gridy = 3;
+        gc.gridx = x;
+        gc.gridy = ++y;
         add(panel4, gc);
-
-        gc.gridx = 2;
-        gc.gridy = 0;
+        
+        ///NY Kolonne
+        y = 0;
+        gc.gridx = ++x;
+        gc.gridy = y;
         gc.gridheight = 5;
         add(panel5, gc);
         
         gc.gridx = 3;
         gc.gridy = 6;
         gc.insets = new Insets(0, 10, 0, 0);
-        add(hjelp, gc);
-
-        utskrift.setEditable(false);
+        add(hjelp, gc);        
     } //end of konstruktør MedisinGUI
 
     private void knappeGruppe()
@@ -119,9 +127,9 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
     //Registrere ny medisin 
     public Medisin nyMedisin()
     {
-        if (!regNavn.getText().equals(""))
+        if (!regNavnFelt.getText().equals(""))
         {
-            Medisin ny = new Medisin(regNavn.getText(), regAtc.getText());
+            Medisin ny = new Medisin(regNavnFelt.getText(), regAtcFelt.getText());
             SetMedisinGruppe(ny);
             medisinliste.settInn(ny);
             utskrift.setText("Medisin registrert:\n " + ny.toString());
@@ -198,15 +206,15 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
     //Metoden tømmer feltene for Navn og Atc nummer.
     public void tomFelter()
     {
-        regNavn.setText("");
-        regAtc.setText("");
+        regNavnFelt.setText("");
+        regAtcFelt.setText("");
     }
     
     /*Metoden lytter på hvilke knapp som er trykket på og utfører metodekall
     utfra hvilken knapp som er valgt*/
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == regMedisinnavn)
+        if (e.getSource() == regMedisin)
         {
             nyMedisin();
             skrivObjektTilFil();
