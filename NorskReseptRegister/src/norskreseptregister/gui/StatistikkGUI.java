@@ -95,12 +95,9 @@ public class StatistikkGUI extends JPanel
        gc.gridy = ++y;
        //add(frame.tabellet, gc);
        
-       
-       
-      
-       
-       
         
     }
 
 }
+
+// tips: http://mathbits.com/MathBits/Java/Graphics/bargraphonly.htm

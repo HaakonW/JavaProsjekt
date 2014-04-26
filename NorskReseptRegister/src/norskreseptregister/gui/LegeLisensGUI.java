@@ -48,13 +48,13 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         hjelp.setPreferredSize(new Dimension(20, 20));
         
         navnlabel = new JLabel("Legens navn:");
+        legedatafelt = new JTextField(20);
         legedatafelt.setText("Velg lege med knappen til høyre");
         
         lisenslabel = new JLabel("Godkjent lisens for:    ");
         a = new JCheckBox("A");
         b = new JCheckBox("B");
         c = new JCheckBox("C");
-        legedatafelt = new JTextField(20);
         
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
