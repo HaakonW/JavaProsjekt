@@ -149,32 +149,44 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     {
         if ( lege != null)
         {
-            if ( a.isSelected())
+            if ( a.isSelected() )
             {
-                //gjøre noe
-                
-                if(b.isSelected())
+                utskrift.setText("skriver ut alle resepter" + "\n" + "i medisinklasse a");
+            }
+            if (b.isSelected())
+            {
+                utskrift.setText("skriver ut alle resepter" + "\n" + " i medisinklasse b");
+            }
+            if ( c.isSelected())
+            {
+                utskrift.setText("skriver ut alle resepter" + "\n" + " i medisinklasse c");
+            }
+            if ( a.isSelected() && b.isSelected())
+            {
+                utskrift.setText("skriver ut alle resepter" + "\n" + " i medisinklasse a og b");
+            } 
+            if ( a.isSelected() && c.isSelected())
+            {
+                utskrift.setText("skriver ut alle resepter" + "\n" + " i medisinklasse a og c");
+            } 
+            if ( b.isSelected() && c.isSelected())
+            {
+                utskrift.setText("skriver ut alle resepter" + "\n" + " i medisinklasse b og c");
+            }
+            if (a.isSelected() && b.isSelected() && c.isSelected())
+            {
+                FinnResepterForLege query = new FinnResepterForLege(lege);
+                ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
+                String alleResepterForLege ="";
+                for (Resept r : reseptene)
                 {
-                    
-                    //gjøre noe
-                    
-                    
-                  if (c.isSelected())
-                  {
-                      
-                  }
+                    alleResepterForLege += r.toString() + "\n-----------------\n";
                 }
-            FinnResepterForLege query = new FinnResepterForLege(lege);
-            ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
-            String alleResepterForLege ="";
-            for (Resept r : reseptene)
-            {
-                alleResepterForLege += r.toString() + "\n-----------------\n";
+                utskrift.setText("Fant følgende resepter for :\n"
+                        + lege.getNavn() + "\n-----------------\n" + alleResepterForLege);   
+                
             }
-            utskrift.setText("Fant følgende resepter for :\n"
-                    + lege.getNavn() + "\n-----------------\n" + alleResepterForLege);   
-            }
-        }
+        }           
         else
         {
             utskrift.setText("Du må velge en lege for å skrive ut");  

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package norskreseptregister.Statistikk;
+package norskreseptregister.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
@@ -27,11 +28,7 @@ import javax.swing.table.TableModel;
 
 public class tabell
 {
-    public static void main(String[] args)
-    {
-        JFrame tabell = new tabellFrame();
-        tabell.setVisible(true);
-    }
+    
 }
 
 class Medisintabell extends AbstractTableModel
@@ -136,30 +133,18 @@ class Medisintabell extends AbstractTableModel
 }
 
 // Legger tabellen inn i en frame
-class tabellFrame extends JFrame
+class tabellFrame extends JPanel
 {
-    private Radalterneringstabell tabellet;
+    public Radalterneringstabell tabellet;
     
     public tabellFrame()
     {
-        setTitle("Statistikktabell");
-        setSize(900,210);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
         Medisintabell tab = new Medisintabell();
         tabellet = new Radalterneringstabell(tab);
         
-        JMenuBar menylinje = new JMenuBar();
-        JMenu meny1 = new JMenu("Valg");
-        JMenuItem valg1 = new JMenuItem("Print tabell");
-        valg1.addActionListener(new printeLytter());
         
-        menylinje.add(meny1);
-        meny1.add(valg1);
-        setJMenuBar(menylinje);
+        add(new JScrollPane(tabellet), BorderLayout.CENTER);
         
-        Container c = getContentPane();
-        c.add(new JScrollPane(tabellet), BorderLayout.CENTER);
     }
     
     //For å printe
@@ -230,3 +215,7 @@ class Radalterneringstabell extends JTable
         return c;
     }
 }
+
+
+
+

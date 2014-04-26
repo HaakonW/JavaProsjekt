@@ -29,7 +29,6 @@ public class InfoMainGUI extends JPanel
     private PasientRegister pasientRegister;
     private Medisinliste medisinliste;
 
-    
     public InfoMainGUI(RegisterSystem system, Medisinliste medisinliste)
     {
         this.medisinliste = medisinliste;

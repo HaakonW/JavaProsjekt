@@ -20,6 +20,7 @@ public class StatistikkGUI extends JPanel
      private JComboBox rullgardin1, rullgardin2;
      private JPanel panel1, panel2, panel3;
      private JTextArea temp;
+     private tabellFrame frame;
     
     StatistikkGUI()
     {
@@ -88,8 +89,11 @@ public class StatistikkGUI extends JPanel
        
        gc.gridx = x;
        gc.gridy = ++y;
-       add(temp, gc);
-       
+       //add(temp, gc);
+     
+       gc.gridx = x;
+       gc.gridy = ++y;
+       //add(frame.tabellet, gc);
        
        
        

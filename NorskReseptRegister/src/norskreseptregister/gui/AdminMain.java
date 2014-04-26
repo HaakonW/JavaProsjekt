@@ -15,7 +15,6 @@ import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.Statistikk.tabell;
 
 public class AdminMain extends JPanel
 {
@@ -46,6 +45,9 @@ public class AdminMain extends JPanel
         tabbedPane.addTab("Registrer medisin", epille, panel4, "Registrer Medisin");
         tabbedPane.addTab("Statestikk", statistikk, panel5, "Statestikk");
         add(tabbedPane);
+        
+        setVisible(true);
+        setSize(800, 400);
     }
     
     //Metode for å vise og sette størrelse på vinudet
@@ -58,5 +60,6 @@ public class AdminMain extends JPanel
       frame.pack();
       frame.setVisible(true);
     }
+
 
 }//end of class AdminMain
