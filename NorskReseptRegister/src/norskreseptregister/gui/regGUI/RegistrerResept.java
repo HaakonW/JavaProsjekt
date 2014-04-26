@@ -343,7 +343,15 @@ public class RegistrerResept extends JPanel implements ActionListener
         }
         if (e.getSource() == hjelper)
         {
-            JOptionPane.showMessageDialog(null, "HJELP RESEPT");
+            JOptionPane.showMessageDialog(null,hjelpetekst());
         }
+   
     }
+         public String hjelpetekst()
+        {
+            String hjelpeteksten = "For å kunne registrere en resept er det viktig at alle feltene er fylles ut."
+                    + "\nMan velger både pasient, lege og medisin ved å trykke på ... knappen til høyre for feltet" 
+                    + "\nFor mere hjelp sjekk dokumentasjonen. /*LINK*/";
+        return hjelpeteksten;
+        }
 }//end of class RegistrerResept
