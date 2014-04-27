@@ -27,8 +27,8 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     private JTextField legedatafelt;
     private JTextArea utskrift;
     private JScrollPane utskriftscroll;
-    private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
-    private JLabel fornavnlabel, gruppelabel;
+    private JPanel panel1, panel2;
+    private JLabel legelabel, gruppelabel;
     private JButton visAlleLeger, visResepteriGruppe, velgLege, hjelp;
     private JCheckBox a, b, c;
     private Lege lege;
@@ -39,73 +39,81 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     {
         this.system = system;
         this.legeRegister = legeRegister;
-        fornavnlabel = new JLabel("Legenavn   ");
-        gruppelabel = new JLabel("Reseptgruppe");
+        
+        legelabel = new JLabel("Legenavn   ");
         legedatafelt = new JTextField(20);
-        visAlleLeger = new JButton("Vis alle leger");
         legedatafelt.setText("Velg lege ved å på knappen til høyre");
+        legedatafelt.setEditable(false);
+        
+        gruppelabel = new JLabel("Reseptgruppe");
+        a = new JCheckBox("A", true);        
+        b = new JCheckBox("B", true);
+        c = new JCheckBox("C", true);
+        
+        visAlleLeger = new JButton("Print alle leger");
+        visAlleLeger.setToolTipText("Trykk for å printe leger");
+        visAlleLeger.addActionListener(this);       
 
         visResepteriGruppe = new JButton("Vis resepter");
+        visResepteriGruppe.setToolTipText("Vis resepter i gruppe");
+        visResepteriGruppe.addActionListener(this);
+        
         hjelp = new JButton("?");
+        hjelp.setToolTipText("Trykk for hjelp");
+        hjelp.addActionListener(this);
+        hjelp.setPreferredSize(new Dimension(20, 20));
+        
         velgLege = new JButton("...");
+        velgLege.setToolTipText("Trykk for å velge lege");
+        velgLege.addActionListener(this);
+        velgLege.setPreferredSize(new Dimension(20, 20));
 
         utskrift = new JTextArea(20,20);
         utskrift.setEditable(false); 
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        a = new JCheckBox("A", true);        
-        b = new JCheckBox("B", true);
-        c = new JCheckBox("C", true);
-
-        velgLege.addActionListener(this);
-        visResepteriGruppe.addActionListener(this);
-        visAlleLeger.addActionListener(this);
-        hjelp.addActionListener(this);
-
-        velgLege.setPreferredSize(new Dimension(20, 20));
-        legedatafelt.setEditable(false);
-        hjelp.setPreferredSize(new Dimension(20, 20));
-
-        ///PANELS START ////
+       ///PANELS START ////
         panel1 = new JPanel();
-        panel1.add(fornavnlabel);
+        panel1.add(legelabel);
         panel1.add(legedatafelt);
         panel1.add(velgLege);
+        panel1.setBorder(BorderFactory.createEtchedBorder());  
 
-        panel4 = new JPanel();
-        panel4.setBorder(BorderFactory.createEtchedBorder());
-        panel4.add(gruppelabel);
-        panel4.add(a);
-        panel4.add(b);
-        panel4.add(c);
-        panel4.add(visResepteriGruppe);
-
-        panel5 = new JPanel();
-        panel5.add(utskriftscroll);
+        panel2 = new JPanel();
+        panel2.setBorder(BorderFactory.createEtchedBorder());
+        panel2.add(gruppelabel);
+        panel2.add(a);
+        panel2.add(b);
+        panel2.add(c);
+        panel2.add(visResepteriGruppe);
 
         ///GRID START ////
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
-        gc.gridx = 0;
-        gc.gridy = 0;
-        gc.insets = new Insets(10, 5, 5, 10);
+        int x = 0; 
+        int y = 0;
+        
+        gc.gridx = x;
+        gc.gridy = y;
+        gc.insets = new Insets(5, 10, 5, 10); 
         add(panel1, gc);
 
-        gc.gridx = 0;
-        gc.gridy = 1;
-        add(panel4, gc);
+        gc.gridx = x;
+        gc.gridy = ++y;
+        gc.fill = GridBagConstraints.HORIZONTAL;
+        add(panel2, gc);
 
-        gc.gridx = 0;
-        gc.gridy = 2;
+        gc.gridx = x;
+        gc.gridy = ++y;
         add(visAlleLeger, gc);
 
-        gc.gridx = 1;
+        gc.gridx = ++x;
         gc.gridy = 0;
         gc.gridheight = 6;
-        add(panel5, gc);
+        add(utskriftscroll, gc);
 
-        gc.gridx = 2;
+        gc.gridx = ++x;
         gc.gridy = 6;
         add(hjelp, gc);
     }//end of Konstruktør

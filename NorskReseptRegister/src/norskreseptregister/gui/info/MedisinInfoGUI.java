@@ -27,7 +27,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
     private JTextField medisindatafelt;
     private JTextArea utskrift;
     private JScrollPane utskriftscroll;
-    private JPanel panel1, panel2, panel3;
+    private JPanel panel1, panel2;
     private JLabel medisinlabel;
     private JButton visPasient, visLeger, velgMedisin, hjelp;
     private final Medisinliste medisinliste;
@@ -72,13 +72,12 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         panel1.add(medisinlabel);
         panel1.add(medisindatafelt); 
         panel1.add(velgMedisin);
+        panel1.setBorder(BorderFactory.createEtchedBorder());  
 
         panel2 = new JPanel();
         panel2.add(visPasient);  
         panel2.add(visLeger);
-        panel2.setBorder(BorderFactory.createEtchedBorder());
-
-      
+        panel2.setBorder(BorderFactory.createEtchedBorder());    
 
         ///GRID START ////
         GridBagConstraints gc = new GridBagConstraints();
@@ -89,8 +88,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         
         gc.gridx = x;
         gc.gridy = y;
-        gc.insets = new Insets(10, 5, 5, 10);
-        gc.anchor = GridBagConstraints.WEST;
+        gc.insets = new Insets(5, 10, 5, 10);       
         gc.fill = GridBagConstraints.HORIZONTAL;
         add(panel1, gc);   
 
