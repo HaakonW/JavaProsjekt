@@ -89,7 +89,7 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
     public boolean sjekkFornavn(String fornavn)
     {  
  
-        if(fornavn.matches("\\w.*"))
+        if(fornavn.matches("^[a-zøæåéA-ZØÆÅ. \\-]{2,20}"))
         {
             return true;
         }
@@ -103,7 +103,7 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
     public boolean sjekkEtternavn(String etternavn)
     {
         
-        if(etternavn.matches("\\w.*"))
+        if(etternavn.matches("^[a-zøæåéA-ZØÆÅ. \\-]{2,20}"))
         {
             return true;
         }
@@ -118,7 +118,7 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
     //Metode for å sjekke adresse
     public boolean sjekkAdresse(String adresse)
     {
-       if(infofelt.getText().matches("\\w.*"))
+       if(infofelt.getText().matches("^[a-zøæåéA-ZØÆÅ. \\-]{2,20}"))
         {
             return true;
         }

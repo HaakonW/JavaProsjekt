@@ -61,7 +61,7 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
     public boolean sjekkFornavn(String fornavn)
     {  
  
-        if(fornavn.matches("\\w.*"))
+        if(fornavn.matches("^[a-zøæåéA-ZØÆÅ. \\-]{2,20}"))
         {
             return true;
         }
@@ -75,7 +75,7 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
     public boolean sjekkEtternavn(String etternavn)
     {
         
-        if(etternavn.matches("\\w.*"))
+        if(etternavn.matches("^[a-zøæåéA-ZØÆÅ. \\-]{2,20}"))
         {
             return true;
         }
