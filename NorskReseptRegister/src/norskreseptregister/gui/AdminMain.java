@@ -25,16 +25,15 @@ public class AdminMain extends JPanel
     private StatistikkGUI panel5;
     private RegisterSystem system;
     
-    
     //Newer opp GUI klasser og legger disse til å forskjellige tabbedPanes
     public AdminMain(RegisterSystem system)
     {
         this.system = system;
-        panel1 = new AdminMainHjemGUI();
+        panel1 = new AdminMainHjemGUI(this);
         panel3 = new LegeLisensGUI(system);
         panel4 = new RegistrerMedisinGUI();
         panel5 = new StatistikkGUI();
-        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane = new JTabbedPane();
         ImageIcon elege = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
         ImageIcon epille = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
@@ -50,6 +49,12 @@ public class AdminMain extends JPanel
         setSize(800, 400);
     }
     
+    //Get metode for TabbedPane
+    public JTabbedPane getTabbedPane()
+    {
+        return tabbedPane;
+    }
+                      
     //Metode for å vise og sette størrelse på vinudet
     private static void createAndShowGUI(RegisterSystem system)
     {

@@ -23,7 +23,7 @@ public class FinnReseptForMedisin implements UtvalgsKriterie <Resept>
     
     public boolean objektetSkalVaereMed(Resept objekt)
     {
-        String reseptMedisinNavn = objekt.getMedisinData();
+        String reseptMedisinNavn = objekt.getMedisin().getNavn();
         String medisinNavn = medisin.getNavn();
         if (reseptMedisinNavn.equals(medisinNavn))
         {

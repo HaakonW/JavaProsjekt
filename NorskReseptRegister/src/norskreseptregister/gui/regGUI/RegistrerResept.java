@@ -215,7 +215,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private void nyResept()
     {
         Resept ny = new Resept(datofelt.getText(), pasient,
-                lege, medisin.getNavn(), mengdefelt.getText(), "", anvisning.getText());
+                lege, medisin, mengdefelt.getText(), "", anvisning.getText());
         system.getReseptRegister().SettInn(ny);
         utskrift.setText("Registrert resept: \n" + ny.toString());
     }
@@ -315,7 +315,7 @@ public class RegistrerResept extends JPanel implements ActionListener
                 {
                     nyResept();
                     TomFelt();
-                    
+                    bekreft = 0;
                 }
     }
 

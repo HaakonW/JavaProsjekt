@@ -32,11 +32,11 @@ public class InfoMainGUI extends JPanel
     public InfoMainGUI(RegisterSystem system, Medisinliste medisinliste)
     {
         this.medisinliste = medisinliste;
-        panel1 = new InfoMainHjemGUI();
+        panel1 = new InfoMainHjemGUI(this);
         panel2 = new LegeInfoGUI(system, legeRegister);
         panel3 = new PasientInfoGUI(system, pasientRegister);
         panel4 = new MedisinInfoGUI(system, medisinliste);
-        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane = new JTabbedPane();
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
         ImageIcon epille = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
         ImageIcon docinfo = new ImageIcon("src/norskreseptregister/gui/bilder/docinfo.png");
@@ -47,6 +47,12 @@ public class InfoMainGUI extends JPanel
         tabbedPane.addTab("PasientInfo", pasinfo, panel3, "Pasient");
         tabbedPane.addTab("Medisininfo", epille, panel4, "Legemiddel");
         add(tabbedPane);
+    }
+    
+    //Get metode for TabbedPane
+    public JTabbedPane getTabbedPane()
+    {
+        return tabbedPane;
     }
     
     //Metoden oppretter vinduet

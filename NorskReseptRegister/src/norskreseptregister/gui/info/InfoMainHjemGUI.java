@@ -13,16 +13,18 @@ import javax.swing.*;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.LegeLisensGUI;
 
-class InfoMainHjemGUI extends JPanel
+class InfoMainHjemGUI extends JPanel implements ActionListener
 {
-    private JButton knapp1, knapp2, knapp3, knapp4, knapp5, knapp6;
+    private JButton knapp1, knapp2, knapp3;
     private JPanel panel3, panel2, panel1;
     private JLabel label1, label2, label3;
     LegeLisensGUI paneltest;
     private RegisterSystem system;
+    private final InfoMainGUI infoMainGUI;
 
-    public InfoMainHjemGUI()
+    public InfoMainHjemGUI(InfoMainGUI infoMainGUI)
     {
+        this.infoMainGUI = infoMainGUI;
         this.paneltest = new LegeLisensGUI(system);
         ImageIcon legeinf = new ImageIcon("src/norskreseptregister/gui/bilder/docinfo.png");
         ImageIcon pasinf = new ImageIcon("src/norskreseptregister/gui/bilder/pasinfo.png");
@@ -37,6 +39,10 @@ class InfoMainHjemGUI extends JPanel
         knapp1.setToolTipText("Info om lege");
         knapp2.setToolTipText("Info om pasient");
         knapp3.setToolTipText("Info om medisin");
+        
+        knapp1.addActionListener(this);
+        knapp2.addActionListener(this);
+        knapp3.addActionListener(this);
         
         label1 = new JLabel("LegeInfo");
         label1.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
@@ -77,6 +83,22 @@ class InfoMainHjemGUI extends JPanel
         gc.gridx = ++x;
         gc.gridy = y;
         add(label3,gc);
+    }
+    
+    public void actionPerformed(ActionEvent e)
+    {
+        if (e.getSource() == knapp1)
+        {
+            infoMainGUI.getTabbedPane().setSelectedIndex(1);
+        }
+        else if(e.getSource() == knapp2)
+        {
+            infoMainGUI.getTabbedPane().setSelectedIndex(2);
+        }
+        else if (e.getSource() == knapp3)
+        {
+            infoMainGUI.getTabbedPane().setSelectedIndex(3);
+        }
     }
 
 }//end of class AdminMainHjemGUI

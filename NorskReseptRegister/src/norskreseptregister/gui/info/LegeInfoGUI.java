@@ -150,18 +150,16 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         String tekst ="skriver ut alle resepter" + "\n" + "i medisinklasse ";
         if ( lege != null)
         {
-            if ( a.isSelected() )
-            {
-                utskrift.setText(tekst+=" a ");
-            }
-            if (b.isSelected())
-            {
-                utskrift.setText(tekst+=" b ");
-            }
-            if ( c.isSelected())
-            {
-                utskrift.setText(tekst+=" c ");
-            }
+                FinnResepterForLegeIReseptGruppe query = new FinnResepterForLegeIReseptGruppe(
+                        lege, a.isSelected(), b.isSelected(), c.isSelected() );
+                ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
+                String alleResepterForLege ="";
+                for (Resept r : reseptene)
+                {
+                    alleResepterForLege += r.toString() + "\n-----------------\n";
+                }
+                utskrift.setText("Fant følgende resepter for :\n"
+                        + lege.getNavn() + "\n-----------------\n" + alleResepterForLege);
         }           
         else
         {

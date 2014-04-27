@@ -61,7 +61,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         
         velgPasient.addActionListener(this);
         visAllePasienter.addActionListener(this);
-        
+        visResepteriGruppe.addActionListener(this);
         hjelp.addActionListener(this);
         
         velgPasient.setPreferredSize(new Dimension(20, 20));
@@ -153,24 +153,26 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         utskrift.setText(legeliste);
     }
         
+    //Metoden viser hvilke resepter en spesifikk lege har skrevet ut
     public void visResepterForPasient()
     {
         if ( pasient != null)
         {
-            FinnResepterForPasient query = new FinnResepterForPasient(pasient);
-            ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
-            String alleResepterForPasient ="";
-            for (Resept r : reseptene)
-            {
-                alleResepterForPasient += r.toString();
-            }
-            utskrift.setText("Fant følgende resepter for :\n"
-                    + pasient.getNavn() + "\n" + alleResepterForPasient);
-        }
+                FinnResepterForPasientIReseptGruppe query = new FinnResepterForPasientIReseptGruppe(
+                        pasient, a.isSelected(), b.isSelected(), c.isSelected() );
+                ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
+                String alleResepterForLege ="";
+                for (Resept r : reseptene)
+                {
+                    alleResepterForLege += r.toString() + "\n-----------------\n";
+                }
+                utskrift.setText("Fant følgende resepter for :\n"
+                        + pasient.getNavn() + "\n-----------------\n" + alleResepterForLege);
+        }           
         else
         {
             utskrift.setText("Du må velge en lege for å skrive ut");  
-        }
+        }  
     }
     
     public void actionPerformed(ActionEvent e)
@@ -182,6 +184,10 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         else if (e.getSource() == visAllePasienter)
         {
             visAllePasienter();
+        }
+        else if (e.getSource() == visResepteriGruppe)
+        {
+            visResepterForPasient();
         }
       
         else if (e.getSource() == hjelp)

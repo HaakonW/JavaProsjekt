@@ -18,12 +18,11 @@ class RegMainHjemGUI extends JPanel implements ActionListener
     private JButton regPasient, regLege, regResept;
     private JPanel panel1, panel2;
     private JLabel label1, label2, label3;
+    private final RegMainGUI regMainGUI;
 
-    public RegMainHjemGUI()
+    public RegMainHjemGUI(RegMainGUI regMainGUI)
     {
-        //regPasient= new JButton("Registrer Pasient");
-        //regLege = new JButton("Registrer Lege");
-        //regResept = new JButton("Registrer Resept");
+        this.regMainGUI = regMainGUI;
         ImageIcon regLeg = new ImageIcon("src/norskreseptregister/gui/bilder/doktor.png");
         ImageIcon regPas = new ImageIcon("src/norskreseptregister/gui/bilder/person.png");
         ImageIcon regRes = new ImageIcon("src/norskreseptregister/gui/bilder/Resept.png");
@@ -50,20 +49,17 @@ class RegMainHjemGUI extends JPanel implements ActionListener
         label3 = new JLabel("Registrer Resept");
         label3.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
                
-        
         panel2 = new JPanel();
         panel2.add(regPasient);
         panel2.add(regLege);
         panel2.add(regResept);
-        
-        
+         
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
        
         int x = 0;
         int y= 0;
      
-        
         gc.gridx = 0;
         gc.gridy = ++y;
         gc.insets = new Insets(10,10,10,10);
@@ -96,15 +92,15 @@ class RegMainHjemGUI extends JPanel implements ActionListener
     {
        if (e.getSource() ==  regPasient)
        {
-           //RegMainGUI.tabbedPane.getSelectedIndex(RegMainGUI.tab1);
+           regMainGUI.getTabbedPane().setSelectedIndex(1);
        } 
        else if (e.getSource() == regLege)
        {
-            
+           regMainGUI.getTabbedPane().setSelectedIndex(2); 
        }
         else if (e.getSource() == regResept)
        {
-            
+            regMainGUI.getTabbedPane().setSelectedIndex(3);
        }
     }
 }//end of class RegMainHjemGUI

@@ -16,19 +16,20 @@ import norskreseptregister.Reg.RegisterSystem;
 
 class AdminMainHjemGUI extends JPanel implements ActionListener
 {
-    
     private JPanel panel1, panel2;
     private JLabel label1, label2, label3;
-    private JButton endreLisens, regMed, statestikk;
+    private JButton endreLisens, regMed, statistikk;
     LegeLisensGUI paneltest;
     private RegisterSystem system;
+    private final AdminMain adminMain;
 
-    public AdminMainHjemGUI()
+    public AdminMainHjemGUI(AdminMain adminMain)
     {
+        this.adminMain = adminMain;
         this.paneltest = new LegeLisensGUI(system);
         ImageIcon modLeg = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
         ImageIcon regPill = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
-        ImageIcon statistikk = new ImageIcon("src/norskreseptregister/gui/bilder/statistikk.png");        
+        ImageIcon statistikkbilde = new ImageIcon("src/norskreseptregister/gui/bilder/statistikk.png");        
         
         label1 = new JLabel("Endre Lisens");
         label1.setFont(new Font ("PT Serif", Font.PLAIN, 20));
@@ -47,10 +48,10 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
         regMed.addActionListener(this);
         regMed.setToolTipText("Registrer ny medisin");
         
-        statestikk = new JButton(statistikk);
-        statestikk.setFocusPainted(false);
-        statestikk.addActionListener(this);
-        statestikk.setToolTipText("Statistikk"); 
+        statistikk = new JButton(statistikkbilde);
+        statistikk.setFocusPainted(false);
+        statistikk.addActionListener(this);
+        statistikk.setToolTipText("Statistikk"); 
                
         //GRID STARTER ///
 
@@ -71,7 +72,7 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
         
         gc.gridx = ++x;
         gc.gridy = y;
-        add(statestikk, gc);
+        add(statistikk, gc);
         
         //ANDRE RAD Nullstiller x//
         x = 0;  
@@ -96,7 +97,15 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
     {
         if (e.getSource() == endreLisens)
         {
-            
+            adminMain.getTabbedPane().setSelectedIndex(1);
+        }
+        else if(e.getSource() == regMed)
+        {
+            adminMain.getTabbedPane().setSelectedIndex(2);
+        }
+        else if (e.getSource() == statistikk)
+        {
+            adminMain.getTabbedPane().setSelectedIndex(3);
         }
     }
 

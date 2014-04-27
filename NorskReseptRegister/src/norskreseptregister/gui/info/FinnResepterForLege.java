@@ -28,5 +28,5 @@ public class FinnResepterForLege implements UtvalgsKriterie <Resept>
             return true;
         }
         return false;
-    }
+    }  
 }//end of class FinnResepterForLege

@@ -13,14 +13,12 @@ import norskreseptregister.Reg.RegisterSystem;
 
 public class RegMainGUI extends JPanel
 {
-
-
     private JTabbedPane tabbedPane;
     RegistrerPasient tab1;
     RegistrerLege tab2;
     RegistrerResept tab3;
     private RegisterSystem system;
-    RegMainHjemGUI panel1 = new RegMainHjemGUI();
+    RegMainHjemGUI panel1 = new RegMainHjemGUI(this);
     private Medisinliste medisinliste;
 
     public RegMainGUI(RegisterSystem system, Medisinliste medisinliste)
@@ -31,7 +29,7 @@ public class RegMainGUI extends JPanel
         tab1 = new RegistrerPasient(system.getPasientRegister());
         tab2 = new RegistrerLege(system.getLegeRegister());
         tab3 = new RegistrerResept(system, medisinliste);
-        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane = new JTabbedPane();
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
         ImageIcon doktor = new ImageIcon("src/norskreseptregister/gui/bilder/doktor.png");
         ImageIcon pasienten = new ImageIcon("src/norskreseptregister/gui/bilder/person.png");
@@ -45,6 +43,10 @@ public class RegMainGUI extends JPanel
         add(tabbedPane);
     }
 
+    public JTabbedPane getTabbedPane()
+    {
+        return tabbedPane;
+    }
 
     private static void createAndShowGUI(final RegisterSystem system, Medisinliste medisinliste)
 
@@ -58,12 +60,7 @@ public class RegMainGUI extends JPanel
         frame.pack();
         frame.setVisible(true);
     }
-
-    /*public static void main(String[] args)
-     {
-     RegisterSystem system = new RegisterSystem();
-     createAndShowGUI(system);
-     }*/
+    
     // GIR FEIL NÅR HOVEDVINDU SKAL KJØRES.Må settes tom 
     public RegMainGUI()
     {
