@@ -24,15 +24,17 @@ public class AdminMain extends JPanel
     private RegistrerMedisinGUI panel4;
     private StatistikkGUI panel5;
     private RegisterSystem system;
+    private Medisinliste medisinliste;
 
     //Newer opp GUI klasser og legger disse til å forskjellige tabbedPanes
-    public AdminMain(RegisterSystem system)
+    public AdminMain(RegisterSystem system, Medisinliste medisinliste)
     {
         this.system = system;
+        this.medisinliste = medisinliste;
         panel1 = new AdminMainHjemGUI(this);
         panel3 = new LegeLisensGUI(system);
         panel4 = new RegistrerMedisinGUI();
-        panel5 = new StatistikkGUI();
+        panel5 = new StatistikkGUI(system, medisinliste);
         tabbedPane = new JTabbedPane();
         ImageIcon elege = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
@@ -56,12 +58,12 @@ public class AdminMain extends JPanel
     }
 
     //Metode for å vise og sette størrelse på vinudet
-    private static void createAndShowGUI(RegisterSystem system)
+    private static void createAndShowGUI(RegisterSystem system, Medisinliste medisinliste)
     {
         JFrame frame = new JFrame("Admin");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 200);
-        frame.getContentPane().add(new AdminMain(system), BorderLayout.CENTER);
+        frame.getContentPane().add(new AdminMain(system, medisinliste), BorderLayout.CENTER);
         frame.pack();
         frame.setVisible(true);
     }

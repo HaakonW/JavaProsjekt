@@ -103,7 +103,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
     {
         if (e.getSource() == knapp1)
         {
-            AdminMain ny = new AdminMain(system);
+            AdminMain ny = new AdminMain(system, medisinliste);
         }
     } 
 }
