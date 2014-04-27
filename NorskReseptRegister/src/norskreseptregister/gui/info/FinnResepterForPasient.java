@@ -21,7 +21,7 @@ public class FinnResepterForPasient implements UtvalgsKriterie <Resept>
 
     public boolean objektetSkalVaereMed(Resept objekt)
     {
-        String reseptPasientNavn = objekt.getPasientdata().getNavn();
+        String reseptPasientNavn = objekt.getPasient().getNavn();
         String pasientNavn = pasient.getNavn();
         if (reseptPasientNavn.equals(pasientNavn))
         {

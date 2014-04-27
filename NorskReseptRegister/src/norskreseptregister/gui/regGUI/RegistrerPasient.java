@@ -22,11 +22,10 @@ import norskreseptregister.Reg.RegisterSystem;
 public class RegistrerPasient extends RegistrerPersonGUI implements ActionListener
 {
     private PasientRegister pasientRegister;
-    private String pasientliste = "pasientliste.txt";
     
     public RegistrerPasient(PasientRegister pasientRegister)
     {
-        super("Fødselsdato");
+        super("Fødselsdato", "dd/mm/åååå");
         this.pasientRegister = pasientRegister;       
         reg.addActionListener(this);
         
@@ -86,7 +85,6 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
             return false;
         }
     }
-    
     
     //Metode for å sjekke adresse
     public boolean sjekkFodselsdato(String fodselsdato)

@@ -5,7 +5,6 @@
  */
 package norskreseptregister.gui.info;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -14,16 +13,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import javax.swing.*;
 import javax.swing.JPanel;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
-import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.regGUI.VelgMedisinGUI;
 import norskreseptregister.gui.regGUI.VelgPersonGUI;
 
 public class MedisinInfoGUI extends JPanel implements ActionListener
@@ -50,58 +46,56 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         knapp2 = new JButton("Vis Leger");
         hjelp = new JButton ("?");
         utskrift = new JTextArea(20,20);
+        utskrift.setEditable(false); 
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        
+
         ///PANELS START ////
-        
         panel1 = new JPanel();
         panel1.add(medisinlabel);
         panel1.add(medisindatafelt); 
         panel1.add(velgMedisin);
-       
+
         panel3 = new JPanel();
         panel3.add(knapp1);  
         panel3.add(knapp2);
-       
-       
-       panel4 = new JPanel();
-       panel4.add(utskriftscroll);
-       
-       velgMedisin.addActionListener(this);
-       knapp1.addActionListener(this);
-       knapp2.addActionListener(this);
-       hjelp.addActionListener(this);
-       medisindatafelt.setEditable(false);
-       velgMedisin.setPreferredSize(new Dimension(20, 20));
-       hjelp.setPreferredSize(new Dimension(20, 20));
 
-       ///GRID START ////
-       GridBagConstraints gc = new GridBagConstraints();
-       setLayout(new GridBagLayout());
-       gc.gridx = 0;
-       gc.gridy = 0;
-       gc.insets = new Insets(10, 5, 5, 10);
-       gc.anchor = GridBagConstraints.WEST;
-       gc.fill = GridBagConstraints.HORIZONTAL;
-       add(panel1, gc);   
+        panel4 = new JPanel();
+        panel4.add(utskriftscroll);
 
-       gc.gridx = 0;
-       gc.gridy = 1;
-       add(panel3, gc);
+        velgMedisin.addActionListener(this);
+        knapp1.addActionListener(this);
+        knapp2.addActionListener(this);
+        hjelp.addActionListener(this);
+        medisindatafelt.setEditable(false);
+        velgMedisin.setPreferredSize(new Dimension(20, 20));
+        hjelp.setPreferredSize(new Dimension(20, 20));
+
+        ///GRID START ////
+        GridBagConstraints gc = new GridBagConstraints();
+        setLayout(new GridBagLayout());
+        gc.gridx = 0;
+        gc.gridy = 0;
+        gc.insets = new Insets(10, 5, 5, 10);
+        gc.anchor = GridBagConstraints.WEST;
+        gc.fill = GridBagConstraints.HORIZONTAL;
+        add(panel1, gc);   
+
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(panel3, gc);
 
         gc.gridx = 1;
         gc.gridy = 0;
         gc.gridheight = 6;
         add(panel4, gc);
-        
+
         gc.gridx = 2;
         gc.gridy = 6;
         add(hjelp, gc);
-
-        utskrift.setEditable(false); 
     }
     
+    //metode
     private void VelgMedisin()
     {
         DefaultListModel model = new DefaultListModel();
@@ -120,6 +114,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
     }
     
+    //metode
     private void visPasienter()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
@@ -128,15 +123,16 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         String pasienter="";
         for (Resept r : resepter)
         {
-            unikePasientResepter.put(r.getPasientdata().getNavn(), r);
+            unikePasientResepter.put(r.getPasient().getNavn(), r);
         }
         for (Map.Entry<String, Resept> e : unikePasientResepter.entrySet())
         {
-            pasienter += e.getValue().getPasientdata().getNavn() + "\n";
+            pasienter += e.getValue().getPasient().getNavn() + "\n";
         }
         utskrift.setText("Pasienter som har mottat " + medisin.getNavn() + ":\n" + pasienter);
     }
     
+    //metode
     private void visLeger()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
@@ -145,16 +141,16 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         String leger="";
         for (Resept r : resepter)
         {
-            unikeLegeResepter.put(r.getLegedata().getNavn(), r);
+            unikeLegeResepter.put(r.getLege().getNavn(), r);
         }
         for (Map.Entry<String, Resept> e : unikeLegeResepter.entrySet())
         {
-            leger += e.getValue().getLegedata().getNavn() + "\n";
+            leger += e.getValue().getLege().getNavn() + "\n";
         }
         utskrift.setText("Leger som har skrevet ut " + medisin.getNavn() + ":\n" + leger);
     }
     
-
+    //metode
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == velgMedisin)
@@ -172,8 +168,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         else if (e.getSource() == hjelp)
         {
             JOptionPane.showMessageDialog(null, "HJELP Medisininfo");
-        }
-        
+        } 
     }
     
 }//end of class LegeInfoGUI

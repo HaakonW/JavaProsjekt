@@ -21,7 +21,7 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
     private JButton endreLisens, regMed, statistikk;
     LegeLisensGUI paneltest;
     private RegisterSystem system;
-    private final AdminMain adminMain;
+    private AdminMain adminMain;
 
     public AdminMainHjemGUI(AdminMain adminMain)
     {

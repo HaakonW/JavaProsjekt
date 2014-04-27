@@ -147,7 +147,6 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     //Metoden viser hvilke resepter en spesifikk lege har skrevet ut
     public void visResepterForLege()
     {
-        String tekst ="skriver ut alle resepter" + "\n" + "i medisinklasse ";
         if ( lege != null)
         {
                 FinnResepterForLegeIReseptGruppe query = new FinnResepterForLegeIReseptGruppe(

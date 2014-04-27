@@ -28,7 +28,7 @@ public class FinnResepterForLegeIReseptGruppe implements UtvalgsKriterie <Resept
 
     public boolean objektetSkalVaereMed(Resept objekt)
     {
-        String reseptLegeNavn = objekt.getLegedata().getNavn();
+        String reseptLegeNavn = objekt.getLege().getNavn();
         String legeNavn = lege.getNavn();
         if (reseptLegeNavn.equals(legeNavn))
         {

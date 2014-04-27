@@ -38,7 +38,6 @@ import norskreseptregister.Reg.ReseptRegister;
 
 public class RegistrerResept extends JPanel implements ActionListener
 {
-    private String pasientliste = "pasientliste.txt";
     private JTextField datofelt, pasientdatafelt, legedatafelt, medisindatafelt, mengdefelt, kategorifelt;
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper;

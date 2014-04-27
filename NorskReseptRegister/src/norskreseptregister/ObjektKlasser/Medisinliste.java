@@ -2,7 +2,7 @@
  Filen inneholder klassen Midisinliste og er en egendefinert liste over
  alle medisinene i programmet vårt. 
  Laget av  Peter Wilhelmsen, Henrik Fischer Bjelland
- Sist endret  21-04-2014 
+ Sist endret  27-04-2014 
  */
 package norskreseptregister.ObjektKlasser;
 
@@ -107,6 +107,7 @@ public class Medisinliste implements Serializable
         }
         return null;
     }
+    
     //Metode for å lese fra tekstfilen medisinliste.
     public static Medisinliste lesObjektFraFil()
     {

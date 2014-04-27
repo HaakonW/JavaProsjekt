@@ -158,19 +158,6 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         lege.setBevillingA(a.isSelected());
         lege.setBevillingB(b.isSelected());
         lege.setBevillingC(c.isSelected());
-        
-        /*if (!a.isSelected())
-        {
-            lege.setBevillingA(false);
-        }
-        if (!b.isSelected())
-        {
-            lege.setBevillingB(false);
-        }
-        if (!c.isSelected())
-        {
-            lege.setBevillingC(false);
-        }*/
         utskrift.setText("Bevilling er nå endret. \n" + 
         "Legen: " + lege.getNavn() + "\nHar nå bevilling i følgede reseptgrupper: \n"+ 
         lege.getBevilling());

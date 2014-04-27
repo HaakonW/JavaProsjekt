@@ -161,13 +161,13 @@ public class PasientInfoGUI extends JPanel implements ActionListener
                 FinnResepterForPasientIReseptGruppe query = new FinnResepterForPasientIReseptGruppe(
                         pasient, a.isSelected(), b.isSelected(), c.isSelected() );
                 ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
-                String alleResepterForLege ="";
+                String alleResepterForPasient ="";
                 for (Resept r : reseptene)
                 {
-                    alleResepterForLege += r.toString() + "\n-----------------\n";
+                    alleResepterForPasient += r.toString() + "\n-----------------\n";
                 }
                 utskrift.setText("Fant følgende resepter for :\n"
-                        + pasient.getNavn() + "\n-----------------\n" + alleResepterForLege);
+                        + pasient.getNavn() + "\n-----------------\n" + alleResepterForPasient);
         }           
         else
         {

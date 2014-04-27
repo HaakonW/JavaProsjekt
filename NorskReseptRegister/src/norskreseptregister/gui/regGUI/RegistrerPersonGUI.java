@@ -28,7 +28,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
     private JPanel panel1, panel2, panel3, panel4, panel5;
     private String fornavn;
     
-    public RegistrerPersonGUI(String infolabeltekst)
+    public RegistrerPersonGUI(String infolabeltekst, String infoFeltTekst)
     {
         fornavnlabel = new JLabel("Fornavn     ");
         etternavnlabel = new JLabel("Etternavn   ");
@@ -36,7 +36,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         fornavnfelt = new JTextField(20);
         etternavnfelt = new JTextField(20);
         infofelt = new JTextField(20);
-        //infofelt.setText("dd/mm/åååå");
+        infofelt.setText(infoFeltTekst);
         reg = new JButton("Registrer");
      
         utskrift = new JTextArea(20, 20);
@@ -45,7 +45,6 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         hjelper = new JButton("?");
         hjelper.setPreferredSize(new Dimension(25, 25));
         hjelper.addActionListener(this);
-        
         
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
 
@@ -99,8 +98,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         
         gc.gridx = 3;
         gc.gridy = 6;       
-        add(hjelper, gc);
-        
+        add(hjelper, gc);      
         
     }//end of konstruktør RegistrerLege
 

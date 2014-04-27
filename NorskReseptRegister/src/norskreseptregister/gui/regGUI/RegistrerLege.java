@@ -19,7 +19,7 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
     
     public RegistrerLege(LegeRegister legeRegister)
     {
-        super("Adresse    ");
+        super("Adresse    ", "");
         this.legeRegister = legeRegister;
         reg.addActionListener(this);
         
