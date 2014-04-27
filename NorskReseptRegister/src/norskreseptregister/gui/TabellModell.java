@@ -10,6 +10,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class TabellModell extends AbstractTableModel
 {
+    
     private String[] kolonnenavn =
     {
         "Medisin", "Januar","Februar","Mars","April","Mai","Juni","Juli",
