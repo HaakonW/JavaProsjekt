@@ -12,7 +12,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,22 +33,22 @@ import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.Reg.ReseptRegister;
 
 public class RegistrerResept extends JPanel implements ActionListener
 {
-    private JTextField datofelt, pasientdatafelt, legedatafelt, medisindatafelt, mengdefelt, kategorifelt;
+    private JTextField datofelt, pasientfelt, legefelt, medisinfelt, mengdefelt, kategorifelt;
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel, anvisningslabel;
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper;
 
     private JTextArea utskrift, anvisning;
     private JScrollPane anvisningscroll, utskriftscroll;
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9;
-    private final RegisterSystem system;
-    private Pasient pasient;
-    private final Medisinliste medisinliste;
+    private RegisterSystem system;
+    private Pasient pasient;    
     private Lege lege;
     private Medisin medisin;
+    private Medisinliste medisinliste;
+
 
     public RegistrerResept(RegisterSystem system, Medisinliste medisinliste)
     {
@@ -60,9 +59,9 @@ public class RegistrerResept extends JPanel implements ActionListener
         this.medisinliste = medisinliste;
         datofelt = new JTextField(20);
         datofelt.setText(dateFormat);
-        pasientdatafelt = new JTextField(20);
-        legedatafelt = new JTextField(20);
-        medisindatafelt = new JTextField(20);
+        pasientfelt = new JTextField(20);
+        legefelt = new JTextField(20);
+        medisinfelt = new JTextField(20);
         mengdefelt = new JTextField(20);
         //kategorifelt = new JTextField(20);
 
@@ -72,9 +71,9 @@ public class RegistrerResept extends JPanel implements ActionListener
         medisindatalabel = new JLabel("Medisin");
         mengdelabel = new JLabel("Mengde");
         kategorilabel = new JLabel("Kategori");
-        pasientdatafelt.setEditable(false);
-        legedatafelt.setEditable(false);
-        medisindatafelt.setEditable(false);
+        pasientfelt.setEditable(false);
+        legefelt.setEditable(false);
+        medisinfelt.setEditable(false);
 
         regResept = new JButton("Registrer");
         visListe = new JButton("Vis liste");
@@ -112,15 +111,15 @@ public class RegistrerResept extends JPanel implements ActionListener
 
         panel2 = new JPanel();
         panel2.add(pasientdatalabel);
-        panel2.add(pasientdatafelt);
+        panel2.add(pasientfelt);
 
         panel3 = new JPanel();
         panel3.add(legedatalabel);
-        panel3.add(legedatafelt);
+        panel3.add(legefelt);
 
         panel4 = new JPanel();
         panel4.add(medisindatalabel);
-        panel4.add(medisindatafelt);
+        panel4.add(medisinfelt);
 
         panel5 = new JPanel();
         panel5.add(mengdelabel);
@@ -211,6 +210,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         add(hjelper, gc);
     }//end of Konstruktør
 
+    //Metode for å opprette en ny resept
     private void nyResept()
     {
         Resept ny = new Resept(datofelt.getText(), pasient,
@@ -219,17 +219,19 @@ public class RegistrerResept extends JPanel implements ActionListener
         utskrift.setText("Registrert resept: \n" + ny.toString());
     }
 
+    //Metode for å tømme alle tekstfeltene
     private void TomFelt()
     {
         datofelt.setText("");
-        pasientdatafelt.setText("");
-        legedatafelt.setText("");
-        medisindatafelt.setText("");
+        pasientfelt.setText("");
+        legefelt.setText("");
+        medisinfelt.setText("");
         mengdefelt.setText("");
         anvisning.setText("");
         //kategorifelt.setText("");
     }
 
+    //Metode for å skrive ut alle legene i registeret
     private void SkrivUt()
     {
         String pasientliste = "";
@@ -242,6 +244,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         utskrift.setText(pasientliste);
     }
 
+    //Metode for å velge ut en pasient
     private void VelgPasient()
     {
         PasientRegister pasientRegister = system.getPasientRegister();
@@ -258,10 +261,11 @@ public class RegistrerResept extends JPanel implements ActionListener
         if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
         {
             pasient = pasientRegister.HentEttObjekt(valgtIndex);
-            pasientdatafelt.setText(pasient.getNavn());
+            pasientfelt.setText(pasient.getNavn());
         }
     }
 
+    //Metode for velge ut en lege
     public void VelgLege()
     {
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
@@ -279,10 +283,11 @@ public class RegistrerResept extends JPanel implements ActionListener
         if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
         {
             lege = legeRegister.HentEttObjekt(valgtIndex);
-            legedatafelt.setText(lege.getNavn());
+            legefelt.setText(lege.getNavn());
         }
     }
 
+    //Metode for å velge ut en medisin
     private void VelgMedisin()
     {
         DefaultListModel model = new DefaultListModel();
@@ -297,7 +302,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         if (valgtIndex >= 0)    // Dvs at brukeren faktisk har gjort et valg
         {
             medisin = medisinliste.HentEttElement(valgtIndex);
-            medisindatafelt.setText(medisin.getNavn());
+            medisinfelt.setText(medisin.getNavn());
         }
     }
     
@@ -318,6 +323,7 @@ public class RegistrerResept extends JPanel implements ActionListener
                 }
     }
 
+    //Metode som lytter på hvilke knapp som er trykket på
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == regResept)
@@ -345,12 +351,14 @@ public class RegistrerResept extends JPanel implements ActionListener
             JOptionPane.showMessageDialog(null,hjelpetekst());
         }
    
+    }//end of actionPerformed
+    
+    //Metoden returnerer en informativ tekst til brukeren
+    public String hjelpetekst()
+    {
+        String hjelpeteksten = "For å kunne registrere en resept er det viktig at alle feltene er fylles ut."
+                + "\nMan velger både pasient, lege og medisin ved å trykke på ... knappen til høyre for feltet" 
+                + "\nFor mere hjelp sjekk dokumentasjonen. /*LINK*/";
+    return hjelpeteksten;
     }
-         public String hjelpetekst()
-        {
-            String hjelpeteksten = "For å kunne registrere en resept er det viktig at alle feltene er fylles ut."
-                    + "\nMan velger både pasient, lege og medisin ved å trykke på ... knappen til høyre for feltet" 
-                    + "\nFor mere hjelp sjekk dokumentasjonen. /*LINK*/";
-        return hjelpeteksten;
-        }
 }//end of class RegistrerResept

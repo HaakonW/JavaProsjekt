@@ -1,11 +1,10 @@
 /*
-Filen inneholder klassen Medisin.
-Klassen har variabler for en spesifikk medisin og get- og set-metoder for å 
-hente eller sette medisinen i gruppe a,b eller c.
-Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
-Sist endret 27-04-2014
+ Filen inneholder klassen Medisin.
+ Klassen har variabler for en spesifikk medisin og get- og set-metoder for å 
+ hente eller sette medisinen i gruppe a,b eller c.
+ Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
+ Sist endret 27-04-2014
  */
-
 package norskreseptregister.ObjektKlasser;
 
 import java.io.*;
@@ -18,13 +17,13 @@ public class Medisin implements Serializable
     private boolean gruppeA;
     private boolean gruppeB;
     private boolean gruppeC;
-    
+
     Medisin neste;
-    
+
     /*
-    Konstruktør der variabler blir initialisert, alle gruppene blir satt til false
-    og i RegistrerMedisinGUI blir det kalt på set-metoder for å sette medisin i en medisingruppe.
-    */
+     Konstruktør der variabler blir initialisert, alle gruppene blir satt til false
+     og i RegistrerMedisinGUI blir det kalt på set-metoder for å sette medisin i en medisingruppe.
+     */
     public Medisin(String navn, String atcNr)
     {
         this.navn = navn;
@@ -52,56 +51,56 @@ public class Medisin implements Serializable
     {
         this.gruppeC = gruppeC;
     }
-    
+
     //Get-metode for navn på medisinen
     public String getNavn()
     {
         return navn;
     }
-    
+
     //Get-metode for AtcNr
     public String getAtcNr()
     {
         return atcNr;
     }
-    
+
     //Get-metode for medisingruppene A
     public boolean getGruppeA()
     {
         return gruppeA;
     }
-    
+
     //Get-metode for medisingruppene B
     public boolean getGruppeB()
     {
         return gruppeB;
     }
-    
+
     //Get-metode for medisingruppene C
     public boolean getGruppeC()
     {
         return gruppeC;
     }
-            
+
     //Denne metoden returnerer en informativ tekst om en medisin.
     public String toString()
     {
         String medisinGruppe = "";
-        if (gruppeA )
+        if (gruppeA)
         {
-            medisinGruppe+= "A ";
+            medisinGruppe += "A ";
         }
-        if (gruppeB )
+        if (gruppeB)
         {
-            medisinGruppe+= "B ";
+            medisinGruppe += "B ";
         }
-        if (gruppeC )
+        if (gruppeC)
         {
-            medisinGruppe+= "C ";
+            medisinGruppe += "C ";
         }
         String tekst = "";
         tekst += navn + " - " + atcNr
-              + " - Medisingruppe: " + medisinGruppe;
+                + " - Medisingruppe: " + medisinGruppe;
         return tekst;
     }
 }// end of class Medisin

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class Medisinliste implements Serializable
 {
     private static final long serialVersionUID = 6L;
-    private static String medisinlisten = "lagreMedisin.txt";    
+    private static String medisinlisten = "lagreMedisin.txt";
     private Medisin hode;
 
     public Medisinliste()
@@ -62,7 +62,7 @@ public class Medisinliste implements Serializable
             return true;
         }
         Medisin hjelp = hode;
-        
+
         while (hjelp != null)
         {
             if (hjelp.getNavn().equals(medisinnavn))
@@ -74,12 +74,12 @@ public class Medisinliste implements Serializable
         //return "Finner ikke medisin med navn " + medisinnavn;
         return false;
     }
-    
+
     //FinnAlle brukes for finne alle medisiner
     public ArrayList<Medisin> FinnAlle()
     {
         ArrayList<Medisin> liste = new ArrayList();
-        
+
         Medisin hjelp = hode;
 
         while (hjelp != null)
@@ -89,16 +89,16 @@ public class Medisinliste implements Serializable
         }
         return liste;
     }
-    
+
     //HentEttElement brukes til å søke igjennom medisinlisten vår og finne en bestemt medisin
     public Medisin HentEttElement(int index)
     {
         Medisin hjelp = hode;
         int elementindex = 0;
-        
+
         while (hjelp != null)
         {
-            if ( elementindex == index)
+            if (elementindex == index)
             {
                 return hjelp;
             }
@@ -107,27 +107,25 @@ public class Medisinliste implements Serializable
         }
         return null;
     }
-    
+
     //Metode for å lese fra tekstfilen medisinliste.
     public static Medisinliste lesObjektFraFil()
     {
-        try(ObjectInputStream innfil = new ObjectInputStream(
-                                        new FileInputStream(medisinlisten)))
+        try (ObjectInputStream innfil = new ObjectInputStream(
+                new FileInputStream(medisinlisten)))
         {
-          return (Medisinliste)innfil.readObject(); 
-            
-        }
-        catch(ClassNotFoundException cnfe)
+            return (Medisinliste) innfil.readObject();
+
+        } catch (ClassNotFoundException cnfe)
         {
-           JOptionPane.showMessageDialog(null,cnfe.getMessage());
-           /* Må kanskje legge inn muligheten for å opprette ny liste
-           om det ikke finnes en: liste = new Medisinliste();*/
-        }
-        catch(IOException ioe)
+            JOptionPane.showMessageDialog(null, cnfe.getMessage());
+            /* Må kanskje legge inn muligheten for å opprette ny liste
+             om det ikke finnes en: liste = new Medisinliste();*/
+        } catch (IOException ioe)
         {
-          JOptionPane.showMessageDialog(null, "Feil ved lesing, "
-                                         + "ny liste blir opprettet");
-          //Kan opprette ny tom liste her også. Som forslaget i kommentar over
+            JOptionPane.showMessageDialog(null, "Feil ved lesing, "
+                    + "ny liste blir opprettet");
+            //Kan opprette ny tom liste her også. Som forslaget i kommentar over
         }
         return null;
     }

@@ -1,6 +1,6 @@
 /*
  Filen inneholder klassen AdminMain. 
- Klassen
+ Klassen inneholder tabsene
  Laget av  Peter Wilhelmsen, Haakon Winter, Henrik Fischer Bjelland
  Sist endret 09-04-2014
  */

@@ -1,10 +1,10 @@
 /*
-Filen inneholder klassen Register som er den abstrakte superklassen
-til Lege-, Pasient- og Reseptregisterne.
-Klassen har metoder for å sette inn objekter, slette objekter, hente ut et objekt utifra valgt index,
-finne objekter som matcher fra et utvalgskriteriet, skrive og lese til fil.
-Laget av Henrik Fischer Bjelland
-Sist endret 27-04-2014
+ Filen inneholder klassen Register som er den abstrakte superklassen
+ til Lege-, Pasient- og Reseptregisterne.
+ Klassen har metoder for å sette inn objekter, slette objekter, hente ut et objekt utifra valgt index,
+ finne objekter som matcher fra et utvalgskriteriet, skrive og lese til fil.
+ Laget av Henrik Fischer Bjelland
+ Sist endret 27-04-2014
  */
 package norskreseptregister.Reg;
 
