@@ -27,9 +27,9 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
     private JTextField medisindatafelt;
     private JTextArea utskrift;
     private JScrollPane utskriftscroll;
-    private JPanel panel1, panel2, panel3, panel4, panel5, panel6;
+    private JPanel panel1, panel2;
     private JLabel medisinlabel;
-    private JButton knapp1, knapp2, knapp3, velgMedisin, hjelp;
+    private JButton visPasient, visLeger, velgMedisin, hjelp;
     private final Medisinliste medisinliste;
     private Medisin medisin;
     private final RegisterSystem system;
@@ -38,13 +38,30 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
     {
         this.system = system;
         this.medisinliste = medisinliste;
+        
         medisinlabel = new JLabel("Medisin");
         medisindatafelt = new JTextField(20);
-        medisindatafelt.setText("Velg medisin fra listen til høyre");
+        medisindatafelt.setText("Velg medisin med knappen til høyre");
+        medisindatafelt.setEditable(false);
+        
         velgMedisin = new JButton("...");
-        knapp1 = new JButton("Vis pasienter ");
-        knapp2 = new JButton("Vis Leger");
+        velgMedisin.setToolTipText("Trykk for å velge medisin");
+        velgMedisin.addActionListener(this);
+        velgMedisin.setPreferredSize(new Dimension(20, 20));
+        
+        visPasient = new JButton("Vis pasienter ");
+        visPasient.setToolTipText("Trykk for å velge pasient");
+        visPasient.addActionListener(this);
+        
+        visLeger = new JButton("Vis Leger");
+        visLeger.setToolTipText("Trykk for å vise leger");
+        visLeger.addActionListener(this);
+        
         hjelp = new JButton ("?");
+        hjelp.setToolTipText("Trykk her for å få hjelp");
+        hjelp.addActionListener(this);
+        hjelp.setPreferredSize(new Dimension(20, 20));
+        
         utskrift = new JTextArea(20,20);
         utskrift.setEditable(false); 
         utskriftscroll = new JScrollPane(utskrift);
@@ -55,47 +72,41 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         panel1.add(medisinlabel);
         panel1.add(medisindatafelt); 
         panel1.add(velgMedisin);
+        panel1.setBorder(BorderFactory.createEtchedBorder());  
 
-        panel3 = new JPanel();
-        panel3.add(knapp1);  
-        panel3.add(knapp2);
-
-        panel4 = new JPanel();
-        panel4.add(utskriftscroll);
-
-        velgMedisin.addActionListener(this);
-        knapp1.addActionListener(this);
-        knapp2.addActionListener(this);
-        hjelp.addActionListener(this);
-        medisindatafelt.setEditable(false);
-        velgMedisin.setPreferredSize(new Dimension(20, 20));
-        hjelp.setPreferredSize(new Dimension(20, 20));
+        panel2 = new JPanel();
+        panel2.add(visPasient);  
+        panel2.add(visLeger);
+        panel2.setBorder(BorderFactory.createEtchedBorder());    
 
         ///GRID START ////
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
-        gc.gridx = 0;
-        gc.gridy = 0;
-        gc.insets = new Insets(10, 5, 5, 10);
-        gc.anchor = GridBagConstraints.WEST;
+        
+        int x = 0;
+        int y = 0;
+        
+        gc.gridx = x;
+        gc.gridy = y;
+        gc.insets = new Insets(5, 10, 5, 10);       
         gc.fill = GridBagConstraints.HORIZONTAL;
         add(panel1, gc);   
 
-        gc.gridx = 0;
-        gc.gridy = 1;
-        add(panel3, gc);
+        gc.gridx = x;
+        gc.gridy = ++y;
+        add(panel2, gc);
 
-        gc.gridx = 1;
+        gc.gridx = ++x;
         gc.gridy = 0;
         gc.gridheight = 6;
-        add(panel4, gc);
+        add(utskriftscroll, gc);
 
         gc.gridx = 2;
         gc.gridy = 6;
         add(hjelp, gc);
     }
     
-    //metode
+    //metode for å velge medisin i popup vindu
     private void VelgMedisin()
     {
         DefaultListModel model = new DefaultListModel();
@@ -114,7 +125,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
     }
     
-    //metode
+    //metoden for å vise pasienter i popup vinduet
     private void visPasienter()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
@@ -132,7 +143,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         utskrift.setText("Pasienter som har mottat " + medisin.getNavn() + ":\n" + pasienter);
     }
     
-    //metode
+    //metode for å vise Leger i popup vinduet
     private void visLeger()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
@@ -150,18 +161,18 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         utskrift.setText("Leger som har skrevet ut " + medisin.getNavn() + ":\n" + leger);
     }
     
-    //metode
+    //metode for å lytte på knappene
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == velgMedisin)
         {
             VelgMedisin();
         }
-        else if (e.getSource() == knapp1)
+        else if (e.getSource() == visPasient)
         {
             visPasienter();
         }
-        else if (e.getSource() == knapp2)
+        else if (e.getSource() == visLeger)
         {
             visLeger();
         }

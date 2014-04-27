@@ -49,70 +49,17 @@ class Medisintabell extends AbstractTableModel
             new Integer(10),new Integer(10),new Integer(10),new Integer(10),
             new Integer(10),new Integer(10),new Integer(10),new Integer(10),
             new Integer(10)
-        },
-        {
-            "Medisin 2", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 3", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 4", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)  
-        },
-        {
-            "Medisin 5", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 6", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)  
-        },
-        {
-            "Medisin 7", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 8", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 9", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 10", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
         }
     };
     
-    //For å få satt eget kolonnenavn
+    //Setter navn på kolonnene ved å bruke [] kolonnenavn.
     public String getColumnName(int kolonne)
     {
         return kolonnenavn[ kolonne ];
     }
     
-    //For å informere tabellmodellen om kolonnenes datatyper
+    /*For å informere tabellmodellen om kolonnenes datatyper.
+    Innhold er høyrejustert*/
     public Class getColumnClass(int kolonne)
     {
         
