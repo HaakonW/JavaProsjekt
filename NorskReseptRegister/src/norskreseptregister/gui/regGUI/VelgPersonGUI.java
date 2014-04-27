@@ -1,7 +1,9 @@
 /*
-Filen inneholder klassen VelgPasientGUI 
+Filen inneholder klassen VelgPasientGUI.
+Klassen er ment for å lage et JDialog vindu med alle objektene for enten Pasient, Lege eller medisin
+utifra hvilke metode som blir kalt.
 Laget av  Henrik Fischer Bjelland
-Sist endret 17-04-2014  
+Sist endret 27-04-2014  
 */
 
 package norskreseptregister.gui.regGUI;
@@ -82,10 +84,12 @@ public class VelgPersonGUI extends JDialog
     navneliste.ensureIndexIsVisible(valgtIndex);
   }//end of Konstruktør
   
+  //Get-metode for vagltIndex
   public int getValgtIndex()
   {
     return valgtIndex;
   }
+  
   //Privat lytteklassse som lytter på om knappene er trykket på. 
   private class Knappelytter implements ActionListener
   {

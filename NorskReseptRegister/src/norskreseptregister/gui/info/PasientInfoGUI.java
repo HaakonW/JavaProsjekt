@@ -21,7 +21,6 @@ import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.regGUI.VelgPasientGUI;
 import norskreseptregister.gui.regGUI.VelgPersonGUI;
 
 public class PasientInfoGUI extends JPanel implements ActionListener
