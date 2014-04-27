@@ -59,8 +59,7 @@ class RegMainHjemGUI extends JPanel implements ActionListener
          OPPRETTER EN INT X OG INT Y FOR Å ENKELT KUNNE UTVIDE
          MED FLERE ELEMENTER        
          INSETS ER AVSTAND FRA TOP, VENSTRE, BUNN OG HØYRE
-         ***/
-        
+         ***/       
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());

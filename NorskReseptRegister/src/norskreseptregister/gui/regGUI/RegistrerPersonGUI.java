@@ -31,24 +31,26 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
     public RegistrerPersonGUI(String infolabeltekst, String infoFeltTekst)
     {
         fornavnlabel = new JLabel("Fornavn     ");
-        etternavnlabel = new JLabel("Etternavn   ");
-        infolabel = new JLabel(infolabeltekst);
         fornavnfelt = new JTextField(20);
+        etternavnlabel = new JLabel("Etternavn   ");
         etternavnfelt = new JTextField(20);
+        infolabel = new JLabel(infolabeltekst);        
         infofelt = new JTextField(20);
         infofelt.setText(infoFeltTekst);
+        
         reg = new JButton("Registrer");
-     
-        utskrift = new JTextArea(20, 20);
-        utskrift.setEditable(false);
+        reg.setToolTipText("Trykk her for å registrere");
         
         hjelper = new JButton("?");
+        hjelper.setToolTipText("Trykk her for hjelp");
         hjelper.setPreferredSize(new Dimension(25, 25));
         hjelper.addActionListener(this);
-        
+     
+        utskrift = new JTextArea(20, 20);
+        utskrift.setEditable(false);       
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
 
-        /////PANEL START////
+        ///LEGGER ELEMENTER INN I PANELER////
         panel1 = new JPanel();
         panel1.add(fornavnlabel);
         panel1.add(fornavnfelt);
@@ -68,41 +70,50 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         panel5 = new JPanel();
         panel5.add(utskrift);
         
-        //// GRID START ////
+          /***
+         START INNSETTINGEN AV ELEMENTENE I LAYOUTEN
+         OPPRETTER EN INT X OG INT Y FOR Å ENKELT KUNNE UTVIDE
+         MED FLERE ELEMENTER        
+         INSETS ER AVSTAND FRA TOP, VENSTRE, BUNN OG HØYRE
+         ***/
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
         
-        gc.gridx = 0;
-        gc.gridy = 0;
+        int x= 0;
+        int y = 0;
+        
+        gc.gridx = x;
+        gc.gridy = y;
         gc.insets = new Insets(5, 5, 5, 10);
         //gc.anchor = GridBagConstraints.WEST;
         //gc.fill = GridBagConstraints.HORIZONTAL;
         add(panel1, gc);
         
-        gc.gridx = 0;
-        gc.gridy = 1;
+        gc.gridx = x;
+        gc.gridy = ++y;
         add(panel2, gc);
         
-        gc.gridx = 0;
-        gc.gridy = 2;
+        gc.gridx = x;
+        gc.gridy = ++y;
         add(panel3, gc);
         
-        gc.gridx = 0;
-        gc.gridy = 3;
+        gc.gridx = x;
+        gc.gridy = ++y;
         add(panel4, gc);
         
-        gc.gridx = 2;
-        gc.gridy = 0; 
+        y = 0;
+        gc.gridx = ++x;
+        gc.gridy = y; 
         gc.gridheight = 6;
         add(panel5, gc);  
         
-        gc.gridx = 3;
+        gc.gridx = ++x;
         gc.gridy = 6;       
         add(hjelper, gc);      
         
     }//end of konstruktør RegistrerLege
 
-
+    ///METODE FOR Å TØMME FELTENE FOR NESTE PERSON SOM SKAL REGISTRERES INN///
     public void TomFelt()
     {
         fornavnfelt.setText("");
