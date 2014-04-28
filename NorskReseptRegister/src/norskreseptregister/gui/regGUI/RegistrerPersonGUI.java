@@ -40,6 +40,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         
         reg = new JButton("Registrer");
         reg.setToolTipText("Trykk her for å registrere");
+                    
         
         hjelper = new JButton("?");
         hjelper.setToolTipText("Trykk her for hjelp");
