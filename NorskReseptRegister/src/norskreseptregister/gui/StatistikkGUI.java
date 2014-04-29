@@ -26,8 +26,8 @@ public class StatistikkGUI extends JPanel implements ActionListener
     private String [] maned;
     private JButton knapp1, knapp2, knapp3, velgMedisin;
     private JComboBox rullgardin1, rullgardin2;
-    private JPanel panel1, panel2, panel3;
-    private JTextArea temp;
+    private JPanel panel1, panel2, panel3, panel4;
+    private JTextArea utskrift;
     private tabellFrame frame;
     private Medisinliste medisinliste;
     private RegisterSystem system;
@@ -63,7 +63,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         
         fraAar = new JLabel("Velg år");
         tilAar = new JLabel("Velg år");
-        temp = new JTextArea(20, 50);
+        utskrift = new JTextArea(20, 50);
 
         int teller = 0;
 
@@ -94,6 +94,10 @@ public class StatistikkGUI extends JPanel implements ActionListener
         panel3.add(rullgardin2);
         panel3.add(tilAar);
         panel3.add(tilAarfelt);
+        
+        panel4 = new JPanel();
+        panel4.add(utskrift);
+        
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
@@ -115,7 +119,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
 
         gc.gridx = x;
         gc.gridy = ++y;
-        //add(temp, gc);
+        add(panel4, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;

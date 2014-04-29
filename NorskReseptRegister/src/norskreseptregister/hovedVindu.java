@@ -6,11 +6,8 @@
 package norskreseptregister;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -20,20 +17,19 @@ import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.AdminMain;
 import norskreseptregister.gui.info.InfoMainGUI;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
-public class hovedVindu extends JFrame
+public class hovedVindu extends JFrame implements ActionListener
 {
     private JDesktopPane hovedvindu;
+    JInternalFrame inFrame = new JInternalFrame(); 
     private Menylytter lytter;
     private JMenuBar menylinje;
     private JMenu valg1;
@@ -51,10 +47,14 @@ public class hovedVindu extends JFrame
     
     private RegisterSystem system;
     private final Medisinliste medisinliste;
+    
+    private JButton Admin;
 
     //Konstruktør
     public hovedVindu(final RegisterSystem system, Medisinliste medisinliste)
     {
+        this.system = system;
+        this.medisinliste = medisinliste;
         lytter = new Menylytter();
 
         menylinje = new JMenuBar();
@@ -122,13 +122,46 @@ public class hovedVindu extends JFrame
 
         getContentPane().add(hovedvindu, BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        hovedvindu.setBackground(Color.WHITE); //Sette bakgrunnsfarge på hovedvindu
+        //hovedvindu.setBackground(Color.WHITE); //Sette bakgrunnsfarge på hovedvindu
+        
+        Admin = new JButton(footer);
+        Admin.addActionListener(this);
+        hovedvindu.add(Admin);
+        
+        inFrame.add(Admin);
+        inFrame.pack(); 
+        inFrame.setVisible(true); 
+        hovedvindu.add(inFrame); 
+        
         setSize(1450, 900);
         setVisible(true);
-        this.system = system;
-        this.medisinliste = medisinliste;
-
     }// End of Konstruktør
+
+        
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        if (e.getSource() == Admin)
+        {
+            JInternalFrame internvindu = new JInternalFrame(
+                    "Admin", true, true, true, true);
+
+            //plassere et panel i det nye interne vinduet
+            //Container intern = internvindu.getContentPane();
+            AdminMain ny = new AdminMain(system, medisinliste);
+            internvindu.add(ny, BorderLayout.CENTER);
+
+            internvindu.setDefaultCloseOperation(
+                    JInternalFrame.DISPOSE_ON_CLOSE);
+
+            internvindu.pack();
+            internvindu.setLocation(300,100);
+
+            hovedvindu.add(internvindu);
+            internvindu.setVisible(true);
+            
+        }
+    }
 
     //Skal lytte på trykk i menylinjen.
     private class Menylytter implements ActionListener
@@ -149,7 +182,7 @@ public class hovedVindu extends JFrame
                         JInternalFrame.DISPOSE_ON_CLOSE);
 
                 internvindu.pack();
-                internvindu.setLocation(-10,-2);
+                internvindu.setLocation(300,100);
 
                 hovedvindu.add(internvindu);
                 internvindu.setVisible(true);
@@ -168,7 +201,7 @@ public class hovedVindu extends JFrame
 
                 internvindu2.pack();
                 
-                internvindu2.setLocation(700,-2);
+                internvindu2.setLocation(300,100);
                 hovedvindu.add(internvindu2);
                 internvindu2.setVisible(true);
             }
@@ -185,7 +218,7 @@ public class hovedVindu extends JFrame
 
                 internvindu3.pack();
                 
-                internvindu3.setLocation(-10,310);    
+                internvindu3.setLocation(300,100);    
                 hovedvindu.add(internvindu3);
                 internvindu3.setVisible(true);
             }

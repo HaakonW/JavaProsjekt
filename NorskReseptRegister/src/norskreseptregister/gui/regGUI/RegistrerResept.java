@@ -48,6 +48,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private Lege lege;
     private Medisin medisin;
     private Medisinliste medisinliste;
+    private Date dato;
 
     public RegistrerResept(RegisterSystem system, Medisinliste medisinliste)
     {
@@ -210,7 +211,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     //Metode for å opprette en ny resept
     private void nyResept()
     {
-        Resept ny = new Resept(datofelt.getText(), pasient,
+        Resept ny = new Resept(dato, pasient,
                 lege, medisin, mengdefelt.getText(), "", anvisning.getText());
         system.getReseptRegister().SettInn(ny);
         utskrift.setText("Registrert resept: \n" + ny.toString());

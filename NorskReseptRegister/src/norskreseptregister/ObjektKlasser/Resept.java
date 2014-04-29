@@ -8,11 +8,12 @@
 package norskreseptregister.ObjektKlasser;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Resept implements Serializable
 {
     private static final long serialVersionUID = 4L;
-    private String dato;
+    private Date dato;
     private Pasient pasient;
     private Lege lege;
     private Medisin medisin;
@@ -21,7 +22,7 @@ public class Resept implements Serializable
     private String anvisning;
 
     //Konstruktør som initialiserer alle varieblene for en resept
-    public Resept(String dato, Pasient pasient, Lege lege,
+    public Resept(Date dato, Pasient pasient, Lege lege,
             Medisin medisin, String mengde, String kategori, String anvisning)
     {
         this.dato = dato;
@@ -39,7 +40,7 @@ public class Resept implements Serializable
     }
 
     //Get-metode for for dato
-    public String getDato()
+    public Date getDato()
     {
         return dato;
     }
