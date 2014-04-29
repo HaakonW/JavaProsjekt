@@ -35,7 +35,7 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
         label1.setFont(new Font ("PT Serif", Font.PLAIN, 20));
         label2 = new JLabel("Registrer medisin");
         label2.setFont(new Font ("PT Serif", Font.PLAIN, 20));
-        label3 = new JLabel("Statestikk");
+        label3 = new JLabel("Statistikk");
         label3.setFont(new Font ("PT Serif", Font.PLAIN, 20));
         
         endreLisens = new JButton(modLeg);

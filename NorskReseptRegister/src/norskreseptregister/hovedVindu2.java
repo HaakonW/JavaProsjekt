@@ -40,14 +40,15 @@ public class hovedVindu2 extends JFrame implements ActionListener
     private Medisinliste medisinliste;
     private JMenuBar menylinje;
     private JMenu meny;
-    private JMenuItem menuItem;
+    private JMenuItem menuItem, menuItem2;
     
     public hovedVindu2(RegisterSystem system, Medisinliste medisinliste)
     {  
         this.system = system;
+        this.medisinliste = medisinliste;
         ImageIcon admin = new ImageIcon("src/norskreseptregister/gui/bilder/Admin.png");
         ImageIcon register = new ImageIcon("src/norskreseptregister/gui/bilder/register.png");
-        ImageIcon info = new ImageIcon("src/norskreseptregister/gui/bilder/statistikk.png");
+        ImageIcon info = new ImageIcon("src/norskreseptregister/gui/bilder/info.png");
         
         adminVindu = new JButton(admin);
         registreringVindu = new JButton(register);
@@ -124,11 +125,14 @@ public class hovedVindu2 extends JFrame implements ActionListener
         //a group of JMenuItems
         menuItem = new JMenuItem("Om",
                          KeyEvent.VK_T);
+        menuItem2 = new JMenuItem("Avslutt");
+        
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
         KeyEvent.VK_1, ActionEvent.ALT_MASK));
         menuItem.getAccessibleContext().setAccessibleDescription(
         "This doesn't really do anything");
         meny.add(menuItem);
+        meny.add(menuItem2);
         
         setVisible(true);
         setSize(740, 400);
@@ -141,13 +145,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
     {
         if (e.getSource() == adminVindu)
         {
-            AdminMain ny = new AdminMain(system, medisinliste);
-            JFrame frame = new JFrame();
-            frame.getContentPane().add(new AdminMain(system, medisinliste));
-            frame.pack();
-            frame.setSize(740, 520);
-            frame.setVisible(true);
-            frame.setLocationRelativeTo(null);
+            LoggInn ny = new LoggInn(system, medisinliste);
         }
         else if(e.getSource() == registreringVindu)
         {

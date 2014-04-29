@@ -44,7 +44,7 @@ public class AdminMain extends JPanel
         tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
         tabbedPane.addTab("Endre Lisens for lege", elege, panel3, "Endre lisens for Lege");
         tabbedPane.addTab("Registrer medisin", epille, panel4, "Registrer Medisin");
-        tabbedPane.addTab("Statestikk", statistikk, panel5, "Statestikk");
+        tabbedPane.addTab("Statistikk", statistikk, panel5, "Statistikk");
         add(tabbedPane);
 
         //setVisible(true);
