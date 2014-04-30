@@ -33,7 +33,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
     private RegisterSystem system;
     private Medisin medisin;
     
-    StatistikkGUI(RegisterSystem system, Medisinliste medisinliste)
+    StatistikkGUI(RegisterSystem system, Medisinliste medisinliste, MedisinTabell medisintabell)
     {
         this.system = system;
         this.medisinliste = medisinliste;

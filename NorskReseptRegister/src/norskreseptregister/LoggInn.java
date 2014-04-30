@@ -1,13 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Filen inneholder klassen LoggInn.
+ Klassen har en funksjon for å kunne logge seg inn Adminsiden
+ Laget av Henrik Fischer Bjelland
+ Sist endret 29-04-2014 
  */
 package norskreseptregister;
 
 import javax.swing.JFrame;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
@@ -38,8 +38,7 @@ public class LoggInn extends JFrame
         setSize(300, 200);
         setLocation(500, 280);
         panel1.setLayout(null);
-        
-        
+
         label1.setBounds(20, 10, 300, 30);
         label2.setBounds(10, 50, 100, 20);
         label3.setBounds(10, 85, 100, 20);
@@ -53,13 +52,13 @@ public class LoggInn extends JFrame
         panel1.add(brukerfelt);
         panel1.add(passordfelt);
         panel1.add(loggInn);
-        
 
         getContentPane().add(panel1);
         setVisible(true);
         actionlogin();
     }
 
+    //metode for logge inn, hvis if setningen blir true lages det et nytt Admin vindu.
     private void actionlogin()
     {
         loggInn.addActionListener(new ActionListener()
@@ -78,9 +77,9 @@ public class LoggInn extends JFrame
                     frame.setVisible(true);
                     frame.setLocationRelativeTo(null);
                     dispose();
-                } else
+                } 
+                else
                 {
-
                     JOptionPane.showMessageDialog(null, "Wrong Password / Username");
                     brukerfelt.setText("");
                     passordfelt.setText("");
@@ -90,4 +89,33 @@ public class LoggInn extends JFrame
             }
         });
     }
-}
+    
+    //prøvde å få til å kunne trykke enter men det funker ikke
+    class Knappelytter implements KeyListener
+    {
+      public void keyPressed(KeyEvent e){
+          if(e.getKeyCode()== KeyEvent.VK_ENTER){
+                AdminMain ny = new AdminMain(system, medisinliste);
+                JFrame frame = new JFrame();
+                frame.getContentPane().add(new AdminMain(system, medisinliste));
+                frame.pack();
+                frame.setSize(740, 520);
+                frame.setVisible(true);
+                frame.setLocationRelativeTo(null);
+                dispose();
+          };
+      };
+
+        @Override
+        public void keyTyped(KeyEvent e)
+        {
+            
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e)
+        {
+            
+        }
+    }
+}//end of class LoggInn

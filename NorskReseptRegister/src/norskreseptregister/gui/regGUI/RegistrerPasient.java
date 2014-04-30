@@ -138,6 +138,4 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
             
         }
     } 
-   
-   
 }//end of class Registrer Pasient

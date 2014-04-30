@@ -1,24 +1,16 @@
 /*
- Inneholder klasse for å kjøre hovedvindu2
+ Filen inneholder klassen hovedVindu2.
+ Klassen inneholder hovedvinduet som er det første du kommer til ved å kjøre programmet.
  Laget av Peter Wilhelmsen, Henrik Fischer Bjelland, Haakon Winther
- Sist endret 26/04/14
+ Sist endret 29/04/14
  */
 
 package norskreseptregister;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.MenuBar;
-import java.awt.Toolkit;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -27,10 +19,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.AdminMain;
 import norskreseptregister.gui.info.InfoMainGUI;
 import norskreseptregister.gui.regGUI.RegMainGUI;
-
 
 public class hovedVindu2 extends JFrame implements ActionListener
 {  
@@ -137,10 +127,10 @@ public class hovedVindu2 extends JFrame implements ActionListener
         setVisible(true);
         setSize(740, 400);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     }
 
+    //Metode for å lytte på hvilke knapp som er trykket og oppretter deretter et vindu av valgt type.
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == adminVindu)

@@ -12,10 +12,12 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -53,10 +55,17 @@ public class RegistrerResept extends JPanel implements ActionListener
     public RegistrerResept(RegisterSystem system, Medisinliste medisinliste)
     {
         Calendar cal = Calendar.getInstance();
+        //int style = DateFormat.MEDIUM;
+        //DateFormat df;
+        //df = DateFormat.getDateInstance(style, Locale.ENGLISH);
         String dateFormat = new SimpleDateFormat("dd/MM/yyyy/ HH:mm").format(new Date());
+        //SimpleDateFormat sf = new SimpleDateFormat( "dd.MM.yy", norge );
         this.system = system;
         this.medisinliste = medisinliste;
-
+        this.dato = dato;
+        
+        dato = cal.getTime();
+        
         datofelt = new JTextField(20);
         datofelt.setText(dateFormat);
         datolabel = new JLabel("Dato    ");

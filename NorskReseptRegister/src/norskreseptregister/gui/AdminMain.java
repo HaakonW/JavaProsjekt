@@ -25,6 +25,7 @@ public class AdminMain extends JPanel
     private StatistikkGUI panel5;
     private RegisterSystem system;
     private Medisinliste medisinliste;
+    private MedisinTabell medisintabell;
 
     //Newer opp GUI klasser og legger disse til å forskjellige tabbedPanes
     public AdminMain(RegisterSystem system, Medisinliste medisinliste)
@@ -34,7 +35,7 @@ public class AdminMain extends JPanel
         panel1 = new AdminMainHjemGUI(this);
         panel3 = new LegeLisensGUI(system);
         panel4 = new RegistrerMedisinGUI();
-        panel5 = new StatistikkGUI(system, medisinliste);
+        panel5 = new StatistikkGUI(system, medisinliste, medisintabell);
         tabbedPane = new JTabbedPane();
         ImageIcon elege = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
