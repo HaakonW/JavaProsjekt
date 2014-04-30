@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Filen inneholder tabellen med farger, lyttere og printfunksjon.
+
+Laget av Peter Wilhelmsen
+Sist endret 30/04/14
  */
 
 package norskreseptregister.Statistikk;
@@ -13,8 +14,6 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -53,6 +52,15 @@ public class TestTabell2 extends JFrame
         modell.addColumn("Januar");
         modell.addColumn("Februar");
         modell.addColumn("Mars");
+        modell.addColumn("April");
+        modell.addColumn("Mai");
+        modell.addColumn("Juni");
+        modell.addColumn("Juli");
+        modell.addColumn("August");
+        modell.addColumn("September");
+        modell.addColumn("Oktober");
+        modell.addColumn("November");
+        modell.addColumn("Desember");
         
         //Test for rad
         /*String[] forste = {"Paracet","12","32","22"};
