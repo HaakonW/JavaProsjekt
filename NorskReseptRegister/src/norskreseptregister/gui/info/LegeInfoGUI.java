@@ -20,7 +20,7 @@ import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.regGUI.VelgPersonGUI;
+import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
 public class LegeInfoGUI extends JPanel implements ActionListener
 {
@@ -128,7 +128,8 @@ public class LegeInfoGUI extends JPanel implements ActionListener
             model.addElement(l.toString());
         }
 
-        VelgPersonGUI velgLege = new VelgPersonGUI(model);
+        VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:", 
+                "Velg lege", legeRegister.getListModel());
         velgLege.setLocationRelativeTo(this);
         velgLege.setVisible(true);
         int valgtIndex = velgLege.getValgtIndex();

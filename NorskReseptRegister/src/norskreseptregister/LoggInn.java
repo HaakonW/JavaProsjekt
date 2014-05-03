@@ -93,7 +93,6 @@ public class LoggInn extends JFrame
                     passordfelt.setText("");
                     brukerfelt.requestFocus();
                 }
-
             }
         });
     }

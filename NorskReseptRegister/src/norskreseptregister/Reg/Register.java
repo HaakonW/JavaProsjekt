@@ -8,16 +8,17 @@
  */
 package norskreseptregister.Reg;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import norskreseptregister.Interface.UtvalgsKriterie;
 
 public abstract class Register<T>
@@ -66,6 +67,17 @@ public abstract class Register<T>
     public ArrayList<T> FinnAlleObjekter()
     {
         return list;
+    }
+    
+    //
+    public DefaultListModel getListModel()
+    {
+        DefaultListModel model = new DefaultListModel();
+        for (T objekt : FinnAlleObjekter())
+        {
+            model.addElement(objekt.toString());
+        }
+        return model;
     }
 
     //Metode for å skrive til en tekstfil

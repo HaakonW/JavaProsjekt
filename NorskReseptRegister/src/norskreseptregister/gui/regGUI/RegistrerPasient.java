@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.*;
 import javax.swing.*;
@@ -20,7 +21,7 @@ import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
 
-
+//
 public class RegistrerPasient extends RegistrerPersonGUI implements ActionListener
 {
     private PasientRegister pasientRegister;
@@ -29,12 +30,12 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
     {
         super("Fødselsdato", "dd/mm/åååå");
         this.pasientRegister = pasientRegister;       
-        reg.addActionListener(this);
         reg.addKeyListener( new Knappelytter());
         
  
     }//end of konstruktør
     
+    //
     private void nyPasient()
     {
         if(sjekkFornavn(fornavnfelt.getText()) && sjekkEtternavn(etternavnfelt.getText())
@@ -42,12 +43,21 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
         {
             Pasient ny = new Pasient(fornavnfelt.getText(), etternavnfelt.getText(), 
                 infofelt.getText());
-        pasientRegister.SettInn(ny);
-        utskrift.setText("Registrert pasient: \n" + ny.toString());
+            ArrayList<Pasient> eksisterendePasienter = pasientRegister.FinnObjekterSomMatcher(new FinnPasientData(ny));
+            if (eksisterendePasienter.size() > 0)
+            {
+                utskrift.setText("Pasienten finnes allerede.");
+                fornavnfelt.requestFocus();
+            }
+            else
+            { 
+                pasientRegister.SettInn(ny);
+                utskrift.setText("Registrert pasient: \n" + ny.toString());
+            }
         }
-        
     }
     
+    //
     private void SkrivUt()
     {
         String pasientliste = "";
@@ -75,6 +85,7 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
         } 
     }
     
+    //RegEx for etternavn
     public boolean sjekkEtternavn(String etternavn)
     {
         
@@ -98,25 +109,26 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
         }
         else
         {
-            utskrift.setText("Adresse må være kun bokstaver.");
+            utskrift.setText("Feilmelding for fødselsdato.");
             return false;
         }
     }
     
+    //
     public void actionPerformed(ActionEvent e)
     {
-        if(e.getSource() == reg)
+        if (e.getSource() == reg)
         {
             nyPasient();
             TomFelt();
         }
-      
-        if (e.getSource() == hjelper)
+        else if (e.getSource() == hjelper)
         {
             JOptionPane.showMessageDialog(null, "HJELP PASIENT");
         }
     }
     
+    //
     class Knappelytter implements KeyListener
     {
       public void keyPressed(KeyEvent e){

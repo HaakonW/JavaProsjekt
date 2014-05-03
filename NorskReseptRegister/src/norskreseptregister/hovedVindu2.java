@@ -7,13 +7,17 @@
 
 package norskreseptregister;
 
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,7 +36,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
     private JMenu meny;
     private JMenuItem menuItem, menuItem2;
     
-    public hovedVindu2(RegisterSystem system, Medisinliste medisinliste)
+    public hovedVindu2(final RegisterSystem system, Medisinliste medisinliste)
     {  
         this.system = system;
         this.medisinliste = medisinliste;
@@ -127,7 +131,26 @@ public class hovedVindu2 extends JFrame implements ActionListener
         setVisible(true);
         setSize(740, 400);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent winEvt)
+            {
+                system.SkrivTilFil();
+            }
+        });
+    }
+    
+    //Metode
+    private void visGUI(Component component) throws HeadlessException
+    {
+        JFrame frame = new JFrame();
+        frame.getContentPane().add(component);
+        frame.pack();
+        frame.setSize(740, 500);
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     //Metode for å lytte på hvilke knapp som er trykket og oppretter deretter et vindu av valgt type.
@@ -140,23 +163,12 @@ public class hovedVindu2 extends JFrame implements ActionListener
         else if(e.getSource() == registreringVindu)
         {
             RegMainGUI reg = new RegMainGUI(system, medisinliste);
-            JFrame frame = new JFrame(); 
-            frame.getContentPane().add(new RegMainGUI(system, medisinliste));
-            frame.pack();
-            frame.setSize(740, 500);
-            frame.setVisible(true);
-            frame.setLocationRelativeTo(null);
+            visGUI(reg);
         }
         else if(e.getSource() == infoVindu)
         {
             InfoMainGUI infoG = new InfoMainGUI(system, medisinliste);
-            JFrame frame = new JFrame();
-            setLocationRelativeTo(null);
-            frame.getContentPane().add(new InfoMainGUI(system, medisinliste));
-            frame.pack();
-            frame.setSize(740, 450);
-            frame.setVisible(true);
-            frame.setLocationRelativeTo(null);
+            visGUI(infoG);
         }
     }
 }

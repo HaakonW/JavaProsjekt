@@ -20,7 +20,7 @@ import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.regGUI.VelgPersonGUI;
+import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
 public class MedisinInfoGUI extends JPanel implements ActionListener
 {
@@ -109,12 +109,8 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
     //metode for å velge medisin i popup vindu
     private void VelgMedisin()
     {
-        DefaultListModel model = new DefaultListModel();
-        for (Medisin m : medisinliste.FinnAlle())
-        {
-            model.addElement(m.toString());
-        }
-        VelgPersonGUI velgMedisin = new VelgPersonGUI(model);
+        VelgFraListeGUI velgMedisin = new VelgFraListeGUI("Liste over alle medisiner:", 
+                "Velg medisin", medisinliste.getListModel());
         velgMedisin.setLocationRelativeTo(this);
         velgMedisin.setVisible(true);
         int valgtIndex = velgMedisin.getValgtIndex();

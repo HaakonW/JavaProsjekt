@@ -16,16 +16,14 @@ import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.regGUI.VelgPersonGUI;
+import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 import javax.swing.DefaultListModel;
 
 public class StatistikkGUI extends JPanel implements ActionListener
 {
     private JLabel fradato, tildato, fraAar, tilAar, velgLegemiddel;
-    private JTextField fraAarfelt, tilAarfelt, velgaar1, velgaar2, medisinfelt;
-    private String [] maned;
-    private JButton knapp1, knapp2, knapp3, velgMedisin;
-    private JComboBox rullgardin1, rullgardin2;
+    private final JTextField fraAarfelt, medisinfelt;
+    private final JButton velgMedisin;
     private JPanel panel1, panel2, panel3, panel4;
     private JTextArea utskrift;
     private tabellFrame frame;
@@ -38,20 +36,8 @@ public class StatistikkGUI extends JPanel implements ActionListener
         this.system = system;
         this.medisinliste = medisinliste;
         
-        String maned[] =
-        {
-            "Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August",
-            "Septemeber", "Oktober", "November", "Desember"
-        };
-        rullgardin1 = new JComboBox();
-        rullgardin2 = new JComboBox();
-        
         fraAarfelt = new JTextField(4);
-        tilAarfelt = new JTextField(4);
-        
-        fradato = new JLabel("Fra Måned");
-        tildato = new JLabel("Til Måned");
-        
+ 
         velgLegemiddel = new JLabel("Velg Legemiddel");
         
         velgMedisin = new JButton("...");
@@ -62,21 +48,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         medisinfelt.setEditable(false);
         
         fraAar = new JLabel("Velg år");
-        tilAar = new JLabel("Velg år");
         utskrift = new JTextArea(20, 50);
-
-        int teller = 0;
-
-        for (int i = 0; i < maned.length; i++)
-        {
-            rullgardin1.addItem(maned[i]);
-
-        }
-        for (int i = 0; i < maned.length; i++)
-        {
-            rullgardin2.addItem(maned[i]);
-
-        }
 
         panel1 = new JPanel();
         panel1.add(velgLegemiddel);
@@ -84,20 +56,11 @@ public class StatistikkGUI extends JPanel implements ActionListener
         panel1.add(velgMedisin);
 
         panel2 = new JPanel();
-        panel2.add(fradato);
-        panel2.add(rullgardin1);
         panel2.add(fraAar);
         panel2.add(fraAarfelt);
-
-        panel3 = new JPanel();
-        panel3.add(tildato);
-        panel3.add(rullgardin2);
-        panel3.add(tilAar);
-        panel3.add(tilAarfelt);
         
         panel4 = new JPanel();
         panel4.add(utskrift);
-        
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
@@ -112,10 +75,6 @@ public class StatistikkGUI extends JPanel implements ActionListener
         gc.gridx = x;
         gc.gridy = ++y;
         add(panel2, gc);
-
-        gc.gridx = x;
-        gc.gridy = ++y;
-        add(panel3, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;
@@ -135,7 +94,8 @@ public class StatistikkGUI extends JPanel implements ActionListener
         {
             model.addElement(m.toString());
         }
-        VelgPersonGUI velgMedisin = new VelgPersonGUI(model);
+        VelgFraListeGUI velgMedisin = new VelgFraListeGUI("Liste over alle medisiner:",
+                "Velg medisin", medisinliste.getListModel());
         velgMedisin.setLocationRelativeTo(this);
         velgMedisin.setVisible(true);
         int valgtIndex = velgMedisin.getValgtIndex();

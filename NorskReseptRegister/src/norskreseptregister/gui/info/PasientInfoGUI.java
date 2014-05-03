@@ -21,7 +21,7 @@ import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.regGUI.VelgPersonGUI;
+import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
 public class PasientInfoGUI extends JPanel implements ActionListener
 {
@@ -123,13 +123,8 @@ public class PasientInfoGUI extends JPanel implements ActionListener
     {
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
         PasientRegister pasientRegister = system.getPasientRegister();
-        DefaultListModel model = new DefaultListModel();
-        for (Pasient p : pasientRegister.FinnAlleObjekter())
-        {
-            model.addElement(p.toString());
-        }
-
-        VelgPersonGUI velgPasient = new VelgPersonGUI(model);
+        VelgFraListeGUI velgPasient = new VelgFraListeGUI("Liste over alle pasienter:",
+                "Velg pasient", pasientRegister.getListModel());
         velgPasient.setLocationRelativeTo(this);
         velgPasient.setVisible(true);
         int valgtIndex = velgPasient.getValgtIndex();

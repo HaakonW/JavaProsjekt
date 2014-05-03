@@ -38,7 +38,7 @@ import norskreseptregister.Reg.RegisterSystem;
 
 public class RegistrerResept extends JPanel implements ActionListener
 {
-
+    
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper;
     private JTextField datofelt, pasientfelt, legefelt, medisinfelt, mengdefelt, kategorifelt;
     private JTextArea utskrift, anvisning;
@@ -257,13 +257,8 @@ public class RegistrerResept extends JPanel implements ActionListener
     private void VelgPasient()
     {
         PasientRegister pasientRegister = system.getPasientRegister();
-        DefaultListModel model = new DefaultListModel();
-        for (Pasient p : system.getPasientRegister().FinnAlleObjekter())
-        {
-            model.addElement(p.toString());
-        }
-
-        VelgPersonGUI velgPasient = new VelgPersonGUI(model);
+        VelgFraListeGUI velgPasient = new VelgFraListeGUI("Liste over alle pasienter:", 
+                "Velg pasient", pasientRegister.getListModel());
         velgPasient.setLocationRelativeTo(this);
         velgPasient.setVisible(true);
         int valgtIndex = velgPasient.getValgtIndex();
@@ -279,13 +274,8 @@ public class RegistrerResept extends JPanel implements ActionListener
     {
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
         LegeRegister legeRegister = system.getLegeRegister();
-        DefaultListModel model = new DefaultListModel();
-        for (Lege l : system.getLegeRegister().FinnAlleObjekter())
-        {
-            model.addElement(l.toString());
-        }
-
-        VelgPersonGUI velgLege = new VelgPersonGUI(model);
+        VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:", 
+                "Velg lege", legeRegister.getListModel());
         velgLege.setLocationRelativeTo(this);
         velgLege.setVisible(true);
         int valgtIndex = velgLege.getValgtIndex();
@@ -299,12 +289,8 @@ public class RegistrerResept extends JPanel implements ActionListener
     //Metode for å velge ut en medisin
     private void VelgMedisin()
     {
-        DefaultListModel model = new DefaultListModel();
-        for (Medisin m : medisinliste.FinnAlle())
-        {
-            model.addElement(m.toString());
-        }
-        VelgPersonGUI velgMedisin = new VelgPersonGUI(model);
+        VelgFraListeGUI velgMedisin = new VelgFraListeGUI("Liste over alle medisiner:",
+                "Velg medisin", medisinliste.getListModel());
         velgMedisin.setLocationRelativeTo(this);
         velgMedisin.setVisible(true);
         int valgtIndex = velgMedisin.getValgtIndex();

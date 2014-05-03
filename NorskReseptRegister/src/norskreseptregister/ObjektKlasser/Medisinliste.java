@@ -8,6 +8,7 @@ package norskreseptregister.ObjektKlasser;
 
 import java.io.*;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 //Medisinliste
@@ -88,6 +89,17 @@ public class Medisinliste implements Serializable
             hjelp = hjelp.neste;
         }
         return liste;
+    }
+    
+    //
+    public DefaultListModel getListModel()
+    {
+        DefaultListModel model = new DefaultListModel();
+        for (Medisin medisin : FinnAlle())
+        {
+            model.addElement(medisin.toString());
+        }
+        return model;
     }
 
     //HentEttElement brukes til å søke igjennom medisinlisten vår og finne en bestemt medisin
