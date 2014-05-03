@@ -81,26 +81,32 @@ public class Medisin implements Serializable
     {
         return gruppeC;
     }
-
-    //Denne metoden returnerer en informativ tekst om en medisin.
-    public String toString()
+    
+    //Metode for å hente ut hvilke gruppe medisinen er i.
+    public String getGruppe()
     {
         String medisinGruppe = "";
         if (gruppeA)
         {
             medisinGruppe += "A ";
         }
-        if (gruppeB)
+        else if (gruppeB)
         {
             medisinGruppe += "B ";
         }
-        if (gruppeC)
+        else if (gruppeC)
         {
             medisinGruppe += "C ";
         }
+        return medisinGruppe;
+    }
+    
+    //Denne metoden returnerer en informativ tekst om en medisin.
+    public String toString()
+    {
         String tekst = "";
         tekst += navn + " - " + atcNr
-                + " - Medisingruppe: " + medisinGruppe;
+                + " - Medisingruppe: " + getGruppe();
         return tekst;
     }
 }// end of class Medisin

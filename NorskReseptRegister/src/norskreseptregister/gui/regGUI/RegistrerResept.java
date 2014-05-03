@@ -114,8 +114,12 @@ public class RegistrerResept extends JPanel implements ActionListener
         anvisning.setLineWrap(true);
         anvisning.setWrapStyleWord(true);
         anvisning.setBorder(BorderFactory.createTitledBorder(null, "Anvisning", 1, 2, null, Color.black));
+        
         utskrift = new JTextArea(25, 22);
         utskrift.setEditable(false);
+        utskrift.setLineWrap(true);
+        utskrift.setWrapStyleWord(true);
+        
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         anvisningscroll = new JScrollPane(anvisning);
@@ -217,13 +221,27 @@ public class RegistrerResept extends JPanel implements ActionListener
         add(hjelper, gc);
     }//end of Konstruktør
 
+    //
+    private boolean sjekkLegeBevillingMotMedisin()
+    {
+        String medisinGruppe = medisin.getGruppe();
+        String legeBevilling = lege.getBevilling();
+        if (legeBevilling.contains(medisinGruppe))
+        {
+            return true;
+        }
+        utskrift.setText("Legen har ikke bevilling for medisingruppe: " + medisinGruppe);
+        return false;
+    }
+    
     //Metode for å opprette en ny resept
     private void nyResept()
     {
         Resept ny = new Resept(dato, pasient,
                 lege, medisin, mengdefelt.getText(), "", anvisning.getText());
         system.getReseptRegister().SettInn(ny);
-        utskrift.setText("Registrert resept: \n" + ny.toString());
+        utskrift.setText("Registrert resept: \n" + ny.toString());    
+
     }
 
     //Metode for å tømme alle tekstfeltene
@@ -323,7 +341,10 @@ public class RegistrerResept extends JPanel implements ActionListener
     {
         if (e.getSource() == regResept)
         {
-            bekreft();
+            if (sjekkLegeBevillingMotMedisin())
+            {
+                bekreft();
+            }
         }
         if (e.getSource() == visListe)
         {
