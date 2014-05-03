@@ -16,15 +16,14 @@ import norskreseptregister.ObjektKlasser.Medisinliste;
 public class RegistrerMedisinGUI extends JPanel implements ActionListener
 {
     private Medisinliste medisinliste;
-    private Medisin medisin;
     private JTextField regNavnFelt, regAtcFelt;
     private JButton regMedisin, visListe, hjelp;
-    private JTextArea utskrift, regAnvisning;
-    private String medisinlisten = "lagreMedisin.txt";
+    private JTextArea utskrift;
     private JRadioButton a, b, c;
 
-    public RegistrerMedisinGUI()
+    public RegistrerMedisinGUI(Medisinliste medisinliste)
     {
+        this.medisinliste = medisinliste;
         regNavnFelt = new JTextField(20);
         
         regAtcFelt = new JTextField(20);
@@ -50,8 +49,6 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         
         medisinliste = new Medisinliste();
 
-        //For å lese listen ved oppstart
-        lesObjektFraFil();
         knappeGruppe();
 
         ///////PANEL START/////             
@@ -156,47 +153,6 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         }
     }
     
-    // Lese objekt fra fil  - HUSK Å IMPORTER java.io.*;
-    public void lesObjektFraFil()
-    {
-        try (ObjectInputStream innfil = new ObjectInputStream(
-                new FileInputStream(medisinlisten)))
-        {
-            medisinliste = (Medisinliste) innfil.readObject();
-
-        } catch (ClassNotFoundException cnfe)
-        {
-            JOptionPane.showMessageDialog(this, cnfe.getMessage());
-            /* Må kanskje legge inn muligheten for å opprette ny liste
-             om det ikke finnes en: liste = new Medisinliste();*/
-        } catch (IOException ioe)
-        {
-            JOptionPane.showMessageDialog(this, "Feil ved lesing, "
-                    + "ny liste blir opprettet");
-            //Kan opprette ny tom liste her også. Som forslaget i kommentar over
-        }
-    }
-
-     //Lagre objektet på fil - try med ressurser
-    public void skrivObjektTilFil()
-    {
-        try (ObjectOutputStream utfil = new ObjectOutputStream(
-                new FileOutputStream(medisinlisten)))
-        {
-            utfil.writeObject(medisinliste);
-            utfil.close();
-        } catch (NotSerializableException nse)
-        {
-            JOptionPane.showMessageDialog(this, "Objektet er ikke serialisert!");
-        } catch (FileNotFoundException fnfe)
-        {
-            JOptionPane.showMessageDialog(this, "Finner ikke " + medisinlisten);
-        } catch (IOException ioe)
-        {
-            System.out.println("Kan ikke skrive til fil!");
-        }
-    }
-    
     //Metoden viser hele medisinlisten i tekstfeltet Utskrift.
     public void visRegister()
     {
@@ -217,7 +173,6 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         if (e.getSource() == regMedisin)
         {
             nyMedisin();
-            skrivObjektTilFil();
             tomFelter();
         }
         if (e.getSource() == visListe)

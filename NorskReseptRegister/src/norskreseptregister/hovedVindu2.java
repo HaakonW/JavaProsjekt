@@ -36,7 +36,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
     private JMenu meny;
     private JMenuItem menuItem, menuItem2;
     
-    public hovedVindu2(final RegisterSystem system, Medisinliste medisinliste)
+    public hovedVindu2(final RegisterSystem system, final Medisinliste medisinliste)
     {  
         this.system = system;
         this.medisinliste = medisinliste;
@@ -138,6 +138,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
             public void windowClosing(WindowEvent winEvt)
             {
                 system.SkrivTilFil();
+                medisinliste.SkrivTilFil();
             }
         });
     }

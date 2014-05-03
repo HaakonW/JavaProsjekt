@@ -34,7 +34,7 @@ public class AdminMain extends JPanel
         this.medisinliste = medisinliste;
         panel1 = new AdminMainHjemGUI(this);
         panel3 = new LegeLisensGUI(system);
-        panel4 = new RegistrerMedisinGUI();
+        panel4 = new RegistrerMedisinGUI(medisinliste);
         panel5 = new StatistikkGUI(system, medisinliste, medisintabell);
         tabbedPane = new JTabbedPane();
         ImageIcon elege = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");

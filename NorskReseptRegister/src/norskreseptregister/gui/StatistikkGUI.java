@@ -89,11 +89,6 @@ public class StatistikkGUI extends JPanel implements ActionListener
     //Metode for å velge ut en medisin
     private void VelgMedisin()
     {
-        DefaultListModel model = new DefaultListModel();
-        for (Medisin m : medisinliste.FinnAlle())
-        {
-            model.addElement(m.toString());
-        }
         VelgFraListeGUI velgMedisin = new VelgFraListeGUI("Liste over alle medisiner:",
                 "Velg medisin", medisinliste.getListModel());
         velgMedisin.setLocationRelativeTo(this);

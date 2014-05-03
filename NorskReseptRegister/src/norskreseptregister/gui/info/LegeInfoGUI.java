@@ -1,11 +1,10 @@
 /*
  Filen inneholder klassen LegeInfoGUI
  Laget av Henrik Fischer Bjelland
- Sist endret 11-04-2014 
+ Sist endret 03-05-2014 
  */
 package norskreseptregister.gui.info;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -122,12 +121,6 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     public void VelgLege()
     {
         LegeRegister legeRegister = system.getLegeRegister();
-        DefaultListModel model = new DefaultListModel();
-        for (Lege l : legeRegister.FinnAlleObjekter())
-        {
-            model.addElement(l.toString());
-        }
-
         VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:", 
                 "Velg lege", legeRegister.getListModel());
         velgLege.setLocationRelativeTo(this);

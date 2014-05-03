@@ -124,11 +124,6 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     {
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
         LegeRegister legeRegister = system.getLegeRegister();
-        DefaultListModel model = new DefaultListModel();
-        for (Lege l : legeRegister.FinnAlleObjekter())
-        {
-            model.addElement(l.toString());
-        }
         VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:",
                 "Velg lege", legeRegister.getListModel());
         velgLege.setLocationRelativeTo(this);

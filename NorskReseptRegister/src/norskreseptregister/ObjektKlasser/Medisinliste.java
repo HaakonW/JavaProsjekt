@@ -141,4 +141,24 @@ public class Medisinliste implements Serializable
         }
         return null;
     }
+
+    //
+    public void SkrivTilFil()
+    {
+        try (ObjectOutputStream utfil = new ObjectOutputStream(
+                new FileOutputStream(medisinlisten)))
+        {
+            utfil.writeObject(this);
+            utfil.close();
+        } catch (NotSerializableException nse)
+        {
+            JOptionPane.showMessageDialog(null, "Objektet er ikke serialisert!");
+        } catch (FileNotFoundException fnfe)
+        {
+            JOptionPane.showMessageDialog(null, "Finner ikke " + medisinlisten);
+        } catch (IOException ioe)
+        {
+            System.out.println("Kan ikke skrive til fil!");
+        }
+    }
 }// end of class Medisinliste
