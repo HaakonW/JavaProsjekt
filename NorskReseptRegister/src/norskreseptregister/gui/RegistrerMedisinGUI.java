@@ -175,11 +175,11 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
             nyMedisin();
             tomFelter();
         }
-        if (e.getSource() == visListe)
+        else if (e.getSource() == visListe)
         {
             visRegister();
         }
-        if(e.getSource() == hjelp)
+        else if(e.getSource() == hjelp)
         {
             JOptionPane.showMessageDialog(null, "HJELP Pille");
         }

@@ -8,9 +8,11 @@
 
 package norskreseptregister.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
 {
     private JLabel velgAar;
     private final JTextField Aarfelt;
-    private final JButton velgMedisin, visStatistikk;
+    private final JButton velgMedisin, visStatistikk,hjelp;
     private JPanel panel1, panel2, panel3, panel4;
     private JTextArea utskrift;
     private TabellFrame frame;
@@ -48,16 +50,25 @@ public class StatistikkGUI extends JPanel implements ActionListener
         visStatistikk.setPreferredSize(new Dimension(200, 40));
         visStatistikk.addActionListener(this);
         
+        hjelp = new JButton("?");
+        hjelp.addActionListener(this);        
+        hjelp.setPreferredSize(new Dimension(20, 20));
+        
         velgAar = new JLabel("Velg år");
-        utskrift = new JTextArea(20, 50);
+        utskrift = new JTextArea(20,20);
+        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         
         panel1 = new JPanel();
+        panel1.setBorder(BorderFactory.createEtchedBorder());
         panel1.add(velgMedisin);
-        panel1.add(velgAar);
-        panel1.add(Aarfelt);
         
         panel2 = new JPanel();
-        panel2.add(visStatistikk);
+        panel2.setBorder(BorderFactory.createEtchedBorder());
+        panel2.add(velgAar);
+        panel2.add(Aarfelt);
+        
+        panel3 = new JPanel();
+        panel3.add(visStatistikk);
         
         panel4 = new JPanel();
         panel4.add(utskrift);
@@ -70,6 +81,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
 
         gc.gridx = x;
         gc.gridy = y;
+        gc.insets = new Insets(5, 10, 5, 10);      
         add(panel1, gc);
 
         gc.gridx = x;
@@ -78,11 +90,24 @@ public class StatistikkGUI extends JPanel implements ActionListener
 
         gc.gridx = x;
         gc.gridy = ++y;
-        add(panel4, gc);
+        gc.fill = GridBagConstraints.HORIZONTAL; 
+        add(panel3, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;
-        //add(frame.tabellet, gc);
+        //add(panel4, gc);
+        
+        ///NY Kolonne
+        y = 0;
+        gc.gridx = ++x;
+        gc.gridy = y;
+        gc.gridheight = 5;
+        add(panel4, gc);
+        
+        gc.gridx = 3;
+        gc.gridy = 6;
+        gc.insets = new Insets(0, 10, 0, 0);
+        add(hjelp, gc); 
     }
     
     //Metode for å velge ut en medisin
@@ -142,8 +167,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
     {
         Object[] resultat = new Object[13];
         resultat[0] = medisin.getNavn();
-        
-        
+         
         for (int i = 1; i < 13; i++)
         {
             resultat[i] = 0;
@@ -172,6 +196,10 @@ public class StatistikkGUI extends JPanel implements ActionListener
         else if (e.getSource() == visStatistikk)
         {
             visStatistikk();
+        }
+        else if(e.getSource() == hjelp)
+        {
+            JOptionPane.showMessageDialog(null, "HJELP Statistikk");
         }
     }
 }//end of class Statistikk

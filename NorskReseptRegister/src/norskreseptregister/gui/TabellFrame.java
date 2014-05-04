@@ -10,7 +10,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
@@ -42,8 +44,8 @@ public class TabellFrame extends JPanel
 
         panel.add(tableContainer, BorderLayout.CENTER);
         frame.getContentPane().add(panel);
-        frame.setLocationRelativeTo(null);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setSize(1100,300);
         frame.setVisible(true);
     }

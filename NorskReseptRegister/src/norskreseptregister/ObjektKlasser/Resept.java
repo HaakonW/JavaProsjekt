@@ -42,7 +42,7 @@ public class Resept implements Serializable
     //Get-metode for for dato
     public Date getDato()
     {
-        return dato;
+            return dato;
     }
 
     //Get-metode for pasient
