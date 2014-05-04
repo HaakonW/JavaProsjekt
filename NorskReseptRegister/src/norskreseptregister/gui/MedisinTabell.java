@@ -10,75 +10,19 @@ import javax.swing.table.AbstractTableModel;
 
 public class MedisinTabell extends AbstractTableModel
 {
+    private final int antallRader;
+    private Object[][] dataCeller; 
+    
+    public MedisinTabell(int antallRader)
+    {
+        this.antallRader = antallRader;
+        dataCeller = new Object[antallRader][];
+    }
     
     private String[] kolonnenavn =
     {
         "Medisin", "Januar","Februar","Mars","April","Mai","Juni","Juli",
         "August","September","Oktober","November","Desember"
-    };
-    
-    private Object[][] celler = 
-    {
-        {
-            "Medisin 1", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 2", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 3", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 4", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)  
-        },
-        {
-            "Medisin 5", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 6", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)  
-        },
-        {
-            "Medisin 7", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 8", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 9", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        },
-        {
-            "Medisin 10", new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10),new Integer(10),new Integer(10),new Integer(10),
-            new Integer(10)
-        }
     };
     
     //For å få satt eget kolonnenavn
@@ -91,31 +35,30 @@ public class MedisinTabell extends AbstractTableModel
     public Class getColumnClass(int kolonne)
     {
         
-        return celler[0][kolonne].getClass();
+        return dataCeller[0][kolonne].getClass();
     }
     
+    //
     public int getColumnCount()
     {
-        return celler[0].length;
+        return dataCeller[0].length;
     }
     
+    //
     public int getRowCount()
     {
-        return celler.length;
+        return dataCeller.length;
     }
     
+    //
     public Object getValueAt(int rad, int kolonne)
     {
-        return celler[rad][kolonne];
+        return dataCeller[rad][kolonne];
     }
     
-    public void SettInnMedisinNavnForEnRad()
+    //
+    public void SettInnMedisinDataForEnRad(int rad, Object[] radData)
     {
-        
-    }
-    
-    public void SettInnStatistikkVerdi()
-    {
-        
+        dataCeller[rad] = radData;
     }
 }//end of class MedisinTabell

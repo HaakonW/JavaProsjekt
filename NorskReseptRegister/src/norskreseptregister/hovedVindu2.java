@@ -133,7 +133,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        //Dette er nå unødvendig siden addShutdownHook gjør det samme
+        //Dette er nå unødvendig siden addShutdownHook() gjør det samme
         
 //        addWindowListener(new WindowAdapter()
 //        {

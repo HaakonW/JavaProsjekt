@@ -14,35 +14,38 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
-import java.text.MessageFormat;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
-public class tabell
-{
-    
-}
-
 // Legger tabellen inn i en frame
-class tabellFrame extends JPanel
+public class TabellFrame extends JPanel
 {
     public Radalterneringstabell tabellet;
     private final MedisinTabell medisinTabell;
     
-    public tabellFrame(MedisinTabell medisinTabell)
+    public TabellFrame(MedisinTabell medisinTabell)
     {
         this.medisinTabell = medisinTabell;
-        tabellet = new Radalterneringstabell(medisinTabell);
-        add(new JScrollPane(tabellet), BorderLayout.CENTER);
         
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        
+        tabellet = new Radalterneringstabell(medisinTabell);
+        
+        //add(new JScrollPane(tabellet), BorderLayout.CENTER);
+        JFrame frame = new JFrame("Statistikk for medisiner");
+        JScrollPane tableContainer = new JScrollPane(tabellet);
+
+        panel.add(tableContainer, BorderLayout.CENTER);
+        frame.getContentPane().add(panel);
+        frame.setLocationRelativeTo(null);
+        frame.pack();
+        frame.setSize(1100,300);
+        frame.setVisible(true);
     }
     
     //For å printe
@@ -76,6 +79,7 @@ class Radalterneringstabell extends JTable
         super(tab);
     }
     
+    //
     public void print(Graphics g)
     {
         printUt = true;
@@ -89,6 +93,7 @@ class Radalterneringstabell extends JTable
         }
     }
     
+    //
     public Component prepareRenderer(
         TableCellRenderer rendrer, int rad, int kolonne)
     {
@@ -113,7 +118,3 @@ class Radalterneringstabell extends JTable
         return c;
     }
 }
-
-
-
-

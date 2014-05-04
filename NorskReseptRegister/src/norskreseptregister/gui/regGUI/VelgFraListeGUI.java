@@ -90,6 +90,11 @@ public class VelgFraListeGUI extends JDialog
     return valgtIndex;
   }
   
+  public int [] getValgteFraListe()
+  {
+      return navneliste.getSelectedIndices();
+  }
+  
   //Privat lytteklassse som lytter på om knappene er trykket på. 
   private class Knappelytter implements ActionListener
   {
@@ -102,6 +107,7 @@ public class VelgFraListeGUI extends JDialog
       }
       else if (e.getSource() == avbryt)
       {
+        valgtIndex = -1;
         setVisible(false);
       }
     }
