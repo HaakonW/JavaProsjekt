@@ -176,7 +176,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         ArrayList<Resept> valgteResepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
         for (Resept resept : valgteResepter)
         {
-            if (resept.getDato().getYear() == aar)
+            if (resept.getDato().getYear() + 1900 == aar)
             {
                 int maaned = resept.getDato().getMonth()+1;
                 int gammelVerdi = (int)resultat[maaned];
