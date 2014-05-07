@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Pasient;
@@ -30,13 +32,16 @@ public class VelgFraListeGUI extends JDialog
   private Knappelytter kLytter;
   private Muselytter mLytter;
   private int valgtIndex;
+  private final SortertListModel sortertModel;
 
-  public VelgFraListeGUI(String listeOver, String velg, DefaultListModel model)
+  public VelgFraListeGUI(String listeOver, String velg, DefaultListModel<String> model)
   {
     //forelder = f;
     setModal(true);
-    navneliste = new JList<>(model);
-    //skal bare kunne velge ett navn om gangen:
+    sortertModel = new SortertListModel(model);     // Vis alfabetisk sortert liste
+    navneliste = new JList<>(sortertModel);
+    /*
+    Her må vi se litt hva vi skal gjøre, denne velgeren er for alle og kan velge flere pasienter,leger osv*/
     navneliste.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     valgtIndex = -1;
     navneliste.setSelectedIndex(0);
@@ -87,12 +92,85 @@ public class VelgFraListeGUI extends JDialog
   //Get-metode for vagltIndex
   public int getValgtIndex()
   {
-    return valgtIndex;
+      if (valgtIndex >= 0)
+      {
+          // Returner original (usortert) index, dvs indeksen fra *Register eller Medisinliste
+          return sortertModel.getOriginalIndex(valgtIndex);
+      }
+      return -1;
   }
   
   public int [] getValgteFraListe()
   {
-      return navneliste.getSelectedIndices();
+      int[] valgte = navneliste.getSelectedIndices();   // Indekser fra den sorterte lista
+      int[] originalValgte = new int[valgte.length];
+      for (int i = 0; i < valgte.length; i++)
+      {
+          // Finn original/usortert indeks
+          originalValgte[i] = sortertModel.getOriginalIndex(valgte[i]);
+      }
+      return originalValgte;
+  }
+  
+  // Hjelpeklasse som inneholder en string (en rad i lista) og den originale/usorterte indeksen
+  private class StringOgIndex
+  {
+      private final String string;
+      private final int index;
+      
+      public StringOgIndex(String string, int index)
+      {
+          this.string = string;
+          this.index = index;
+      }
+      
+      public String getString()
+      {
+          return string;
+      }
+      
+      public int getIndex()
+      {
+          return index;
+      }
+  }
+  
+  // Klasse for å sammenligne to "StringOgIndex", slik at vi kan sortere dem alfabetisk
+  // (Se ArrayList.sort()
+  private class MinComparator implements Comparator<StringOgIndex>
+  {
+    public int compare(StringOgIndex o1, StringOgIndex o2)
+    {
+        return o1.getString().compareTo(o2.getString());
+    }
+  }
+  
+  // Sortert listemodell for navneListe
+  // Har metode getOriginalIndex() for å konvertere fra sortert indeks til original indeks.
+  // (Pasient-, Lege- og ReseptRegister pluss Medisinliste bruker de originale indeksene)
+  private class SortertListModel extends DefaultListModel<String>
+  {
+      private final ArrayList<StringOgIndex> sortertListe;
+      
+      public SortertListModel(DefaultListModel<String> modelInn)
+      {
+          sortertListe = new ArrayList<>();
+          for (int i = 0; i < modelInn.getSize(); i++)
+          {
+              sortertListe.add(new StringOgIndex(modelInn.get(i), i));
+          }
+          sortertListe.sort(new MinComparator());   // Sorter lista med stringer og originalindekser
+          for (StringOgIndex soi : sortertListe)
+          {
+              addElement(soi.getString());  // Lag den nye listemodellen med sorterte stringer
+          }
+      }
+      
+      public int getOriginalIndex(int sortertIndex)
+      {
+          // ArrayLista "sortertListe" er 1:1 til den sorterte JList-en "navneListe"
+          return sortertListe.get(sortertIndex).getIndex();
+      }
   }
   
   //Privat lytteklassse som lytter på om knappene er trykket på. 

@@ -70,9 +70,9 @@ public abstract class Register<T>
     }
     
     //
-    public DefaultListModel getListModel()
+    public DefaultListModel<String> getListModel()
     {
-        DefaultListModel model = new DefaultListModel();
+        DefaultListModel<String> model = new DefaultListModel<>();
         for (T objekt : FinnAlleObjekter())
         {
             model.addElement(objekt.toString());

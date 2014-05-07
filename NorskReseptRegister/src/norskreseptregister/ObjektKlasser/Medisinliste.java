@@ -92,9 +92,9 @@ public class Medisinliste implements Serializable
     }
     
     //
-    public DefaultListModel getListModel()
+    public DefaultListModel<String> getListModel()
     {
-        DefaultListModel model = new DefaultListModel();
+        DefaultListModel<String> model = new DefaultListModel<>();
         for (Medisin medisin : FinnAlle())
         {
             model.addElement(medisin.toString());
