@@ -33,8 +33,8 @@ public class hovedVindu2 extends JFrame implements ActionListener
     private RegisterSystem system;
     private Medisinliste medisinliste;
     private JMenuBar menylinje;
-    private JMenu meny;
-    private JMenuItem menuItem, menuItem2,menuItem3, menuItem4, menuItem5;
+    private JMenu valg,hjelp;
+    private JMenuItem adminValg,regValg, infoValg, avsluttValg, omValg,brukerValg;
     
     public hovedVindu2(final RegisterSystem system, final Medisinliste medisinliste)
     {  
@@ -109,47 +109,54 @@ public class hovedVindu2 extends JFrame implements ActionListener
         menylinje = new JMenuBar();
         setJMenuBar(menylinje);
         
-        meny = new JMenu("Fil");
-        menylinje.add(meny);
+        valg = new JMenu("Valg");
+        valg.setMnemonic('V');
+        hjelp = new JMenu("Hjelp");
+        hjelp.setMnemonic('H');
+        menylinje.add(valg);
+        menylinje.add(hjelp);
         
-        meny.setMnemonic(KeyEvent.VK_E);
-        meny.getAccessibleContext().setAccessibleDescription(
-        "The only menu in this program that has menu items");
+        /*valg.setMnemonic(KeyEvent.VK_E);
+        valg.getAccessibleContext().setAccessibleDescription(
+        "The only menu in this program that has menu items");*/
         
         //Menyalternativer
-        menuItem = new JMenuItem("Om",
-                         KeyEvent.VK_T);
-        
-        menuItem2 = new JMenuItem("Admin");
-        menuItem2.setAccelerator(KeyStroke.getKeyStroke(
+        adminValg = new JMenuItem("Admin");
+        adminValg.setAccelerator(KeyStroke.getKeyStroke(
         KeyEvent.VK_A,ActionEvent.ALT_MASK));
-        menuItem2.addActionListener(this);
+        adminValg.addActionListener(this);
         
-        menuItem3 = new JMenuItem("Registrering");
-        menuItem3.setAccelerator(KeyStroke.getKeyStroke(
+        regValg = new JMenuItem("Registrering");
+        regValg.setAccelerator(KeyStroke.getKeyStroke(
         KeyEvent.VK_R,ActionEvent.ALT_MASK));
-        menuItem3.addActionListener(this);
+        regValg.addActionListener(this);
         
-        menuItem4 = new JMenuItem("Informasjon");
-        menuItem4.setAccelerator(KeyStroke.getKeyStroke(
+        infoValg = new JMenuItem("Informasjon");
+        infoValg.setAccelerator(KeyStroke.getKeyStroke(
         KeyEvent.VK_I,ActionEvent.ALT_MASK));
-        menuItem4.addActionListener(this);
+        infoValg.addActionListener(this);
         
-        menuItem5 = new JMenuItem("Avslutt");
-        menuItem5.setAccelerator(KeyStroke.getKeyStroke(
+        avsluttValg = new JMenuItem("Avslutt");
+        avsluttValg.setAccelerator(KeyStroke.getKeyStroke(
         KeyEvent.VK_Q,ActionEvent.ALT_MASK));
-        menuItem5.addActionListener(this);
+        avsluttValg.addActionListener(this);
         
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(
-        KeyEvent.VK_1, ActionEvent.ALT_MASK));
-        menuItem.getAccessibleContext().setAccessibleDescription(
-        "This doesn't really do anything");
+        omValg = new JMenuItem("Om");
+        omValg.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_O, ActionEvent.ALT_MASK));
         
-        meny.add(menuItem);
-        meny.add(menuItem2);
-        meny.add(menuItem3);
-        meny.add(menuItem4);
-        meny.add(menuItem5);
+        brukerValg = new JMenuItem("Brukerveiledning");
+        brukerValg.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_B,ActionEvent.ALT_MASK));
+        
+        
+        valg.add(adminValg);
+        valg.add(regValg);
+        valg.add(infoValg);
+        valg.add(avsluttValg);
+        
+        hjelp.add(omValg);
+        hjelp.add(brukerValg);
         
         setVisible(true);
         setSize(740, 400);
@@ -195,21 +202,21 @@ public class hovedVindu2 extends JFrame implements ActionListener
     //Metode for å lytte på hvilke knapp som er trykket og oppretter deretter et vindu av valgt type.
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == adminVindu || e.getSource() == menuItem2)
+        if (e.getSource() == adminVindu || e.getSource() == adminValg)
         {
             LoggInn ny = new LoggInn(system, medisinliste);
         }
-        else if(e.getSource() == registreringVindu || e.getSource() == menuItem3)
+        else if(e.getSource() == registreringVindu || e.getSource() == regValg)
         {
             RegMainGUI reg = new RegMainGUI(system, medisinliste);
             visGUI(reg);
         }
-        else if(e.getSource() == infoVindu || e.getSource() == menuItem4)
+        else if(e.getSource() == infoVindu || e.getSource() == infoValg)
         {
             InfoMainGUI infoG = new InfoMainGUI(system, medisinliste);
             visGUI(infoG);
         }
-        else if(e.getSource() == menuItem5)
+        else if(e.getSource() == avsluttValg)
         {
             System.exit(0);
         }
