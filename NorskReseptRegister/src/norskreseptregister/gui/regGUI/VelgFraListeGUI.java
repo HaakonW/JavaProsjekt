@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import javax.swing.*;
 
@@ -154,7 +155,7 @@ public class VelgFraListeGUI extends JDialog
           {
               sortertListe.add(new StringOgIndex(modelInn.get(i), i));
           }
-          sortertListe.sort(new MinComparator());   // Sorter lista med stringer og originalindekser
+          Collections.sort(sortertListe, new MinComparator()); // Sorter lista med stringer og originalindekser
           for (StringOgIndex soi : sortertListe)
           {
               addElement(soi.getString());  // Lag den nye listemodellen med sorterte stringer
@@ -168,7 +169,7 @@ public class VelgFraListeGUI extends JDialog
       }
   }
   
-  //Privat lytteklassse som lytter på om knappene er trykket på. 
+  // Privat lytteklassse som lytter på om knappene er trykket på. 
   private class Knappelytter implements ActionListener
   {
     public void actionPerformed(ActionEvent e)
@@ -186,7 +187,7 @@ public class VelgFraListeGUI extends JDialog
     }
   }
 
-  //Lytter på dobbeltklikk i navnelista
+  // Lytter på dobbeltklikk i navnelista
   private class Muselytter extends MouseAdapter
   {
     public void mouseClicked(MouseEvent e)
