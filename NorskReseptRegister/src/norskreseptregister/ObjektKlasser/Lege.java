@@ -24,7 +24,7 @@ public class Lege extends Person implements Serializable
         bevillingB = true;
         bevillingC = true;
     }
-
+    
     //Parameterløs konstruktør
     public Lege()
     {
@@ -90,15 +90,19 @@ public class Lege extends Person implements Serializable
         }
         return bevilling;
     }
+    
+    public String getNavnOgArbeidsSted()
+    {
+        String navnOgArbeidsSted = super.toString() + "Arbeidssted: " + arbeidssted;
+        return navnOgArbeidsSted;
+    }
 
     //Denne metoden returnerer en informativ tekst om legen som blir opprettet.
     public String toString()
     {
         String bevilling = getBevilling();
-
-        String tekst = super.toString();
-        tekst += "Arbeidssted: " + arbeidssted
-                + "\nBevilling for medisingruppe: " + bevilling + "\n";
-        return tekst;
+        String navnOgArbeidsSted = getNavnOgArbeidsSted();
+        navnOgArbeidsSted+= "\nBevilling for medisingruppe: " + bevilling + "\n";
+        return navnOgArbeidsSted;
     }
 } //End of class Lege

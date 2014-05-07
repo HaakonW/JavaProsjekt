@@ -88,15 +88,15 @@ public class Medisin implements Serializable
         String medisinGruppe = "";
         if (gruppeA)
         {
-            medisinGruppe += "A ";
+            medisinGruppe += "A";
         }
         else if (gruppeB)
         {
-            medisinGruppe += "B ";
+            medisinGruppe += "B";
         }
         else if (gruppeC)
         {
-            medisinGruppe += "C ";
+            medisinGruppe += "C";
         }
         return medisinGruppe;
     }

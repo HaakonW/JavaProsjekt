@@ -17,12 +17,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Random;
 import javax.swing.*;
-import norskreseptregister.ObjektKlasser.Pasient;
-import norskreseptregister.Reg.PasientRegister;
-import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.regGUI.RegistrerResept;
 
 public class VelgFraListeGUI extends JDialog
 {

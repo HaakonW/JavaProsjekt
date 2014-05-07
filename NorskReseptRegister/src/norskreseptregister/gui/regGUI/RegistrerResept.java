@@ -384,7 +384,6 @@ public class RegistrerResept extends JPanel implements ActionListener
             {
                pex.printStackTrace(); 
             }
-            
         }
 
     }//end of actionPerformed

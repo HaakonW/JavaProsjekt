@@ -137,6 +137,7 @@ public class Medisinliste implements Serializable
         {
             JOptionPane.showMessageDialog(null, "Feil ved lesing, "
                     + "ny liste blir opprettet");
+            return new Medisinliste();
             //Kan opprette ny tom liste her også. Som forslaget i kommentar over
         }
         return null;

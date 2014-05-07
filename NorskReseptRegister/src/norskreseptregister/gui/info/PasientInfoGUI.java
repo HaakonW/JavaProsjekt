@@ -41,12 +41,12 @@ public class PasientInfoGUI extends JPanel implements ActionListener
     {
         this.system = system;
         this.pasientRegister = pasientRegister;
-        
+
         pasientlabel = new JLabel("Pasient   ");
         pasientdatafelt = new JTextField(20);
         pasientdatafelt.setText("Velg pasient med knappen til høyre");
         pasientdatafelt.setEditable(false);
-        
+
         visAllePasienter = new JButton("Print alle pasienter");
         visAllePasienter.setToolTipText("Trykk for å printe pasienter");
         visAllePasienter.addActionListener(this);
@@ -56,69 +56,69 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         visResepteriGruppe.addActionListener(this);
         a = new JCheckBox("A", true);
         b = new JCheckBox("B", true);
-        c = new JCheckBox("C", true);       
-        
+        c = new JCheckBox("C", true);
+
         hjelp = new JButton("?");
         hjelp.setToolTipText("Trykk for hjelp");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
-        
+
         velgPasient = new JButton("...");
         velgPasient.setToolTipText("Trykk for å vise over pasienter");
         velgPasient.addActionListener(this);
         velgPasient.setPreferredSize(new Dimension(20, 20));
-        
-        utskrift = new JTextArea(20,20);
+
+        utskrift = new JTextArea(20, 20);
         utskriftscroll = new JScrollPane(utskrift);
-        utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); 
-        utskrift.setEditable(false); 
-        
+        utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        utskrift.setEditable(false);
+
         ///PANEL START ////       
         panel1 = new JPanel();
         panel1.add(pasientlabel);
         panel1.add(pasientdatafelt);
-        panel1.add(velgPasient);  
-        panel1.setBorder(BorderFactory.createEtchedBorder());  
-       
-       panel2 = new JPanel();
-       panel2.setBorder(BorderFactory.createEtchedBorder());
-       panel2.add(a);
-       panel2.add(b);
-       panel2.add(c);
-       panel2.add(visResepteriGruppe);      
+        panel1.add(velgPasient);
+        panel1.setBorder(BorderFactory.createEtchedBorder());
 
-       ///GRID START ////
-       GridBagConstraints gc = new GridBagConstraints();
-       setLayout(new GridBagLayout());
-       
-       int x = 0;
-       int y = 0;
-       
-       gc.gridx = x;
-       gc.gridy = y;
-       gc.insets = new Insets(5, 10, 5, 10);       
-       add(panel1, gc);
-       
-       gc.gridx = x;
-       gc.gridy = ++y;  
-       gc.fill = GridBagConstraints.HORIZONTAL;
-       add(panel2, gc);
-       
-       gc.gridx = x;
-       gc.gridy = ++y;       
-       add(visAllePasienter, gc);      
-       
-        
+        panel2 = new JPanel();
+        panel2.setBorder(BorderFactory.createEtchedBorder());
+        panel2.add(a);
+        panel2.add(b);
+        panel2.add(c);
+        panel2.add(visResepteriGruppe);
+
+        ///GRID START ////
+        GridBagConstraints gc = new GridBagConstraints();
+        setLayout(new GridBagLayout());
+
+        int x = 0;
+        int y = 0;
+
+        gc.gridx = x;
+        gc.gridy = y;
+        gc.insets = new Insets(5, 10, 5, 10);
+        add(panel1, gc);
+
+        gc.gridx = x;
+        gc.gridy = ++y;
+        gc.fill = GridBagConstraints.HORIZONTAL;
+        add(panel2, gc);
+
+        gc.gridx = x;
+        gc.gridy = ++y;
+        add(visAllePasienter, gc);
+
         gc.gridx = ++x;
         gc.gridy = 0;
         gc.gridheight = 6;
         add(utskriftscroll, gc);
-        
+
         gc.gridx = ++x;
         gc.gridy = 6;
-        add(hjelp, gc);        
+        add(hjelp, gc); 
     }//end of Konstruktør
-    
+
+    //Metoden for velge pasient
     private void VelgPasient()
     {
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
@@ -134,6 +134,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
             pasientdatafelt.setText(pasient.getNavn());
         }
     }
+
     //Metoden for å vise allepasienter
     private void visAllePasienter()
     {
@@ -146,7 +147,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         }
         utskrift.setText(legeliste);
     }
-        
+
     //Metoden viser hvilke resepter en spesifikk lege har skrevet ut
     public void visResepterForPasient()
     {
@@ -168,6 +169,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
             utskrift.setText("Du må velge en lege for å skrive ut");  
         }  
     }
+
     //Metode for å fange opp trykking på knapper
     public void actionPerformed(ActionEvent e)
     {
@@ -183,7 +185,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         {
             visResepterForPasient();
         }
-      
+
         else if (e.getSource() == hjelp)
         {
             JOptionPane.showMessageDialog(null, "Pasient info. \n"+
@@ -191,5 +193,5 @@ public class PasientInfoGUI extends JPanel implements ActionListener
                                                   "For mere informasjon trykk HER");
         }
     }
-    
+
 }//end of class LegeInfoGUI
