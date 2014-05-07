@@ -1,6 +1,5 @@
 /*
- Filen inneholder klassen Midisinliste og er en egendefinert liste over
- alle medisinene i programmet vårt. 
+ Filen inneholder klassen Midisinliste.
  Laget av  Peter Wilhelmsen, Henrik Fischer Bjelland
  Sist endret  27-04-2014 
  */
@@ -11,19 +10,19 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-//Medisinliste
+// Medisinliste er en egendefinert liste over alle medisinene i programmet vårt. 
 public class Medisinliste implements Serializable
 {
     private static final long serialVersionUID = 6L;
     private static String medisinlisten = "lagreMedisin.txt";
     private Medisin hode;
-
+    
     public Medisinliste()
     {
         hode = null;
     }
 
-    //Metoden sette inn medisiner i lista
+    // Metoden sette inn medisiner i lista
     public void settInn(Medisin ny)
     {
         if (ny != null)
@@ -33,7 +32,7 @@ public class Medisinliste implements Serializable
         }
     }
 
-    //Vise registrert medisin
+    // Vise registrert medisin
     public String toString()
     {
         String tekst = "";
@@ -47,7 +46,7 @@ public class Medisinliste implements Serializable
         return tekst;
     }
 
-    /*Finn medisin - Kan brukes når vi skal sjekke om medisinen finnes
+    /* Finn medisin - Kan brukes når vi skal sjekke om medisinen finnes
      i hovedprogrammet
      - Må legge inn muligheten for å søke på atcNr
      */
@@ -76,7 +75,7 @@ public class Medisinliste implements Serializable
         return false;
     }
 
-    //FinnAlle brukes for finne alle medisiner
+    // FinnAlle brukes for finne alle medisiner
     public ArrayList<Medisin> FinnAlle()
     {
         ArrayList<Medisin> liste = new ArrayList();
@@ -102,7 +101,7 @@ public class Medisinliste implements Serializable
         return model;
     }
 
-    //HentEttElement brukes til å søke igjennom medisinlisten vår og finne en bestemt medisin
+    // HentEttElement brukes til å søke igjennom medisinlisten vår og finne en bestemt medisin
     public Medisin HentEttElement(int index)
     {
         Medisin hjelp = hode;
@@ -120,7 +119,7 @@ public class Medisinliste implements Serializable
         return null;
     }
 
-    //Metode for å lese fra tekstfilen medisinliste.
+    // Metode for å lese fra tekstfilen medisinliste.
     public static Medisinliste lesObjektFraFil()
     {
         try (ObjectInputStream innfil = new ObjectInputStream(
@@ -128,22 +127,21 @@ public class Medisinliste implements Serializable
         {
             return (Medisinliste) innfil.readObject();
 
-        } catch (ClassNotFoundException cnfe)
+        } 
+        catch (ClassNotFoundException cnfe)
         {
             JOptionPane.showMessageDialog(null, cnfe.getMessage());
-            /* Må kanskje legge inn muligheten for å opprette ny liste
-             om det ikke finnes en: liste = new Medisinliste();*/
-        } catch (IOException ioe)
+            return new Medisinliste();
+        } 
+        catch (IOException ioe)
         {
             JOptionPane.showMessageDialog(null, "Feil ved lesing, "
                     + "ny liste blir opprettet");
             return new Medisinliste();
-            //Kan opprette ny tom liste her også. Som forslaget i kommentar over
         }
-        return null;
     }
 
-    //
+    // Metode for å skrive til tekstfilen medisinliste.
     public void SkrivTilFil()
     {
         try (ObjectOutputStream utfil = new ObjectOutputStream(

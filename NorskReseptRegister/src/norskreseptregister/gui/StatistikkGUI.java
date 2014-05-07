@@ -22,6 +22,7 @@ import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.info.FinnReseptForMedisin;
 import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
+// 
 public class StatistikkGUI extends JPanel implements ActionListener
 {
     private JLabel velgAar;
@@ -33,6 +34,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
     private Medisinliste medisinliste;
     private RegisterSystem system;
     private ArrayList <Medisin> valgteMedisiner;
+    private final int aaroffsett = 1900;
     
     StatistikkGUI(RegisterSystem system, Medisinliste medisinliste, MedisinTabell medisintabell)
     {
@@ -85,7 +87,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         //add(frame.tabellet, gc);
     }
     
-    //Metode for å velge ut en medisin
+    // Metode for å velge ut en medisin
     private void velgMedisin()
     {
         VelgFraListeGUI velgMedisin = new VelgFraListeGUI("Liste over alle medisiner:",
@@ -137,13 +139,12 @@ public class StatistikkGUI extends JPanel implements ActionListener
         }
     }
     
-    // dette er dummy-data for statistikk som kommer
+    // Dette er dummy-data for statistikk som kommer
     private Object[] finnStatistikkForMedisin(Medisin medisin, int aar)
     {
         Object[] resultat = new Object[13];
         resultat[0] = medisin.getNavn();
-        
-        
+
         for (int i = 1; i < 13; i++)
         {
             resultat[i] = 0;
@@ -152,7 +153,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         ArrayList<Resept> valgteResepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
         for (Resept resept : valgteResepter)
         {
-            if (resept.getDato().getYear() == aar)
+            if (resept.getDato().getYear() + aaroffsett == aar)
             {
                 int maaned = resept.getDato().getMonth()+1;
                 int gammelVerdi = (int)resultat[maaned];
@@ -162,7 +163,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         return resultat;
     }
 
-    //Metode som lytter på hvilke knapp som er trykket og kaller på metoden knyttet til knappen.
+    // Metode som lytter på hvilke knapp som er trykket og kaller på metoden knyttet til knappen.
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == velgMedisin)
