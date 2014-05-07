@@ -38,9 +38,9 @@ public class InfoMainGUI extends JPanel
         panel4 = new MedisinInfoGUI(system, medisinliste);
         tabbedPane = new JTabbedPane();
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
-        ImageIcon epille = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
-        ImageIcon docinfo = new ImageIcon("src/norskreseptregister/gui/bilder/docinfo.png");
-        ImageIcon pasinfo = new ImageIcon("src/norskreseptregister/gui/bilder/pasinfo.png");
+        ImageIcon epille = new ImageIcon("src/norskreseptregister/gui/bilder/ikonpille.png");
+        ImageIcon docinfo = new ImageIcon("src/norskreseptregister/gui/bilder/ikondocinfo.png");
+        ImageIcon pasinfo = new ImageIcon("src/norskreseptregister/gui/bilder/ikonpasinfo.png");
         
         tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
         tabbedPane.addTab("Legeinfo", docinfo, panel2, "Lege");
