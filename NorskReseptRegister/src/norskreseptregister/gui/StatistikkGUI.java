@@ -91,7 +91,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
     private void velgMedisin()
     {
         VelgFraListeGUI velgMedisin = new VelgFraListeGUI("Liste over alle medisiner:",
-                "Velg medisin", medisinliste.getListModel());
+                "Velg medisin", medisinliste.getListModel(), true);
         velgMedisin.setLocationRelativeTo(this);
         velgMedisin.setVisible(true);
         int [] valgteIndexer = velgMedisin.getValgteFraListe();

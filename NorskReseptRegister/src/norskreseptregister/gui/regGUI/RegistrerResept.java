@@ -18,9 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -55,20 +53,17 @@ public class RegistrerResept extends JPanel implements ActionListener
 
     public RegistrerResept(RegisterSystem system, Medisinliste medisinliste)
     {
-        Calendar cal = Calendar.getInstance();
-        //int style = DateFormat.MEDIUM;
-        //DateFormat df;
-        //df = DateFormat.getDateInstance(style, Locale.ENGLISH);
-        String dateFormat = new SimpleDateFormat("dd/MM/yyyy/ HH:mm").format(new Date());
-        //SimpleDateFormat sf = new SimpleDateFormat( "dd.MM.yy", norge );
         this.system = system;
         this.medisinliste = medisinliste;
         this.dato = dato;
-        
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 0);
         dato = cal.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("EEEEEEE, d. MMM, yyyy");
+        String text = dateFormat.format(cal.getTime());
         
         datofelt = new JTextField(20);
-        datofelt.setText(dateFormat);
+        datofelt.setText(text);
         datolabel = new JLabel("Dato    ");
 
         pasientfelt = new JTextField(20);
@@ -256,7 +251,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private void TomFelt()
     {
         Calendar cal = Calendar.getInstance();
-        String dateFormat = new SimpleDateFormat("dd/MM/yyyy/ HH:mm").format(new Date());
+        String dateFormat = new SimpleDateFormat("EEEEEEE, d. MMM, yyyy").format(new Date());
         datofelt.setText(dateFormat);
         pasientfelt.setText("");
         legefelt.setText("");
