@@ -15,6 +15,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -26,6 +29,9 @@ public class TabellFrame extends JPanel
 {
     public Radalterneringstabell tabellet;
     private final MedisinTabell medisinTabell;
+    private JMenuBar menylinje;
+    private JMenu valg;
+    private JMenuItem printUt;
     
     public TabellFrame(MedisinTabell medisinTabell)
     {
@@ -37,9 +43,17 @@ public class TabellFrame extends JPanel
         tabellet = new Radalterneringstabell(medisinTabell);
         
         //add(new JScrollPane(tabellet), BorderLayout.CENTER);
-        JFrame frame = new JFrame("Statistikk for medisiner");
+        JFrame frame = new JFrame("Statistikk for valgte medisiner");
         JScrollPane tableContainer = new JScrollPane(tabellet);
-
+        
+        menylinje = new JMenuBar();
+        valg = new JMenu("Valg");
+        printUt = new JMenuItem("Print tabell");
+        printUt.addActionListener( new printeLytter());
+        menylinje.add(valg);
+        valg.add(printUt);
+        
+        frame.setJMenuBar(menylinje);
         panel.add(tableContainer, BorderLayout.CENTER);
         frame.getContentPane().add(panel);
         frame.setLocationRelativeTo(null);
