@@ -30,14 +30,14 @@ public class RegMainGUI extends JPanel
         tabbedPane = new JTabbedPane();
 
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
-        ImageIcon doktor = new ImageIcon("src/norskreseptregister/gui/bilder/doktor.png");
-        ImageIcon pasienten = new ImageIcon("src/norskreseptregister/gui/bilder/person.png");
-        ImageIcon resept = new ImageIcon("src/norskreseptregister/gui/bilder/resept.png");
+        ImageIcon doktor = new ImageIcon("src/norskreseptregister/gui/bilder/ikondoktor.png");
+        ImageIcon pasienten = new ImageIcon("src/norskreseptregister/gui/bilder/ikonperson.png");
+        ImageIcon resept = new ImageIcon("src/norskreseptregister/gui/bilder/ikonresept.png");
 
-        tabbedPane.addTab("Hjem", null, panel1, "Hjem");
-        tabbedPane.addTab("Registrer Pasient", null, tab1, "Registrer pasient");
-        tabbedPane.addTab("Registrer Lege", null, tab2, "Registrer Lege");
-        tabbedPane.addTab("Registrer Resept", null, tab3, "Registrer Resept");
+        tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
+        tabbedPane.addTab("Registrer Pasient", doktor, tab1, "Registrer pasient");
+        tabbedPane.addTab("Registrer Lege", pasienten, tab2, "Registrer Lege");
+        tabbedPane.addTab("Registrer Resept", resept, tab3, "Registrer Resept");
         add(tabbedPane);
     }
 
