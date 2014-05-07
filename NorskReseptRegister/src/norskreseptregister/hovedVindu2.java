@@ -34,7 +34,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
     private Medisinliste medisinliste;
     private JMenuBar menylinje;
     private JMenu meny;
-    private JMenuItem menuItem, menuItem2;
+    private JMenuItem menuItem, menuItem2,menuItem3, menuItem4, menuItem5;
     
     public hovedVindu2(final RegisterSystem system, final Medisinliste medisinliste)
     {  
@@ -116,17 +116,40 @@ public class hovedVindu2 extends JFrame implements ActionListener
         meny.getAccessibleContext().setAccessibleDescription(
         "The only menu in this program that has menu items");
         
-        //a group of JMenuItems
+        //Menyalternativer
         menuItem = new JMenuItem("Om",
                          KeyEvent.VK_T);
-        menuItem2 = new JMenuItem("Avslutt");
+        
+        menuItem2 = new JMenuItem("Admin");
+        menuItem2.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_A,ActionEvent.ALT_MASK));
+        menuItem2.addActionListener(this);
+        
+        menuItem3 = new JMenuItem("Registrering");
+        menuItem3.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_R,ActionEvent.ALT_MASK));
+        menuItem3.addActionListener(this);
+        
+        menuItem4 = new JMenuItem("Informasjon");
+        menuItem4.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_I,ActionEvent.ALT_MASK));
+        menuItem4.addActionListener(this);
+        
+        menuItem5 = new JMenuItem("Avslutt");
+        menuItem5.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_Q,ActionEvent.ALT_MASK));
+        menuItem5.addActionListener(this);
         
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
         KeyEvent.VK_1, ActionEvent.ALT_MASK));
         menuItem.getAccessibleContext().setAccessibleDescription(
         "This doesn't really do anything");
+        
         meny.add(menuItem);
         meny.add(menuItem2);
+        meny.add(menuItem3);
+        meny.add(menuItem4);
+        meny.add(menuItem5);
         
         setVisible(true);
         setSize(740, 400);
@@ -172,19 +195,23 @@ public class hovedVindu2 extends JFrame implements ActionListener
     //Metode for å lytte på hvilke knapp som er trykket og oppretter deretter et vindu av valgt type.
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == adminVindu)
+        if (e.getSource() == adminVindu || e.getSource() == menuItem2)
         {
             LoggInn ny = new LoggInn(system, medisinliste);
         }
-        else if(e.getSource() == registreringVindu)
+        else if(e.getSource() == registreringVindu || e.getSource() == menuItem3)
         {
             RegMainGUI reg = new RegMainGUI(system, medisinliste);
             visGUI(reg);
         }
-        else if(e.getSource() == infoVindu)
+        else if(e.getSource() == infoVindu || e.getSource() == menuItem4)
         {
             InfoMainGUI infoG = new InfoMainGUI(system, medisinliste);
             visGUI(infoG);
+        }
+        else if(e.getSource() == menuItem5)
+        {
+            System.exit(0);
         }
     }
 }
