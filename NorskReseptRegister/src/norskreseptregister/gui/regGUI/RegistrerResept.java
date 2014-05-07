@@ -12,6 +12,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,7 +40,7 @@ import norskreseptregister.Reg.RegisterSystem;
 public class RegistrerResept extends JPanel implements ActionListener
 {
     
-    private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper;
+    private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper,printUt;
     private JTextField datofelt, pasientfelt, legefelt, medisinfelt, mengdefelt, kategorifelt;
     private JTextArea utskrift, anvisning;
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel;
@@ -93,6 +94,9 @@ public class RegistrerResept extends JPanel implements ActionListener
 
         visListe = new JButton("Vis liste");
         visListe.addActionListener(this);
+        
+        printUt = new JButton("Skriv ut");
+        printUt.addActionListener(this);
 
         velgPasient = new JButton("...");
         velgPasient.addActionListener(this);
@@ -150,6 +154,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         panel7 = new JPanel();
         panel7.add(regResept);
         panel7.add(visListe);
+        panel7.add(printUt);
 
         panel8 = new JPanel();
         panel8.add(utskriftscroll);
@@ -365,6 +370,18 @@ public class RegistrerResept extends JPanel implements ActionListener
         if (e.getSource() == hjelper)
         {
             JOptionPane.showMessageDialog(null, hjelpetekst());
+        }
+        if( e.getSource() == printUt)
+        {
+            try
+            {
+                utskrift.print();   
+            }
+            catch (PrinterException pex)
+            {
+               pex.printStackTrace(); 
+            }
+            
         }
 
     }//end of actionPerformed
