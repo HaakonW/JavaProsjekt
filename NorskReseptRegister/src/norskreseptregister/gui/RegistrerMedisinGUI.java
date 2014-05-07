@@ -164,6 +164,9 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
     {
         regNavnFelt.setText("");
         regAtcFelt.setText("");
+        a.setSelected(false);
+        b.setSelected(false);
+        c.setSelected(false);
     }
     
     /*Metoden lytter på hvilke knapp som er trykket på og utfører metodekall

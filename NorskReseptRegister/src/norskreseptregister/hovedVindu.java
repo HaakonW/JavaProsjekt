@@ -6,6 +6,7 @@
 package norskreseptregister;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -26,7 +27,7 @@ import norskreseptregister.gui.AdminMain;
 import norskreseptregister.gui.info.InfoMainGUI;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
-public class hovedVindu extends JFrame implements ActionListener
+public class hovedVindu extends JFrame
 {
     private JDesktopPane hovedvindu;
     JInternalFrame inFrame = new JInternalFrame(); 
@@ -42,13 +43,8 @@ public class hovedVindu extends JFrame implements ActionListener
     private JMenuItem submeny3;
     private JMenuItem submeny4;
     
-    private ImageIcon footer;
-    private JDesktopPane p;
-    
     private RegisterSystem system;
     private final Medisinliste medisinliste;
-    
-    private JButton Admin;
 
     //Konstruktør
     public hovedVindu(final RegisterSystem system, Medisinliste medisinliste)
@@ -64,29 +60,21 @@ public class hovedVindu extends JFrame implements ActionListener
         valg2.setMnemonic('R');
         valg3 = new JMenu("Informasjon");
         valg3.setMnemonic('I');
-        valg4 = new JMenu("Statistikk");
-        valg4.setMnemonic('S');
         submeny1 = new JMenuItem("Gå inn");
         submeny2 = new JMenuItem("Åpne vinduet");
         submeny3 = new JMenuItem("Klikk videre");
-        submeny4 = new JMenuItem("Vis statistikk");
         
         menylinje.add(valg1);
         menylinje.add(valg2);
         menylinje.add(valg3);
-        menylinje.add(valg4);
 
         valg1.add(submeny1);
         valg2.add(submeny2);
         valg3.add(submeny3);
-        valg4.add(submeny4);
-        valg4.addSeparator(); //Legger inn skillelinje i submeny
-        //valg4.add(); //Kun for å teste/se resultat av skillelinje
 
         submeny1.addActionListener(lytter);
         submeny2.addActionListener(lytter);
         submeny3.addActionListener(lytter);
-        submeny4.addActionListener(lytter);
 
         //Setter inn menylinjen i vinduet.
         setJMenuBar(menylinje);
@@ -122,46 +110,11 @@ public class hovedVindu extends JFrame implements ActionListener
 
         getContentPane().add(hovedvindu, BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //hovedvindu.setBackground(Color.WHITE); //Sette bakgrunnsfarge på hovedvindu
-        
-        Admin = new JButton(footer);
-        Admin.addActionListener(this);
-        hovedvindu.add(Admin);
-        
-        inFrame.add(Admin);
-        inFrame.pack(); 
-        inFrame.setVisible(true); 
-        hovedvindu.add(inFrame); 
+        hovedvindu.setBackground(Color.WHITE); //Sette bakgrunnsfarge på hovedvindu
         
         setSize(1450, 900);
         setVisible(true);
     }// End of Konstruktør
-
-        
-    @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        if (e.getSource() == Admin)
-        {
-            JInternalFrame internvindu = new JInternalFrame(
-                    "Admin", true, true, true, true);
-
-            //plassere et panel i det nye interne vinduet
-            //Container intern = internvindu.getContentPane();
-            AdminMain ny = new AdminMain(system, medisinliste);
-            internvindu.add(ny, BorderLayout.CENTER);
-
-            internvindu.setDefaultCloseOperation(
-                    JInternalFrame.DISPOSE_ON_CLOSE);
-
-            internvindu.pack();
-            internvindu.setLocation(300,100);
-
-            hovedvindu.add(internvindu);
-            internvindu.setVisible(true);
-            
-        }
-    }
 
     //Skal lytte på trykk i menylinjen.
     private class Menylytter implements ActionListener
