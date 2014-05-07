@@ -72,12 +72,15 @@ public class RegistrerResept extends JPanel implements ActionListener
         datolabel = new JLabel("Dato    ");
 
         pasientfelt = new JTextField(20);
+        pasientfelt.setText("Trykk på knappen for å velge pasient");
         pasientdatalabel = new JLabel("Pasient");
 
         legefelt = new JTextField(20);
+        legefelt.setText("Trykk på knappen for å velge lege");
         legedatalabel = new JLabel("Lege    ");
 
         medisinfelt = new JTextField(20);
+        medisinfelt.setText("Trykk på knappen for å velge medisin");
         medisindatalabel = new JLabel("Medisin");
 
         mengdefelt = new JTextField(20);
