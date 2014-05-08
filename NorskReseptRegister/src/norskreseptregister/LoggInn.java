@@ -33,6 +33,8 @@ public class LoggInn extends JFrame
         panel1 = new JPanel();
         brukerfelt = new JTextField(15);
         passordfelt = new JPasswordField(15);
+        passordfelt.addKeyListener(new Knappelytter());
+        
         label1 = new JLabel("Denne siden er kun for helsedirektoratet.");
         label2 = new JLabel("Brukernavn:");
         label3 = new JLabel("Passord:");
@@ -100,17 +102,36 @@ public class LoggInn extends JFrame
     //prøvde å få til å kunne trykke enter men det funker ikke
     class Knappelytter implements KeyListener
     {
-      public void keyPressed(KeyEvent e){
-          if(e.getKeyCode()== KeyEvent.VK_ENTER){
-                AdminMain ny = new AdminMain(system, medisinliste);
-                JFrame frame = new JFrame();
-                frame.getContentPane().add(new AdminMain(system, medisinliste));
-                frame.pack();
-                frame.setSize(740, 520);
-                frame.setVisible(true);
-                frame.setLocationRelativeTo(null);
-                dispose();
-          };
+      public void keyPressed(KeyEvent e)
+      {
+          if(e.getKeyCode()== KeyEvent.VK_ENTER)
+            {
+                String brukernavn = brukerfelt.getText();
+                String passord = passordfelt.getText();
+                if (brukernavn.equals("admin") && passord.equals("admin"))
+                {
+                    AdminMain ny = new AdminMain(system, medisinliste);
+                    JFrame frame = new JFrame();
+                    frame.getContentPane().add(new AdminMain(system, medisinliste));
+                    frame.pack();
+                    frame.setSize(740, 520);
+                    frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
+                    dispose();
+                } 
+                if(brukernavn.equals("kaveh") && passord.equals("medisin"))
+                {
+                   brukerfelt.setText("FUNKET");
+                }
+                else
+                {
+                    label4.setVisible(true);
+                    brukerfelt.setText("");
+                    passordfelt.setText("");
+                    brukerfelt.requestFocus();
+                }
+            }
+          
       };
 
         @Override

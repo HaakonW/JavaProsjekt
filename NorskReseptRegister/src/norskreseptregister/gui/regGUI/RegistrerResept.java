@@ -12,6 +12,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.print.PrinterException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -89,6 +91,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         regResept = new JButton("Registrer");
         regResept.setToolTipText("Trykk her for å registrere");
         regResept.addActionListener(this);
+        regResept.addKeyListener(new Knappelytter());
 
         visListe = new JButton("Vis liste");
         visListe.addActionListener(this);
@@ -100,14 +103,17 @@ public class RegistrerResept extends JPanel implements ActionListener
         velgPasient = new JButton("...");
         velgPasient.addActionListener(this);
         velgPasient.setPreferredSize(new Dimension(20, 20));
+        velgPasient.addKeyListener(new Knappelytter());
 
         velgLege = new JButton("...");
         velgLege.addActionListener(this);
         velgLege.setPreferredSize(new Dimension(20, 20));
+        velgLege.addKeyListener(new Knappelytter());
 
         velgMedisin = new JButton("...");
         velgMedisin.addActionListener(this);
         velgMedisin.setPreferredSize(new Dimension(20, 20));
+        velgMedisin.addKeyListener(new Knappelytter());
 
         hjelper = new JButton("?");
         hjelper.addActionListener(this);
@@ -238,14 +244,32 @@ public class RegistrerResept extends JPanel implements ActionListener
         return false;
     }
     
+    private boolean sjekkFelter()
+    {
+        String test1 = "Trykk på knappen for å velge pasient";
+        String test2 = "Trykk på knappen for å velge lege";
+        String test3 = "Trykk på knappen for å velge medisin";
+        
+        if(pasientfelt.getText().equals(test1)||legefelt.getText().equals(test2)||medisinfelt.getText().equals(test3) 
+                || mengdefelt.getText().equals("")|| anvisning.getText().equals(""))
+        {
+            utskrift.setText("Her er det noe feil! \n\n\nHusk å fyll ut alle feltene og velg pasient/lege/medisin med knappene"
+                                + "\n\n<---\n\n\n<---");
+            return false;
+        } 
+        else
+        {
+            return true;
+        }
+    }
+    
     //Metode for å opprette en ny resept
     private void nyResept()
     {
         Resept ny = new Resept(dato, pasient,
                 lege, medisin, mengdefelt.getText(), "", anvisning.getText());
         system.getReseptRegister().SettInn(ny);
-        utskrift.setText("Registrert resept: \n" + ny.toString());    
-
+        utskrift.setText("Registrert resept: \n" + ny.toString());      
     }
 
     //Metode for å tømme alle tekstfeltene
@@ -270,7 +294,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         for (Resept resept : list)
         {
             pasientliste += resept.toString();
-            pasientliste += "\n------------------------\n";
+            pasientliste += "\n-------------------------------\n";
         }
         utskrift.setText(pasientliste);
     }
@@ -347,9 +371,12 @@ public class RegistrerResept extends JPanel implements ActionListener
     {
         if (e.getSource() == regResept)
         {
-            if (sjekkLegeBevillingMotMedisin())
+            if(sjekkFelter())
             {
-                bekreft();
+                if (sjekkLegeBevillingMotMedisin())
+                {
+                    bekreft();
+                }    
             }
         }
         if (e.getSource() == visListe)
@@ -394,4 +421,41 @@ public class RegistrerResept extends JPanel implements ActionListener
                 + "\nFor mere hjelp sjekk dokumentasjonen. /*LINK*/";
         return hjelpeteksten;
     }
+    
+    //Lytterklasse for å kunne innregigstrere pasienter med kun tastatur
+    class Knappelytter implements KeyListener
+    {
+      public void keyPressed(KeyEvent e)
+      {
+          if(e.getKeyCode()== KeyEvent.VK_1)
+          {
+           VelgPasient();
+          };
+            if(e.getKeyCode()== KeyEvent.VK_2)
+          {
+           VelgLege();
+          };
+            if(e.getKeyCode()== KeyEvent.VK_3)
+          {
+           VelgMedisin();
+          };
+             if(e.getKeyCode()== KeyEvent.VK_ENTER)
+          {
+            bekreft();
+          };
+          
+      };
+
+        @Override
+        public void keyTyped(KeyEvent e)
+        {
+            
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e)
+        {
+            
+        }
+    } 
 }//end of class RegistrerResept

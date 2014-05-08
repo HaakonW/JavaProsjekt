@@ -21,3 +21,5 @@ NorskReseptRegister/ReseptRegister.txt
 *.txt
 
 NorskReseptRegister/ReseptRegister.txt
+/Reseptlager/nbproject/private/
+/Reseptlager/build/
