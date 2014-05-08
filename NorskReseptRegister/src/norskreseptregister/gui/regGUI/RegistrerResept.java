@@ -95,6 +95,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         
         printUt = new JButton("Skriv ut");
         printUt.addActionListener(this);
+        printUt.setVisible(false);
 
         velgPasient = new JButton("...");
         velgPasient.addActionListener(this);
@@ -323,6 +324,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     }
 
     //Metode som får opp bekreftboks for ny resept. Ved yes_Option vil en ny repept bli registrert.
+    //Når medisinen er bekreftet kommer det opp mulighet for å printe ut resepten
     private void bekreft()
     {
         int bekreft = JOptionPane.showConfirmDialog(null, "Du vil registrere denne resepten: "
@@ -336,6 +338,7 @@ public class RegistrerResept extends JPanel implements ActionListener
             nyResept();
             TomFelt();
             bekreft = 0;
+            printUt.setVisible(true);
         }
     }
 
