@@ -8,6 +8,7 @@
 
 package norskreseptregister.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -52,6 +53,9 @@ public class StatistikkGUI extends JPanel implements ActionListener
         
         velgAar = new JLabel("Velg år");
         utskrift = new JTextArea(20, 50);
+        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        utskrift.setLineWrap(true);
+        utskrift.setWrapStyleWord(true);
         
         panel1 = new JPanel();
         panel1.add(velgMedisin);

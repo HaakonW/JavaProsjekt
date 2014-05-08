@@ -59,6 +59,8 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        utskrift.setLineWrap(true);
+        utskrift.setWrapStyleWord(true);
         
         ////PANEL START///
         panel1 = new JPanel();

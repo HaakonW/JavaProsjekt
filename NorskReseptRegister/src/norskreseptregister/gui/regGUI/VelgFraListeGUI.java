@@ -145,7 +145,7 @@ public class VelgFraListeGUI extends JDialog
         }
     }
 
-  // Klasse for å sammenligne to "StringOgIndex", slik at vi kan sortere dem alfabetisk
+    // Klasse for å sammenligne to "StringOgIndex", slik at vi kan sortere dem alfabetisk
     // (Se ArrayList.sort()
     private class MinComparator implements Comparator<StringOgIndex>
     {
@@ -199,7 +199,7 @@ public class VelgFraListeGUI extends JDialog
             } 
             else if (e.getSource() == avbryt)
             {
-                valgtIndex = -1;
+                valgtIndex = -1; //
                 setVisible(false);
             }
         }

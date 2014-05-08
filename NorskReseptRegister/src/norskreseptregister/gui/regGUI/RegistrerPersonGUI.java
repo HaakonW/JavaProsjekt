@@ -48,6 +48,8 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        utskrift.setLineWrap(true);
+        utskrift.setWrapStyleWord(true);
 
         ///LEGGER ELEMENTER INN I PANELER////
         panel1 = new JPanel();
