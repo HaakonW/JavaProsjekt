@@ -12,6 +12,8 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -85,6 +87,8 @@ public class VelgFraListeGUI extends JDialog
         avbryt.addActionListener(kLytter);
         mLytter = new Muselytter();
         navneliste.addMouseListener(mLytter);
+        
+        ok.addKeyListener( new Knappelytter2());
 
         Container c = getContentPane();
         c.add(listepanel, BorderLayout.CENTER);
@@ -192,7 +196,8 @@ public class VelgFraListeGUI extends JDialog
             {
                 valgtIndex = navneliste.getSelectedIndex();
                 setVisible(false);
-            } else if (e.getSource() == avbryt)
+            } 
+            else if (e.getSource() == avbryt)
             {
                 valgtIndex = -1;
                 setVisible(false);
@@ -209,6 +214,30 @@ public class VelgFraListeGUI extends JDialog
             {
                 ok.doClick();  //samme effekt som å klikke på ok-knappen
             }
+            
+        }
+    }
+        
+    private class Knappelytter2 implements KeyListener
+    {
+      public void keyPressed(KeyEvent e){
+          if(e.getKeyCode()== KeyEvent.VK_ENTER)
+          {
+            valgtIndex = navneliste.getSelectedIndex();
+            setVisible(false);  
+          };
+      };
+
+        @Override
+        public void keyTyped(KeyEvent e)
+        {
+            
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e)
+        {
+            
         }
     }
 }//end of class VelgPasientGUI
