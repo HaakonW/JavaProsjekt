@@ -121,7 +121,7 @@ public class LoggInn extends JFrame
                 } 
                 if(brukernavn.equals("kaveh") && passord.equals("medisin"))
                 {
-                   brukerfelt.setText("FUNKET");
+                   
                 }
                 else
                 {
