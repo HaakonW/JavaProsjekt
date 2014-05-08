@@ -379,6 +379,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         {
             medisin = medisinliste.HentEttElement(valgtIndex);
             medisinfelt.setText(medisin.getNavn());
+            utFyller();
         }
     }
 
@@ -493,4 +494,12 @@ public class RegistrerResept extends JPanel implements ActionListener
             
         }
     } 
+    public void utFyller()
+    {
+        if(medisinfelt.getText().equals("Abstral"))
+        {
+            mengdefelt.setText("30 Tabletter");
+            anvisning.setText("Maks. 4 doser pr. dag.");
+        }
+    }
 }//end of class RegistrerResept
