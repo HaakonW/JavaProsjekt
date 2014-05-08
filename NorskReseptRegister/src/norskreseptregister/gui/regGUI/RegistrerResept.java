@@ -37,7 +37,6 @@ import norskreseptregister.Reg.RegisterSystem;
 
 public class RegistrerResept extends JPanel implements ActionListener
 {
-    
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper,printUt;
     private JTextField datofelt, pasientfelt, legefelt, medisinfelt, mengdefelt, kategorifelt;
     private JTextArea utskrift, anvisning;
@@ -56,6 +55,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         this.system = system;
         this.medisinliste = medisinliste;
         this.dato = dato;
+        
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         dato = cal.getTime();
