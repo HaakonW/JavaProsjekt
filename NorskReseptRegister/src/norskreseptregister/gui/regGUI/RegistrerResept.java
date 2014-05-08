@@ -294,7 +294,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         for (Resept resept : list)
         {
             pasientliste += resept.toString();
-            pasientliste += "\n------------------------\n";
+            pasientliste += "\n-------------------------------\n";
         }
         utskrift.setText(pasientliste);
     }
