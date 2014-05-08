@@ -6,20 +6,15 @@ Sist endret 09-04-2014
 
 package norskreseptregister.gui.regGUI;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.*;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.imageio.*;
 import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.Reg.PasientRegister;
-import norskreseptregister.Reg.RegisterSystem;
 
 //
 public class RegistrerPasient extends RegistrerPersonGUI implements ActionListener

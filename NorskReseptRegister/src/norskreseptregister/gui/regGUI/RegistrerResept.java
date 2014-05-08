@@ -39,7 +39,6 @@ import norskreseptregister.Reg.RegisterSystem;
 
 public class RegistrerResept extends JPanel implements ActionListener
 {
-    
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper,printUt;
     private JTextField datofelt, pasientfelt, legefelt, medisinfelt, mengdefelt, kategorifelt;
     private JTextArea utskrift, anvisning;
@@ -52,12 +51,17 @@ public class RegistrerResept extends JPanel implements ActionListener
     private Medisin medisin;
     private Medisinliste medisinliste;
     private Date dato;
+    
+    // "Hjelpefelt" for å lage resept for annen dato enn i dag
+    private JTextField datoNummer;      // Dato 1-31
+    private JTextField manedsNummer;    // Månedsnummer 1-12
+    private JTextField aarNummer;       // År
 
     public RegistrerResept(RegisterSystem system, Medisinliste medisinliste)
     {
         this.system = system;
         this.medisinliste = medisinliste;
-        this.dato = dato;
+        
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         dato = cal.getTime();
@@ -67,6 +71,14 @@ public class RegistrerResept extends JPanel implements ActionListener
         datofelt = new JTextField(20);
         datofelt.setText(text);
         datolabel = new JLabel("Dato    ");
+        
+        // Hjelpefelt for å sette dato
+        datoNummer = new JTextField(2);
+        datoNummer.setText(Integer.toString(dato.getDate()));
+        manedsNummer = new JTextField(2);
+        manedsNummer.setText(Integer.toString(dato.getMonth() + 1));
+        aarNummer = new JTextField(3);
+        aarNummer.setText(Integer.toString(dato.getYear() + 1900));
 
         pasientfelt = new JTextField(20);
         pasientfelt.setText("Trykk på knappen for å velge pasient");
@@ -137,6 +149,11 @@ public class RegistrerResept extends JPanel implements ActionListener
         panel1.add(datolabel);
         panel1.add(datofelt);
 
+        // Hjelpefelt for å sette dato
+        panel1.add(datoNummer);
+        panel1.add(manedsNummer);
+        panel1.add(aarNummer);
+        
         panel2 = new JPanel();
         panel2.add(pasientdatalabel);
         panel2.add(pasientfelt);
@@ -266,6 +283,24 @@ public class RegistrerResept extends JPanel implements ActionListener
     //Metode for å opprette en ny resept
     private void nyResept()
     {
+        // Kode for å velge dato. Bare for registrering av resepter før levering av oppgaven
+        // Lag ny dato fra hjelpefeltene
+        try
+        {
+            int dag = Integer.parseInt(datoNummer.getText());
+            int maned = Integer.parseInt(manedsNummer.getText()) - 1;
+            int aar = Integer.parseInt(aarNummer.getText()) - 1900;
+            int time = dato.getHours();
+            int minutt = dato.getMinutes();
+            dato = new Date(aar, maned, dag);
+            dato.setHours(time);
+            dato.setMinutes(minutt);
+        }
+        catch (NumberFormatException ex)
+        {
+            utskrift.setText("Feil datoformat");
+            return;
+        }
         Resept ny = new Resept(dato, pasient,
                 lege, medisin, mengdefelt.getText(), "", anvisning.getText());
         system.getReseptRegister().SettInn(ny);
