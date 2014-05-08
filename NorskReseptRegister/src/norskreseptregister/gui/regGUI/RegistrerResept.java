@@ -395,7 +395,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         if (bekreft == JOptionPane.YES_OPTION)
         {
             nyResept();
-            TomFelt();
+            //TomFelt();
             bekreft = 0;
             printUt.setVisible(true);
         }
