@@ -39,7 +39,7 @@ import norskreseptregister.Reg.RegisterSystem;
 
 public class RegistrerResept extends JPanel implements ActionListener
 {
-    private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper,printUt;
+    private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper, printUt;
     private JTextField datofelt, pasientfelt, legefelt, medisinfelt, mengdefelt, kategorifelt;
     private JTextArea utskrift, anvisning;
     private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel, kategorilabel;
@@ -51,7 +51,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private Medisin medisin;
     private Medisinliste medisinliste;
     private Date dato;
-    
+
     // "Hjelpefelt" for å lage resept for annen dato enn i dag
     private JTextField datoNummer;      // Dato 1-31
     private JTextField manedsNummer;    // Månedsnummer 1-12
@@ -61,17 +61,17 @@ public class RegistrerResept extends JPanel implements ActionListener
     {
         this.system = system;
         this.medisinliste = medisinliste;
-        
+
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         dato = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("EEEEEEE, d. MMM, yyyy");
         String text = dateFormat.format(cal.getTime());
-        
+
         datofelt = new JTextField(20);
         datofelt.setText(text);
         datolabel = new JLabel("Dato    ");
-        
+
         // Hjelpefelt for å sette dato
         datoNummer = new JTextField(2);
         datoNummer.setText(Integer.toString(dato.getDate()));
@@ -107,7 +107,7 @@ public class RegistrerResept extends JPanel implements ActionListener
 
         visListe = new JButton("Vis liste");
         visListe.addActionListener(this);
-        
+
         printUt = new JButton("Skriv ut");
         printUt.addActionListener(this);
         printUt.setVisible(false);
@@ -135,12 +135,12 @@ public class RegistrerResept extends JPanel implements ActionListener
         anvisning.setLineWrap(true);
         anvisning.setWrapStyleWord(true);
         anvisning.setBorder(BorderFactory.createTitledBorder(null, "Anvisning", 1, 2, null, Color.black));
-        
+
         utskrift = new JTextArea(25, 22);
         utskrift.setEditable(false);
         utskrift.setLineWrap(true);
         utskrift.setWrapStyleWord(true);
-        
+
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         anvisningscroll = new JScrollPane(anvisning);
@@ -153,7 +153,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         panel1.add(datoNummer);
         panel1.add(manedsNummer);
         panel1.add(aarNummer);
-        
+
         panel2 = new JPanel();
         panel2.add(pasientdatalabel);
         panel2.add(pasientfelt);
@@ -192,26 +192,26 @@ public class RegistrerResept extends JPanel implements ActionListener
         gc.insets = new Insets(0, 0, 10, 0);
         gc.fill = GridBagConstraints.HORIZONTAL;
         add(panel1, gc);
-        
-        gc.gridx = x;
-        gc.gridy = ++y;
-        add(panel2, gc);       
 
         gc.gridx = x;
         gc.gridy = ++y;
-        add(panel3, gc);       
+        add(panel2, gc);
+
+        gc.gridx = x;
+        gc.gridy = ++y;
+        add(panel3, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;
         add(panel4, gc);
-       
-        gc.gridx = x;
-        gc.gridy = ++y;
-        add(panel5, gc);       
 
         gc.gridx = x;
         gc.gridy = ++y;
-        add(panel6, gc);       
+        add(panel5, gc);
+
+        gc.gridx = x;
+        gc.gridy = ++y;
+        add(panel6, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;
@@ -260,26 +260,25 @@ public class RegistrerResept extends JPanel implements ActionListener
         utskrift.setText("Legen har ikke bevilling for medisingruppe: " + medisinGruppe);
         return false;
     }
-    
+
     private boolean sjekkFelter()
     {
         String test1 = "Trykk på knappen for å velge pasient";
         String test2 = "Trykk på knappen for å velge lege";
         String test3 = "Trykk på knappen for å velge medisin";
-        
-        if(pasientfelt.getText().equals(test1)||legefelt.getText().equals(test2)||medisinfelt.getText().equals(test3) 
-                || mengdefelt.getText().equals("")|| anvisning.getText().equals(""))
+
+        if (pasientfelt.getText().equals(test1) || legefelt.getText().equals(test2) || medisinfelt.getText().equals(test3)
+                || mengdefelt.getText().equals("") || anvisning.getText().equals(""))
         {
             utskrift.setText("Her er det noe feil! \n\n\nHusk å fyll ut alle feltene og velg pasient/lege/medisin med knappene"
-                                + "\n\n<---\n\n\n<---");
+                    + "\n\n<---\n\n\n<---");
             return false;
-        } 
-        else
+        } else
         {
             return true;
         }
     }
-    
+
     //Metode for å opprette en ny resept
     private void nyResept()
     {
@@ -295,8 +294,7 @@ public class RegistrerResept extends JPanel implements ActionListener
             dato = new Date(aar, maned, dag);
             dato.setHours(time);
             dato.setMinutes(minutt);
-        }
-        catch (NumberFormatException ex)
+        } catch (NumberFormatException ex)
         {
             utskrift.setText("Feil datoformat");
             return;
@@ -304,7 +302,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         Resept ny = new Resept(dato, pasient,
                 lege, medisin, mengdefelt.getText(), "", anvisning.getText());
         system.getReseptRegister().SettInn(ny);
-        utskrift.setText("Registrert resept: \n" + ny.toString());      
+        utskrift.setText("Registrert resept: \n" + ny.toString());
     }
 
     //Metode for å tømme alle tekstfeltene
@@ -338,7 +336,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private void VelgPasient()
     {
         PasientRegister pasientRegister = system.getPasientRegister();
-        VelgFraListeGUI velgPasient = new VelgFraListeGUI("Liste over alle pasienter:", 
+        VelgFraListeGUI velgPasient = new VelgFraListeGUI("Liste over alle pasienter:",
                 "Velg pasient", pasientRegister.getListModel());
         velgPasient.setLocationRelativeTo(this);
         velgPasient.setVisible(true);
@@ -355,7 +353,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     {
         // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
         LegeRegister legeRegister = system.getLegeRegister();
-        VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:", 
+        VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:",
                 "Velg lege", legeRegister.getListModel());
         velgLege.setLocationRelativeTo(this);
         velgLege.setVisible(true);
@@ -407,12 +405,12 @@ public class RegistrerResept extends JPanel implements ActionListener
     {
         if (e.getSource() == regResept)
         {
-            if(sjekkFelter())
+            if (sjekkFelter())
             {
                 if (sjekkLegeBevillingMotMedisin())
                 {
                     bekreft();
-                }    
+                }
             }
         }
         if (e.getSource() == visListe)
@@ -435,15 +433,14 @@ public class RegistrerResept extends JPanel implements ActionListener
         {
             JOptionPane.showMessageDialog(null, hjelpetekst());
         }
-        if( e.getSource() == printUt)
+        if (e.getSource() == printUt)
         {
             try
             {
-                utskrift.print();   
-            }
-            catch (PrinterException pex)
+                utskrift.print();
+            } catch (PrinterException pex)
             {
-               pex.printStackTrace(); 
+                pex.printStackTrace();
             }
         }
 
@@ -457,49 +454,148 @@ public class RegistrerResept extends JPanel implements ActionListener
                 + "\nFor mere hjelp sjekk dokumentasjonen. /*LINK*/";
         return hjelpeteksten;
     }
-    
+
     //Lytterklasse for å kunne innregigstrere pasienter med kun tastatur
     class Knappelytter implements KeyListener
     {
-      public void keyPressed(KeyEvent e)
-      {
-          if(e.getKeyCode()== KeyEvent.VK_1)
-          {
-           VelgPasient();
-          };
-            if(e.getKeyCode()== KeyEvent.VK_2)
-          {
-           VelgLege();
-          };
-            if(e.getKeyCode()== KeyEvent.VK_3)
-          {
-           VelgMedisin();
-          };
-             if(e.getKeyCode()== KeyEvent.VK_ENTER)
-          {
-            bekreft();
-          };
-          
-      };
+        public void keyPressed(KeyEvent e)
+        {
+            if (e.getKeyCode() == KeyEvent.VK_1)
+            {
+                VelgPasient();
+            };
+            if (e.getKeyCode() == KeyEvent.VK_2)
+            {
+                VelgLege();
+            };
+            if (e.getKeyCode() == KeyEvent.VK_3)
+            {
+                VelgMedisin();
+            };
+            if (e.getKeyCode() == KeyEvent.VK_ENTER)
+            {
+                bekreft();
+            };
+
+        }
+
+        ;
 
         @Override
         public void keyTyped(KeyEvent e)
         {
-            
+
         }
 
         @Override
         public void keyReleased(KeyEvent e)
         {
-            
+
         }
-    } 
+    }
+
     public void utFyller()
     {
-        if(medisinfelt.getText().equals("Abstral"))
+        if (medisinfelt.getText().equals("Abstral"))
         {
             mengdefelt.setText("30 Tabletter");
             anvisning.setText("Maks. 4 doser pr. dag.");
         }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+          mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+        if (medisinfelt.getText().equals(""))
+        {
+            mengdefelt.setText("");
+            anvisning.setText("");
+        }
+
     }
 }//end of class RegistrerResept

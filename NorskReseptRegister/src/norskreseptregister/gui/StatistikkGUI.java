@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -28,14 +29,15 @@ public class StatistikkGUI extends JPanel implements ActionListener
 {
     private JLabel velgAar;
     private final JTextField Aarfelt;
-    private final JButton velgMedisin, visStatistikk;
-    private JPanel panel1, panel2, panel3, panel4;
+    private final JButton velgMedisin, visStatistikk, hjelp;
+    private JPanel panel1, panel2, panel3;
     private JTextArea utskrift;
     private TabellFrame frame;
     private Medisinliste medisinliste;
     private RegisterSystem system;
     private ArrayList <Medisin> valgteMedisiner;
     private final int aaroffsett = 1900;
+    private JScrollPane utskriftscroll;
     
     StatistikkGUI(RegisterSystem system, Medisinliste medisinliste, MedisinTabell medisintabell)
     {
@@ -51,22 +53,31 @@ public class StatistikkGUI extends JPanel implements ActionListener
         visStatistikk.setPreferredSize(new Dimension(200, 40));
         visStatistikk.addActionListener(this);
         
+        hjelp = new JButton("?");
+        hjelp.addActionListener(this);        
+        hjelp.setPreferredSize(new Dimension(20, 20));
+        
         velgAar = new JLabel("Velg år");
-        utskrift = new JTextArea(20, 50);
-        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        utskrift = new JTextArea(20, 20);
+        utskrift.setEditable(false);
         utskrift.setLineWrap(true);
         utskrift.setWrapStyleWord(true);
         
+        utskriftscroll = new JScrollPane(utskrift);
+        //utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
         panel1 = new JPanel();
-        panel1.add(velgMedisin);
         panel1.add(velgAar);
         panel1.add(Aarfelt);
+        panel1.add(velgMedisin);
+        panel1.setBorder(BorderFactory.createEtchedBorder());
         
         panel2 = new JPanel();
         panel2.add(visStatistikk);
+        panel2.setBorder(BorderFactory.createEtchedBorder());
         
-        panel4 = new JPanel();
-        panel4.add(utskrift);
+        panel3 = new JPanel();
+        panel3.add(utskriftscroll);
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
@@ -76,19 +87,23 @@ public class StatistikkGUI extends JPanel implements ActionListener
 
         gc.gridx = x;
         gc.gridy = y;
+        gc.insets = new Insets(10, 10, 5, 10);  
         add(panel1, gc);
-
+        
         gc.gridx = x;
         gc.gridy = ++y;
+        gc.fill = GridBagConstraints.HORIZONTAL; 
         add(panel2, gc);
 
-        gc.gridx = x;
-        gc.gridy = ++y;
-        add(panel4, gc);
+        gc.gridx = ++x;
+        gc.gridy = 0;
+        gc.gridheight = 4;
+        add(panel3, gc);
 
-        gc.gridx = x;
-        gc.gridy = ++y;
-        //add(frame.tabellet, gc);
+        gc.gridx = ++x;
+        gc.gridy = 4;
+        gc.insets = new Insets(0, 0, 10, 0);
+        add(hjelp, gc);
     }
     
     // Metode for å velge ut en medisin
@@ -178,7 +193,10 @@ public class StatistikkGUI extends JPanel implements ActionListener
         {
             visStatistikk();
         }
+        else if (e.getSource() == hjelp)
+        {
+            JOptionPane.showMessageDialog(null, "HJELP Statistikk");
+        }
+        
     }
 }//end of class Statistikk
-
-// tips: http://mathbits.com/MathBits/Java/Graphics/bargraphonly.html

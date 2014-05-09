@@ -47,7 +47,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         pasientdatafelt.setText("Velg pasient med knappen til høyre");
         pasientdatafelt.setEditable(false);
 
-        visAllePasienter = new JButton("Print alle pasienter");
+        visAllePasienter = new JButton("Vis alle pasienter");
         visAllePasienter.setToolTipText("Trykk for å printe pasienter");
         visAllePasienter.addActionListener(this);
 

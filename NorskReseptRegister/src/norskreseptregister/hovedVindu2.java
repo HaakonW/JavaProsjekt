@@ -158,10 +158,10 @@ public class hovedVindu2 extends JFrame implements ActionListener
         hjelp.add(omValg);
         hjelp.add(brukerValg);
         
-        setVisible(true);
         setSize(740, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
         
         //Dette er nå unødvendig siden addShutdownHook() gjør det samme
         
@@ -195,8 +195,8 @@ public class hovedVindu2 extends JFrame implements ActionListener
         frame.getContentPane().add(component);
         frame.pack();
         frame.setSize(740, 500);
-        frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
     //Metode for å lytte på hvilke knapp som er trykket og oppretter deretter et vindu av valgt type.

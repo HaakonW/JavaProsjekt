@@ -83,9 +83,9 @@ public class LoggInn extends JFrame
                     JFrame frame = new JFrame();
                     frame.getContentPane().add(new AdminMain(system, medisinliste));
                     frame.pack();
-                    frame.setSize(740, 520);
-                    frame.setVisible(true);
+                    frame.setSize(740, 460);
                     frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
                     dispose();
                 } 
                 else
@@ -114,9 +114,9 @@ public class LoggInn extends JFrame
                     JFrame frame = new JFrame();
                     frame.getContentPane().add(new AdminMain(system, medisinliste));
                     frame.pack();
-                    frame.setSize(740, 520);
-                    frame.setVisible(true);
+                    frame.setSize(740, 460);
                     frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
                     dispose();
                 } 
                 if(brukernavn.equals("kaveh") && passord.equals("medisin"))

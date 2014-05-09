@@ -49,7 +49,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         b = new JCheckBox("B", true);
         c = new JCheckBox("C", true);
         
-        visAlleLeger = new JButton("Print alle leger");
+        visAlleLeger = new JButton("Vis alle leger");
         visAlleLeger.setToolTipText("Trykk for å printe leger");
         visAlleLeger.addActionListener(this);       
 
