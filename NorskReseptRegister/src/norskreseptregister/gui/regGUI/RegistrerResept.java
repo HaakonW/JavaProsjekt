@@ -496,10 +496,20 @@ public class RegistrerResept extends JPanel implements ActionListener
     } 
     public void utFyller()
     {
-        if(medisinfelt.getText().equals("Abstral"))
+       /*switch(medisinfelt.getText())
+       {
+           case (medisinfelt.getText().equals("Abstral"))
+               mengdefelt.setText("30 Tabletter");
+               break;
+               
+       }*/
+          
+         if(medisinfelt.getText().equals("Abstral"))
         {
             mengdefelt.setText("30 Tabletter");
             anvisning.setText("Maks. 4 doser pr. dag.");
         }
+         
+        
     }
 }//end of class RegistrerResept
