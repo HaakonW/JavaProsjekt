@@ -89,7 +89,6 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
         gc.gridy = y;
         add(label3, gc);
         
-        
     }//end of konstruktør
     
     //Metode for å lytte på om knapp1 eller knapp2 er trykket på

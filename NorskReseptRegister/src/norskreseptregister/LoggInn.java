@@ -13,6 +13,12 @@ import javax.swing.JFrame;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.AdminMain;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoggInn extends JFrame
 {
@@ -83,9 +89,9 @@ public class LoggInn extends JFrame
                     JFrame frame = new JFrame();
                     frame.getContentPane().add(new AdminMain(system, medisinliste));
                     frame.pack();
-                    frame.setSize(740, 520);
-                    frame.setVisible(true);
+                    frame.setSize(740, 460);
                     frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
                     dispose();
                 } 
                 else
@@ -114,14 +120,28 @@ public class LoggInn extends JFrame
                     JFrame frame = new JFrame();
                     frame.getContentPane().add(new AdminMain(system, medisinliste));
                     frame.pack();
-                    frame.setSize(740, 520);
-                    frame.setVisible(true);
+                    frame.setSize(740, 460);
                     frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
                     dispose();
-                } 
+                }
+                //EasterEgg
                 if(brukernavn.equals("kaveh") && passord.equals("medisin"))
                 {
-                   
+                    Desktop d=Desktop.getDesktop();
+                    try
+                    {
+                        URI uri = new URI("https://www.youtube.com/watch?v=1SwcQDjLzJU");
+                        d.browse(uri);
+                    } 
+                    catch (URISyntaxException ex)
+                    {
+                        label4.setVisible(true);;
+                    } 
+                    catch (IOException ex)
+                    {
+                        label4.setVisible(true);
+                    }
                 }
                 else
                 {

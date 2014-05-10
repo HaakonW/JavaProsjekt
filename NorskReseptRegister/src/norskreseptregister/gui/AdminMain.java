@@ -48,8 +48,6 @@ public class AdminMain extends JPanel
         tabbedPane.addTab("Statistikk", statistikk, panel5, "Statistikk");
         add(tabbedPane);
 
-        //setVisible(true);
-        //setSize(800, 400);
     }
 
     //Get metode for TabbedPane
@@ -57,15 +55,4 @@ public class AdminMain extends JPanel
     {
         return tabbedPane;
     }
-
-    //Metode for å vise og sette størrelse på vinudet
-    /*private static void createAndShowGUI(RegisterSystem system, Medisinliste medisinliste)
-    {
-        JFrame frame = new JFrame("Admin");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
-        frame.getContentPane().add(new AdminMain(system, medisinliste), BorderLayout.CENTER);
-        frame.pack();
-        frame.setVisible(true);
-    }*/
 }//end of class AdminMain
