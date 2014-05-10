@@ -56,9 +56,9 @@ public class TabellFrame extends JPanel
         frame.setJMenuBar(menylinje);
         panel.add(tableContainer, BorderLayout.CENTER);
         frame.getContentPane().add(panel);
-        frame.setLocationRelativeTo(null);
         frame.pack();
-        frame.setSize(1100,300);
+        frame.setSize(1025,419); 
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     
@@ -91,6 +91,18 @@ class Radalterneringstabell extends JTable
     public Radalterneringstabell(TableModel tab)
     {
         super(tab);
+        getColumnModel().getColumn(0).setPreferredWidth(110);
+        getColumnModel().getColumn(1).setPreferredWidth(70);
+        getColumnModel().getColumn(2).setPreferredWidth(70);
+        getColumnModel().getColumn(3).setPreferredWidth(70);
+        getColumnModel().getColumn(4).setPreferredWidth(70);
+        getColumnModel().getColumn(6).setPreferredWidth(70);
+        getColumnModel().getColumn(7).setPreferredWidth(70);
+        getColumnModel().getColumn(8).setPreferredWidth(70);
+        getColumnModel().getColumn(9).setPreferredWidth(70);
+        getColumnModel().getColumn(10).setPreferredWidth(70);
+        getColumnModel().getColumn(11).setPreferredWidth(70);
+        getColumnModel().getColumn(12).setPreferredWidth(70);
     }
     
     //

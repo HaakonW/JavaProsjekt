@@ -64,6 +64,9 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         
         utskrift = new JTextArea(20,20);
         utskrift.setEditable(false); 
+        utskrift.setLineWrap(true);
+        utskrift.setWrapStyleWord(true);
+        
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 

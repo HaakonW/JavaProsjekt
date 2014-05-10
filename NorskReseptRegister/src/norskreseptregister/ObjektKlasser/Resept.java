@@ -88,10 +88,10 @@ public class Resept implements Serializable
         tekst += "Utskrevet dato: " + dato
                 + "\nPasient: " + pasient
                 + "\nLege: " + lege
-                + "\n Medisin: " + medisin.getNavn()
-                + "\n Mengde: " + mengde
+                + "\nMedisin: " + medisin.getNavn()
+                + "\nMengde: " + mengde
                 + //"\n Kategori: " + kategori + 
-                "\n Anvisning: " + anvisning;
+                "\nAnvisning: " + anvisning;
         return tekst;
     }
 } // End of class Resept

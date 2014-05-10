@@ -41,14 +41,14 @@ public abstract class Person implements Serializable
     //Get-metode for hele navnet
     public String getNavn()
     {
-        return etternavn + " , " + fornavn;
+        return etternavn + ", " + fornavn;
     }
 
     //toString-metoden returnerer en informativ tekst om den aktuelle personen
     public String toString()
     {
         String tekst = "";
-        tekst += fornavn + " " + etternavn + ",\n";
+        tekst += etternavn + " " + fornavn + ",\n";
         return tekst;
     }
 }//End of class Person

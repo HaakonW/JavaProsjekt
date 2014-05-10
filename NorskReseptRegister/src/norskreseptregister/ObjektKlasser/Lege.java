@@ -101,8 +101,8 @@ public class Lege extends Person implements Serializable
     public String toString()
     {
         String bevilling = getBevilling();
-        String navnOgArbeidsSted = getNavnOgArbeidsSted();
-        navnOgArbeidsSted+= "\nBevilling for medisingruppe: " + bevilling + "\n";
-        return navnOgArbeidsSted;
+        String tekst = getNavnOgArbeidsSted();
+        tekst+= "\nBevilling for medisingruppe: " + bevilling + "\n";
+        return tekst;
     }
 } //End of class Lege

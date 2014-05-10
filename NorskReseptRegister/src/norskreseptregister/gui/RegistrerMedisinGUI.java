@@ -46,6 +46,8 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         utskrift = new JTextArea(20, 20);
         utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         utskrift.setEditable(false);
+        utskrift.setLineWrap(true);
+        utskrift.setWrapStyleWord(true);
         
         medisinliste = new Medisinliste();
 

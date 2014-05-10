@@ -1,8 +1,7 @@
 /*
  Filen inneholder klassen LoggInn.
- Klassen har en funksjon for å kunne logge seg inn Adminsiden
  Laget av Henrik Fischer Bjelland
- Sist endret 29-04-2014 
+ Sist endret 10-05-2014 
  */
 package norskreseptregister;
 
@@ -13,7 +12,14 @@ import javax.swing.JFrame;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.AdminMain;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+// LoggInn er et JFrame vindu som dukker opp hvis du trykker på adminsiden.
 public class LoggInn extends JFrame
 {
     private JButton loggInn;
@@ -33,6 +39,8 @@ public class LoggInn extends JFrame
         panel1 = new JPanel();
         brukerfelt = new JTextField(15);
         passordfelt = new JPasswordField(15);
+        passordfelt.addKeyListener(new Knappelytter());
+        
         label1 = new JLabel("Denne siden er kun for helsedirektoratet.");
         label2 = new JLabel("Brukernavn:");
         label3 = new JLabel("Passord:");
@@ -66,7 +74,7 @@ public class LoggInn extends JFrame
         actionlogin();
     }
 
-    //metode for logge inn, hvis if setningen blir true lages det et nytt Admin vindu.
+    // Metode for logge inn, hvis if setningen blir true lages det et nytt Admin vindu.
     private void actionlogin()
     {
         loggInn.addActionListener(new ActionListener()
@@ -81,14 +89,14 @@ public class LoggInn extends JFrame
                     JFrame frame = new JFrame();
                     frame.getContentPane().add(new AdminMain(system, medisinliste));
                     frame.pack();
-                    frame.setSize(740, 520);
-                    frame.setVisible(true);
+                    frame.setSize(740, 460);
                     frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
                     dispose();
                 } 
                 else
                 {
-                    label4.setVisible(true);
+                    label4.setVisible(true); //Dette er feilmeldingen
                     brukerfelt.setText("");
                     passordfelt.setText("");
                     brukerfelt.requestFocus();
@@ -97,20 +105,53 @@ public class LoggInn extends JFrame
         });
     }
     
-    //prøvde å få til å kunne trykke enter men det funker ikke
+    // Prøvde å få til å kunne trykke enter men det funker ikke
     class Knappelytter implements KeyListener
     {
-      public void keyPressed(KeyEvent e){
-          if(e.getKeyCode()== KeyEvent.VK_ENTER){
-                AdminMain ny = new AdminMain(system, medisinliste);
-                JFrame frame = new JFrame();
-                frame.getContentPane().add(new AdminMain(system, medisinliste));
-                frame.pack();
-                frame.setSize(740, 520);
-                frame.setVisible(true);
-                frame.setLocationRelativeTo(null);
-                dispose();
-          };
+      public void keyPressed(KeyEvent e)
+      {
+          if(e.getKeyCode()== KeyEvent.VK_ENTER)
+            {
+                String brukernavn = brukerfelt.getText();
+                String passord = passordfelt.getText();
+                if (brukernavn.equals("admin") && passord.equals("admin"))
+                {
+                    AdminMain ny = new AdminMain(system, medisinliste);
+                    JFrame frame = new JFrame();
+                    frame.getContentPane().add(new AdminMain(system, medisinliste));
+                    frame.pack();
+                    frame.setSize(740, 460);
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                    dispose();
+                }
+                //EasterEgg
+                if(brukernavn.equals("kaveh") && passord.equals("medisin"))
+                {
+                    Desktop d=Desktop.getDesktop();
+                    try
+                    {
+                        URI uri = new URI("https://www.youtube.com/watch?v=1SwcQDjLzJU");
+                        d.browse(uri);
+                    } 
+                    catch (URISyntaxException ex)
+                    {
+                        label4.setVisible(true);;
+                    } 
+                    catch (IOException ex)
+                    {
+                        label4.setVisible(true);
+                    }
+                }
+                else
+                {
+                    label4.setVisible(true);
+                    brukerfelt.setText("");
+                    passordfelt.setText("");
+                    brukerfelt.requestFocus();
+                }
+            }
+          
       };
 
         @Override

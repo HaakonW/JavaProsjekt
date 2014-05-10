@@ -32,6 +32,5 @@ public class FinnLegeData implements UtvalgsKriterie <Lege>
            return true;
        }
        return false; 
-    }
-    
+    } 
 }

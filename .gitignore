@@ -18,4 +18,17 @@ NorskReseptRegister/ReseptRegister.txt
 
 *.txt
 
+<<<<<<< HEAD
 NorskReseptRegister/ReseptRegister.txt
+=======
+*.txt
+
+NorskReseptRegister/ReseptRegister.txt
+/Reseptlager/nbproject/private/
+/Reseptlager/build/
+NorskReseptRegister/ReseptRegister.txt
+
+NorskReseptRegister/ReseptRegister.txt
+
+NorskReseptRegister/src/norskreseptregister/gui/regGUI/RegistrerResept.java
+>>>>>>> FETCH_HEAD
