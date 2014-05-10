@@ -19,6 +19,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
     private JTextField regNavnFelt, regAtcFelt;
     private JButton regMedisin, visListe, hjelp;
     private JTextArea utskrift;
+    private JScrollPane utskriftscroll;
     private JRadioButton a, b, c;
 
     public RegistrerMedisinGUI(Medisinliste medisinliste)
@@ -49,6 +50,9 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         utskrift.setLineWrap(true);
         utskrift.setWrapStyleWord(true);
         
+        utskriftscroll = new JScrollPane(utskrift);
+        
+        
         medisinliste = new Medisinliste();
 
         knappeGruppe();
@@ -75,7 +79,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         panel4.add(visListe);
 
         JPanel panel5 = new JPanel();
-        panel5.add(utskrift);
+        panel5.add(utskriftscroll);
 
         ///// GRID START//////
         GridBagConstraints gc = new GridBagConstraints();
@@ -126,7 +130,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
     //Registrere ny medisin 
     public Medisin nyMedisin()
     {
-        if (!regNavnFelt.getText().equals(""))
+        if (sjekkMedisin(regNavnFelt.getText()))
         {
             Medisin ny = new Medisin(regNavnFelt.getText(), regAtcFelt.getText());
             SetMedisinGruppe(ny);
@@ -169,6 +173,21 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         a.setSelected(false);
         b.setSelected(false);
         c.setSelected(false);
+    }
+    
+    //Metode for å sjekke om medisinnavn består av bokstaver
+    public boolean sjekkMedisin(String medisin)
+    {  
+ 
+        if(medisin.matches("^[a-zøæåéA-ZØÆÅ. \\-]{2,20}"))
+        {
+            return true;
+        }
+        else
+        {
+            utskrift.setText("Medisinnavn består kun av bokstaver");
+            return false;
+        } 
     }
     
     /*Metoden lytter på hvilke knapp som er trykket på og utfører metodekall

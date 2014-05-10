@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen Midisinliste.
  Laget av  Peter Wilhelmsen, Henrik Fischer Bjelland
- Sist endret  27-04-2014 
+ Sist endret  10-05-2014 
  */
 package norskreseptregister.ObjektKlasser;
 
@@ -40,7 +40,7 @@ public class Medisinliste implements Serializable
 
         while (hjelp != null)
         {
-            tekst += "-" + hjelp.toString() + "\n";
+            tekst += "" + hjelp.toString() + "\n\n";
             hjelp = hjelp.neste;
         }
         return tekst;
