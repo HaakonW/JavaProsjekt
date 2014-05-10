@@ -512,101 +512,113 @@ public class RegistrerResept extends JPanel implements ActionListener
             anvisning.setText("Maks. 4 doser pr. dag.");
         }
 
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Apocillin"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("250mg");
+            anvisning.setText("Kan tas 3 ganger i døgnet med dobbel dose om kvelden.");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Cosylan"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("125ml");
+            anvisning.setText("5-10 ml, Helst ufortynnet, 3-4 ganger daglig");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Diclofenac"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("30 Tabletter");
+            anvisning.setText("2-3 doser daglig.");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Dolcontin"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("60mg");
+            anvisning.setText("Dosering hver 12. time");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Euthyrox"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("100 Tabletter");
+            anvisning.setText("1 tablett daglig");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Imovane"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("5mg");
+            anvisning.setText("1 Dose skal inntes kort til før en skal gå til sengs.");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Inegy"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("28stk Blister");
+            anvisning.setText("10 mg/20 mg pr dag.");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Ketalar"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("20ml hettegl.");
+            anvisning.setText("Skal kun brukes av eller under ledelse av lege som har erfaring med legemidlets egenskaper og bruk.");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Metadon Abcur"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("20stk");
+            anvisning.setText("Startdose 5 mg, 1-3 ganger/dag");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Metoprolol"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("100stk");
+            anvisning.setText(" Startdose 100 mg/døgn. ");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Morfin-Skopolamin"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("A 10 × 1 ml (plastamp.)");
+            anvisning.setText("Vanlig enkeltdose 1 ml.");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Oxycodone Actavis"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("20mg");
+            anvisning.setText("Tas med eller uten mat. Svelges hele med tilstrekkelig mengde væske. Ved sterke smerter. ");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Palladon"))
         {
-          mengdefelt.setText("");
-            anvisning.setText("");
+          mengdefelt.setText("28stk");
+            anvisning.setText("1,3 mg eller 2,6 mg hver 4. time. Må ikke gies til barn!");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Paracetamol"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("20 tabletter");
+            anvisning.setText("2 piller ved store smerter. Vent 4 timer mellom ny dosering");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Paralgin Forte"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("10 tabletter");
+            anvisning.setText("1 pille taes ved store smerter. Ny pille kan taes etter 6 timer. Max 3 i døgnet.");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Pedea"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("4 glass");
+            anvisning.setText("3 injeksjoner gitt med 24 timers intervaller i sammarbeid med neonatolog");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Penomax"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("20stk");
+            anvisning.setText("Voksne og ungdom: 1-2 tabletter 3 ganger daglig.\n" +
+                                "Barn >5 år: 1 tablett 3 ganger daglig.");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Petidin"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("10stk");
+            anvisning.setText("Taes rektalt opptil 6 ganger om døgnet ved ekstreme smerter. Må ikke kombineres med bilkjøring eller tunge maskiner");
         }
-        if (medisinfelt.getText().equals(""))
+        if (medisinfelt.getText().equals("Rivotril"))
         {
-            mengdefelt.setText("");
-            anvisning.setText("");
+            mengdefelt.setText("200stk");
+            anvisning.setText("Taes som avtalt med legen");
         }
+         if (medisinfelt.getText().equals("Tramadol"))
+        {
+            mengdefelt.setText("20stk");
+            anvisning.setText("Tas med eller uten mat. Svelges hele med tilstrekkelig væske. Skal ikke deles/tygges.");
+        }
+          if (medisinfelt.getText().equals("Zopiclone"))
+        {
+            mengdefelt.setText("100stk");
+            anvisning.setText("Forbigående og kortvarige søvnvansker. Som støtteterapi for en begrenset tid ved behandling av kroniske søvnvansker.");
+        }
+      
 
     }
 }//end of class RegistrerResept
