@@ -56,9 +56,9 @@ public class TabellFrame extends JPanel
         frame.setJMenuBar(menylinje);
         panel.add(tableContainer, BorderLayout.CENTER);
         frame.getContentPane().add(panel);
-        frame.setLocationRelativeTo(null);
         frame.pack();
-        frame.setSize(1025,419);
+        frame.setSize(1025,419); 
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     

@@ -1,8 +1,7 @@
 /*
  Filen inneholder klassen LoggInn.
- Klassen har en funksjon for å kunne logge seg inn Adminsiden
  Laget av Henrik Fischer Bjelland
- Sist endret 29-04-2014 
+ Sist endret 10-05-2014 
  */
 package norskreseptregister;
 
@@ -20,6 +19,7 @@ import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+// LoggInn er et JFrame vindu som dukker opp hvis du trykker på adminsiden.
 public class LoggInn extends JFrame
 {
     private JButton loggInn;
@@ -74,7 +74,7 @@ public class LoggInn extends JFrame
         actionlogin();
     }
 
-    //metode for logge inn, hvis if setningen blir true lages det et nytt Admin vindu.
+    // Metode for logge inn, hvis if setningen blir true lages det et nytt Admin vindu.
     private void actionlogin()
     {
         loggInn.addActionListener(new ActionListener()
@@ -96,7 +96,7 @@ public class LoggInn extends JFrame
                 } 
                 else
                 {
-                    label4.setVisible(true);
+                    label4.setVisible(true); //Dette er feilmeldingen
                     brukerfelt.setText("");
                     passordfelt.setText("");
                     brukerfelt.requestFocus();
@@ -105,7 +105,7 @@ public class LoggInn extends JFrame
         });
     }
     
-    //prøvde å få til å kunne trykke enter men det funker ikke
+    // Prøvde å få til å kunne trykke enter men det funker ikke
     class Knappelytter implements KeyListener
     {
       public void keyPressed(KeyEvent e)
