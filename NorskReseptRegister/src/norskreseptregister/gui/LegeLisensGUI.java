@@ -50,6 +50,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         navnlabel = new JLabel("Legens navn:");
         legedatafelt = new JTextField(20);
         legedatafelt.setText("Velg lege med knappen til høyre");
+        legedatafelt.setEditable(false);
         
         lisenslabel = new JLabel("Godkjent lisens for:    ");
         a = new JCheckBox("A");
