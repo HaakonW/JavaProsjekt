@@ -85,11 +85,8 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         panel4 = new JPanel();
         panel4.add(utskrift);
 
-       /* Her starter layouten for Legelisens under Admin-delen. Som i de andre
-        filene er int x og int y satt til 0 for å enkelt kunne utvide kolonner eller
-        rader. Insets er satt til 10,10,10,10. Som igjen betyr avstanden til neste element.
-        Insets kan leses som en klokke. Hel, kvart på, halv. */
-        
+       /* Her starter layouten for registrer en person. Sjekk
+        produktdokumentasjonen for forklaring av layouten*/
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
         
@@ -194,16 +191,11 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         }
         else if(e.getSource() == hjelp)
         {
-<<<<<<< HEAD
             JOptionPane.showMessageDialog(null, "I denne fanen  kan du endre en lege sin lisens."
                     + "\nDu velger lege med ... knappen og vil da med en gang se hva vedkommende"
                     + "\nhar godkjenning for. Videre kan du velge å ta fra lisens eller gi"
                     + "\ntilbake lisens. "
                     + "\nFor mere hjelp sjekk brukerveiledningen under om fanen.");
-=======
-            utskrift.setText("Trykk på knappen ... for å velge en lege. Velg så hvilke reseptgruppe du skal frata"
-                    + "legen og trykk endre bevilling knappen");
->>>>>>> FETCH_HEAD
         }
         else if (e.getSource() == slettLege)
         {
