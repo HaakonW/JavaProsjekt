@@ -1,8 +1,7 @@
 /*
-Filen inneholder AdminMainHjemGUI klassen som er første siden du kommer til 
-ved å trykke på Admin i vårt hovedprogram.
-Laget av Henrik Fischer Bjelland
-Sist endret  09-04-2014
+Filen inneholder klassen AdminMainHjemGUI.
+Laget av Henrik Fischer Bjelland, Haakon Winther
+Sist endret  11-05-2014
 */
 
 package norskreseptregister.gui.info;
@@ -13,11 +12,11 @@ import javax.swing.*;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.LegeLisensGUI;
 
-class InfoMainHjemGUI extends JPanel implements ActionListener
+// 
+public class InfoMainHjemGUI extends JPanel implements ActionListener
 {
-    private JButton knapp1, knapp2, knapp3;
-    private JPanel panel3, panel2, panel1;
-    private JLabel label1, label2, label3;
+    private JButton legeInfo, pasientInfo, medisinInfo;
+    private JLabel legelabel, pasientlabel, medisinlabel;
     LegeLisensGUI paneltest;
     private RegisterSystem system;
     private final InfoMainGUI infoMainGUI;
@@ -30,27 +29,31 @@ class InfoMainHjemGUI extends JPanel implements ActionListener
         ImageIcon pasinf = new ImageIcon("src/norskreseptregister/gui/bilder/pasinfo.png");
         ImageIcon medinf = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
         
-        knapp1 = new JButton(legeinf);
-        knapp2 = new JButton(pasinf);
-        knapp3 = new JButton(medinf);
+        legeInfo = new JButton(legeinf);
+        pasientInfo = new JButton(pasinf);
+        medisinInfo = new JButton(medinf);
         
-        knapp1.setFocusPainted(false);
+        legeInfo.setFocusPainted(false);
         
-        knapp1.setToolTipText("Info om lege");
-        knapp2.setToolTipText("Info om pasient");
-        knapp3.setToolTipText("Info om medisin");
+        legeInfo.setToolTipText("Info om lege");
+        pasientInfo.setToolTipText("Info om pasient");
+        medisinInfo.setToolTipText("Info om medisin");
         
-        knapp1.addActionListener(this);
-        knapp2.addActionListener(this);
-        knapp3.addActionListener(this);
+        legeInfo.addActionListener(this);
+        pasientInfo.addActionListener(this);
+        medisinInfo.addActionListener(this);
         
-        label1 = new JLabel("LegeInfo");
-        label1.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
-        label2 = new JLabel("PasientInfo");
-        label2.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
-        label3 = new JLabel("MedisinInfo");
-        label3.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
+        legelabel = new JLabel("LegeInfo");
+        legelabel.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
         
+        pasientlabel = new JLabel("PasientInfo");
+        pasientlabel.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
+        
+        medisinlabel = new JLabel("MedisinInfo");
+        medisinlabel.setFont(new Font ("PT Serif", Font.PLAIN, 20)); 
+        
+        /* Her starter layouten for registrer en person. Sjekk
+        produktdokumentasjonen for forklaring av layouten*/
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
         
@@ -60,45 +63,45 @@ class InfoMainHjemGUI extends JPanel implements ActionListener
         gc.gridx = 0;
         gc.gridy = ++y;
         gc.insets = new Insets(10,10,10,10);
-        add(knapp1, gc);
+        add(legeInfo, gc);
         
         gc.gridx = ++x;
         gc.gridy = y;
-        add(knapp2, gc);
+        add(pasientInfo, gc);
         
         gc.gridx = ++x;
         gc.gridy = y;
-        add(knapp3, gc);
+        add(medisinInfo, gc);
         
         x = 0;
         
         gc.gridx = x;
         gc.gridy = ++y;
-        add(label1,gc);
+        add(legelabel,gc);
                 
         gc.gridx = ++x;
         gc.gridy = y;
-        add(label2, gc); 
+        add(pasientlabel, gc); 
         
         gc.gridx = ++x;
         gc.gridy = y;
-        add(label3,gc);
+        add(medisinlabel,gc);
     }
     
+    // Metode for å lytte på hvilken knapp som er trykket på og kaller deretter på en spesifikk metode
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == knapp1)
+        if (e.getSource() == legeInfo)
         {
             infoMainGUI.getTabbedPane().setSelectedIndex(1);
         }
-        else if(e.getSource() == knapp2)
+        else if(e.getSource() == pasientInfo)
         {
             infoMainGUI.getTabbedPane().setSelectedIndex(2);
         }
-        else if (e.getSource() == knapp3)
+        else if (e.getSource() == medisinInfo)
         {
             infoMainGUI.getTabbedPane().setSelectedIndex(3);
         }
     }
-
 }//end of class AdminMainHjemGUI

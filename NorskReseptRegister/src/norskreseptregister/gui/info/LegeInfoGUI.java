@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen LegeInfoGUI
- Laget av Henrik Fischer Bjelland
- Sist endret 03-05-2014 
+ Laget av Henrik Fischer Bjelland, Haakon Winther
+ Sist endret 11-05-2014 
  */
 package norskreseptregister.gui.info;
 
@@ -21,12 +21,13 @@ import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
+// LegeInfoGUI skal kunne gi informasjon om hvilke resepter inne en valgt reseptgruppe en lege har skrevet ut resepter
 public class LegeInfoGUI extends JPanel implements ActionListener
 {
     private JTextField legedatafelt;
     private JTextArea utskrift;
     private JScrollPane utskriftscroll;
-    private JPanel panel1, panel2;
+    private JPanel legepanel, knappepanel;
     private JLabel legelabel, gruppelabel;
     private JButton visAlleLeger, visResepteriGruppe, velgLege, hjelp;
     private JCheckBox a, b, c;
@@ -75,23 +76,22 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
+        legepanel = new JPanel();
+        legepanel.add(legelabel);
+        legepanel.add(legedatafelt);
+        legepanel.add(velgLege);
+        legepanel.setBorder(BorderFactory.createEtchedBorder());  
 
-       ///PANELS START ////
-        panel1 = new JPanel();
-        panel1.add(legelabel);
-        panel1.add(legedatafelt);
-        panel1.add(velgLege);
-        panel1.setBorder(BorderFactory.createEtchedBorder());  
+        knappepanel = new JPanel();
+        knappepanel.setBorder(BorderFactory.createEtchedBorder());
+        knappepanel.add(gruppelabel);
+        knappepanel.add(a);
+        knappepanel.add(b);
+        knappepanel.add(c);
+        knappepanel.add(visResepteriGruppe);
 
-        panel2 = new JPanel();
-        panel2.setBorder(BorderFactory.createEtchedBorder());
-        panel2.add(gruppelabel);
-        panel2.add(a);
-        panel2.add(b);
-        panel2.add(c);
-        panel2.add(visResepteriGruppe);
-
-        ///GRID START ////
+        /* Her starter layouten for registrer en person. Sjekk
+        produktdokumentasjonen for forklaring av layouten*/
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
         int x = 0; 
@@ -100,12 +100,12 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         gc.gridx = x;
         gc.gridy = y;
         gc.insets = new Insets(5, 10, 5, 10); 
-        add(panel1, gc);
+        add(legepanel, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;
         gc.fill = GridBagConstraints.HORIZONTAL;
-        add(panel2, gc);
+        add(knappepanel, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;
@@ -121,10 +121,10 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         add(hjelp, gc);
     }//end of Konstruktør
     
-    //Metoden velger en lege.
+    // Metode velger en lege
     public void VelgLege()
     {
-        LegeRegister legeRegister = system.getLegeRegister();
+        legeRegister = system.getLegeRegister();
         VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:", 
                 "Velg lege", legeRegister.getListModel());
         velgLege.setLocationRelativeTo(this);
@@ -137,7 +137,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         }
     }
     
-    //Metoden går igjennom listen med leger og returnerer disse i utskriftfeltet
+    // Metoden går igjennom listen med leger og returnerer disse i utskriftfeltet
     private void visAlleLeger()
     {
         String legeliste = "";
@@ -150,7 +150,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         utskrift.setText(legeliste);
     }
     
-    //Metoden viser hvilke resepter en spesifikk lege har skrevet ut
+    // Metoden viser hvilke resepter en spesifikk lege har skrevet ut
     public void visResepterForLege()
     {
         if ( lege != null)
@@ -172,8 +172,10 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         }  
     }
     
-    /*Metode for å lytte på hvilken knapp som er trykket på og kaller da 
-    på metoden knyttet til denne knappen*/
+    /*
+    Metode for å lytte på hvilken knapp som er trykket på og kaller da 
+    på metoden knyttet til denne knappen
+    */
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == velgLege)
@@ -193,6 +195,5 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         {
             JOptionPane.showMessageDialog(null, "HJELP LEGEINFO");
         }
-    }
-    
+    } 
 }//end of class LegeInfoGUI

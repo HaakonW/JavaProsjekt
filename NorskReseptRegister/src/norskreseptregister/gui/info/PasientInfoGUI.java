@@ -1,11 +1,10 @@
 /*
  Filen inneholder klassen LegeInfoGUI
  Laget av Henrik Fischer Bjelland
- Sist endret 11-04-2014 
+ Sist endret 11-05-2014 
  */
 package norskreseptregister.gui.info;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -18,18 +17,20 @@ import javax.swing.*;
 import javax.swing.JPanel;
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
-import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
+/* 
+PasientInfoGUI har som formål å kunne vise hvilke resepter en valgt 
+pasient har mottat og vise alle pasientene i registeret.
+*/
 public class PasientInfoGUI extends JPanel implements ActionListener
 {
-
     private JTextField pasientdatafelt;
     private JTextArea utskrift;
     private JScrollPane utskriftscroll;
-    private JPanel panel1, panel2;
+    private JPanel pasientpanel, checkboxpanel;
     private JLabel pasientlabel;
     private JButton visAllePasienter, visResepteriGruppe, velgPasient, hjelp;
     private JCheckBox a, b, c;
@@ -54,6 +55,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         visResepteriGruppe = new JButton("Vis resepter");
         visResepteriGruppe.setToolTipText("Trykk for å vise resepter");
         visResepteriGruppe.addActionListener(this);
+        
         a = new JCheckBox("A", true);
         b = new JCheckBox("B", true);
         c = new JCheckBox("C", true);
@@ -72,22 +74,22 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         utskrift.setEditable(false);
+     
+        pasientpanel = new JPanel();
+        pasientpanel.add(pasientlabel);
+        pasientpanel.add(pasientdatafelt);
+        pasientpanel.add(velgPasient);
+        pasientpanel.setBorder(BorderFactory.createEtchedBorder());
 
-        ///PANEL START ////       
-        panel1 = new JPanel();
-        panel1.add(pasientlabel);
-        panel1.add(pasientdatafelt);
-        panel1.add(velgPasient);
-        panel1.setBorder(BorderFactory.createEtchedBorder());
+        checkboxpanel = new JPanel();
+        checkboxpanel.setBorder(BorderFactory.createEtchedBorder());
+        checkboxpanel.add(a);
+        checkboxpanel.add(b);
+        checkboxpanel.add(c);
+        checkboxpanel.add(visResepteriGruppe);
 
-        panel2 = new JPanel();
-        panel2.setBorder(BorderFactory.createEtchedBorder());
-        panel2.add(a);
-        panel2.add(b);
-        panel2.add(c);
-        panel2.add(visResepteriGruppe);
-
-        ///GRID START ////
+        /* Her starter layouten for registrer en person. Sjekk
+        produktdokumentasjonen for forklaring av layouten*/
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
 
@@ -97,12 +99,12 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         gc.gridx = x;
         gc.gridy = y;
         gc.insets = new Insets(5, 10, 5, 10);
-        add(panel1, gc);
+        add(pasientpanel, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;
         gc.fill = GridBagConstraints.HORIZONTAL;
-        add(panel2, gc);
+        add(checkboxpanel, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;
@@ -118,10 +120,9 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         add(hjelp, gc); 
     }//end of Konstruktør
 
-    //Metoden for velge pasient
+    // Metode for velge pasient
     private void VelgPasient()
     {
-        // #info: Gjort dialogen slik at den kan brukes til å velge mange forskjellige ting
         PasientRegister pasientRegister = system.getPasientRegister();
         VelgFraListeGUI velgPasient = new VelgFraListeGUI("Liste over alle pasienter:",
                 "Velg pasient", pasientRegister.getListModel());
@@ -135,7 +136,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         }
     }
 
-    //Metoden for å vise allepasienter
+    // Metoden for å vise allepasienter
     private void visAllePasienter()
     {
         String legeliste = "";
@@ -148,7 +149,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         utskrift.setText(legeliste);
     }
 
-    //Metoden viser hvilke resepter en spesifikk lege har skrevet ut
+    // Metoden viser hvilke resepter en spesifikk lege har skrevet ut
     public void visResepterForPasient()
     {
         if ( pasient != null)
@@ -170,7 +171,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         }  
     }
 
-    //Metode for å fange opp trykking på knapper
+    // Metode for å lytte på hvilken knapp som er trykket på og kaller deretter på en spesifikk metode
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == velgPasient)
@@ -185,7 +186,6 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         {
             visResepterForPasient();
         }
-
         else if (e.getSource() == hjelp)
         {
             JOptionPane.showMessageDialog(null, "Pasient info. \n"+
@@ -193,5 +193,4 @@ public class PasientInfoGUI extends JPanel implements ActionListener
                                                   "For mere informasjon trykk HER");
         }
     }
-
-}//end of class LegeInfoGUI
+}// end of class LegeInfoGUI

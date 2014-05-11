@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen LegeInfoGUI
- Laget av Henrik Fischer Bjelland
- Sist endret 11-04-2014 
+ Laget av Henrik Fischer Bjelland, Haakon Winther
+ Sist endret 11-05-2014 
  */
 package norskreseptregister.gui.info;
 
@@ -22,17 +22,19 @@ import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
+
+//I MedisnInfoGUi kan man få informasjon om hvilke leger eller pasient som er tilknyttet en spesiell medisin
 public class MedisinInfoGUI extends JPanel implements ActionListener
 {
     private JTextField medisindatafelt;
     private JTextArea utskrift;
     private JScrollPane utskriftscroll;
-    private JPanel panel1, panel2;
+    private JPanel medisinpanel, knappepanel;
     private JLabel medisinlabel;
     private JButton visPasient, visLeger, velgMedisin, hjelp;
     private final Medisinliste medisinliste;
-    private Medisin medisin;
     private final RegisterSystem system;
+    private Medisin medisin;
    
     public MedisinInfoGUI(RegisterSystem system, Medisinliste medisinliste)
     {
@@ -70,19 +72,19 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        ///PANELS START ////
-        panel1 = new JPanel();
-        panel1.add(medisinlabel);
-        panel1.add(medisindatafelt); 
-        panel1.add(velgMedisin);
-        panel1.setBorder(BorderFactory.createEtchedBorder());  
+        medisinpanel = new JPanel();
+        medisinpanel.add(medisinlabel);
+        medisinpanel.add(medisindatafelt); 
+        medisinpanel.add(velgMedisin);
+        medisinpanel.setBorder(BorderFactory.createEtchedBorder());  
 
-        panel2 = new JPanel();
-        panel2.add(visPasient);  
-        panel2.add(visLeger);
-        panel2.setBorder(BorderFactory.createEtchedBorder());    
+        knappepanel = new JPanel();
+        knappepanel.add(visPasient);  
+        knappepanel.add(visLeger);
+        knappepanel.setBorder(BorderFactory.createEtchedBorder());    
 
-        ///GRID START ////
+        /* Her starter layouten for registrer en person. Sjekk
+        produktdokumentasjonen for forklaring av layouten*/
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
         
@@ -93,11 +95,11 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         gc.gridy = y;
         gc.insets = new Insets(5, 10, 5, 10);       
         gc.fill = GridBagConstraints.HORIZONTAL;
-        add(panel1, gc);   
+        add(medisinpanel, gc);   
 
         gc.gridx = x;
         gc.gridy = ++y;
-        add(panel2, gc);
+        add(knappepanel, gc);
 
         gc.gridx = ++x;
         gc.gridy = 0;
@@ -109,7 +111,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         add(hjelp, gc);
     }
     
-    //metode for å velge medisin i popup vindu
+    // Metode for å velge medisin
     private void VelgMedisin()
     {
         VelgFraListeGUI velgMedisin = new VelgFraListeGUI("Liste over alle medisiner:", 
@@ -124,7 +126,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
     }
     
-    //metoden for å vise pasienter i popup vinduet
+    // Metode for å vise hvilke pasienter som har mottat en valgt medisin
     private void visPasienter()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
@@ -142,7 +144,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         utskrift.setText("Pasienter som har mottat " + medisin.getNavn() + ":\n" + pasienter);
     }
     
-    //metode for å vise Leger i popup vinduet
+    // Metode for å vise hvilke leger som har skrevet ut en spesiell medisin
     private void visLeger()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
@@ -160,7 +162,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         utskrift.setText("Leger som har skrevet ut " + medisin.getNavn() + ":\n" + leger);
     }
     
-    //metode for å lytte på knappene
+    // Metode for å lytte på hvilken knapp som er trykket på og kaller deretter på en spesifikk metode
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == velgMedisin)
