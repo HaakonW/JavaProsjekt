@@ -10,8 +10,9 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /*
-Det er denne filen som gjør at hjem siden har de 3 ikonene for endre lisens, registrer medisisn eller statestikk.
-Det er her man kan endre bildene, knapper eller utseene for hjem fanen.
+RegMainHjemGUI er siden du kommer til ved å trykke på registrering i hovedprogrammet. 
+Den inneholder tre knapper som sender deg videre til en av registreringsvinduene.
+Det er her man kan endre bildene, knapper eller utseende for hjem fanen.
 */
 public class RegMainHjemGUI extends JPanel implements ActionListener
 {
@@ -56,12 +57,8 @@ public class RegMainHjemGUI extends JPanel implements ActionListener
         knappepanel.add(regLege);
         knappepanel.add(regResept);
         
-        /*
-         START INNSETTINGEN AV ELEMENTENE I LAYOUTEN
-         OPPRETTER EN INT X OG INT Y FOR Å ENKELT KUNNE UTVIDE
-         MED FLERE ELEMENTER        
-         INSETS ER AVSTAND FRA TOP, VENSTRE, BUNN OG HØYRE
-        */       
+       /* Her starter layouten for registrer en person. Sjekk
+        produktdokumentasjonen for forklaring av layouten*/   
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
@@ -96,8 +93,8 @@ public class RegMainHjemGUI extends JPanel implements ActionListener
         gc.gridy = y;
         add(reseptlabel, gc);
     }
-    /** METODE FOR Å BLI SENDT VIDERE TIL DE ANDRE FANENENE FRA FORSIDEN
-        DETTE ER FOR Å BLI SENDT VIDERE MED KNAPPENE ***/
+    
+    // Metode for å lytte på hvilken knapp som er trykket på og åpner deretter en av registreringvinduene.
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == regPasient)

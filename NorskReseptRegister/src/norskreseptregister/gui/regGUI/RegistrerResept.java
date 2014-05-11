@@ -37,6 +37,7 @@ import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
 
+// RegistrerResept er ment for å kunne registrere en resept. 
 public class RegistrerResept extends JPanel implements ActionListener
 {
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper, printUt;
@@ -317,7 +318,6 @@ public class RegistrerResept extends JPanel implements ActionListener
         medisinfelt.setText("");
         mengdefelt.setText("");
         anvisning.setText("");
-        //kategorifelt.setText("");
     }
 
     // Metode for å skrive ut alle legene i registeret
@@ -417,23 +417,23 @@ public class RegistrerResept extends JPanel implements ActionListener
         {
             SkrivUt();
         }
-        if (e.getSource() == velgPasient)
+        else if (e.getSource() == velgPasient)
         {
             VelgPasient();
         }
-        if (e.getSource() == velgLege)
+        else if (e.getSource() == velgLege)
         {
             VelgLege();
         }
-        if (e.getSource() == velgMedisin)
+        else if (e.getSource() == velgMedisin)
         {
             VelgMedisin();
         }
-        if (e.getSource() == hjelper)
+        else if (e.getSource() == hjelper)
         {
             JOptionPane.showMessageDialog(null, hjelpetekst());
         }
-        if (e.getSource() == printUt)
+        else if (e.getSource() == printUt)
         {
             try
             {

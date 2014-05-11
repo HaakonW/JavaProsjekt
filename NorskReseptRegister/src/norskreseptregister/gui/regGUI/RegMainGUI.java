@@ -1,22 +1,21 @@
 /*
  Filen inneholder klassen RegMainGUI.
  Laget av  Henrik Fischer Bjelland, Haakon Winther, Peter Wilhelmsen 
- Sist endret 27-04-2014 
+ Sist endret 11-05-2014 
  */
 package norskreseptregister.gui.regGUI;
 
-import java.awt.*;
 import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 
-//
+// RegMainGUI er klassen er der tab'sene blir opprettet og registreringsklassene blir knyttet til disse.
 public class RegMainGUI extends JPanel
 {
     private JTabbedPane tabbedPane;
-    RegistrerPasient tab1;
-    RegistrerLege tab2;
-    RegistrerResept tab3;
+    RegistrerPasient pasienttab;
+    RegistrerLege legetab;
+    RegistrerResept resepttab;
     private RegisterSystem system;
     RegMainHjemGUI panel1 = new RegMainHjemGUI(this);
     private Medisinliste medisinliste;
@@ -25,9 +24,9 @@ public class RegMainGUI extends JPanel
     {
         this.system = system;
         this.medisinliste = medisinliste;
-        tab1 = new RegistrerPasient(system.getPasientRegister());
-        tab2 = new RegistrerLege(system.getLegeRegister());
-        tab3 = new RegistrerResept(system, medisinliste);
+        pasienttab = new RegistrerPasient(system.getPasientRegister());
+        legetab = new RegistrerLege(system.getLegeRegister());
+        resepttab = new RegistrerResept(system, medisinliste);
         tabbedPane = new JTabbedPane();
 
         ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
@@ -36,13 +35,13 @@ public class RegMainGUI extends JPanel
         ImageIcon resept = new ImageIcon("src/norskreseptregister/gui/bilder/ikonresept.png");
 
         tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
-        tabbedPane.addTab("Registrer Pasient", pasienten, tab1, "Registrer pasient");
-        tabbedPane.addTab("Registrer Lege", doktor, tab2, "Registrer Lege");
-        tabbedPane.addTab("Registrer Resept", resept, tab3, "Registrer Resept");
+        tabbedPane.addTab("Registrer Pasient", pasienten, pasienttab, "Registrer pasient");
+        tabbedPane.addTab("Registrer Lege", doktor, legetab, "Registrer Lege");
+        tabbedPane.addTab("Registrer Resept", resept, resepttab, "Registrer Resept");
         add(tabbedPane);
     }
 
-    // Get-metode for å kunne hente ut 
+    // Get-metode for å kunne hente ut hvilke tab som er trykket på
     public JTabbedPane getTabbedPane()
     {
         return tabbedPane;

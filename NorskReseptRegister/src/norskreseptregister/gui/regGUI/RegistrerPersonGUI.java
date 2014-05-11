@@ -78,16 +78,6 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
 
        /* Her starter layouten for registrer en person. Sjekk
         produktdokumentasjonen for forklaring av layouten*/
-        
-
-        /*
-        START INNSETTINGEN AV ELEMENTENE I LAYOUTEN OPPRETTER EN INT X OG INT
-        Y FOR Å ENKELT KUNNE UTVIDE MED FLERE ELEMENTER INSETS ER AVSTAND FRA
-        TOP, VENSTRE, BUNN OG HØYRE
-        */
-
-       /* Her starter layouten for registrer en person. Sjekk
-        produktdokumentasjonen for forklaring av layouten*/
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());

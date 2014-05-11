@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import javax.swing.*;
 
-// 
+// VelgFraListeGUI som formål å lage en JDialog boks med en liste over et av registerne eller medisinlista. 
 public class VelgFraListeGUI extends JDialog
 {
     private JList<String> navneliste;
@@ -104,6 +104,7 @@ public class VelgFraListeGUI extends JDialog
         return -1;
     }
 
+    // Metoden har som funksjon å hente ut valgte indekser fra lista og returne den originale indeksen.
     public int[] getValgteFraListe()
     {
         int[] valgte = navneliste.getSelectedIndices();   // Indekser fra den sorterte lista
