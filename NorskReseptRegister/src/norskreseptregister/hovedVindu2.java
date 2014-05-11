@@ -147,6 +147,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
         omValg = new JMenuItem("Om");
         omValg.setAccelerator(KeyStroke.getKeyStroke(
         KeyEvent.VK_O, ActionEvent.ALT_MASK));
+        omValg.addActionListener(this);
         
         brukerValg = new JMenuItem("Brukerveiledning");
         brukerValg.setAccelerator(KeyStroke.getKeyStroke(
@@ -238,6 +239,10 @@ public class hovedVindu2 extends JFrame implements ActionListener
         else if(e.getSource() == avsluttValg)
         {
             System.exit(0);
+        }
+        else if(e.getSource()== omValg)
+        {
+            OmVindu om = new OmVindu();
         }
     }
 }
