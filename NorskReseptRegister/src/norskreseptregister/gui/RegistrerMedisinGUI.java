@@ -1,8 +1,8 @@
 /*
  Filen inneholder GUI for å kunne registere en medisin og legge de i en 
  egenopprettet liste.
- Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
- Sist endret 22-04-14
+ Laget av Peter Wilhelmsen, Henrik Fischer Bjelland, Haakon Winther
+ Sist endret 11-05-14
  */
 package norskreseptregister.gui;
 
@@ -57,7 +57,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
 
         knappeGruppe();
 
-        ///////PANEL START/////             
+        //Elementer legges i paneler            
         JPanel panel1 = new JPanel();
         panel1.add(new JLabel("Legemiddel  "));
         panel1.add(regNavnFelt);
@@ -81,7 +81,9 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         JPanel panel5 = new JPanel();
         panel5.add(utskriftscroll);
 
-        ///// GRID START//////
+        /* Her starter layouten for registrer en person. Sjekk
+        produktdokumentasjonen for forklaring av GridBagLayout*/
+        
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
         
@@ -205,7 +207,9 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         }
         if(e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "HJELP Pille");
+            JOptionPane.showMessageDialog(null, "Her kan man registrere inn en ny medisin."
+                    + "\nViktig at riktig ATC nummer og reseptgruppe er korrekt. Sjekk "
+                    + "\nbrukerveiledningen for mer info. ");
         }
     }
 }//end of class MedisinGUI

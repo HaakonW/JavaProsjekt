@@ -53,14 +53,17 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
         statistikk.addActionListener(this);
         statistikk.setToolTipText("Statistikk"); 
                
-        //GRID STARTER ///
+        /* Her starter layouten for Hjemviduet til Admin. Som i de andre
+        filene er int x og int y satt til 0 for å enkelt kunne utvide kolonner eller
+        rader. Insets er satt til 10,10,10,10. Som igjen betyr avstanden til neste element.
+        Insets kan leses som en klokke. Hel, kvart på, halv. */
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());  
         
         int x = 0;
         int y = 0;
-        //FØRSTE RAD
+        //Første rad
         gc.gridx = x;
         gc.gridy = y; 
         gc.insets = new Insets(10,10,10,10);
@@ -74,7 +77,7 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
         gc.gridy = y;
         add(statistikk, gc);
         
-        //ANDRE RAD Nullstiller x//
+        //Andre rad. Nullstiller x verdien
         x = 0;  
         
         gc.gridx = x;

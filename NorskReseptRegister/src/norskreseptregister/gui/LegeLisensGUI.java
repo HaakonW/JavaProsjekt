@@ -84,8 +84,11 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         panel4 = new JPanel();
         panel4.add(utskrift);
 
-        /// GRID START ///
-        //Legger inn Panelene i rutenettet. Først kolonner så rader//
+       /* Her starter layouten for Legelisens under Admin-delen. Som i de andre
+        filene er int x og int y satt til 0 for å enkelt kunne utvide kolonner eller
+        rader. Insets er satt til 10,10,10,10. Som igjen betyr avstanden til neste element.
+        Insets kan leses som en klokke. Hel, kvart på, halv. */
+        
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
         
@@ -94,28 +97,27 @@ public class LegeLisensGUI extends JPanel implements ActionListener
 
         gc.gridx = x;
         gc.gridy = y;
-        gc.insets = new Insets(5, 10, 5, 10);      
+        gc.insets = new Insets(10, 10, 10, 10);      
         add(panel1, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;
         gc.fill = GridBagConstraints.HORIZONTAL;          
         add(panel2, gc);
-        //Kolonne 2 starter 
-
+        
         gc.gridx = x;
         gc.gridy = ++y;
         add(panel3, gc);
         
-        /// NY KOLONNE
+        //Nullstiller y for å kunne starte på toppen igjen
         y = 0;
         gc.gridx = ++x;
         gc.gridy = y;
-        gc.gridheight = 6;
+        gc.gridheight = 6; // Viktig at den er 6 lang for å ikke ødelegge for andre elementer
         add(panel4, gc);
         
-        //Ny kolonne for hjelpboxen
-        gc.gridx = 3;
+        //Siste rad for hjelpeboxen
+        gc.gridx = ++x;
         gc.gridy = 6;
         add(hjelp, gc);
 
@@ -191,7 +193,11 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         }
         else if(e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "HJELP LISENS");
+            JOptionPane.showMessageDialog(null, "I denne fanen  kan du endre en lege sin lisens."
+                    + "\nDu velger lege med ... knappen og vil da med en gang se hva vedkommende"
+                    + "\nhar godkjenning for. Videre kan du velge å ta fra lisens eller gi"
+                    + "\ntilbake lisens. "
+                    + "\nFor mere hjelp sjekk brukerveiledningen under om fanen.");
         }
         else if (e.getSource() == slettLege)
         {

@@ -8,7 +8,6 @@
 
 package norskreseptregister.gui;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -64,8 +63,8 @@ public class StatistikkGUI extends JPanel implements ActionListener
         utskrift.setWrapStyleWord(true);
         
         utskriftscroll = new JScrollPane(utskrift);
-        //utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
+        // Elementer legges i paneler for å enkelt sette inn i layout
         panel1 = new JPanel();
         panel1.add(velgAar);
         panel1.add(Aarfelt);
@@ -78,6 +77,8 @@ public class StatistikkGUI extends JPanel implements ActionListener
         
         panel3 = new JPanel();
         panel3.add(utskriftscroll);
+        
+        /* Her starter layouten for statestikk til Admin.  */
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
@@ -195,7 +196,11 @@ public class StatistikkGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "HJELP Statistikk");
+            JOptionPane.showMessageDialog(null, "Dette er statestikkfanen. Her velger man et legemiddel"
+                                                 + "\nog velger hvilket år man ønsker å se statestikk fra." 
+                                                  + "\nUnder velg legemiddel er det mulighet for å velge flere"
+                    + "                             +\nlegemiddel ved å holde inne CTRL knappen."
+                                                 + "\nFor mer informasjon sjekk brukerveiledningen.");
         }
         
     }
