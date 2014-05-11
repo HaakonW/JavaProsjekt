@@ -10,7 +10,7 @@ import norskreseptregister.ObjektKlasser.Pasient;
 
 /* 
  FinnPasientData er et slags query som implementerer Interfacet UtvalgsKriterie av Pasient.
- Hensikten er å kunne søke igjennom pasientRegisteret for å undersøke om den pasienten som kommer inn allerede
+ Hensikten er å kunne søke igjennom pasientregisteret for å undersøke om den pasienten som kommer inn allerede
  eksisterer i registeret.
  */
 public class FinnPasientData implements UtvalgsKriterie<Pasient>

@@ -37,7 +37,7 @@ import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
 
-// RegistrerResept er ment for å kunne registrere en resept. 
+// RegistrerResept er ment for å kunne registrere en resept som lagres i reseptRegisteret
 public class RegistrerResept extends JPanel implements ActionListener
 {
     private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper, printUt;
@@ -57,6 +57,10 @@ public class RegistrerResept extends JPanel implements ActionListener
     private JTextField datoNummer;      // Dato 1-31
     private JTextField manedsNummer;    // Månedsnummer 1-12
     private JTextField aarNummer;       // År
+    
+    String placeholderpasient = "Trykk på knappen for å velge pasient";
+    String placeholderlege = "Trykk på knappen for å velge lege";
+    String placeholdermedisin = "Trykk på knappen for å velge medisin";
 
     public RegistrerResept(RegisterSystem system, Medisinliste medisinliste)
     {
@@ -82,15 +86,15 @@ public class RegistrerResept extends JPanel implements ActionListener
         aarNummer.setText(Integer.toString(dato.getYear() + 1900));
 
         pasientfelt = new JTextField(20);
-        pasientfelt.setText("Trykk på knappen for å velge pasient");
+        pasientfelt.setText(placeholderpasient);
         pasientdatalabel = new JLabel("Pasient");
 
         legefelt = new JTextField(20);
-        legefelt.setText("Trykk på knappen for å velge lege");
+        legefelt.setText(placeholderlege);
         legedatalabel = new JLabel("Lege    ");
 
         medisinfelt = new JTextField(20);
-        medisinfelt.setText("Trykk på knappen for å velge medisin");
+        medisinfelt.setText(placeholdermedisin);
         medisindatalabel = new JLabel("Medisin");
 
         mengdefelt = new JTextField(20);
@@ -181,7 +185,8 @@ public class RegistrerResept extends JPanel implements ActionListener
         utskriftpanel = new JPanel();
         utskriftpanel.add(utskriftscroll);
 
-        // START GRID 
+        /* Her starter layouten for registrering av resept. Sjekk
+        produktdokumentasjonen for forklaring av layouten*/
         setLayout(new GridBagLayout());
         GridBagConstraints gc = new GridBagConstraints();
         int x = 0;
@@ -264,12 +269,11 @@ public class RegistrerResept extends JPanel implements ActionListener
     // Metode for å sjekke om alle felte er fylt ut.
     private boolean sjekkFelter()
     {
-        String test1 = "Trykk på knappen for å velge pasient";
-        String test2 = "Trykk på knappen for å velge lege";
-        String test3 = "Trykk på knappen for å velge medisin";
-
-        if (pasientfelt.getText().equals(test1) || legefelt.getText().equals(test2) || medisinfelt.getText().equals(test3)
-                || mengdefelt.getText().equals("") || anvisning.getText().equals(""))
+        if (pasientfelt.getText().equals(placeholderpasient) 
+                || legefelt.getText().equals(placeholderlege) 
+                || medisinfelt.getText().equals(placeholdermedisin) 
+                || mengdefelt.getText().equals("") 
+                || anvisning.getText().equals(""))
         {
             utskrift.setText("Her er det noe feil! \n\n\nHusk å fyll ut alle feltene og velg pasient/lege/medisin med knappene"
                     + "\n\n<---\n\n\n<---");
@@ -307,7 +311,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         utskrift.setText("Registrert resept: \n" + ny.toString());
     }
 
-    // Metode for å tømme alle tekstfeltene
+    // Metode for å tømme alle tekstfeltene og sette dagens dato i datofeltet
     private void TomFelt()
     {
         Calendar cal = Calendar.getInstance();
@@ -320,20 +324,20 @@ public class RegistrerResept extends JPanel implements ActionListener
         anvisning.setText("");
     }
 
-    // Metode for å skrive ut alle legene i registeret
+    // Metode for å skrive ut alle reseptene i registeret
     private void SkrivUt()
     {
-        String pasientliste = "";
+        String reseptliste = "";
         List<Resept> list = system.getReseptRegister().FinnAlleObjekter();
         for (Resept resept : list)
         {
-            pasientliste += resept.toString();
-            pasientliste += "\n-------------------------------\n";
+            reseptliste += resept.toString();
+            reseptliste += "\n-------------------------------\n";
         }
-        utskrift.setText(pasientliste);
+        utskrift.setText(reseptliste);
     }
 
-    // Metode for å velge ut en pasient
+    // Metode for å velge ut en pasient fra pasientregisteret
     private void VelgPasient()
     {
         PasientRegister pasientRegister = system.getPasientRegister();
@@ -349,8 +353,8 @@ public class RegistrerResept extends JPanel implements ActionListener
         }
     }
 
-    // Metode for velge ut en lege
-    public void VelgLege()
+    // Metode for velge ut en lege fra legeregisteret
+    private void VelgLege()
     {
         LegeRegister legeRegister = system.getLegeRegister();
         VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:",
@@ -365,7 +369,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         }
     }
 
-    // Metode for å velge ut en medisin
+    // Metode for å velge ut en medisin fra medisinlista
     private void VelgMedisin()
     {
         VelgFraListeGUI velgMedisin = new VelgFraListeGUI("Liste over alle medisiner:",
@@ -381,8 +385,10 @@ public class RegistrerResept extends JPanel implements ActionListener
         }
     }
 
-    //Metode som får opp bekreftboks for ny resept. Ved yes_Option vil en ny repept bli registrert.
-    //Når medisinen er bekreftet kommer det opp mulighet for å printe ut resepten
+    /*
+    Metode som får opp bekreftboks for ny resept. Ved yes_Option vil en ny repept bli registrert.
+    Når medisinen er bekreftet kommer det opp mulighet for å printe ut resepten.
+    */
     private void bekreft()
     {
         int bekreft = JOptionPane.showConfirmDialog(null, "Du vil registrere denne resepten: "
@@ -444,43 +450,40 @@ public class RegistrerResept extends JPanel implements ActionListener
                 pex.printStackTrace();
             }
         }
-
     }// end of actionPerformed
 
     // Metoden returnerer en informativ tekst til brukeren
-    public String hjelpetekst()
+    private String hjelpetekst()
     {
-        String hjelpeteksten = "For å kunne registrere en resept er det viktig at alle feltene er fylles ut."
+        String hjelpeteksten = "For å kunne registrere en resept er det viktig at alle feltene er fylt ut."
                 + "\nMan velger både pasient, lege og medisin ved å trykke på ... knappen til høyre for feltet"
                 + "\nFor mere hjelp sjekk dokumentasjonen. /*LINK*/";
         return hjelpeteksten;
     }
 
     // Lytterklasse for å kunne innregigstrere pasienter med kun tastatur
-    class Knappelytter implements KeyListener
+    private class Knappelytter implements KeyListener
     {
         public void keyPressed(KeyEvent e)
         {
             if (e.getKeyCode() == KeyEvent.VK_1)
             {
                 VelgPasient();
-            };
+            }
             if (e.getKeyCode() == KeyEvent.VK_2)
             {
                 VelgLege();
-            };
+            }
             if (e.getKeyCode() == KeyEvent.VK_3)
             {
                 VelgMedisin();
-            };
+            }
             if (e.getKeyCode() == KeyEvent.VK_ENTER)
             {
                 bekreft();
-            };
+            }
         }
-
-        ;
-
+        
         @Override
         public void keyTyped(KeyEvent e)
         {
@@ -495,17 +498,19 @@ public class RegistrerResept extends JPanel implements ActionListener
     }
 
     // Metode for å fylle ut mengdefelt og anvisnigsfelt med informasjon hentet fra felleskatalogen.
-    public void utFyller()
+    private void utFyller()
     {
-        if (medisinfelt.getText().equals("Abstral"))
+        switch (medisinfelt.getText())
         {
-            mengdefelt.setText("30 Tabletter");
-            anvisning.setText("Maks. 4 doser pr. dag.");
-        }
-        if (medisinfelt.getText().equals("Apocillin"))
-        {
-            mengdefelt.setText("250mg");
-            anvisning.setText("Kan tas 3 ganger i døgnet med dobbel dose om kvelden.");
+            case "Abstral":            
+                    mengdefelt.setText("30 Tabletter");
+                    anvisning.setText("Maks. 4 doser pr. dag.");
+                break;
+                
+            case "Apocillin":
+                    mengdefelt.setText("250mg");
+                    anvisning.setText("Kan tas 3 ganger i døgnet med dobbel dose om kvelden.");
+                break;
         }
         if (medisinfelt.getText().equals("Cosylan"))
         {

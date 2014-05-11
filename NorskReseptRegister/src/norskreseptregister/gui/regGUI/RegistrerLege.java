@@ -12,7 +12,10 @@ import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.Reg.LegeRegister;
 
-// RegistrerLege er en subklasse av RegistrerPersonGUI. Klassen er ment for å kunne registrere en Lege
+/* 
+ RegistrerLege er en subklasse av RegistrerPersonGUI. 
+ Klassen er ment for å kunne registrere en lege i legeregisteret
+ */
 public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
 {
     private LegeRegister legeRegister;
@@ -31,7 +34,7 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
     {
         String tekst = "";
 
-        if (sjekkFornavn(fornavnfelt.getText()) && sjekkEtternavn(etternavnfelt.getText()) 
+        if (sjekkFornavn(fornavnfelt.getText()) && sjekkEtternavn(etternavnfelt.getText())
                 && sjekkAdresse(infofelt.getText()))
         {
             Lege ny = new Lege(fornavnfelt.getText(), etternavnfelt.getText(),
@@ -48,19 +51,6 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
                 utskrift.setText("Registrert Lege: \n" + ny.toString());
             }
         }
-    }
-
-    // Metode for å skrive ut alle legene i registeret.
-    private void SkrivUt()
-    {
-        String legeliste = "";
-        List<Lege> list = legeRegister.FinnAlleObjekter();
-        for (Lege lege : list)
-        {
-            legeliste += lege.toString();
-            legeliste += "\n\n";
-        }
-        utskrift.setText(legeliste);
     }
 
     // Metode for å lytte på hvilken knapp som er trykket på og kaller deretter på en spesifikk metode

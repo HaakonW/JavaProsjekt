@@ -1,6 +1,5 @@
 /*
  Filen inneholder klassen hovedVindu2.
- Klassen inneholder hovedvinduet som er det første du kommer til ved å kjøre programmet.
  Laget av Peter Wilhelmsen, Henrik Fischer Bjelland, Haakon Winther
  Sist endret 29/04/14
  */
@@ -29,6 +28,7 @@ import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.info.InfoMainGUI;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
+// Klassen inneholder hovedvinduet som er det første du kommer til ved å kjøre programmet.
 public class hovedVindu2 extends JFrame implements ActionListener
 {  
     private JLabel label1, label2, label3,tekstLabel;
@@ -37,7 +37,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
     private Medisinliste medisinliste;
     private JMenuBar menylinje;
     private JMenu valg,hjelp;
-    private JMenuItem adminValg,regValg, infoValg, avsluttValg, omValg,brukerValg;
+    private JMenuItem lagreValg, adminValg,regValg, infoValg, avsluttValg, omValg,brukerValg;
     
     public hovedVindu2(final RegisterSystem system, final Medisinliste medisinliste)
     {  
@@ -124,6 +124,12 @@ public class hovedVindu2 extends JFrame implements ActionListener
         "The only menu in this program that has menu items");*/
         
         //Menyalternativer
+        
+        lagreValg = new JMenuItem("Lagre");
+        lagreValg.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_L,ActionEvent.ALT_MASK));
+        lagreValg.addActionListener(this);
+        
         adminValg = new JMenuItem("Admin");
         adminValg.setAccelerator(KeyStroke.getKeyStroke(
         KeyEvent.VK_A,ActionEvent.ALT_MASK));
@@ -154,7 +160,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
         KeyEvent.VK_B,ActionEvent.ALT_MASK));
         brukerValg.addActionListener(this);
         
-        
+        valg.add(lagreValg);
         valg.add(adminValg);
         valg.add(regValg);
         valg.add(infoValg);
@@ -211,12 +217,12 @@ public class hovedVindu2 extends JFrame implements ActionListener
         {
             LoggInn ny = new LoggInn(system, medisinliste);
         }
-        else if(e.getSource() == registreringVindu || e.getSource() == regValg)
+        else if (e.getSource() == registreringVindu || e.getSource() == regValg)
         {
             RegMainGUI reg = new RegMainGUI(system, medisinliste);
             visGUI(reg);
         }
-        else if(e.getSource() == infoVindu || e.getSource() == infoValg)
+        else if (e.getSource() == infoVindu || e.getSource() == infoValg)
         {
             InfoMainGUI infoG = new InfoMainGUI(system, medisinliste);
             visGUI(infoG);
@@ -234,15 +240,19 @@ public class hovedVindu2 extends JFrame implements ActionListener
                 {
                     JOptionPane.showMessageDialog(null, "Systemet ditt støtter ikke visning av pdf-filer.");
                 }
-}
+            }
         }
-        else if(e.getSource() == avsluttValg)
+        else if (e.getSource() == avsluttValg)
         {
             System.exit(0);
         }
-        else if(e.getSource()== omValg)
+        else if (e.getSource()== omValg)
         {
             OmVindu om = new OmVindu();
+        }
+        else if (e.getSource() == lagreValg)
+        {
+            skrivTilFil();
         }
     }
 }

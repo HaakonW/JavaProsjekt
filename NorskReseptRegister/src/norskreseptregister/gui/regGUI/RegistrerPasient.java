@@ -15,7 +15,10 @@ import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.Reg.PasientRegister;
 
-// RegistrerPasient er en subklasse av RegistrerPersonGUI. Klassen er ment for å kunne registrere en Pasient
+/* 
+ RegistrerPasient er en subklasse av RegistrerPersonGUI. 
+ Klassen er ment for å kunne registrere en Pasient i pasientregisteret
+ */
 public class RegistrerPasient extends RegistrerPersonGUI implements ActionListener
 {
     private PasientRegister pasientRegister;
@@ -28,8 +31,9 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
     }
 
     /* 
-     Metode som sjekker om feltene er fylt ut korrekt, gir en feilmelding hvis de 
-     ikke er og registrerer pasienten i registeret hvis alt er riktig fylt inn.
+     Metode som sjekker om feltene er fylt ut korrekt og registrerer pasienten
+     i registeret hvis alt er riktig fylt inn. Det blir skrevet ut en feilmelding hvis pasienten allerede eksiterer
+     eller feltene er fylt ut feil. 
      */
     private void nyPasient()
     {
@@ -50,19 +54,6 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
                 utskrift.setText("Registrert pasient: \n" + ny.toString());
             }
         }
-    }
-
-    // Metode for å skrive ut alle pasientene i registeret. 
-    private void SkrivUt()
-    {
-        String pasientliste = "";
-        List<Pasient> list = pasientRegister.FinnAlleObjekter();
-        for (Pasient pasient : list)
-        {
-            pasientliste += pasient.toString();
-            pasientliste += "\n\n";
-        }
-        utskrift.setText(pasientliste);
     }
 
     // Metode for å lytte på hvilken knapp som er trykket på og kaller deretter på en spesifikk metode

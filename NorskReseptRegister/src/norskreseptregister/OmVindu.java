@@ -25,7 +25,7 @@ public class OmVindu extends JFrame
         utskrift = new JTextArea();
         font = new Font("Monospaced",Font.PLAIN,11);
         
-        tekst = "\nNorsk ReseptRegister av \n"
+        tekst = "\nNorsk Reseptregister er et program laget av "
                 + "Henrik Bjelland, Haakon Winther & Peter Wilhelmsen\n\n";
         tekst += "Norsk ReseptRegister version 1.0 \n™ and © 2014 Gruppe 38.\n";
         tekst += "All Rights Reserved.";
@@ -34,10 +34,12 @@ public class OmVindu extends JFrame
         utskrift.setFont(font);
         utskrift.setBackground(Color.LIGHT_GRAY);
         utskrift.setEditable(false);
+        utskrift.setLineWrap(true);
+        utskrift.setWrapStyleWord(true);
         
         setTitle("Norsk ReseptRegister");
         add(utskrift);
-        setSize(350,400);
+        setSize(350,200);
         //ramme.pack();
         setLocationRelativeTo(null);
         setVisible(true);

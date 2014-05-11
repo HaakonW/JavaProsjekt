@@ -30,9 +30,8 @@ public class FinnResepterForPasientIReseptGruppe implements UtvalgsKriterie<Rese
     }
 
     /* 
-     Metode henter navnet på pasienten fra den innkommende 
-     resepten og sjekker om det stemmer opp mot det valgte pasientnavnet.
-     Så sjekker den hvilke medisingruppe som er valgt og returnerer true for denne som er valgt.
+     Metode henter navnet på pasienten fra resepten i registeret og sjekker om det stemmer opp mot det valgte 
+    pasientnavnet. Så sjekker den hvilke medisingruppe som er valgt og returnerer true for denne som er valgt.
      */
     public boolean objektetSkalVaereMed(Resept objekt)
     {

@@ -1,6 +1,6 @@
 /*
  Filen inneholder klassen VelgPasientGUI.
- Laget av  Henrik Fischer Bjelland
+ Laget av Henrik Fischer Bjelland
  Sist endret 11-05-2014  
  */
 package norskreseptregister.gui.regGUI;
@@ -29,11 +29,12 @@ public class VelgFraListeGUI extends JDialog
     private int valgtIndex;
     private final SortertListModel sortertModel;
 
+    // Konstruktør når brukeren bare skal kunne velge ett objekt fra lista
     public VelgFraListeGUI(String listeOver, String velg, DefaultListModel<String> model)
     {
         this(listeOver, velg, model, false);
     }
-
+    
     public VelgFraListeGUI(String listeOver, String velg, DefaultListModel<String> model, boolean multipleSelection)
     {
         setModal(true);
@@ -93,12 +94,11 @@ public class VelgFraListeGUI extends JDialog
         navneliste.ensureIndexIsVisible(valgtIndex);
     }//end of Konstruktør
 
-    //Get-metode for vagltIndex
+    //Get-metode for vagltIndex, returner original (usortert) index, dvs indeksen fra Register eller Medisinliste
     public int getValgtIndex()
     {
         if (valgtIndex >= 0)
         {
-            // Returner original (usortert) index, dvs indeksen fra Register eller Medisinliste
             return sortertModel.getOriginalIndex(valgtIndex);
         }
         return -1;
@@ -196,7 +196,7 @@ public class VelgFraListeGUI extends JDialog
             }
             else if (e.getSource() == avbryt)
             {
-                valgtIndex = -1; //
+                valgtIndex = -1; 
                 setVisible(false);
             }
         }
@@ -223,10 +223,8 @@ public class VelgFraListeGUI extends JDialog
             {
                 valgtIndex = navneliste.getSelectedIndex();
                 setVisible(false);
-            };
+            }
         }
-
-        ;
 
         @Override
         public void keyTyped(KeyEvent e)

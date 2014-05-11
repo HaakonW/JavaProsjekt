@@ -1,21 +1,17 @@
 /*
- Filen inneholder klassen NorskReseptRegister som er mainklassen der alle 
- vinduene våre blir kalt opp.
+ Filen inneholder klassen NorskReseptRegister.
  Laget av Haakon Winter, Henrik Fischer Bjelland, Peter Wilhelmsen.
- Sist endret 17-04-2014 
+ Sist endret 11-05-2014 
  */
 package norskreseptregister;
 
-import java.awt.event.*;
-import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.regGUI.RegMainGUI;
 
-// NorskReseptRegister er der mainmetoden 
+// NorskReseptRegister er hovedklassen der mainmetoden blir kalt
 public class NorskReseptRegister
 {
-    //Dette er main-metoden der hovedVindu blir kalt og programmet starer
+    //Dette er main-metoden der hovedVindu blir kalt og programmet kjører
     public static void main(String[] args)
     {
         java.awt.EventQueue.invokeLater(new Runnable()
@@ -25,7 +21,6 @@ public class NorskReseptRegister
                 RegisterSystem system = new RegisterSystem();
                 system.LesFraFil();
                 Medisinliste medisinliste = Medisinliste.lesObjektFraFil();
-                //hovedVindu vindu = new hovedVindu(system, medisinliste);
                 hovedVindu2 vindu = new hovedVindu2(system, medisinliste);
             }
         });

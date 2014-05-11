@@ -23,8 +23,8 @@ public class FinnResepterForPasient implements UtvalgsKriterie<Resept>
     }
 
     /* 
-     Metode henter navnet på pasienten fra den innkommende 
-     resepten og sjekker om det stemmer opp mot det valgte pasientnavnet
+     Metode henter navnet på pasienten fra resepten i registeret 
+     og sjekker om det stemmer opp mot det valgte pasientnavnet
      */
     public boolean objektetSkalVaereMed(Resept objekt)
     {

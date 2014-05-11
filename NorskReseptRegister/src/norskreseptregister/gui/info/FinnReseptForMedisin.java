@@ -8,7 +8,6 @@ package norskreseptregister.gui.info;
 
 import norskreseptregister.Interface.UtvalgsKriterie;
 import norskreseptregister.ObjektKlasser.Medisin;
-import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
 
 /* 
@@ -24,7 +23,7 @@ public class FinnReseptForMedisin implements UtvalgsKriterie <Resept>
         this.medisin = medisin;
     }
     
-    // Metoden henter navnet på medisinen fra den innkommende resepten og sjekker om den er lik den valgte medisinen.
+    // Metoden henter navnet på medisinen fra resepten i registeret og sjekker om den er lik den valgte medisinen.
     public boolean objektetSkalVaereMed(Resept objekt)
     {
         String reseptMedisinNavn = objekt.getMedisin().getNavn();

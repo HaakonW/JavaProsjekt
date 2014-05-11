@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen RegMainHjemGUI. 
  Laget av Henrik Fischer Bjelland, Haakon Winther 
- Sist endret 27-04-2014 
+ Sist endret 11-05-2014 
  */
 package norskreseptregister.gui.regGUI;
 

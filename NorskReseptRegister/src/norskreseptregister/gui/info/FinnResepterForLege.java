@@ -22,10 +22,8 @@ public class FinnResepterForLege implements UtvalgsKriterie<Resept>
         this.lege = lege;
     }
 
-    /* 
-     Metode henter navnet på legen fra den innkommende 
-     resepten og sjekker om det stemmer opp mot det valgte legenavnet
-     */
+    
+    // Metode henter navnet på legen fra resepten i registeret og sjekker om det stemmer opp mot det valgte legenavnet
     public boolean objektetSkalVaereMed(Resept objekt)
     {
         String reseptLegeNavn = objekt.getLege().getNavn();
