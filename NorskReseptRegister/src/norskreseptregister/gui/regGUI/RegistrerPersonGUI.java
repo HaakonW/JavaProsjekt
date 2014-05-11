@@ -175,7 +175,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
     // RegEx for adresse
     public boolean sjekkAdresse(String adresse)
     {
-        if (infofelt.getText().matches("^[a-zøæåéA-ZØÆÅ. \\-]{2,20}"))
+        if (infofelt.getText().matches("[a-zæøåA-ZÆØÅ][a-zæøåA-ZÆØÅ0-9 ]{0,40}[a-zæøåA-ZÆØÅ0-9]")) //"^[a-zøæåéA-ZØÆÅ. \\-]{2,20}"
         {
             return true;
         }
