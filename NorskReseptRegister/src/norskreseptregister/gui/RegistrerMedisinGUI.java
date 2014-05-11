@@ -43,9 +43,9 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         hjelp = new JButton("?");
         hjelp.addActionListener(this);        
         hjelp.setPreferredSize(new Dimension(20, 20));
+        hjelp.setToolTipText("Trenger du hjelp?" );
         
         utskrift = new JTextArea(20, 20);
-        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         utskrift.setEditable(false);
         utskrift.setLineWrap(true);
         utskrift.setWrapStyleWord(true);
@@ -205,7 +205,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         }
         if(e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "HJELP Pille");
+            
         }
     }
 }//end of class MedisinGUI

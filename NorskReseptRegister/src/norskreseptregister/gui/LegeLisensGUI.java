@@ -46,6 +46,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         hjelp = new JButton("?");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
+        hjelp.setToolTipText("Trenger du hjelp?" );
         
         navnlabel = new JLabel("Legens navn:");
         legedatafelt = new JTextField(20);
@@ -191,7 +192,8 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         }
         else if(e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "HJELP LISENS");
+            utskrift.setText("Trykk på knappen ... for å velge en lege. Velg så hvilke reseptgruppe du skal frata"
+                    + "legen og trykk endre bevilling knappen");
         }
         else if (e.getSource() == slettLege)
         {
