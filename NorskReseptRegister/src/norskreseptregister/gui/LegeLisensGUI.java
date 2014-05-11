@@ -8,6 +8,8 @@ package norskreseptregister.gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.Reg.LegeRegister;
@@ -26,6 +28,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     private JPanel panel1, panel2, panel3, panel4, panel6;
     private Lege lege;
     private final RegisterSystem system;
+    private int defaultDismissTimeout = ToolTipManager.sharedInstance().getDismissDelay();
 
     public LegeLisensGUI(RegisterSystem system)
     {
@@ -46,6 +49,17 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         hjelp = new JButton("?");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
+        
+        hjelp.addMouseListener(new MouseAdapter(){
+            public void mouseEntered(MouseEvent e){
+                ToolTipManager.sharedInstance().setDismissDelay(5000);
+            }
+            
+            public void mouseExited(MouseEvent e){
+                ToolTipManager.sharedInstance().setDismissDelay(defaultDismissTimeout);
+            }
+        });
+        
         hjelp.setToolTipText("<html>" + "Her kan du endre legers lisens.<br>"
                     + "Du velger lege med ... knappen<br>"
                     + "Videre kan du endre/fjerne lisens. <br> "
