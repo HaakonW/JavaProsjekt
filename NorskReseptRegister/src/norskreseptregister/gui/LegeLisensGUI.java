@@ -28,7 +28,6 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     private JPanel panel1, panel2, panel3, panel4, panel6;
     private Lege lege;
     private final RegisterSystem system;
-    private int defaultDismissTimeout = ToolTipManager.sharedInstance().getDismissDelay();
 
     public LegeLisensGUI(RegisterSystem system)
     {
@@ -53,10 +52,6 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
                 ToolTipManager.sharedInstance().setDismissDelay(5000);
-            }
-            
-            public void mouseExited(MouseEvent e){
-                ToolTipManager.sharedInstance().setDismissDelay(defaultDismissTimeout);
             }
         });
         
