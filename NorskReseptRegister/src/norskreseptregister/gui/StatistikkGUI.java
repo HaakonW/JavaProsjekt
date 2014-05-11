@@ -199,7 +199,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
             JOptionPane.showMessageDialog(null, "Dette er statestikkfanen. Her velger man et legemiddel"
                                                  + "\nog velger hvilket år man ønsker å se statestikk fra." 
                                                   + "\nUnder velg legemiddel er det mulighet for å velge flere"
-                    + "                             +\nlegemiddel ved å holde inne CTRL knappen."
+                                                    + "\nlegemiddel ved å holde inne CTRL knappen."
                                                  + "\nFor mer informasjon sjekk brukerveiledningen.");
         }
         
