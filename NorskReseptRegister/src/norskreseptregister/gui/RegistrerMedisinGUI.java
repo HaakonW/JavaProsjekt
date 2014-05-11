@@ -207,13 +207,10 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         }
         if(e.getSource() == hjelp)
         {
-<<<<<<< HEAD
+
             JOptionPane.showMessageDialog(null, "Her kan man registrere inn en ny medisin."
                     + "\nViktig at riktig ATC nummer og reseptgruppe er korrekt. Sjekk "
                     + "\nbrukerveiledningen for mer info. ");
-=======
-            
->>>>>>> FETCH_HEAD
         }
     }
 }//end of class MedisinGUI

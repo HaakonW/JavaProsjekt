@@ -194,16 +194,15 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         }
         else if(e.getSource() == hjelp)
         {
-<<<<<<< HEAD
             JOptionPane.showMessageDialog(null, "I denne fanen  kan du endre en lege sin lisens."
                     + "\nDu velger lege med ... knappen og vil da med en gang se hva vedkommende"
                     + "\nhar godkjenning for. Videre kan du velge å ta fra lisens eller gi"
                     + "\ntilbake lisens. "
                     + "\nFor mere hjelp sjekk brukerveiledningen under om fanen.");
-=======
+
             utskrift.setText("Trykk på knappen ... for å velge en lege. Velg så hvilke reseptgruppe du skal frata"
                     + "legen og trykk endre bevilling knappen");
->>>>>>> FETCH_HEAD
+
         }
         else if (e.getSource() == slettLege)
         {
