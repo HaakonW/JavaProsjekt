@@ -1,10 +1,7 @@
-/**
- * ******************************************************************************************
- * Filen inneholder klassen RegMainHjemGUI. Det er denne filen som gjør at hjem
- * siden har de 3 ikonene for endre lisens, registrer medisisn eller statestikk.
- * Det er her man kan endre bildene, knapper eller utseene for hjem fanen. Laget
- * av Henrik Fischer Bjelland, Haakon Winther Sist endret 27-04-2014 
-****************************************************************************************************
+/*
+Filen inneholder klassen RegMainHjemGUI. 
+Laget av Henrik Fischer Bjelland, Haakon Winther 
+Sist endret 27-04-2014 
  */
 package norskreseptregister.gui.regGUI;
 
@@ -12,12 +9,15 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-class RegMainHjemGUI extends JPanel implements ActionListener
+/*
+Det er denne filen som gjør at hjem siden har de 3 ikonene for endre lisens, registrer medisisn eller statestikk.
+Det er her man kan endre bildene, knapper eller utseene for hjem fanen.
+*/
+public class RegMainHjemGUI extends JPanel implements ActionListener
 {
-
     private JButton regPasient, regLege, regResept;
-    private JPanel panel1;
-    private JLabel label1, label2, label3;
+    private JPanel knappepanel;
+    private JLabel pasientlabel, legelabel, reseptlabel;
     private final RegMainGUI regMainGUI;
 
     public RegMainHjemGUI(RegMainGUI regMainGUI)
@@ -42,24 +42,26 @@ class RegMainHjemGUI extends JPanel implements ActionListener
         regResept.addActionListener(this);
         regResept.setToolTipText("Registrer resept");      
 
-        label1 = new JLabel("Registrer Pasient");
-        label1.setFont(new Font("PT Serif", Font.PLAIN, 20));
-        label2 = new JLabel("Registrer Lege");
-        label2.setFont(new Font("PT Serif", Font.PLAIN, 20));
-        label3 = new JLabel("Registrer Resept");
-        label3.setFont(new Font("PT Serif", Font.PLAIN, 20));
-
-        panel1 = new JPanel();
-        panel1.add(regPasient);
-        panel1.add(regLege);
-        panel1.add(regResept);
+        pasientlabel = new JLabel("Registrer Pasient");
+        pasientlabel.setFont(new Font("PT Serif", Font.PLAIN, 20));
         
-        /***
+        legelabel = new JLabel("Registrer Lege");
+        legelabel.setFont(new Font("PT Serif", Font.PLAIN, 20));
+        
+        reseptlabel = new JLabel("Registrer Resept");
+        reseptlabel.setFont(new Font("PT Serif", Font.PLAIN, 20));
+
+        knappepanel = new JPanel();
+        knappepanel.add(regPasient);
+        knappepanel.add(regLege);
+        knappepanel.add(regResept);
+        
+        /*
          START INNSETTINGEN AV ELEMENTENE I LAYOUTEN
          OPPRETTER EN INT X OG INT Y FOR Å ENKELT KUNNE UTVIDE
          MED FLERE ELEMENTER        
          INSETS ER AVSTAND FRA TOP, VENSTRE, BUNN OG HØYRE
-         ***/       
+        */       
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
@@ -84,15 +86,15 @@ class RegMainHjemGUI extends JPanel implements ActionListener
 
         gc.gridx = x;
         gc.gridy = ++y;
-        add(label1, gc);
+        add(pasientlabel, gc);
 
         gc.gridx = ++x;
         gc.gridy = y;
-        add(label2, gc);
+        add(legelabel, gc);
 
         gc.gridx = ++x;
         gc.gridy = y;
-        add(label3, gc);
+        add(reseptlabel, gc);
     }
     /** METODE FOR Å BLI SENDT VIDERE TIL DE ANDRE FANENENE FRA FORSIDEN
         DETTE ER FOR Å BLI SENDT VIDERE MED KNAPPENE ***/
