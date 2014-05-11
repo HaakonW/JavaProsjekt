@@ -12,7 +12,7 @@ import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-public class OmVindu
+public class OmVindu extends JFrame
 {
     private JFrame ramme;
     private JTextArea utskrift;
@@ -35,11 +35,11 @@ public class OmVindu
         utskrift.setBackground(Color.LIGHT_GRAY);
         utskrift.setEditable(false);
         
-        ramme.setTitle("Norsk ReseptRegister");
-        ramme.add(utskrift);
-        ramme.setSize(350,400);
+        setTitle("Norsk ReseptRegister");
+        add(utskrift);
+        setSize(350,400);
         //ramme.pack();
-        ramme.setLocationRelativeTo(null);
-        ramme.setVisible(true);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 }

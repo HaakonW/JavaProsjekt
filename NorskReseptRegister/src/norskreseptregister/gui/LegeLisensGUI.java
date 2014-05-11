@@ -46,7 +46,10 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         hjelp = new JButton("?");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
-        hjelp.setToolTipText("Trenger du hjelp?" );
+        hjelp.setToolTipText("<html>" + "Her kan du endre legers lisens."
+                    + "\nDu velger lege med ... knappen<br> for å se hva vedkommende"
+                    + "\nhar godkjenning for.<br> Videre kan du endre/fjerne lisens. <br> "
+                    + "\nFor mer hjelp se brukerveiledningen" + "<html>" );
         
         navnlabel = new JLabel("Legens navn:");
         legedatafelt = new JTextField(20);
