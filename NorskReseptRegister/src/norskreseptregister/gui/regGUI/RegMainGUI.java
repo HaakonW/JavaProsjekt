@@ -10,6 +10,7 @@ import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 
+//
 public class RegMainGUI extends JPanel
 {
     private JTabbedPane tabbedPane;
@@ -41,27 +42,10 @@ public class RegMainGUI extends JPanel
         add(tabbedPane);
     }
 
+    // Get-metode for å kunne hente ut 
     public JTabbedPane getTabbedPane()
     {
         return tabbedPane;
     }
 
-    /*private static void createAndShowGUI(final RegisterSystem system, Medisinliste medisinliste)
-
-     {
-     //Create and set up the window.
-     JFrame frame = new JFrame("Admin");
-     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     frame.setSize(650, 460);
-     frame.getContentPane().add(new RegMainGUI(system, medisinliste), BorderLayout.CENTER);
-     //Display the window.
-     frame.pack();
-     frame.setVisible(true);
-     }
-    
-     // GIR FEIL NÅR HOVEDVINDU SKAL KJØRES.Må settes tom 
-     public RegMainGUI()
-     {
-
-     }*/ ///// TEST TEST TEST ///// LAR DETTE STÅ NOEN DAGER OG SER OM ALT FUNGERER SOM DET SKAL /////////
 }//end of class RegMainGUI

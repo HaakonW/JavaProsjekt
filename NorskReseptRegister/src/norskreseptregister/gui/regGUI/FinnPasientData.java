@@ -9,6 +9,7 @@ package norskreseptregister.gui.regGUI;
 import norskreseptregister.Interface.UtvalgsKriterie;
 import norskreseptregister.ObjektKlasser.Pasient;
 
+// FinnPasientData er et "query" for å 
 public class FinnPasientData implements UtvalgsKriterie <Pasient>
 {
     private final Pasient pasient;

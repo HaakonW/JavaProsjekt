@@ -50,7 +50,10 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         hjelp.setToolTipText("Trykk her for hjelp");
         hjelp.setPreferredSize(new Dimension(25, 25));
         hjelp.addActionListener(this);
+<<<<<<< HEAD
+=======
 
+>>>>>>> FETCH_HEAD
 
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
@@ -77,9 +80,21 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         utskriftpanel = new JPanel();
         utskriftpanel.add(utskrift);
 
+<<<<<<< HEAD
+       /* Her starter layouten for registrer en person. Sjekk
+        produktdokumentasjonen for forklaring av layouten*/
+        
+
+        /*
+        START INNSETTINGEN AV ELEMENTENE I LAYOUTEN OPPRETTER EN INT X OG INT
+        Y FOR Å ENKELT KUNNE UTVIDE MED FLERE ELEMENTER INSETS ER AVSTAND FRA
+        TOP, VENSTRE, BUNN OG HØYRE
+        */
+=======
 
        /* Her starter layouten for registrer en person. Sjekk
         produktdokumentasjonen for forklaring av layouten*/
+>>>>>>> FETCH_HEAD
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
@@ -89,6 +104,12 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         
         gc.gridx = x;
         gc.gridy = y;
+<<<<<<< HEAD
+        gc.insets = new Insets(10, 10, 10, 10);  
+        //add(panel1, gc);
+
+=======
+>>>>>>> FETCH_HEAD
         gc.insets = new Insets(5, 5, 5, 10);
         add(fornavnpanel, gc);
 
