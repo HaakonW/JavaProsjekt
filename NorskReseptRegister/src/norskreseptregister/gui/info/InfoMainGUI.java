@@ -24,17 +24,14 @@ public class InfoMainGUI extends JPanel
     LegeInfoGUI legeinfopanel;
     PasientInfoGUI pasientinfopanel;
     MedisinInfoGUI medisininfopanel;
-    private RegisterSystem system;
-    private LegeRegister legeRegister;
-    private PasientRegister pasientRegister;
     private Medisinliste medisinliste;
 
     public InfoMainGUI(RegisterSystem system, Medisinliste medisinliste)
     {
         this.medisinliste = medisinliste;
         hjempanel = new InfoMainHjemGUI(this);
-        legeinfopanel = new LegeInfoGUI(system, legeRegister);
-        pasientinfopanel = new PasientInfoGUI(system, pasientRegister);
+        legeinfopanel = new LegeInfoGUI(system);
+        pasientinfopanel = new PasientInfoGUI(system);
         medisininfopanel = new MedisinInfoGUI(system, medisinliste);
         tabbedPane = new JTabbedPane();
         

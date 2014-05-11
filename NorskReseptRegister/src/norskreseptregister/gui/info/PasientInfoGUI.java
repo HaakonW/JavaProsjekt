@@ -38,10 +38,10 @@ public class PasientInfoGUI extends JPanel implements ActionListener
     private PasientRegister pasientRegister;
     private Pasient pasient;
 
-    public PasientInfoGUI(RegisterSystem system, PasientRegister pasientRegister)
+    public PasientInfoGUI(RegisterSystem system)
     {
         this.system = system;
-        this.pasientRegister = pasientRegister;
+        pasientRegister = system.getPasientRegister();
 
         pasientlabel = new JLabel("Pasient   ");
         pasientdatafelt = new JTextField(20);
@@ -123,7 +123,6 @@ public class PasientInfoGUI extends JPanel implements ActionListener
     // Metode for velge pasient
     private void VelgPasient()
     {
-        PasientRegister pasientRegister = system.getPasientRegister();
         VelgFraListeGUI velgPasient = new VelgFraListeGUI("Liste over alle pasienter:",
                 "Velg pasient", pasientRegister.getListModel());
         velgPasient.setLocationRelativeTo(this);
@@ -136,7 +135,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         }
     }
 
-    // Metoden for å vise allepasienter
+    // Metoden for å vise alle pasienter
     private void visAllePasienter()
     {
         String legeliste = "";
@@ -149,7 +148,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         utskrift.setText(legeliste);
     }
 
-    // Metoden viser hvilke resepter en spesifikk lege har skrevet ut
+    // Metoden viser hvilke resepter en spesifikk pasient har mottatt
     public void visResepterForPasient()
     {
         if (pasient != null)

@@ -35,11 +35,10 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     private RegisterSystem system;
     private LegeRegister legeRegister;
 
-    public LegeInfoGUI(RegisterSystem system, LegeRegister legeRegister)
+    public LegeInfoGUI(RegisterSystem system)
     {
         this.system = system;
-        this.legeRegister = legeRegister;
-
+        legeRegister = system.getLegeRegister();
         legelabel = new JLabel("Legenavn   ");
         legedatafelt = new JTextField(20);
         legedatafelt.setText("Velg lege ved å på knappen til høyre");
@@ -124,7 +123,6 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     // Metode for å velge en lege
     public void VelgLege()
     {
-        legeRegister = system.getLegeRegister();
         VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:",
                 "Velg lege", legeRegister.getListModel());
         velgLege.setLocationRelativeTo(this);
