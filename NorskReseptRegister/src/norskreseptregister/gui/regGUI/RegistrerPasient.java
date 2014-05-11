@@ -1,7 +1,7 @@
 /*
 Filen inneholder klassen RegistrerPasient.
 Laget av Henrik Fischer Bjelland, Haakon Winther
-Sist endret 09-04-2014 
+Sist endret 11-05-2014 
 */
 
 package norskreseptregister.gui.regGUI;
@@ -16,7 +16,7 @@ import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.Reg.PasientRegister;
 
-//
+// RegistrerPasient er en subklasse av RegistrerPersonGUI. Klassen er ment for å kunne registrere en Pasient
 public class RegistrerPasient extends RegistrerPersonGUI implements ActionListener
 {
     private PasientRegister pasientRegister;
@@ -26,11 +26,12 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
         super("Fødselsdato", "dd/mm/åååå");
         this.pasientRegister = pasientRegister;       
         reg.addKeyListener( new Knappelytter());
-        
- 
-    }//end of konstruktør
+    }
     
-    //
+    /* 
+    Metode som sjekker om feltene er fylt ut korrekt, gir en feilmelding hvis de 
+    ikke er og registrerer pasienten i registeret hvis alt er riktig fylt inn.
+    */
     private void nyPasient()
     {
         if(sjekkFornavn(fornavnfelt.getText()) && sjekkEtternavn(etternavnfelt.getText())
@@ -52,7 +53,7 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
         }
     }
     
-    //
+    // Metode for å skrive ut alle pasientene i registeret. 
     private void SkrivUt()
     {
         String pasientliste = "";
@@ -64,52 +65,9 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
         }
         utskrift.setText(pasientliste);
     }
+
     
-    //RegEx for fornavn
-    public boolean sjekkFornavn(String fornavn)
-    {  
- 
-        if(fornavn.matches("^[a-zøæåéA-ZØÆÅ. \\-]{2,20}"))
-        {
-            return true;
-        }
-        else
-        {
-            utskrift.setText("Fornavnet må være kun bokstaver.");
-            return false;
-        } 
-    }
-    
-    //RegEx for etternavn
-    public boolean sjekkEtternavn(String etternavn)
-    {
-        
-        if(etternavn.matches("^[a-zøæåéA-ZØÆÅ. \\-]{2,20}"))
-        {
-            return true;
-        }
-        else
-        {
-            utskrift.setText("Etternavnet må være kun bokstaver.");
-            return false;
-        }
-    }
-    
-    //Metode for å sjekke adresse
-    public boolean sjekkFodselsdato(String fodselsdato)
-    {
-       if(infofelt.getText().matches("\\d.*"))
-        {
-            return true;
-        }
-        else
-        {
-            utskrift.setText("Feilmelding for fødselsdato.");
-            return false;
-        }
-    }
-    
-    //
+    // Metode for å lytte på hvilken knapp som er trykket på og kaller deretter på en spesifikk metode
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == reg)
@@ -117,14 +75,14 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
             nyPasient();
             TomFelt();
         }
-        else if (e.getSource() == hjelper)
+        else if (e.getSource() == hjelp)
         {
             JOptionPane.showMessageDialog(null, "HJELP PASIENT");
         }
     }
     
-    //
-    class Knappelytter implements KeyListener
+    // Privat lytteklasse som gjør det mulig og trykke på ENTER-tasten under registrering i stede for å bruke musen
+    private class Knappelytter implements KeyListener
     {
       public void keyPressed(KeyEvent e){
           if(e.getKeyCode()== KeyEvent.VK_ENTER){

@@ -19,12 +19,14 @@ import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-// LoggInn er et JFrame vindu som dukker opp hvis du trykker på adminsiden.
+/* LoggInn er et JFrame vindu som dukker opp hvis du trykker på adminknappen.
+Klassen har som formål å kunne åpne adimnvinduet hvis du har tastet inn riktig passord og brukernavn.
+*/
 public class LoggInn extends JFrame
 {
     private JButton loggInn;
     private JPanel panel1;
-    private JLabel label1, label2, label3,label4;
+    private JLabel label1, label2, label3, label4;
     private JTextField brukerfelt;
     private JPasswordField passordfelt;
     private final RegisterSystem system;
@@ -35,30 +37,33 @@ public class LoggInn extends JFrame
         super("Login vindu");
         this.system = system;
         this.medisinliste = medisinliste;
+        
         loggInn = new JButton("Logg inn");
-        panel1 = new JPanel();
+        loggInn.setBounds(130, 120, 80, 20);
+        
         brukerfelt = new JTextField(15);
+        brukerfelt.setBounds(90, 50, 150, 20);
+        
         passordfelt = new JPasswordField(15);
         passordfelt.addKeyListener(new Knappelytter());
-        
+        passordfelt.setBounds(90, 85, 150, 20);
+
         label1 = new JLabel("Denne siden er kun for helsedirektoratet.");
+        label1.setBounds(20, 10, 300, 30);
+        
         label2 = new JLabel("Brukernavn:");
+        label2.setBounds(10, 50, 100, 20);
+        
         label3 = new JLabel("Passord:");
+        label3.setBounds(10, 85, 100, 20);
+        
         label4 = new JLabel("Feil brukernavn eller passord. Prøv igjen!");
         label4.setForeground(Color.red);
-        setSize(300, 200);
-        setLocation(500, 280);
-        panel1.setLayout(null);
-
-        label1.setBounds(20, 10, 300, 30);
-        label2.setBounds(10, 50, 100, 20);
-        label3.setBounds(10, 85, 100, 20);
-        label4.setBounds(170, 120, 80, 20);
-        brukerfelt.setBounds(90, 50, 150, 20);
-        passordfelt.setBounds(90, 85, 150, 20);
-        loggInn.setBounds(130, 120, 80, 20);
         label4.setBounds(23, 150, 300, 20);
-
+        label4.setVisible(false);
+        
+        panel1 = new JPanel();
+        panel1.setLayout(null);
         panel1.add(label1);
         panel1.add(label2);
         panel1.add(label3);
@@ -66,16 +71,17 @@ public class LoggInn extends JFrame
         panel1.add(passordfelt);
         panel1.add(loggInn);
         panel1.add(label4);
-        
-        label4.setVisible(false);
 
         getContentPane().add(panel1);
+        setSize(300, 200);
+        setLocation(500, 280);
+        setLocationRelativeTo(null);
         setVisible(true);
-        actionlogin();
+        loggInn();
     }
 
     // Metode for logge inn, hvis if setningen blir true lages det et nytt Admin vindu.
-    private void actionlogin()
+    private void loggInn()
     {
         loggInn.addActionListener(new ActionListener()
         {
@@ -104,13 +110,13 @@ public class LoggInn extends JFrame
             }
         });
     }
-    
+
     // Prøvde å få til å kunne trykke enter men det funker ikke
     class Knappelytter implements KeyListener
     {
-      public void keyPressed(KeyEvent e)
-      {
-          if(e.getKeyCode()== KeyEvent.VK_ENTER)
+        public void keyPressed(KeyEvent e)
+        {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER)
             {
                 String brukernavn = brukerfelt.getText();
                 String passord = passordfelt.getText();
@@ -126,9 +132,9 @@ public class LoggInn extends JFrame
                     dispose();
                 }
                 //EasterEgg
-                if(brukernavn.equals("kaveh") && passord.equals("medisin"))
+                if (brukernavn.equals("kaveh") && passord.equals("medisin"))
                 {
-                    Desktop d=Desktop.getDesktop();
+                    Desktop d = Desktop.getDesktop();
                     try
                     {
                         URI uri = new URI("https://www.youtube.com/watch?v=1SwcQDjLzJU");
@@ -142,7 +148,7 @@ public class LoggInn extends JFrame
                     {
                         label4.setVisible(true);
                     }
-                }
+                } 
                 else
                 {
                     label4.setVisible(true);
@@ -151,19 +157,18 @@ public class LoggInn extends JFrame
                     brukerfelt.requestFocus();
                 }
             }
-          
-      };
-
+        };
+        
         @Override
         public void keyTyped(KeyEvent e)
         {
-            
+
         }
 
         @Override
         public void keyReleased(KeyEvent e)
         {
-            
+
         }
     }
 }//end of class LoggInn

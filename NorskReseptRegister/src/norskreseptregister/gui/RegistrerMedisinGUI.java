@@ -43,9 +43,9 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         hjelp = new JButton("?");
         hjelp.addActionListener(this);        
         hjelp.setPreferredSize(new Dimension(20, 20));
+        hjelp.setToolTipText("Trenger du hjelp?" );
         
         utskrift = new JTextArea(20, 20);
-        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
         utskrift.setEditable(false);
         utskrift.setLineWrap(true);
         utskrift.setWrapStyleWord(true);
@@ -207,9 +207,13 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         }
         if(e.getSource() == hjelp)
         {
+<<<<<<< HEAD
             JOptionPane.showMessageDialog(null, "Her kan man registrere inn en ny medisin."
                     + "\nViktig at riktig ATC nummer og reseptgruppe er korrekt. Sjekk "
                     + "\nbrukerveiledningen for mer info. ");
+=======
+            
+>>>>>>> FETCH_HEAD
         }
     }
 }//end of class MedisinGUI

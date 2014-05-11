@@ -1,9 +1,7 @@
 /*
  Filen inneholder klassen VelgPasientGUI.
- Klassen er ment for å lage et JDialog vindu med alle objektene for enten Pasient, Lege eller medisin
- utifra hvilke metode som blir kalt.
  Laget av  Henrik Fischer Bjelland
- Sist endret 27-04-2014  
+ Sist endret 11-05-2014  
  */
 package norskreseptregister.gui.regGUI;
 
@@ -21,11 +19,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import javax.swing.*;
 
+// 
 public class VelgFraListeGUI extends JDialog
 {
     private JList<String> navneliste;
     private JButton ok, avbryt;
-    //private Navnevalg forelder;
     private Knappelytter kLytter;
     private Muselytter mLytter;
     private int valgtIndex;
@@ -38,11 +36,10 @@ public class VelgFraListeGUI extends JDialog
     
     public VelgFraListeGUI(String listeOver, String velg, DefaultListModel<String> model, boolean multipleSelection)
     {
-        //forelder = f;
         setModal(true);
         sortertModel = new SortertListModel(model);     // Vis alfabetisk sortert liste
         navneliste = new JList<>(sortertModel);
-        //Sjekket om blablabla
+        //Sjekker her om brukeren skal kunne velge flere objekter fra listen
         if (multipleSelection)
         {
             navneliste.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);   
@@ -54,8 +51,6 @@ public class VelgFraListeGUI extends JDialog
         valgtIndex = -1;
         navneliste.setSelectedIndex(0);
         String startnavn = navneliste.getSelectedValue();
-        //forelder.settNavn(startnavn);
-
         JPanel listepanel = new JPanel();
         listepanel.setLayout(new BoxLayout(listepanel,
                 BoxLayout.PAGE_AXIS));
@@ -94,8 +89,7 @@ public class VelgFraListeGUI extends JDialog
         c.add(listepanel, BorderLayout.CENTER);
         c.add(knappepanel, BorderLayout.PAGE_END);
         pack();
-    //sikrer at det valgte navnet er synlig i navnelista når 
-        //dialogvinduet blir åpnet:
+        //sikrer at det valgte navnet er synlig i navnelista når dialogvinduet blir åpnet:
         navneliste.ensureIndexIsVisible(valgtIndex);
     }//end of Konstruktør
 
@@ -104,7 +98,7 @@ public class VelgFraListeGUI extends JDialog
     {
         if (valgtIndex >= 0)
         {
-            // Returner original (usortert) index, dvs indeksen fra *Register eller Medisinliste
+            // Returner original (usortert) index, dvs indeksen fra Register eller Medisinliste
             return sortertModel.getOriginalIndex(valgtIndex);
         }
         return -1;
@@ -146,7 +140,6 @@ public class VelgFraListeGUI extends JDialog
     }
 
     // Klasse for å sammenligne to "StringOgIndex", slik at vi kan sortere dem alfabetisk
-    // (Se ArrayList.sort()
     private class MinComparator implements Comparator<StringOgIndex>
     {
         public int compare(StringOgIndex o1, StringOgIndex o2)
@@ -155,13 +148,16 @@ public class VelgFraListeGUI extends JDialog
         }
     }
 
-    // Sortert listemodell for navneListe
-    // Har metode getOriginalIndex() for å konvertere fra sortert indeks til original indeks.
-    // (Pasient-, Lege- og ReseptRegister pluss Medisinliste bruker de originale indeksene)
+    /*
+    Sortert listemodell for navneListe.
+    Klassen har metode getOriginalIndex() for å konvertere fra sortert indeks til original indeks.
+    (Pasient-, Lege- og ReseptRegister pluss Medisinliste bruker de originale indeksene)
+    */
     private class SortertListModel extends DefaultListModel<String>
     {
         private final ArrayList<StringOgIndex> sortertListe;
 
+        // Metode for å konvertere fra sortert indeks til original indeks.
         public SortertListModel(DefaultListModel<String> modelInn)
         {
             sortertListe = new ArrayList<>();
@@ -178,7 +174,7 @@ public class VelgFraListeGUI extends JDialog
             }
         }
 
-        // 
+        // Metode for å hente original indeks
         public int getOriginalIndex(int sortertIndex)
         {
             // ArrayLista "sortertListe" er 1:1 til den sorterte JList-en "navneListe"
@@ -187,7 +183,7 @@ public class VelgFraListeGUI extends JDialog
         }
     }
 
-    // Privat lytteklassse som lytter på om knappene er trykket på. 
+    // Privat lytteklassse som lytter på hvilke knapp er trykket på.
     private class Knappelytter implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
@@ -214,10 +210,10 @@ public class VelgFraListeGUI extends JDialog
             {
                 ok.doClick();  //samme effekt som å klikke på ok-knappen
             }
-            
         }
     }
         
+    // Privat lytteklasse som gjør det mulig å trykke ENTER-tasten i stede for å måtte trykke med musen.
     private class Knappelytter2 implements KeyListener
     {
       public void keyPressed(KeyEvent e){

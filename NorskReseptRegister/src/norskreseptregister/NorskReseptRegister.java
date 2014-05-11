@@ -12,6 +12,7 @@ import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
+// NorskReseptRegister er der mainmetoden 
 public class NorskReseptRegister
 {
     //Dette er main-metoden der hovedVindu blir kalt og programmet starer

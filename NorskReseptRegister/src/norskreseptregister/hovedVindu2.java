@@ -8,6 +8,7 @@
 package norskreseptregister;
 
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -18,6 +19,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -52,7 +55,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
         registreringVindu.addActionListener(this);
         infoVindu.addActionListener(this);
         
-        tekstLabel = new JLabel("Velkommen til Norsk ReseptRegister.");
+        tekstLabel = new JLabel("Velkommen til Norsk Reseptregister.");
         tekstLabel.setFont(new Font ("PT Serif", Font.PLAIN, 17));
         
         label1 = new JLabel("Admin");
@@ -148,6 +151,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
         brukerValg = new JMenuItem("Brukerveiledning");
         brukerValg.setAccelerator(KeyStroke.getKeyStroke(
         KeyEvent.VK_B,ActionEvent.ALT_MASK));
+        brukerValg.addActionListener(this);
         
         
         valg.add(adminValg);
@@ -215,6 +219,21 @@ public class hovedVindu2 extends JFrame implements ActionListener
         {
             InfoMainGUI infoG = new InfoMainGUI(system, medisinliste);
             visGUI(infoG);
+        }
+        else if (e.getSource() == brukerValg)
+        {
+            if (Desktop.isDesktopSupported())
+            {
+                try
+                {
+                    File myFile = new File("src/kravspesifikasjon.pdf");
+                    Desktop.getDesktop().open(myFile);
+                } 
+                catch (IOException ex)
+                {
+                    JOptionPane.showMessageDialog(null, "Systemet ditt støtter ikke visning av pdf-filer.");
+                }
+}
         }
         else if(e.getSource() == avsluttValg)
         {
