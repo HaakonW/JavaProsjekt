@@ -1,7 +1,5 @@
 /*
 Filen inneholder AdminMainHjemGUI klassen. 
-Dette er det første vinduet du kommer til hvis du åpner Admin siden.
-Her får du oversikt over hvilke funksjoner du kan gjøre i Adminvinduet.
 Laget av Henrik Fischer Bjelland
 Sist endret  09-04-2014
 */
@@ -14,7 +12,10 @@ import static java.awt.font.TextAttribute.FONT;
 import javax.swing.*;
 import norskreseptregister.Reg.RegisterSystem;
 
-class AdminMainHjemGUI extends JPanel implements ActionListener
+/* AdminMainHjemGUI er det første vinduet du kommer til hvis du åpner Admin siden.
+Her får du oversikt over hvilke funksjoner du kan gjøre i Adminvinduet.
+*/
+public class AdminMainHjemGUI extends JPanel implements ActionListener
 {
     private JPanel panel1, panel2;
     private JLabel label1, label2, label3;
@@ -92,9 +93,9 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
         gc.gridy = y;
         add(label3, gc);
         
-    }//end of konstruktør
+    }// end of konstruktør
     
-    //Metode for å lytte på om knapp1 eller knapp2 er trykket på
+    // Metode for å lytte på om knapp1 eller knapp2 er trykket på
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == endreLisens)
@@ -111,4 +112,4 @@ class AdminMainHjemGUI extends JPanel implements ActionListener
         }
     }
 
-}//end of class AdminMainHjemGUI
+}// end of class AdminMainHjemGUI

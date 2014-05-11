@@ -1,6 +1,5 @@
 /*
- Filen inneholder GUI for å kunne registere en medisin og legge de i en 
- egenopprettet liste.
+ Filen inneholder klassen RegistrerMedisinGUI.
  Laget av Peter Wilhelmsen, Henrik Fischer Bjelland, Haakon Winther
  Sist endret 11-05-14
  */
@@ -13,6 +12,7 @@ import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 
+//RegistrerMedisinGUi er for å kunne registere en medisin og legge de i en egenopprettet liste.
 public class RegistrerMedisinGUI extends JPanel implements ActionListener
 {
     private Medisinliste medisinliste;
@@ -129,7 +129,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         knappegruppe.add(c);
     }
 
-    //Registrere ny medisin 
+    // Registrere ny medisin 
     public Medisin nyMedisin()
     {
         if (sjekkMedisin(regNavnFelt.getText()))
@@ -143,8 +143,10 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         return null;
     }
     
-    /*Metoden setter Medisin i en bestemt gruppe (a, b eller c) 
-    avneging av hvilken knapp som er huket av*/
+    /*
+    Metoden setter Medisin i en bestemt gruppe (a, b eller c) 
+    avneging av hvilken knapp som er huket av
+    */
     public void SetMedisinGruppe(Medisin medisin)
     {
         if (a.isSelected())
@@ -161,13 +163,13 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         }
     }
     
-    //Metoden viser hele medisinlisten i tekstfeltet Utskrift.
+    // Metoden viser hele medisinlisten i tekstfeltet Utskrift.
     public void visRegister()
     {
         utskrift.setText(medisinliste.toString());
     }
     
-    //Metoden tømmer feltene for Navn og Atc nummer.
+    // Metoden tømmer feltene for Navn og Atc nummer.
     public void tomFelter()
     {
         regNavnFelt.setText("");
@@ -177,7 +179,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         c.setSelected(false);
     }
     
-    //Metode for å sjekke om medisinnavn består av bokstaver
+    // Metode for å sjekke om medisinnavn består av bokstaver
     public boolean sjekkMedisin(String medisin)
     {  
  
@@ -192,8 +194,10 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         } 
     }
     
-    /*Metoden lytter på hvilke knapp som er trykket på og utfører metodekall
-    utfra hvilken knapp som er valgt*/
+    /*
+    Metoden lytter på hvilke knapp som er trykket på og utfører metodekall
+    utfra hvilken knapp som er valgt
+    */
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == regMedisin)

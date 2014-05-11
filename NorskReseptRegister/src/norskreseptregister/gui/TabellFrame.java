@@ -1,9 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Filen inneholder klassen TabellFrame.
+ Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
+ Sist endret 11-05-14
  */
-
 package norskreseptregister.gui;
 
 import java.awt.BorderLayout;
@@ -24,7 +23,9 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
-// Legger tabellen inn i en frame
+/* 
+Klassen har metoder for ...
+*/
 public class TabellFrame extends JPanel
 {
     public Radalterneringstabell tabellet;
@@ -62,17 +63,13 @@ public class TabellFrame extends JPanel
         frame.setVisible(true);
     }
     
-    //For å printe
-    class printeLytter implements ActionListener
+    // Metode For å printe tabellen
+    public class printeLytter implements ActionListener
     {
         public void actionPerformed( ActionEvent e)
         {
             try
             {
-                /*tabellet.print(JTable.PrintMode.NORMAL,
-                        new MessageFormat("Medisinstatistikk"),
-                        new MessageFormat("side{0,number}"));
-                Dinne kan sette topptekst og bunntekst tror e*/
                 tabellet.print(JTable.PrintMode.NORMAL);
             }
             catch(PrinterException pep)
@@ -81,7 +78,7 @@ public class TabellFrame extends JPanel
             }
         }
     }
-}
+} // end of class TabellFrame
 
 // Setter farge på annenhver rad i tabellen
 class Radalterneringstabell extends JTable
@@ -105,7 +102,7 @@ class Radalterneringstabell extends JTable
         getColumnModel().getColumn(12).setPreferredWidth(70);
     }
     
-    //
+    // 
     public void print(Graphics g)
     {
         printUt = true;
@@ -143,4 +140,4 @@ class Radalterneringstabell extends JTable
         }
         return c;
     }
-}
+} // end of class Radalterneringstabell

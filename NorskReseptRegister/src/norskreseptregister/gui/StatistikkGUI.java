@@ -1,7 +1,5 @@
 /*
  Filen inneholder klassen StatistikkGUI.
- Klassen har metoder for å velge en medisin og et årstall og deretter skrive ut 
- en tabell over medisinforbruket i løpet av det valgte året. 
  Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
  Sist endret 03-05-14
  */
@@ -23,7 +21,10 @@ import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.info.FinnReseptForMedisin;
 import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
-// 
+/*
+ Klassen har metoder for å velge en medisin og et årstall og deretter skrive ut 
+ en tabell over medisinforbruket i løpet av det valgte året. 
+*/
 public class StatistikkGUI extends JPanel implements ActionListener
 {
     private JLabel velgAar;
@@ -78,8 +79,8 @@ public class StatistikkGUI extends JPanel implements ActionListener
         panel3 = new JPanel();
         panel3.add(utskriftscroll);
         
-        /* Her starter layouten for statestikk til Admin.  */
-
+        /* Her starter layouten for registrer en person. Sjekk
+         produktdokumentasjonen for forklaring av layouten*/
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
 
@@ -129,7 +130,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         }
     }
     
-    //
+    // 
     public void visStatistikk()
     {
         if (valgteMedisiner != null)
@@ -159,7 +160,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         }
     }
     
-    // Dette er dummy-data for statistikk som kommer
+    // Metode som bruker 
     private Object[] finnStatistikkForMedisin(Medisin medisin, int aar)
     {
         Object[] resultat = new Object[13];

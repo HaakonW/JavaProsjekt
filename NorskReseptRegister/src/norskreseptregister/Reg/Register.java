@@ -1,8 +1,5 @@
 /*
- Filen inneholder klassen Register som er den abstrakte superklassen
- til Lege-, Pasient- og Reseptregisterne.
- Klassen har metoder for å sette inn objekter, slette objekter, hente ut et objekt utifra valgt index,
- finne objekter som matcher fra et utvalgskriteriet, skrive og lese til fil.
+ Filen inneholder klassen Register.
  Laget av Henrik Fischer Bjelland
  Sist endret 27-04-2014
  */
@@ -21,6 +18,11 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import norskreseptregister.Interface.UtvalgsKriterie;
 
+/*
+ Register er den abstrakte superklassen til Lege-, Pasient- og Reseptregisterne.
+ Klassen har metoder for å sette inn objekter, slette objekter, hente ut et objekt utifra valgt index,
+ finne objekter som matcher fra et utvalgskriteriet, skrive og lese til fil.
+ */
 public abstract class Register<T>
 {
     private ArrayList<T> list;
@@ -43,7 +45,7 @@ public abstract class Register<T>
         return list.remove(objekt);
     }
 
-    //Finner alle elemente i lista som oppfyller kriterie
+    // Finner alle elemente i lista som oppfyller kriterie
     public ArrayList FinnObjekterSomMatcher(UtvalgsKriterie<T> utvalgsKriteriet)
     {
         ArrayList<T> resultat = new ArrayList<T>();
@@ -57,7 +59,7 @@ public abstract class Register<T>
         return resultat;
     }
 
-    //Metode for å hente ut et objekt av valgt index
+    // Metode for å hente ut et objekt av valgt index
     public T HentEttObjekt(int index)
     {
         return list.get(index);
@@ -68,8 +70,8 @@ public abstract class Register<T>
     {
         return list;
     }
-    
-    //
+
+    // 
     public DefaultListModel<String> getListModel()
     {
         DefaultListModel<String> model = new DefaultListModel<>();
@@ -80,7 +82,7 @@ public abstract class Register<T>
         return model;
     }
 
-    //Metode for å skrive til en tekstfil
+    // Metode for å skrive til en tekstfil
     public void SkrivTilFil(String filNavn)
     {
         try (ObjectOutputStream utfil = new ObjectOutputStream(
@@ -88,16 +90,18 @@ public abstract class Register<T>
         {
             utfil.writeObject(list);
             //utfil.close(); //kanskje denne skal bort? unødvendig?
-        } catch (FileNotFoundException ex)
+        }
+        catch (FileNotFoundException ex)
         {
             System.out.println("Fant ikke fila");
-        } catch (IOException ioe)
+        }
+        catch (IOException ioe)
         {
             System.out.println("Kan ikke skrive til fil!");
         }
     }
 
-    //Metode for å lese fra en tekstfil.
+    // Metode for å lese fra en tekstfil.
     public void LesFraFil(String filNavn)
     {
         try (ObjectInputStream innfil = new ObjectInputStream(
@@ -105,13 +109,16 @@ public abstract class Register<T>
         {
             list = (ArrayList<T>) innfil.readObject();
             //innfil.close(); //kanskje denne skal bort? unødvendig?
-        } catch (FileNotFoundException ex)
+        }
+        catch (FileNotFoundException ex)
         {
             System.out.println("Fant ikke fila");
-        } catch (IOException ioe)
+        }
+        catch (IOException ioe)
         {
             System.out.println("Kan ikke lese fra fil!");
-        } catch (ClassNotFoundException cnfe)
+        }
+        catch (ClassNotFoundException cnfe)
         {
             System.out.println("Finner ikke klassen");
         }

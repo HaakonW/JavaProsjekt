@@ -1,6 +1,5 @@
 /*
-Filen inneholder klassen LegeLisensGUI. Klassen er ment for å kunne velge en lege og endre lisensen
-på denne legen.
+Filen inneholder klassen LegeLisensGUI.
 Laget av  Haakon Winther, Henrik Fischer Bjelland
 Sist endret 22-04-2014
  */
@@ -16,6 +15,7 @@ import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.regGUI.RegistrerResept;
 import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
+// LegeLisensGUI er ment for å kunne velge en lege og endre lisensen på denne legen.
 public class LegeLisensGUI extends JPanel implements ActionListener
 {
     private JLabel navnlabel, lisenslabel;
@@ -122,7 +122,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         gc.gridy = 6;
         add(hjelp, gc);
 
-    }//end of konstruktør LegeLisensGUI
+    }// end of konstruktør LegeLisensGUI
     
     //Denne metoden søker igjennom hele legeregisterer og viser et nytt vindu med alle legene der du kan velge en av disse.
     // Hvis valgtIndex er større en 0 har brukeren faktisk har gjort et valg
@@ -143,7 +143,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         }
     }
     
-    //Metode som getter bevillingen til en lege og setter denne i checkboksene avhenging av resultatet
+    // Metode som getter bevillingen til en lege og setter denne i checkboksene avhenging av resultatet
     public void setKnapperForBevilling()
     {
         a.setSelected(lege.getBevillingA());
@@ -151,7 +151,8 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         c.setSelected(lege.getBevillingC());
     }
     
-    /*Metoden sjekker om noen av JCheckboxene er trykket på og endrer
+    /*
+    Metoden sjekker om noen av JCheckboxene er trykket på og endrer
     bevilligen til false hvis de ikke er huket av. Den skriver også ut informasjon i tekstfeltet 
     om hvilke endringer som har blitt gjort.
     */
@@ -165,7 +166,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         lege.getBevilling());
     }
     
-    //Metode for å slette en lege
+    // Metode for å slette en lege
     private void slettLege()
     {
         if ( lege != null)
@@ -181,7 +182,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
             utskrift.setText("Du må velge en lege først");
         }
     }
-    //Metodene som lytter på knappene og utfører de forskjellige metodene i programmet.
+    // Metodene som lytter på knappene og utfører de forskjellige metodene i programmet.
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == velgLege)

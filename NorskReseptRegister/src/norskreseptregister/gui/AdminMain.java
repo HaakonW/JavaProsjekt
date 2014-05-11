@@ -1,6 +1,5 @@
 /*
- Filen inneholder klassen AdminMain. 
- Klassen inneholder tabsene
+ Filen inneholder klassen AdminMain.
  Laget av  Peter Wilhelmsen, Haakon Winter, Henrik Fischer Bjelland
  Sist endret 09-04-2014
  */
@@ -16,6 +15,7 @@ import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 
+// Klassen inneholder tabsene
 public class AdminMain extends JPanel
 {
     private JTabbedPane tabbedPane;
@@ -27,7 +27,7 @@ public class AdminMain extends JPanel
     private Medisinliste medisinliste;
     private MedisinTabell medisintabell;
 
-    //Newer opp GUI klasser og legger disse til å forskjellige tabbedPanes
+    // Newer opp GUI klasser og legger disse til å forskjellige tabbedPanes
     public AdminMain(RegisterSystem system, Medisinliste medisinliste)
     {
         this.system = system;
@@ -50,7 +50,7 @@ public class AdminMain extends JPanel
 
     }
 
-    //Get metode for TabbedPane
+    // Get metode for TabbedPane
     public JTabbedPane getTabbedPane()
     {
         return tabbedPane;

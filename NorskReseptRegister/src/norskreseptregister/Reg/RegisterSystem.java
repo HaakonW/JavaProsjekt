@@ -1,11 +1,11 @@
 /*
- Filen inneholder klassen RegisterSystem og inneholder alle registerne våre.
- Her er også metoden for å skrive og lese til fil.
+ Filen inneholder klassen RegisterSystem
  Laget av Henrik Fischer Bjelland
  Sist endret 22-04-2014
  */
 package norskreseptregister.Reg;
 
+// Registersystem inneholder lege-,pasient- og reseptregisterne. Her er også metoden for å skrive og lese til fil.
 public class RegisterSystem
 {
     private LegeRegister legeRegister;
