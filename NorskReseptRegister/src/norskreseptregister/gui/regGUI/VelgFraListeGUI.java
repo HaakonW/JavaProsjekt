@@ -33,7 +33,7 @@ public class VelgFraListeGUI extends JDialog
     {
         this(listeOver, velg, model, false);
     }
-    
+
     public VelgFraListeGUI(String listeOver, String velg, DefaultListModel<String> model, boolean multipleSelection)
     {
         setModal(true);
@@ -42,11 +42,11 @@ public class VelgFraListeGUI extends JDialog
         //Sjekker her om brukeren skal kunne velge flere objekter fra listen
         if (multipleSelection)
         {
-            navneliste.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);   
+            navneliste.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         }
         else
         {
-            navneliste.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);   
+            navneliste.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         }
         valgtIndex = -1;
         navneliste.setSelectedIndex(0);
@@ -82,8 +82,8 @@ public class VelgFraListeGUI extends JDialog
         avbryt.addActionListener(kLytter);
         mLytter = new Muselytter();
         navneliste.addMouseListener(mLytter);
-        
-        ok.addKeyListener( new Knappelytter2());
+
+        ok.addKeyListener(new Knappelytter2());
 
         Container c = getContentPane();
         c.add(listepanel, BorderLayout.CENTER);
@@ -150,10 +150,10 @@ public class VelgFraListeGUI extends JDialog
     }
 
     /*
-    Sortert listemodell for navneListe.
-    Klassen har metode getOriginalIndex() for å konvertere fra sortert indeks til original indeks.
-    (Pasient-, Lege- og ReseptRegister pluss Medisinliste bruker de originale indeksene)
-    */
+     Sortert listemodell for navneListe.
+     Klassen har metode getOriginalIndex() for å konvertere fra sortert indeks til original indeks.
+     (Pasient-, Lege- og ReseptRegister pluss Medisinliste bruker de originale indeksene)
+     */
     private class SortertListModel extends DefaultListModel<String>
     {
         private final ArrayList<StringOgIndex> sortertListe;
@@ -193,7 +193,7 @@ public class VelgFraListeGUI extends JDialog
             {
                 valgtIndex = navneliste.getSelectedIndex();
                 setVisible(false);
-            } 
+            }
             else if (e.getSource() == avbryt)
             {
                 valgtIndex = -1; //
@@ -213,28 +213,31 @@ public class VelgFraListeGUI extends JDialog
             }
         }
     }
-        
+
     // Privat lytteklasse som gjør det mulig å trykke ENTER-tasten i stede for å måtte trykke med musen.
     private class Knappelytter2 implements KeyListener
     {
-      public void keyPressed(KeyEvent e){
-          if(e.getKeyCode()== KeyEvent.VK_ENTER)
-          {
-            valgtIndex = navneliste.getSelectedIndex();
-            setVisible(false);  
-          };
-      };
+        public void keyPressed(KeyEvent e)
+        {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER)
+            {
+                valgtIndex = navneliste.getSelectedIndex();
+                setVisible(false);
+            };
+        }
+
+        ;
 
         @Override
         public void keyTyped(KeyEvent e)
         {
-            
+
         }
 
         @Override
         public void keyReleased(KeyEvent e)
         {
-            
+
         }
     }
 }//end of class VelgPasientGUI

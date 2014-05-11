@@ -76,8 +76,8 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         utskriftpanel = new JPanel();
         utskriftpanel.add(utskrift);
 
-       /* Her starter layouten for registrer en person. Sjekk
-        produktdokumentasjonen for forklaring av layouten*/
+        /* Her starter layouten for registrer en person. Sjekk
+         produktdokumentasjonen for forklaring av layouten*/
 
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());

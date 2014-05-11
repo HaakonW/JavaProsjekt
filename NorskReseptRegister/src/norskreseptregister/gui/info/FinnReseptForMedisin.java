@@ -1,7 +1,7 @@
 /*
 Filen inneholder klassen FinnResepterForMedisin 
 Laget av  Henrik Fischer Bjelland
-Sist endret 22-04-2014
+Sist endret 11-05-2014
 */
 
 package norskreseptregister.gui.info;
@@ -11,7 +11,10 @@ import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
 
-
+/* 
+ FinnReseptForMedisin er et slags query som implementerer Interfacet UtvalgsKriterie av Resept.
+ Hensikten er å kunne søke etter resepter som har samme medisinnavn som den valgte medisinen.
+ */
 public class FinnReseptForMedisin implements UtvalgsKriterie <Resept>
 {
     private Medisin medisin;
@@ -21,6 +24,7 @@ public class FinnReseptForMedisin implements UtvalgsKriterie <Resept>
         this.medisin = medisin;
     }
     
+    // Metoden henter navnet på medisinen fra den innkommende resepten og sjekker om den er lik den valgte medisinen.
     public boolean objektetSkalVaereMed(Resept objekt)
     {
         String reseptMedisinNavn = objekt.getMedisin().getNavn();

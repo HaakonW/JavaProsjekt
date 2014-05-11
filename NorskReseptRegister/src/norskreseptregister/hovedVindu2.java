@@ -193,7 +193,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
         medisinliste.SkrivTilFil();
     }
     
-    //Metode
+    //Metode for å et av et vindu av valgt component ( registreringsvindu eller infovindu)
     private void visGUI(Component component) throws HeadlessException
     {
         JFrame frame = new JFrame();

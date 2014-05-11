@@ -22,7 +22,6 @@ import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
-
 //I MedisnInfoGUi kan man få informasjon om hvilke leger eller pasient som er tilknyttet en spesiell medisin
 public class MedisinInfoGUI extends JPanel implements ActionListener
 {
@@ -35,67 +34,67 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
     private final Medisinliste medisinliste;
     private final RegisterSystem system;
     private Medisin medisin;
-   
+
     public MedisinInfoGUI(RegisterSystem system, Medisinliste medisinliste)
     {
         this.system = system;
         this.medisinliste = medisinliste;
-        
+
         medisinlabel = new JLabel("Medisin");
         medisindatafelt = new JTextField(20);
         medisindatafelt.setText("Velg medisin med knappen til høyre");
         medisindatafelt.setEditable(false);
-        
+
         velgMedisin = new JButton("...");
         velgMedisin.setToolTipText("Trykk for å velge medisin");
         velgMedisin.addActionListener(this);
         velgMedisin.setPreferredSize(new Dimension(20, 20));
-        
+
         visPasient = new JButton("Vis pasienter ");
         visPasient.setToolTipText("Trykk for å velge pasient");
         visPasient.addActionListener(this);
-        
+
         visLeger = new JButton("Vis Leger");
         visLeger.setToolTipText("Trykk for å vise leger");
         visLeger.addActionListener(this);
-        
-        hjelp = new JButton ("?");
+
+        hjelp = new JButton("?");
         hjelp.setToolTipText("Trykk her for å få hjelp");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
-        
-        utskrift = new JTextArea(20,20);
-        utskrift.setEditable(false); 
+
+        utskrift = new JTextArea(20, 20);
+        utskrift.setEditable(false);
         utskrift.setLineWrap(true);
         utskrift.setWrapStyleWord(true);
-        
+
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         medisinpanel = new JPanel();
         medisinpanel.add(medisinlabel);
-        medisinpanel.add(medisindatafelt); 
+        medisinpanel.add(medisindatafelt);
         medisinpanel.add(velgMedisin);
-        medisinpanel.setBorder(BorderFactory.createEtchedBorder());  
+        medisinpanel.setBorder(BorderFactory.createEtchedBorder());
 
         knappepanel = new JPanel();
-        knappepanel.add(visPasient);  
+        knappepanel.add(visPasient);
         knappepanel.add(visLeger);
-        knappepanel.setBorder(BorderFactory.createEtchedBorder());    
+        knappepanel.setBorder(BorderFactory.createEtchedBorder());
 
         /* Her starter layouten for registrer en person. Sjekk
-        produktdokumentasjonen for forklaring av layouten*/
+         produktdokumentasjonen for forklaring av layouten*/
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
-        
+
         int x = 0;
         int y = 0;
-        
+
         gc.gridx = x;
         gc.gridy = y;
-        gc.insets = new Insets(5, 10, 5, 10);       
+        gc.insets = new Insets(5, 10, 5, 10);
         gc.fill = GridBagConstraints.HORIZONTAL;
-        add(medisinpanel, gc);   
+        add(medisinpanel, gc);
 
         gc.gridx = x;
         gc.gridy = ++y;
@@ -110,11 +109,11 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         gc.gridy = 6;
         add(hjelp, gc);
     }
-    
+
     // Metode for å velge medisin
     private void VelgMedisin()
     {
-        VelgFraListeGUI velgMedisin = new VelgFraListeGUI("Liste over alle medisiner:", 
+        VelgFraListeGUI velgMedisin = new VelgFraListeGUI("Liste over alle medisiner:",
                 "Velg medisin", medisinliste.getListModel());
         velgMedisin.setLocationRelativeTo(this);
         velgMedisin.setVisible(true);
@@ -125,14 +124,14 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
             medisindatafelt.setText(medisin.getNavn());
         }
     }
-    
+
     // Metode for å vise hvilke pasienter som har mottat en valgt medisin
     private void visPasienter()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
-        ArrayList <Resept> resepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
-        HashMap <String, Resept> unikePasientResepter = new HashMap<>(); 
-        String pasienter="";
+        ArrayList<Resept> resepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
+        HashMap<String, Resept> unikePasientResepter = new HashMap<>();
+        String pasienter = "";
         for (Resept r : resepter)
         {
             unikePasientResepter.put(r.getPasient().getNavn(), r);
@@ -143,14 +142,14 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
         utskrift.setText("Pasienter som har mottat " + medisin.getNavn() + ":\n" + pasienter);
     }
-    
+
     // Metode for å vise hvilke leger som har skrevet ut en spesiell medisin
     private void visLeger()
     {
         FinnReseptForMedisin query = new FinnReseptForMedisin(medisin);
-        ArrayList <Resept> resepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
-        HashMap <String, Resept> unikeLegeResepter = new HashMap<>();
-        String leger="";
+        ArrayList<Resept> resepter = system.getReseptRegister().FinnObjekterSomMatcher(query);
+        HashMap<String, Resept> unikeLegeResepter = new HashMap<>();
+        String leger = "";
         for (Resept r : resepter)
         {
             unikeLegeResepter.put(r.getLege().getNavn(), r);
@@ -161,7 +160,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
         utskrift.setText("Leger som har skrevet ut " + medisin.getNavn() + ":\n" + leger);
     }
-    
+
     // Metode for å lytte på hvilken knapp som er trykket på og kaller deretter på en spesifikk metode
     public void actionPerformed(ActionEvent e)
     {
@@ -180,7 +179,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         else if (e.getSource() == hjelp)
         {
             JOptionPane.showMessageDialog(null, "HJELP Medisininfo");
-        } 
+        }
     }
-    
+
 }//end of class LegeInfoGUI

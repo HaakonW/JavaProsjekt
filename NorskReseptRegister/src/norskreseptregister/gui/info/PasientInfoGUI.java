@@ -22,9 +22,9 @@ import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
 /* 
-PasientInfoGUI har som formål å kunne vise hvilke resepter en valgt 
-pasient har mottat og vise alle pasientene i registeret.
-*/
+ PasientInfoGUI har som formål å kunne vise hvilke resepter en valgt 
+ pasient har mottat og vise alle pasientene i registeret.
+ */
 public class PasientInfoGUI extends JPanel implements ActionListener
 {
     private JTextField pasientdatafelt;
@@ -55,7 +55,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         visResepteriGruppe = new JButton("Vis resepter");
         visResepteriGruppe.setToolTipText("Trykk for å vise resepter");
         visResepteriGruppe.addActionListener(this);
-        
+
         a = new JCheckBox("A", true);
         b = new JCheckBox("B", true);
         c = new JCheckBox("C", true);
@@ -74,7 +74,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         utskrift.setEditable(false);
-     
+
         pasientpanel = new JPanel();
         pasientpanel.add(pasientlabel);
         pasientpanel.add(pasientdatafelt);
@@ -89,7 +89,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         checkboxpanel.add(visResepteriGruppe);
 
         /* Her starter layouten for registrer en person. Sjekk
-        produktdokumentasjonen for forklaring av layouten*/
+         produktdokumentasjonen for forklaring av layouten*/
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
 
@@ -117,7 +117,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
 
         gc.gridx = ++x;
         gc.gridy = 6;
-        add(hjelp, gc); 
+        add(hjelp, gc);
     }//end of Konstruktør
 
     // Metode for velge pasient
@@ -140,11 +140,11 @@ public class PasientInfoGUI extends JPanel implements ActionListener
     private void visAllePasienter()
     {
         String legeliste = "";
-        List <Pasient> list = system.getPasientRegister().FinnAlleObjekter();
+        List<Pasient> list = system.getPasientRegister().FinnAlleObjekter();
         for (Pasient pasient : list)
         {
-            legeliste+= pasient.toString();
-            legeliste +="\n\n";
+            legeliste += pasient.toString();
+            legeliste += "\n\n";
         }
         utskrift.setText(legeliste);
     }
@@ -152,23 +152,23 @@ public class PasientInfoGUI extends JPanel implements ActionListener
     // Metoden viser hvilke resepter en spesifikk lege har skrevet ut
     public void visResepterForPasient()
     {
-        if ( pasient != null)
+        if (pasient != null)
         {
-                FinnResepterForPasientIReseptGruppe query = new FinnResepterForPasientIReseptGruppe(
-                        pasient, a.isSelected(), b.isSelected(), c.isSelected() );
-                ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
-                String alleResepterForPasient ="";
-                for (Resept r : reseptene)
-                {
-                    alleResepterForPasient += r.toString() + "\n-----------------\n";
-                }
-                utskrift.setText("Fant følgende resepter for :\n"
-                        + pasient.getNavn() + "\n-----------------\n" + alleResepterForPasient);
-        }           
+            FinnResepterForPasientIReseptGruppe query = new FinnResepterForPasientIReseptGruppe(
+                    pasient, a.isSelected(), b.isSelected(), c.isSelected());
+            ArrayList<Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
+            String alleResepterForPasient = "";
+            for (Resept r : reseptene)
+            {
+                alleResepterForPasient += r.toString() + "\n-----------------\n";
+            }
+            utskrift.setText("Fant følgende resepter for :\n"
+                    + pasient.getNavn() + "\n-----------------\n" + alleResepterForPasient);
+        }
         else
         {
-            utskrift.setText("Du må velge en lege for å skrive ut");  
-        }  
+            utskrift.setText("Du må velge en lege for å skrive ut");
+        }
     }
 
     // Metode for å lytte på hvilken knapp som er trykket på og kaller deretter på en spesifikk metode
@@ -188,9 +188,9 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "Pasient info. \n"+
-                                                 "Velg lege ved å trykke på ...\n" +
-                                                  "For mere informasjon trykk HER");
+            JOptionPane.showMessageDialog(null, "Pasient info. \n"
+                    + "Velg lege ved å trykke på ...\n"
+                    + "For mere informasjon trykk HER");
         }
     }
 }// end of class LegeInfoGUI

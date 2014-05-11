@@ -1,9 +1,8 @@
 /*
-Filen inneholder klassen RegistrerPasient.
-Laget av Henrik Fischer Bjelland, Haakon Winther
-Sist endret 11-05-2014 
-*/
-
+ Filen inneholder klassen RegistrerPasient.
+ Laget av Henrik Fischer Bjelland, Haakon Winther
+ Sist endret 11-05-2014 
+ */
 package norskreseptregister.gui.regGUI;
 
 import java.awt.event.ActionEvent;
@@ -20,25 +19,25 @@ import norskreseptregister.Reg.PasientRegister;
 public class RegistrerPasient extends RegistrerPersonGUI implements ActionListener
 {
     private PasientRegister pasientRegister;
-    
+
     public RegistrerPasient(PasientRegister pasientRegister)
     {
         super("Fødselsdato", "dd/mm/åååå");
-        this.pasientRegister = pasientRegister;       
-        reg.addKeyListener( new Knappelytter());
+        this.pasientRegister = pasientRegister;
+        reg.addKeyListener(new Knappelytter());
     }
-    
+
     /* 
-    Metode som sjekker om feltene er fylt ut korrekt, gir en feilmelding hvis de 
-    ikke er og registrerer pasienten i registeret hvis alt er riktig fylt inn.
-    */
+     Metode som sjekker om feltene er fylt ut korrekt, gir en feilmelding hvis de 
+     ikke er og registrerer pasienten i registeret hvis alt er riktig fylt inn.
+     */
     private void nyPasient()
     {
-        if(sjekkFornavn(fornavnfelt.getText()) && sjekkEtternavn(etternavnfelt.getText())
-                        && sjekkFodselsdato(infofelt.getText()))
+        if (sjekkFornavn(fornavnfelt.getText()) && sjekkEtternavn(etternavnfelt.getText())
+                && sjekkFodselsdato(infofelt.getText()))
         {
-            Pasient ny = new Pasient(fornavnfelt.getText(), etternavnfelt.getText(), 
-                infofelt.getText());
+            Pasient ny = new Pasient(fornavnfelt.getText(), etternavnfelt.getText(),
+                    infofelt.getText());
             ArrayList<Pasient> eksisterendePasienter = pasientRegister.FinnObjekterSomMatcher(new FinnPasientData(ny));
             if (eksisterendePasienter.size() > 0)
             {
@@ -46,27 +45,26 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
                 fornavnfelt.requestFocus();
             }
             else
-            { 
+            {
                 pasientRegister.SettInn(ny);
                 utskrift.setText("Registrert pasient: \n" + ny.toString());
             }
         }
     }
-    
+
     // Metode for å skrive ut alle pasientene i registeret. 
     private void SkrivUt()
     {
         String pasientliste = "";
-        List <Pasient> list = pasientRegister.FinnAlleObjekter();
+        List<Pasient> list = pasientRegister.FinnAlleObjekter();
         for (Pasient pasient : list)
         {
-            pasientliste+= pasient.toString();
-            pasientliste +="\n\n";
+            pasientliste += pasient.toString();
+            pasientliste += "\n\n";
         }
         utskrift.setText(pasientliste);
     }
 
-    
     // Metode for å lytte på hvilken knapp som er trykket på og kaller deretter på en spesifikk metode
     public void actionPerformed(ActionEvent e)
     {
@@ -80,27 +78,31 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
             JOptionPane.showMessageDialog(null, "HJELP PASIENT");
         }
     }
-    
+
     // Privat lytteklasse som gjør det mulig og trykke på ENTER-tasten under registrering i stede for å bruke musen
     private class Knappelytter implements KeyListener
     {
-      public void keyPressed(KeyEvent e){
-          if(e.getKeyCode()== KeyEvent.VK_ENTER){
-              nyPasient();
-              TomFelt();
-          };
-      };
+        public void keyPressed(KeyEvent e)
+        {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER)
+            {
+                nyPasient();
+                TomFelt();
+            };
+        }
+
+        ;
 
         @Override
         public void keyTyped(KeyEvent e)
         {
-            
+
         }
 
         @Override
         public void keyReleased(KeyEvent e)
         {
-            
+
         }
-    } 
+    }
 }//end of class Registrer Pasient

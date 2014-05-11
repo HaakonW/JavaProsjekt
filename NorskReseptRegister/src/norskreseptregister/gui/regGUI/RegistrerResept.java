@@ -477,7 +477,9 @@ public class RegistrerResept extends JPanel implements ActionListener
             {
                 bekreft();
             };
-        };
+        }
+
+        ;
 
         @Override
         public void keyTyped(KeyEvent e)

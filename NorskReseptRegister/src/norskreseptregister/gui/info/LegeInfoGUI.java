@@ -39,48 +39,48 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     {
         this.system = system;
         this.legeRegister = legeRegister;
-        
+
         legelabel = new JLabel("Legenavn   ");
         legedatafelt = new JTextField(20);
         legedatafelt.setText("Velg lege ved å på knappen til høyre");
         legedatafelt.setEditable(false);
-        
+
         gruppelabel = new JLabel("Reseptgruppe");
-        a = new JCheckBox("A", true);        
+        a = new JCheckBox("A", true);
         b = new JCheckBox("B", true);
         c = new JCheckBox("C", true);
-        
+
         visAlleLeger = new JButton("Vis alle leger");
         visAlleLeger.setToolTipText("Trykk for å printe leger");
-        visAlleLeger.addActionListener(this);       
+        visAlleLeger.addActionListener(this);
 
         visResepteriGruppe = new JButton("Vis resepter");
         visResepteriGruppe.setToolTipText("Vis resepter i gruppe");
         visResepteriGruppe.addActionListener(this);
-        
+
         hjelp = new JButton("?");
         hjelp.setToolTipText("Trykk for hjelp");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
-        
+
         velgLege = new JButton("...");
         velgLege.setToolTipText("Trykk for å velge lege");
         velgLege.addActionListener(this);
         velgLege.setPreferredSize(new Dimension(20, 20));
 
-        utskrift = new JTextArea(20,20);
-        utskrift.setEditable(false); 
+        utskrift = new JTextArea(20, 20);
+        utskrift.setEditable(false);
         utskrift.setLineWrap(true);
         utskrift.setWrapStyleWord(true);
-        
+
         utskriftscroll = new JScrollPane(utskrift);
         utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        
+
         legepanel = new JPanel();
         legepanel.add(legelabel);
         legepanel.add(legedatafelt);
         legepanel.add(velgLege);
-        legepanel.setBorder(BorderFactory.createEtchedBorder());  
+        legepanel.setBorder(BorderFactory.createEtchedBorder());
 
         knappepanel = new JPanel();
         knappepanel.setBorder(BorderFactory.createEtchedBorder());
@@ -91,15 +91,15 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         knappepanel.add(visResepteriGruppe);
 
         /* Her starter layouten for registrer en person. Sjekk
-        produktdokumentasjonen for forklaring av layouten*/
+         produktdokumentasjonen for forklaring av layouten*/
         GridBagConstraints gc = new GridBagConstraints();
         setLayout(new GridBagLayout());
-        int x = 0; 
+        int x = 0;
         int y = 0;
-        
+
         gc.gridx = x;
         gc.gridy = y;
-        gc.insets = new Insets(5, 10, 5, 10); 
+        gc.insets = new Insets(5, 10, 5, 10);
         add(legepanel, gc);
 
         gc.gridx = x;
@@ -120,12 +120,12 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         gc.gridy = 6;
         add(hjelp, gc);
     }//end of Konstruktør
-    
-    // Metode velger en lege
+
+    // Metode for å velge en lege
     public void VelgLege()
     {
         legeRegister = system.getLegeRegister();
-        VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:", 
+        VelgFraListeGUI velgLege = new VelgFraListeGUI("Liste over alle leger:",
                 "Velg lege", legeRegister.getListModel());
         velgLege.setLocationRelativeTo(this);
         velgLege.setVisible(true);
@@ -136,46 +136,46 @@ public class LegeInfoGUI extends JPanel implements ActionListener
             legedatafelt.setText(lege.getNavn());
         }
     }
-    
+
     // Metoden går igjennom listen med leger og returnerer disse i utskriftfeltet
     private void visAlleLeger()
     {
         String legeliste = "";
-        List <Lege> list = system.getLegeRegister().FinnAlleObjekter();
+        List<Lege> list = system.getLegeRegister().FinnAlleObjekter();
         for (Lege lege : list)
         {
-            legeliste+= lege.toString();
-            legeliste +="\n\n";
+            legeliste += lege.toString();
+            legeliste += "\n\n";
         }
         utskrift.setText(legeliste);
     }
-    
+
     // Metoden viser hvilke resepter en spesifikk lege har skrevet ut
     public void visResepterForLege()
     {
-        if ( lege != null)
+        if (lege != null)
         {
-                FinnResepterForLegeIReseptGruppe query = new FinnResepterForLegeIReseptGruppe(
-                        lege, a.isSelected(), b.isSelected(), c.isSelected() );
-                ArrayList <Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
-                String alleResepterForLege ="";
-                for (Resept r : reseptene)
-                {
-                    alleResepterForLege += r.toString() + "\n-----------------\n";
-                }
-                utskrift.setText("Fant følgende resepter for :\n"
-                        + lege.getNavn() + "\n-----------------\n" + alleResepterForLege);
-        }           
+            FinnResepterForLegeIReseptGruppe query = new FinnResepterForLegeIReseptGruppe(
+                    lege, a.isSelected(), b.isSelected(), c.isSelected());
+            ArrayList<Resept> reseptene = system.getReseptRegister().FinnObjekterSomMatcher(query);
+            String alleResepterForLege = "";
+            for (Resept r : reseptene)
+            {
+                alleResepterForLege += r.toString() + "\n-----------------\n";
+            }
+            utskrift.setText("Fant følgende resepter for :\n"
+                    + lege.getNavn() + "\n-----------------\n" + alleResepterForLege);
+        }
         else
         {
-            utskrift.setText("Du må velge en lege for å skrive ut");  
-        }  
+            utskrift.setText("Du må velge en lege for å skrive ut");
+        }
     }
-    
+
     /*
-    Metode for å lytte på hvilken knapp som er trykket på og kaller da 
-    på metoden knyttet til denne knappen
-    */
+     Metode for å lytte på hvilken knapp som er trykket på og kaller da 
+     på metoden knyttet til denne knappen
+     */
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == velgLege)
@@ -190,10 +190,10 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         {
             visResepterForLege();
         }
-     
+
         else if (e.getSource() == hjelp)
         {
             JOptionPane.showMessageDialog(null, "HJELP LEGEINFO");
         }
-    } 
+    }
 }//end of class LegeInfoGUI
