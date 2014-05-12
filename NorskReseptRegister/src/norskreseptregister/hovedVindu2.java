@@ -55,7 +55,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
         registreringVindu.addActionListener(this);
         infoVindu.addActionListener(this);
         
-        tekstLabel = new JLabel("Velkommen til Norsk Reseptregister.");
+        tekstLabel = new JLabel("Velkommen til Norsk ReseptRegister");
         tekstLabel.setFont(new Font ("PT Serif", Font.PLAIN, 17));
         
         label1 = new JLabel("Admin");

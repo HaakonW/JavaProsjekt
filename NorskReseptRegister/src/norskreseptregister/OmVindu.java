@@ -25,10 +25,13 @@ public class OmVindu extends JFrame
         utskrift = new JTextArea();
         font = new Font("Monospaced",Font.PLAIN,11);
         
-        tekst = "\nNorsk Reseptregister er et program laget av "
+        tekst = "Velkommen til Norsk ReseptRegister\n"
+                + "Programmet er eksamensoppgave i faget Programutvikling på HIOA"
+                + " våren 2014\n\n";
+        tekst += "Norsk Reseptregister er laget av "
                 + "Henrik Bjelland, Haakon Winther & Peter Wilhelmsen\n\n";
-        tekst += "Norsk ReseptRegister version 1.0 \n™ and © 2014 Gruppe 38.\n";
-        tekst += "All Rights Reserved.";
+        tekst += "Norsk ReseptRegister version 1.0 \n™ and © 2014 Gruppe 38\n";
+        tekst += "All Rights Reserved";
         
         utskrift.setText(tekst);
         utskrift.setFont(font);
