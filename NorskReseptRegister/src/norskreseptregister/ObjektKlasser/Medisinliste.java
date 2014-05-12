@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen Midisinliste.
  Laget av  Peter Wilhelmsen, Henrik Fischer Bjelland
- Sist endret  10-05-2014 
+ Sist endret  12-05-2014 
  */
 package norskreseptregister.ObjektKlasser;
 
@@ -16,7 +16,7 @@ public class Medisinliste implements Serializable
     private static final long serialVersionUID = 6L;
     private static String medisinlisten = "lagreMedisin.txt";
     private Medisin hode;
-    
+
     public Medisinliste()
     {
         hode = null;
@@ -46,10 +46,8 @@ public class Medisinliste implements Serializable
         return tekst;
     }
 
-    /* Finn medisin - Kan brukes når vi skal sjekke om medisinen finnes
-     i hovedprogrammet
-     - Må legge inn muligheten for å søke på atcNr
-     */
+    
+    // Finn medisin - Kan brukes når vi skal sjekke om medisinen finnes
     public boolean finnMedisin(String medisinnavn)
     {
         if (hode == null)
@@ -71,7 +69,7 @@ public class Medisinliste implements Serializable
             }
             hjelp = hjelp.neste;
         }
-        //return "Finner ikke medisin med navn " + medisinnavn;
+        // return "Finner ikke medisin med navn " + medisinnavn;
         return false;
     }
 
@@ -89,7 +87,7 @@ public class Medisinliste implements Serializable
         }
         return liste;
     }
-    
+
     //
     public DefaultListModel<String> getListModel()
     {
@@ -127,12 +125,12 @@ public class Medisinliste implements Serializable
         {
             return (Medisinliste) innfil.readObject();
 
-        } 
+        }
         catch (ClassNotFoundException cnfe)
         {
             JOptionPane.showMessageDialog(null, cnfe.getMessage());
             return new Medisinliste();
-        } 
+        }
         catch (IOException ioe)
         {
             JOptionPane.showMessageDialog(null, "Feil ved lesing, "
@@ -149,13 +147,16 @@ public class Medisinliste implements Serializable
         {
             utfil.writeObject(this);
             utfil.close();
-        } catch (NotSerializableException nse)
+        }
+        catch (NotSerializableException nse)
         {
             JOptionPane.showMessageDialog(null, "Objektet er ikke serialisert!");
-        } catch (FileNotFoundException fnfe)
+        }
+        catch (FileNotFoundException fnfe)
         {
             JOptionPane.showMessageDialog(null, "Finner ikke " + medisinlisten);
-        } catch (IOException ioe)
+        }
+        catch (IOException ioe)
         {
             System.out.println("Kan ikke skrive til fil!");
         }

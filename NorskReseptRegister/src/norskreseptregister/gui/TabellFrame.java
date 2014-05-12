@@ -88,6 +88,7 @@ class Radalterneringstabell extends JTable
     public Radalterneringstabell(TableModel tab)
     {
         super(tab);
+        // Første kollonne er medisinnavnet, de resterende 12 er månedene.
         getColumnModel().getColumn(0).setPreferredWidth(110);
         getColumnModel().getColumn(1).setPreferredWidth(70);
         getColumnModel().getColumn(2).setPreferredWidth(70);

@@ -57,7 +57,7 @@ public class RegistrerResept extends JPanel implements ActionListener
     private JTextField datoNummer;      // Dato 1-31
     private JTextField manedsNummer;    // Månedsnummer 1-12
     private JTextField aarNummer;       // År
-    
+
     String placeholderpasient = "Trykk på knappen for å velge pasient";
     String placeholderlege = "Trykk på knappen for å velge lege";
     String placeholdermedisin = "Trykk på knappen for å velge medisin";
@@ -186,7 +186,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         utskriftpanel.add(utskriftscroll);
 
         /* Her starter layouten for registrering av resept. Sjekk
-        produktdokumentasjonen for forklaring av layouten*/
+         produktdokumentasjonen for forklaring av layouten*/
         setLayout(new GridBagLayout());
         GridBagConstraints gc = new GridBagConstraints();
         int x = 0;
@@ -269,10 +269,10 @@ public class RegistrerResept extends JPanel implements ActionListener
     // Metode for å sjekke om alle felte er fylt ut.
     private boolean sjekkFelter()
     {
-        if (pasientfelt.getText().equals(placeholderpasient) 
-                || legefelt.getText().equals(placeholderlege) 
-                || medisinfelt.getText().equals(placeholdermedisin) 
-                || mengdefelt.getText().equals("") 
+        if (pasientfelt.getText().equals(placeholderpasient)
+                || legefelt.getText().equals(placeholderlege)
+                || medisinfelt.getText().equals(placeholdermedisin)
+                || mengdefelt.getText().equals("")
                 || anvisning.getText().equals(""))
         {
             utskrift.setText("Her er det noe feil! \n\n\nHusk å fyll ut alle feltene og velg pasient/lege/medisin med knappene"
@@ -386,9 +386,9 @@ public class RegistrerResept extends JPanel implements ActionListener
     }
 
     /*
-    Metode som får opp bekreftboks for ny resept. Ved yes_Option vil en ny repept bli registrert.
-    Når medisinen er bekreftet kommer det opp mulighet for å printe ut resepten.
-    */
+     Metode som får opp bekreftboks for ny resept. Ved yes_Option vil en ny repept bli registrert.
+     Når medisinen er bekreftet kommer det opp mulighet for å printe ut resepten.
+     */
     private void bekreft()
     {
         int bekreft = JOptionPane.showConfirmDialog(null, "Du vil registrere denne resepten: "
@@ -483,7 +483,7 @@ public class RegistrerResept extends JPanel implements ActionListener
                 bekreft();
             }
         }
-        
+
         @Override
         public void keyTyped(KeyEvent e)
         {
@@ -502,116 +502,122 @@ public class RegistrerResept extends JPanel implements ActionListener
     {
         switch (medisinfelt.getText())
         {
-            case "Abstral":            
-                    mengdefelt.setText("30 Tabletter");
-                    anvisning.setText("Maks. 4 doser pr. dag.");
+            case "Abstral":
+                mengdefelt.setText("30 Tabletter");
+                anvisning.setText("Maks. 4 doser pr. dag.");
                 break;
-                
+
             case "Apocillin":
-                    mengdefelt.setText("250mg");
-                    anvisning.setText("Kan tas 3 ganger i døgnet med dobbel dose om kvelden.");
+                mengdefelt.setText("250mg");
+                anvisning.setText("Kan tas 3 ganger i døgnet med dobbel dose om kvelden.");
                 break;
-        }
-        if (medisinfelt.getText().equals("Cosylan"))
-        {
-            mengdefelt.setText("125ml");
-            anvisning.setText("5-10 ml, Helst ufortynnet, 3-4 ganger daglig");
-        }
-        if (medisinfelt.getText().equals("Diclofenac"))
-        {
-            mengdefelt.setText("30 Tabletter");
-            anvisning.setText("2-3 doser daglig.");
-        }
-        if (medisinfelt.getText().equals("Dolcontin"))
-        {
-            mengdefelt.setText("60mg");
-            anvisning.setText("Dosering hver 12. time");
-        }
-        if (medisinfelt.getText().equals("Euthyrox"))
-        {
-            mengdefelt.setText("100 Tabletter");
-            anvisning.setText("1 tablett daglig");
-        }
-        if (medisinfelt.getText().equals("Imovane"))
-        {
-            mengdefelt.setText("5mg");
-            anvisning.setText("1 Dose skal inntes kort til før en skal gå til sengs.");
-        }
-        if (medisinfelt.getText().equals("Inegy"))
-        {
-            mengdefelt.setText("28stk Blister");
-            anvisning.setText("10 mg/20 mg pr dag.");
-        }
-        if (medisinfelt.getText().equals("Ketalar"))
-        {
-            mengdefelt.setText("20ml hettegl.");
-            anvisning.setText("Skal kun brukes av eller under ledelse av lege som har erfaring med legemidlets egenskaper og bruk.");
-        }
-        if (medisinfelt.getText().equals("Metadon Abcur"))
-        {
-            mengdefelt.setText("20stk");
-            anvisning.setText("Startdose 5 mg, 1-3 ganger/dag");
-        }
-        if (medisinfelt.getText().equals("Metoprolol"))
-        {
-            mengdefelt.setText("100stk");
-            anvisning.setText(" Startdose 100 mg/døgn. ");
-        }
-        if (medisinfelt.getText().equals("Morfin-Skopolamin"))
-        {
-            mengdefelt.setText("A 10 × 1 ml (plastamp.)");
-            anvisning.setText("Vanlig enkeltdose 1 ml.");
-        }
-        if (medisinfelt.getText().equals("Oxycodone Actavis"))
-        {
-            mengdefelt.setText("20mg");
-            anvisning.setText("Tas med eller uten mat. Svelges hele med tilstrekkelig mengde væske. Ved sterke smerter. ");
-        }
-        if (medisinfelt.getText().equals("Palladon"))
-        {
-            mengdefelt.setText("28stk");
-            anvisning.setText("1,3 mg eller 2,6 mg hver 4. time. Må ikke gies til barn!");
-        }
-        if (medisinfelt.getText().equals("Paracetamol"))
-        {
-            mengdefelt.setText("20 tabletter");
-            anvisning.setText("2 piller ved store smerter. Vent 4 timer mellom ny dosering");
-        }
-        if (medisinfelt.getText().equals("Paralgin Forte"))
-        {
-            mengdefelt.setText("10 tabletter");
-            anvisning.setText("1 pille taes ved store smerter. Ny pille kan taes etter 6 timer. Max 3 i døgnet.");
-        }
-        if (medisinfelt.getText().equals("Pedea"))
-        {
-            mengdefelt.setText("4 glass");
-            anvisning.setText("3 injeksjoner gitt med 24 timers intervaller i sammarbeid med neonatolog");
-        }
-        if (medisinfelt.getText().equals("Penomax"))
-        {
-            mengdefelt.setText("20stk");
-            anvisning.setText("Voksne og ungdom: 1-2 tabletter 3 ganger daglig.\n"
-                    + "Barn >5 år: 1 tablett 3 ganger daglig.");
-        }
-        if (medisinfelt.getText().equals("Petidin"))
-        {
-            mengdefelt.setText("10stk");
-            anvisning.setText("Taes rektalt opptil 6 ganger om døgnet ved ekstreme smerter. Må ikke kombineres med bilkjøring eller tunge maskiner");
-        }
-        if (medisinfelt.getText().equals("Rivotril"))
-        {
-            mengdefelt.setText("200stk");
-            anvisning.setText("Taes som avtalt med legen");
-        }
-        if (medisinfelt.getText().equals("Tramadol"))
-        {
-            mengdefelt.setText("20stk");
-            anvisning.setText("Tas med eller uten mat. Svelges hele med tilstrekkelig væske. Skal ikke deles/tygges.");
-        }
-        if (medisinfelt.getText().equals("Zopiclone"))
-        {
-            mengdefelt.setText("100stk");
-            anvisning.setText("Forbigående og kortvarige søvnvansker. Som støtteterapi for en begrenset tid ved behandling av kroniske søvnvansker.");
-        }
+
+            case "Cosylan":
+                mengdefelt.setText("125ml");
+                anvisning.setText("5-10 ml, Helst ufortynnet, 3-4 ganger daglig");
+                break;
+
+            case "Diclofenac":
+                mengdefelt.setText("30 Tabletter");
+                anvisning.setText("2-3 doser daglig.");
+                break;
+
+            case "Dolcontin":
+                mengdefelt.setText("60mg");
+                anvisning.setText("Dosering hver 12. time");
+                break;
+
+            case "Euthyrox":
+                mengdefelt.setText("100 Tabletter");
+                anvisning.setText("1 tablett daglig");
+                break;
+
+            case "Imovane":
+                mengdefelt.setText("5mg");
+                anvisning.setText("1 Dose skal inntes kort til før en skal gå til sengs.");
+                break;
+
+            case "Inegy":
+                mengdefelt.setText("28stk Blister");
+                anvisning.setText("10 mg/20 mg pr dag.");
+                break;
+
+            case "Ketalar":
+                mengdefelt.setText("20ml hettegl.");
+                anvisning.setText("Skal kun brukes av eller under ledelse av l"
+                        + "ege som har erfaring med legemidlets egenskaper og bruk.");
+                break;
+
+            case "Metadon Abcur":
+                mengdefelt.setText("20stk");
+                anvisning.setText("Startdose 5 mg, 1-3 ganger/dag");
+                break;
+
+            case "Metoprolol":
+                mengdefelt.setText("100stk");
+                anvisning.setText(" Startdose 100 mg/døgn. ");
+                break;
+
+            case "Morfin-Skopolamin":
+                mengdefelt.setText("A 10 × 1 ml (plastamp.)");
+                anvisning.setText("Vanlig enkeltdose 1 ml.");
+                break;
+
+            case "Oxycodone Actavis":
+                mengdefelt.setText("20mg");
+                anvisning.setText("Tas med eller uten mat. "
+                        + "Svelges hele med tilstrekkelig mengde væske. Ved sterke smerter. ");
+                break;
+
+            case "Palladon":
+                mengdefelt.setText("28stk");
+                anvisning.setText("1,3 mg eller 2,6 mg hver 4. time. Må ikke gies til barn!");
+                break;
+
+            case "Paracetamol":
+                mengdefelt.setText("20 tabletter");
+                anvisning.setText("2 piller ved store smerter. Vent 4 timer mellom ny dosering");
+                break;
+
+            case "Paralgin Forte":
+                mengdefelt.setText("10 tabletter");
+                anvisning.setText("1 pille taes ved store smerter. "
+                        + "Ny pille kan taes etter 6 timer. Max 3 i døgnet.");
+                break;
+
+            case "Pedea":
+                mengdefelt.setText("4 glass");
+                anvisning.setText("3 injeksjoner gitt med 24 timers intervaller i sammarbeid med neonatolog");
+                break;
+
+            case "Penomax":
+                mengdefelt.setText("20stk");
+                anvisning.setText("Voksne og ungdom: 1-2 tabletter 3 ganger daglig.\n"
+                        + "Barn >5 år: 1 tablett 3 ganger daglig.");
+                break;
+
+            case "Petidin":
+                mengdefelt.setText("10stk");
+                anvisning.setText("Taes rektalt opptil 6 ganger om døgnet ved ekstreme smerter. "
+                        + "Må ikke kombineres med bilkjøring eller tunge maskiner");
+                break;
+
+            case "Rivotril":
+                mengdefelt.setText("200stk");
+                anvisning.setText("Taes som avtalt med legen");
+                break;
+
+            case "Tramadol":
+                mengdefelt.setText("20stk");
+                anvisning.setText("Tas med eller uten mat. Svelges hele med tilstrekkelig væske. "
+                        + "Skal ikke deles/tygges.");
+                break;
+
+            case "Zopiclone":
+                mengdefelt.setText("100stk");
+                anvisning.setText("Forbigående og kortvarige søvnvansker. "
+                        + "Som støtteterapi for en begrenset tid ved behandling av kroniske søvnvansker.");
+                break;
+        }// end of switch 
     } // end of utFyller
 }// end of class RegistrerResept

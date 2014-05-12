@@ -1,15 +1,17 @@
 /*
  Filen inneholder klassen Respet.
- Klassen har variabler for en spesifikk resept, get-metoder for disse og en 
- toString-metode med all informasjonen til en resept
  Laget av Haakon Winther, Henrik Fischer Bjelland
- Sist endret 27-04-2014
+ Sist endret 12-05-2014
  */
 package norskreseptregister.ObjektKlasser;
 
 import java.io.Serializable;
 import java.util.Date;
 
+/*  
+ Klassen har variabler for en spesifikk resept, get-metoder for disse og en 
+ toString-metode med all informasjonen til en resept
+ */
 public class Resept implements Serializable
 {
     private static final long serialVersionUID = 4L;
@@ -21,7 +23,7 @@ public class Resept implements Serializable
     private String kategori;
     private String anvisning;
 
-    //Konstruktør som initialiserer alle varieblene for en resept
+    // Konstruktør som initialiserer alle varieblene for en resept
     public Resept(Date dato, Pasient pasient, Lege lege,
             Medisin medisin, String mengde, String kategori, String anvisning)
     {
@@ -34,54 +36,54 @@ public class Resept implements Serializable
         this.anvisning = anvisning;
     }
 
-    //Parameterløs konstruktør
+    // Parameterløs konstruktør
     public Resept()
     {
     }
 
-    //Get-metode for for dato
+    // Get-metode for for dato
     public Date getDato()
     {
         return dato;
     }
 
-    //Get-metode for pasient
+    // Get-metode for pasient
     public Pasient getPasient()
     {
         return pasient;
     }
 
-    //Get-metode for lege
+    // Get-metode for lege
     public Lege getLege()
     {
         return lege;
     }
 
-    //Get-metode for medisin
+    // Get-metode for medisin
     public Medisin getMedisin()
     {
         return medisin;
     }
 
-    //Get-metode for mengde
+    // Get-metode for mengde
     public String getMengde()
     {
         return mengde;
     }
 
-    //Get-metode for kategori
+    // Get-metode for kategori
     public String getKategori()
     {
         return kategori;
     }
 
-    //Get-metode for anvisning
+    // Get-metode for anvisning
     public String getAnvisning()
     {
         return anvisning;
     }
 
-    //toString-metoden returnerer en informativ tekst og en resept
+    // toString-metoden returnerer en informativ tekst og en resept
     public String toString()
     {
         String tekst = "";
