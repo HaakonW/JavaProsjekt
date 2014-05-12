@@ -574,7 +574,7 @@ public class RegistrerResept extends JPanel implements ActionListener
                 anvisning.setText("1,3 mg eller 2,6 mg hver 4. time. Må ikke gies til barn!");
                 break;
 
-            case "Paracetamol":
+            case "Paracetamol ":
                 mengdefelt.setText("20 tabletter");
                 anvisning.setText("2 piller ved store smerter. Vent 4 timer mellom ny dosering");
                 break;
@@ -613,7 +613,7 @@ public class RegistrerResept extends JPanel implements ActionListener
                         + "Skal ikke deles/tygges.");
                 break;
 
-            case "Zopiclone":
+            case "Zopiclone ":
                 mengdefelt.setText("100stk");
                 anvisning.setText("Forbigående og kortvarige søvnvansker. "
                         + "Som støtteterapi for en begrenset tid ved behandling av kroniske søvnvansker.");
