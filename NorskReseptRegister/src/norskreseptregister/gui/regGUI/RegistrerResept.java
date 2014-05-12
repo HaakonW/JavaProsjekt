@@ -154,9 +154,9 @@ public class RegistrerResept extends JPanel implements ActionListener
         datopanel.add(datofelt);
 
         // Hjelpefelt for å sette dato
-        datopanel.add(datoNummer);
+        /*datopanel.add(datoNummer);
         datopanel.add(manedsNummer);
-        datopanel.add(aarNummer);
+        datopanel.add(aarNummer);*/
 
         pasientpanel = new JPanel();
         pasientpanel.add(pasientdatalabel);
