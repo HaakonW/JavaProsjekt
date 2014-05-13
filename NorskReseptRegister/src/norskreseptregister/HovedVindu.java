@@ -200,7 +200,7 @@ public class HovedVindu extends JFrame implements ActionListener
             {
                 //ClassLoader cl = this.getClass().getClassLoader();
                 //cl.getResource("norskreseptregister/brukerveiledning.pdf"))
-                File myFile = new File("src/brukerveiledning.pdf");
+                File myFile = new File("src/norskreseptregister/brukerveiledning.pdf");
                 Desktop.getDesktop().open(myFile);
             }
             catch (IOException ex)
