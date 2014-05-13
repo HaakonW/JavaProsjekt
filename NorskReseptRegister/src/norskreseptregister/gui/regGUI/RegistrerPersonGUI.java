@@ -50,7 +50,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         reg.addActionListener(this);
 
         hjelp = new JButton("?");
-        hjelp.setPreferredSize(new Dimension(25, 25));
+        hjelp.setPreferredSize(new Dimension(30, 20));
         hjelp.addActionListener(this);
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){

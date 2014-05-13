@@ -65,7 +65,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         
         hjelp = new JButton("?");
         hjelp.addActionListener(this);        
-        hjelp.setPreferredSize(new Dimension(20, 20));
+        hjelp.setPreferredSize(new Dimension(30, 20));
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
                 ToolTipManager.sharedInstance().setDismissDelay(6500);
@@ -124,7 +124,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
 
         gc.gridx = ++x;
         gc.gridy = 4;
-        gc.insets = new Insets(0, 0, 10, 0);
+        gc.insets = new Insets(0, 0, 0, 0);
         add(hjelp, gc);
     }
     

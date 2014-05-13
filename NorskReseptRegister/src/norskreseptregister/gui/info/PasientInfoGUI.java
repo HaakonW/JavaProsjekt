@@ -72,7 +72,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
 
         hjelp = new JButton("?");
         hjelp.addActionListener(this);
-        hjelp.setPreferredSize(new Dimension(20, 20));
+        hjelp.setPreferredSize(new Dimension(30, 20));
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
                 ToolTipManager.sharedInstance().setDismissDelay(6500);
@@ -85,7 +85,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
                             + "Mer hjelp,se brukerveiledning s. 11");
 
         velgPasient = new JButton("...");
-        velgPasient.setToolTipText("Trykk for å vise over pasienter");
+        velgPasient.setToolTipText("Trykk for å vise pasienter");
         velgPasient.addActionListener(this);
         velgPasient.setPreferredSize(new Dimension(20, 20));
 

@@ -69,7 +69,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
 
         hjelp = new JButton("?");
         hjelp.addActionListener(this);
-        hjelp.setPreferredSize(new Dimension(20, 20));
+        hjelp.setPreferredSize(new Dimension(30, 20));
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
                 ToolTipManager.sharedInstance().setDismissDelay(6500);

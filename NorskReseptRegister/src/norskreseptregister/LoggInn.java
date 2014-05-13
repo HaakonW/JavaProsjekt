@@ -13,6 +13,7 @@ import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.AdminMain;
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -38,7 +39,8 @@ public class LoggInn extends JFrame
         this.medisinliste = medisinliste;
 
         loggInn = new JButton("Logg inn");
-        loggInn.setBounds(130, 120, 80, 20);
+        loggInn.setBounds(93, 120, 145, 20);
+        //loggInn.setPreferredSize(new Dimension(40, 20));
 
         brukerfelt = new JTextField(15);
         brukerfelt.setBounds(90, 50, 150, 20);
