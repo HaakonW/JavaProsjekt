@@ -23,11 +23,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-<<<<<<< HEAD
 import norskreseptregister.HovedVindu;
-=======
 import javax.swing.ToolTipManager;
->>>>>>> FETCH_HEAD
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.PasientRegister;
@@ -74,13 +71,6 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         c = new JCheckBox("C", true);
 
         hjelp = new JButton("?");
-<<<<<<< HEAD
-        hjelp.setToolTipText("<html>" + "Her kan du registrere resepter.<br>"
-                             +"Velg pasient,lege og medisin med ...knappen.<br>"
-                             + "Mengde og anvisning kan endres.<br>"
-                             + "Mer hjelp, se brukerveiledning s. 11");
-=======
->>>>>>> FETCH_HEAD
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
         hjelp.addMouseListener(new MouseAdapter(){
@@ -92,7 +82,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
                             + "Endre visning av resepter ved å velge ønskede"
                             + "grupper.<br>"
                             + "Få liste over alle pasienter.<br>"
-                            + "Mer hjelp,se brukerveiledning s.");
+                            + "Mer hjelp,se brukerveiledning s. 11");
 
         velgPasient = new JButton("...");
         velgPasient.setToolTipText("Trykk for å vise over pasienter");

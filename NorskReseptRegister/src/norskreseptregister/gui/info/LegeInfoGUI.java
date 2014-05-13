@@ -68,13 +68,6 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         visResepteriGruppe.addActionListener(this);
 
         hjelp = new JButton("?");
-<<<<<<< HEAD
-        hjelp.setToolTipText("<html>" + "Her kan du registrere resepter.<br>"
-                             +"Velg pasient,lege og medisin med ...knappen.<br>"
-                             + "Mengde og anvisning kan endres.<br>"
-                             + "Mer hjelp, se brukerveiledning s. 10");
-=======
->>>>>>> FETCH_HEAD
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
         hjelp.addMouseListener(new MouseAdapter(){
@@ -86,7 +79,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
                             + "Endre visning av resepter ved å velge ønskede"
                             + "grupper.<br>"
                             + "Få liste over alle godkjente leger.<br>"
-                            + "Mer hjelp,se brukerveiledning s.");
+                            + "Mer hjelp,se brukerveiledning s. 10");
         
         velgLege = new JButton("...");
         velgLege.setToolTipText("Trykk for å velge lege");

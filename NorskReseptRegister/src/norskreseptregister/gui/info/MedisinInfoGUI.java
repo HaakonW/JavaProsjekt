@@ -24,11 +24,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-<<<<<<< HEAD
 import norskreseptregister.HovedVindu;
-=======
 import javax.swing.ToolTipManager;
->>>>>>> FETCH_HEAD
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.ObjektKlasser.Resept;
@@ -71,15 +68,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         visLeger.setToolTipText("Trykk for å vise leger");
         visLeger.addActionListener(this);
 
-<<<<<<< HEAD
         hjelp = new JButton("?");
-        hjelp.setToolTipText("<html>" + "Her kan du registrere resepter.<br>"
-                             +"Velg pasient,lege og medisin med ...knappen.<br>"
-                             + "Mengde og anvisning kan endres.<br>"
-                             + "Mer hjelp, se brukerveiledning s. 12");
-=======
-        hjelp = new JButton("?"); 
->>>>>>> FETCH_HEAD
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
         hjelp.addMouseListener(new MouseAdapter(){
@@ -90,7 +79,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         hjelp.setToolTipText("<html>" + "Velg medisin med ...knappen.<br>"
                             + "Velg om du vil vise pasienter som har fått <br>"
                             + "eller leger som har skrevet ut valgt medisin.<br>"
-                            + "Mer hjelp,se brukerveiledning s.");
+                            + "Mer hjelp,se brukerveiledning s. 12");
         
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
@@ -207,11 +196,8 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == hjelp)
         {
-<<<<<<< HEAD
             HovedVindu.visBrukerveiledning();
-=======
-            //HER MÅ KODE FOR BRUKERVEILEDNING INN
->>>>>>> FETCH_HEAD
+
         }
     }
 
