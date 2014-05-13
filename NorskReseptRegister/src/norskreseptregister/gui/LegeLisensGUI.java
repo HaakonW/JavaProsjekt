@@ -5,16 +5,27 @@ Sist endret 22-04-2014
  */
 package norskreseptregister.gui;
 
-import java.awt.*;
+//import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ToolTipManager;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.RegisterSystem;
-import norskreseptregister.gui.regGUI.RegistrerResept;
 import norskreseptregister.gui.regGUI.VelgFraListeGUI;
 
 // LegeLisensGUI er ment for å kunne velge en lege og endre lisensen på denne legen.
@@ -25,7 +36,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     private JButton velgLege, endreLisens, slettLege, hjelp;
     private JTextArea utskrift;
     private JCheckBox a, b, c;
-    private JPanel panel1, panel2, panel3, panel4, panel6;
+    private JPanel panel1, panel2, panel3, panel4;
     private Lege lege;
     private final RegisterSystem system;
 
@@ -48,17 +59,15 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         hjelp = new JButton("?");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
-        
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
-                ToolTipManager.sharedInstance().setDismissDelay(5000);
+                ToolTipManager.sharedInstance().setDismissDelay(6500);
             }
         });
-        
         hjelp.setToolTipText("<html>" + "Her kan du endre legers lisens.<br>"
                     + "Du velger lege med ... knappen<br>"
                     + "Videre kan du endre/fjerne lisens. <br> "
-                    + "For mer hjelp se brukerveiledning" + "<html>" );
+                    + "Mer hjelp,se brukerveiledning s." + "<html>" );
         
         navnlabel = new JLabel("Legens navn:");
         legedatafelt = new JTextField(20);
@@ -204,11 +213,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         }
         else if(e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "I denne fanen  kan du endre en lege sin lisens."
-                    + "\nDu velger lege med ... knappen og vil da med en gang se hva vedkommende"
-                    + "\nhar godkjenning for. Videre kan du velge å ta fra lisens eller gi"
-                    + "\ntilbake lisens. "
-                    + "\nFor mere hjelp sjekk brukerveiledningen under om fanen.");
+            //HER MÅ KODE FOR Å ÅPNE BRUKERVEILEDNING INN
 
         }
         else if (e.getSource() == slettLege)
