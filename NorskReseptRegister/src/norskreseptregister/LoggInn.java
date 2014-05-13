@@ -125,6 +125,8 @@ public class LoggInn extends JFrame
             {
                 feilmeldinglabel.setVisible(true);
             }
+            brukerfelt.setText("");
+            passordfelt.setText("");
         }
         else
         {
