@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -175,19 +174,6 @@ public class hovedVindu extends JFrame
                 hovedvindu.add(internvindu3);
                 internvindu3.setVisible(true);
             }
-            /*if(e.getSource() == submeny4)
-            {
-                JInternalFrame internvindu4 = new JInternalFrame(
-                "Statistikk",true, true, true,true);
-                
-                StatistikkTabell statistikk = new StatistikkTabell();
-                //internvindu4.add(statistikk);
-                
-                internvindu4.setSize(300,300);
-                internvindu4.pack();
-                hovedvindu.add(internvindu4);
-                internvindu4.setVisible(true);
-            }*/
         }//end of method actionPerformed
     } //end of Menylytter
 
