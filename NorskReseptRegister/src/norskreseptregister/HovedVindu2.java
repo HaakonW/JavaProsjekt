@@ -1,7 +1,7 @@
 /*
- Inneholder klasse for å kjøre hovedvindu, med MainGUI.
+ Inneholder klasse for å kjøre HovedVindu2
  Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
- Sist endret 25/04/14
+ Sist endret 13/05/14
  */
 package norskreseptregister;
 
@@ -45,7 +45,6 @@ public class HovedVindu2 extends JFrame
     private RegisterSystem system;
     private final Medisinliste medisinliste;
 
-    //Konstruktør
     public HovedVindu2(final RegisterSystem system, Medisinliste medisinliste)
     {
         this.system = system;
@@ -75,13 +74,13 @@ public class HovedVindu2 extends JFrame
         submeny2.addActionListener(lytter);
         submeny3.addActionListener(lytter);
 
-        //Setter inn menylinjen i vinduet.
+        // Setter inn menylinjen i vinduet.
         setJMenuBar(menylinje);
 
         ImageIcon footer = new ImageIcon ("src/norskreseptregister/gui/bilder/pille.png");
         final Image img = footer.getImage();
         
-        //Opprette hovedvinduet
+        // Opprette hovedvinduet
         hovedvindu = new JDesktopPane(){
              public void paintComponent(Graphics g){
                 super.paintComponent(g);
@@ -89,7 +88,7 @@ public class HovedVindu2 extends JFrame
             }
         };
         
-        //Skriver til alle register, ikke medisin.
+        // Skriver til alle register, ikke medisin.
         addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent winEvt)

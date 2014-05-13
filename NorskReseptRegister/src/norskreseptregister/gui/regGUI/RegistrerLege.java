@@ -8,6 +8,7 @@ package norskreseptregister.gui.regGUI;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import norskreseptregister.HovedVindu;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.Reg.LegeRegister;
 
@@ -62,7 +63,7 @@ public class RegistrerLege extends RegistrerPersonGUI implements ActionListener
         }
         else if (e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "HJELP PASIENT");
+            HovedVindu.visBrukerveiledning();
         }
     }
 }//end of class RegistrerLege

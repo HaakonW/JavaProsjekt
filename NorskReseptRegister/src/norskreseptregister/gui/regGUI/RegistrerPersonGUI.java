@@ -59,7 +59,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         });
         hjelp.setToolTipText("<html>"+"Registreres med fornavn, etternavn"
                             + " og <br> fødselsdato/adresse.<br>"
-                            + "Mer hjelp, se brukerveiledning s.");
+                            + "Mer hjelp, se brukerveiledning s. 7-8");
 
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);

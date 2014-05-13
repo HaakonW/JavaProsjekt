@@ -31,6 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ToolTipManager;
+import norskreseptregister.HovedVindu;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
@@ -148,7 +149,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         hjelp.setToolTipText("<html>" + "Her kan du registrere resepter.<br>"
                              +"Velg pasient,lege og medisin med ...knappen.<br>"
                              + "Mengde og anvisning kan endres.<br>"
-                             + "Mer hjelp, se brukerveiledning s.");
+                             + "Mer hjelp, se brukerveiledning s. 8");
 
         anvisning = new JTextArea(6, 25);
         anvisning.setLineWrap(true);
@@ -170,10 +171,12 @@ public class RegistrerResept extends JPanel implements ActionListener
         datopanel.add(datolabel);
         datopanel.add(datofelt);
 
-        // Hjelpefelt for å sette dato
-        /*datopanel.add(datoNummer);
+        //Hjelpefelt for å sette dato
+        /*
+        datopanel.add(datoNummer);
         datopanel.add(manedsNummer);
-        datopanel.add(aarNummer);*/
+        datopanel.add(aarNummer);
+        */
 
         pasientpanel = new JPanel();
         pasientpanel.add(pasientdatalabel);
@@ -454,7 +457,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         }
         else if (e.getSource() == hjelp)
         {
-            // HER MÅ KODE FOR BRUKERVEILEDNING INN
+            HovedVindu.visBrukerveiledning();
         }
         else if (e.getSource() == printUt)
         {

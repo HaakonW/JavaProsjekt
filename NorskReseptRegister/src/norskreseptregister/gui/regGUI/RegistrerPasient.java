@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import norskreseptregister.HovedVindu;
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.Reg.PasientRegister;
 
@@ -65,7 +66,7 @@ public class RegistrerPasient extends RegistrerPersonGUI implements ActionListen
         }
         else if (e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "HJELP PASIENT");
+            HovedVindu.visBrukerveiledning();
         }
     }
 

@@ -1,7 +1,7 @@
 /*
- Filen inneholder klassen hovedVindu2.
+ Filen inneholder klassen HovedVindu.
  Laget av Peter Wilhelmsen, Henrik Fischer Bjelland, Haakon Winther
- Sist endret 29/04/14
+ Sist endret 12/05/14
  */
 
 package norskreseptregister;
@@ -190,7 +190,7 @@ public class HovedVindu extends JFrame implements ActionListener
     }
     
     // Metode for å vise brukerveiledningen i pdf
-    public void visBrukerveiledning()
+    public static void visBrukerveiledning()
     {
         if (Desktop.isDesktopSupported())
         {
@@ -217,7 +217,7 @@ public class HovedVindu extends JFrame implements ActionListener
         frame.setVisible(true);
     }
 
-    //Metode for å lytte på hvilke knapp som er trykket og oppretter deretter et vindu av valgt type.
+    // Metode for å lytte på hvilke knapp som er trykket og oppretter deretter et vindu av valgt type.
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == adminVindu || e.getSource() == adminValg)

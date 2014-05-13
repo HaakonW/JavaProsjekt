@@ -41,7 +41,6 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     private Lege lege;
     private RegisterSystem system;
     private LegeRegister legeRegister;
-    private HovedVindu hovedvindu;
 
     public LegeInfoGUI(RegisterSystem system)
     {
@@ -66,7 +65,10 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         visResepteriGruppe.addActionListener(this);
 
         hjelp = new JButton("?");
-        hjelp.setToolTipText("Trykk for hjelp");
+        hjelp.setToolTipText("<html>" + "Her kan du registrere resepter.<br>"
+                             +"Velg pasient,lege og medisin med ...knappen.<br>"
+                             + "Mengde og anvisning kan endres.<br>"
+                             + "Mer hjelp, se brukerveiledning s. 10");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
 
@@ -199,7 +201,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
 
         else if (e.getSource() == hjelp)
         {
-            hovedvindu.visBrukerveiledning();
+            HovedVindu.visBrukerveiledning();
         }
     }
 }//end of class LegeInfoGUI

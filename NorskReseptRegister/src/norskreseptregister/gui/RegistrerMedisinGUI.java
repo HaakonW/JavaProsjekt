@@ -7,7 +7,17 @@ package norskreseptregister.gui;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ToolTipManager;
+import norskreseptregister.HovedVindu;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 
@@ -49,7 +59,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         });
         hjelp.setToolTipText("<html>" + "Her kan du registrere medisin.<br>"
                                + "Viktig at ATC-nr og reseptgruppe stemmer.<br>"
-                               + "Mer hjelp,se brukerveiledning s.");
+                               + "Mer hjelp,se brukerveiledning s. 5");
         
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
@@ -217,7 +227,7 @@ public class RegistrerMedisinGUI extends JPanel implements ActionListener
         }
         if(e.getSource() == hjelp)
         {
-            //HER MÅ KODE FOR Å ÅPNE BRUKERVEILEDNING INN
+            HovedVindu.visBrukerveiledning();
         }
     }
 }//end of class MedisinGUI

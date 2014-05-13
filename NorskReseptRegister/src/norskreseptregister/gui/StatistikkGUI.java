@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ToolTipManager;
+import norskreseptregister.HovedVindu;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.ObjektKlasser.Resept;
@@ -74,7 +75,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
                             + "Skriv inn ønsket årstall. Velg et eller flere"
                             + " legemidler <br> ved å holde "
                             + "inne CTRL-tasten.<br>"
-                            + "Mer hjelp, se brukerveiledning s.");
+                            + "Mer hjelp, se brukerveiledning s. 6");
         
         velgAar = new JLabel("Velg år");
         utskrift = new JTextArea(20, 20);
@@ -216,7 +217,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == hjelp)
         {
-           //HER MÅ KODE FOR BRUKERVEILEDNING INN
+           HovedVindu.visBrukerveiledning();
         }
         
     }

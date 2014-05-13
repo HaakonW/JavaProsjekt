@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ToolTipManager;
+import norskreseptregister.HovedVindu;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.Reg.LegeRegister;
 import norskreseptregister.Reg.RegisterSystem;
@@ -68,7 +69,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         hjelp.setToolTipText("<html>" + "Her kan du endre legers lisens.<br>"
                     + "Du velger lege med ... knappen<br>"
                     + "Videre kan du endre/fjerne lisens. <br> "
-                    + "Mer hjelp,se brukerveiledning s." + "<html>" );
+                    + "Mer hjelp,se brukerveiledning s. 3" + "<html>" );
         
         navnlabel = new JLabel("Legens navn:");
         legedatafelt = new JTextField(20);
@@ -218,8 +219,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         }
         else if(e.getSource() == hjelp)
         {
-            //HER MÅ KODE FOR Å ÅPNE BRUKERVEILEDNING INN
-
+            HovedVindu.visBrukerveiledning();
         }
         else if (e.getSource() == slettLege)
         {

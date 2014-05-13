@@ -17,11 +17,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import norskreseptregister.HovedVindu;
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.PasientRegister;
@@ -68,7 +68,10 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         c = new JCheckBox("C", true);
 
         hjelp = new JButton("?");
-        hjelp.setToolTipText("Trykk for hjelp");
+        hjelp.setToolTipText("<html>" + "Her kan du registrere resepter.<br>"
+                             +"Velg pasient,lege og medisin med ...knappen.<br>"
+                             + "Mengde og anvisning kan endres.<br>"
+                             + "Mer hjelp, se brukerveiledning s. 11");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
 
@@ -194,9 +197,7 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "Pasient info. \n"
-                    + "Velg lege ved å trykke på ...\n"
-                    + "For mere informasjon trykk HER");
+            HovedVindu.visBrukerveiledning();
         }
     }
 }// end of class LegeInfoGUI

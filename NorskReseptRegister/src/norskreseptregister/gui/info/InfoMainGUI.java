@@ -1,6 +1,6 @@
 /*
  Filen inneholder klassen InfoMainGUI.
- Laget av  Haakon Winther
+ Laget av Haakon Winther
  Sist endret 09-04-2014
  */
 package norskreseptregister.gui.info;

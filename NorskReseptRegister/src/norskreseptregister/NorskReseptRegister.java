@@ -11,7 +11,7 @@ import norskreseptregister.Reg.RegisterSystem;
 // NorskReseptRegister er hovedklassen der mainmetoden blir kalt
 public class NorskReseptRegister
 {
-    //Dette er main-metoden der hovedVindu blir kalt og programmet kjører
+    // Dette er main-metoden der hovedVindu blir kalt og programmet kjører
     public static void main(String[] args)
     {
         java.awt.EventQueue.invokeLater(new Runnable()

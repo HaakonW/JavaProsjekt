@@ -108,7 +108,7 @@ public class LoggInn extends JFrame
             frame.setVisible(true);
             dispose();
         }
-        //EasterEgg
+        // EasterEgg
         else if (brukernavn.equals("kaveh") && passord.equals("medisin"))
         {
             Desktop d = Desktop.getDesktop();

@@ -10,7 +10,7 @@ import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-// Vindu som viser hvem som har laget programmet, rettigheter og lignende.
+// OmVindu som viser informasjon om hvem som har laget programmet, rettigheter og lignende.
 public class OmVindu extends JFrame
 {
     private JFrame ramme;
@@ -42,7 +42,6 @@ public class OmVindu extends JFrame
         setTitle("Norsk ReseptRegister");
         add(utskrift);
         setSize(350, 200);
-        //ramme.pack();
         setLocationRelativeTo(null);
         setVisible(true);
     }
