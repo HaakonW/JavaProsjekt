@@ -19,6 +19,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -202,10 +203,8 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         {
             utskrift.setText("Du må velge en lege først");
         }
-
-        
-
     }
+    
     // Metodene som lytter på knappene og utfører de forskjellige metodene i programmet.
     public void actionPerformed(ActionEvent e)
     {
