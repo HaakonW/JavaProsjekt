@@ -28,9 +28,11 @@ public class AdminMainHjemGUI extends JPanel implements ActionListener
     {
         this.adminMain = adminMain;
         this.paneltest = new LegeLisensGUI(system);
-        ImageIcon modLeg = new ImageIcon("src/norskreseptregister/gui/bilder/Refresh-icon.png");
-        ImageIcon regPill = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
-        ImageIcon statistikkbilde = new ImageIcon("src/norskreseptregister/gui/bilder/statistikk.png");        
+        
+        ClassLoader cl = this.getClass().getClassLoader();
+        ImageIcon modLeg = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/Refresh-icon.png"));
+        ImageIcon regPill = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/epille.png"));
+        ImageIcon statistikkbilde = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/statistikk.png"));        
         
         label1 = new JLabel("Endre Lisens");
         label1.setFont(new Font ("PT Serif", Font.PLAIN, 20));

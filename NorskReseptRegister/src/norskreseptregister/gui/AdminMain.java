@@ -37,10 +37,12 @@ public class AdminMain extends JPanel
         panel4 = new RegistrerMedisinGUI(medisinliste);
         panel5 = new StatistikkGUI(system, medisinliste, medisintabell);
         tabbedPane = new JTabbedPane();
-        ImageIcon elege = new ImageIcon("src/norskreseptregister/gui/bilder/ikonRefresh-icon.png");
-        ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
-        ImageIcon epille = new ImageIcon("src/norskreseptregister/gui/bilder/ikonpille.png");
-        ImageIcon statistikk = new ImageIcon("src/norskreseptregister/gui/bilder/ikonstatistikk.png");
+        
+        ClassLoader cl = this.getClass().getClassLoader();
+        ImageIcon elege = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/ikonRefresh-icon.png"));
+        ImageIcon hjem = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/hjem.png"));
+        ImageIcon epille = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/ikonpille.png"));
+        ImageIcon statistikk = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/ikonstatistikk.png"));
 
         tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
         tabbedPane.addTab("Endre Lisens for lege", elege, panel3, "Endre lisens for Lege");

@@ -31,9 +31,11 @@ public class InfoMainHjemGUI extends JPanel implements ActionListener
     {
         this.infoMainGUI = infoMainGUI;
         this.paneltest = new LegeLisensGUI(system);
-        ImageIcon legeinf = new ImageIcon("src/norskreseptregister/gui/bilder/docinfo.png");
-        ImageIcon pasinf = new ImageIcon("src/norskreseptregister/gui/bilder/pasinfo.png");
-        ImageIcon medinf = new ImageIcon("src/norskreseptregister/gui/bilder/epille.png");
+        
+        ClassLoader cl = this.getClass().getClassLoader();
+        ImageIcon legeinf = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/docinfo.png"));
+        ImageIcon pasinf = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/pasinfo.png"));
+        ImageIcon medinf = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/epille.png"));
 
         legeInfo = new JButton(legeinf);
         pasientInfo = new JButton(pasinf);

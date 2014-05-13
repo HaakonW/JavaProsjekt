@@ -28,10 +28,11 @@ public class InfoMainGUI extends JPanel
         medisininfopanel = new MedisinInfoGUI(system, medisinliste);
         tabbedPane = new JTabbedPane();
         
-        ImageIcon hjem = new ImageIcon("src/norskreseptregister/gui/bilder/hjem.png");
-        ImageIcon epille = new ImageIcon("src/norskreseptregister/gui/bilder/ikonpille.png");
-        ImageIcon docinfo = new ImageIcon("src/norskreseptregister/gui/bilder/ikondocinfo.png");
-        ImageIcon pasinfo = new ImageIcon("src/norskreseptregister/gui/bilder/ikonpasinfo.png");
+        ClassLoader cl = this.getClass().getClassLoader();
+        ImageIcon hjem = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/hjem.png"));
+        ImageIcon epille = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/ikonpille.png"));
+        ImageIcon docinfo = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/ikondocinfo.png"));
+        ImageIcon pasinfo = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/ikonpasinfo.png"));
 
         tabbedPane.addTab("Hjem", hjem, hjempanel, "Hjem");
         tabbedPane.addTab("Legeinfo", docinfo, legeinfopanel, "Lege");

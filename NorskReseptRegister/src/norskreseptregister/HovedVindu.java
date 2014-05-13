@@ -47,9 +47,11 @@ public class HovedVindu extends JFrame implements ActionListener
     {  
         this.system = system;
         this.medisinliste = medisinliste;
-        ImageIcon admin = new ImageIcon("src/norskreseptregister/gui/bilder/Admin.png");
-        ImageIcon register = new ImageIcon("src/norskreseptregister/gui/bilder/register.png");
-        ImageIcon info = new ImageIcon("src/norskreseptregister/gui/bilder/info.png");
+        
+        ClassLoader cl = this.getClass().getClassLoader();
+        ImageIcon admin = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/Admin.png"));
+        ImageIcon register = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/register.png"));
+        ImageIcon info = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/info.png"));
         
         adminVindu = new JButton(admin);
         registreringVindu = new JButton(register);
@@ -196,6 +198,8 @@ public class HovedVindu extends JFrame implements ActionListener
         {
             try
             {
+                //ClassLoader cl = this.getClass().getClassLoader();
+                //cl.getResource("norskreseptregister/brukerveiledning.pdf"))
                 File myFile = new File("src/brukerveiledning.pdf");
                 Desktop.getDesktop().open(myFile);
             }
