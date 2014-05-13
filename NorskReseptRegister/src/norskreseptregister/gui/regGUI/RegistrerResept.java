@@ -1,6 +1,6 @@
 /*
  Filen inneholder klassen RegistrerResept.
- Laget av Henrik Fischer Bjelland, Haakon Winther
+ Laget av Henrik Fischer Bjelland, Haakon Winther, Peter Wilhelmsen
  Sist endret 11-05-2014 
  */
 package norskreseptregister.gui.regGUI;
@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.print.PrinterException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -28,6 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ToolTipManager;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
@@ -40,12 +43,15 @@ import norskreseptregister.Reg.RegisterSystem;
 // RegistrerResept er ment for å kunne registrere en resept som lagres i reseptRegisteret
 public class RegistrerResept extends JPanel implements ActionListener
 {
-    private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, hjelper, printUt;
+    private JButton regResept, visListe, velgPasient, velgLege, velgMedisin, 
+                    hjelp, printUt;
     private JTextField datofelt, pasientfelt, legefelt, medisinfelt, mengdefelt;
     private JTextArea utskrift, anvisning;
-    private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel, mengdelabel;
+    private JLabel datolabel, pasientdatalabel, legedatalabel, medisindatalabel,
+                    mengdelabel;
     private JScrollPane anvisningscroll, utskriftscroll;
-    private JPanel datopanel, pasientpanel, legepanel, medisinpanel, mengdepanel, anvisningpanel, knappepanel, utskriftpanel;
+    private JPanel datopanel, pasientpanel, legepanel, medisinpanel, 
+            mengdepanel, anvisningpanel, knappepanel, utskriftpanel;
     private RegisterSystem system;
     private Pasient pasient;
     private Lege lege;
@@ -131,14 +137,24 @@ public class RegistrerResept extends JPanel implements ActionListener
         velgMedisin.setPreferredSize(new Dimension(20, 20));
         velgMedisin.addKeyListener(new Knappelytter());
 
-        hjelper = new JButton("?");
-        hjelper.addActionListener(this);
-        hjelper.setPreferredSize(new Dimension(25, 25));
+        hjelp = new JButton("?");
+        hjelp.addActionListener(this);
+        hjelp.setPreferredSize(new Dimension(25, 25));
+        hjelp.addMouseListener(new MouseAdapter(){
+            public void mouseEntered(MouseEvent e){
+                ToolTipManager.sharedInstance().setDismissDelay(6500);
+            }
+        });
+        hjelp.setToolTipText("<html>" + "Her kan du registrere resepter.<br>"
+                             +"Velg pasient,lege og medisin med ...knappen.<br>"
+                             + "Mengde og anvisning kan endres.<br>"
+                             + "Mer hjelp, se brukerveiledning s.");
 
         anvisning = new JTextArea(6, 25);
         anvisning.setLineWrap(true);
         anvisning.setWrapStyleWord(true);
-        anvisning.setBorder(BorderFactory.createTitledBorder(null, "Anvisning", 1, 2, null, Color.black));
+        anvisning.setBorder(BorderFactory.createTitledBorder(
+                            null, "Anvisning", 1, 2, null, Color.black));
 
         utskrift = new JTextArea(25, 22);
         utskrift.setEditable(false);
@@ -146,7 +162,8 @@ public class RegistrerResept extends JPanel implements ActionListener
         utskrift.setWrapStyleWord(true);
 
         utskriftscroll = new JScrollPane(utskrift);
-        utskriftscroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        utskriftscroll.setHorizontalScrollBarPolicy(
+                        JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         anvisningscroll = new JScrollPane(anvisning);
 
         datopanel = new JPanel();
@@ -250,7 +267,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         gc.gridx = 4;
         gc.gridy = 6;
         gc.fill = GridBagConstraints.NONE;
-        add(hjelper, gc);
+        add(hjelp, gc);
     }// end of Konstruktør
 
     // Metode for å sjekke om legen har bevilling til å skrive ut medisinen som er valgt. 
@@ -262,7 +279,8 @@ public class RegistrerResept extends JPanel implements ActionListener
         {
             return true;
         }
-        utskrift.setText("Legen har ikke bevilling for medisingruppe: " + medisinGruppe);
+        utskrift.setText("Legen har ikke bevilling for medisingruppe: "
+                        + medisinGruppe);
         return false;
     }
 
@@ -275,8 +293,7 @@ public class RegistrerResept extends JPanel implements ActionListener
                 || mengdefelt.getText().equals("")
                 || anvisning.getText().equals(""))
         {
-            utskrift.setText("Her er det noe feil! \n\n\nHusk å fyll ut alle feltene og velg pasient/lege/medisin med knappene"
-                    + "\n\n<---\n\n\n<---");
+            utskrift.setText("Alle felter må fylles ut/velges");
             return false;
         }
         else
@@ -400,7 +417,7 @@ public class RegistrerResept extends JPanel implements ActionListener
         if (bekreft == JOptionPane.YES_OPTION)
         {
             nyResept();
-            //TomFelt(); 
+            TomFelt(); 
             bekreft = 0;
             printUt.setVisible(true);
         }
@@ -435,9 +452,9 @@ public class RegistrerResept extends JPanel implements ActionListener
         {
             VelgMedisin();
         }
-        else if (e.getSource() == hjelper)
+        else if (e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, hjelpetekst());
+            // HER MÅ KODE FOR BRUKERVEILEDNING INN
         }
         else if (e.getSource() == printUt)
         {
@@ -450,16 +467,8 @@ public class RegistrerResept extends JPanel implements ActionListener
                 pex.printStackTrace();
             }
         }
-    }// end of actionPerformed
-
-    // Metoden returnerer en informativ tekst til brukeren
-    private String hjelpetekst()
-    {
-        String hjelpeteksten = "For å kunne registrere en resept er det viktig at alle feltene er fylt ut."
-                + "\nMan velger både pasient, lege og medisin ved å trykke på ... knappen til høyre for feltet"
-                + "\nFor mere hjelp sjekk dokumentasjonen. /*LINK*/";
-        return hjelpeteksten;
     }
+
 
     // Lytterklasse for å kunne innregigstrere pasienter med kun tastatur
     private class Knappelytter implements KeyListener
