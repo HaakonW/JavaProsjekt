@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.List;
+//import java.util.List;
 import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.Reg.PasientRegister;

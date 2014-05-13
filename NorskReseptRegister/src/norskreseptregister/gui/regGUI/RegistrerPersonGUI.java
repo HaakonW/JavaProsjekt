@@ -1,6 +1,6 @@
 /*
  Filen inneholder klassen RegistrerPersonGUI.
- Laget av Henrik Fischer Bjelland, Haakon Winther
+ Laget av Henrik Fischer Bjelland, Haakon Winther, Peter Wilhelmsen
  Sist endret 11-05-2014  
  */
 package norskreseptregister.gui.regGUI;
@@ -11,12 +11,15 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ToolTipManager;
 
 /* 
 RegistrerPersonGUI er en abstrakt superklasse for registrering av person(Pasient,Lege)
@@ -47,13 +50,21 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         reg.addActionListener(this);
 
         hjelp = new JButton("?");
-        hjelp.setToolTipText("Trykk her for hjelp");
         hjelp.setPreferredSize(new Dimension(25, 25));
         hjelp.addActionListener(this);
+        hjelp.addMouseListener(new MouseAdapter(){
+            public void mouseEntered(MouseEvent e){
+                ToolTipManager.sharedInstance().setDismissDelay(6500);
+            }
+        });
+        hjelp.setToolTipText("<html>"+"Registreres med fornavn, etternavn"
+                            + " og <br> fødelsdato/adresse.<br>"
+                            + "Mer hjelp, se brukerveiledning s.");
 
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
-        utskrift.setBorder(BorderFactory.createEtchedBorder(Color.LIGHT_GRAY, Color.black));
+        utskrift.setBorder(BorderFactory.createEtchedBorder(
+                Color.LIGHT_GRAY, Color.black));
         utskrift.setLineWrap(true);
         utskrift.setWrapStyleWord(true);
 
