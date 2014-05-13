@@ -31,7 +31,7 @@ public class RegMainHjemGUI extends JPanel implements ActionListener
         ClassLoader cl = this.getClass().getClassLoader();
         ImageIcon regLeg = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/doktor.png"));
         ImageIcon regPas = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/person.png"));
-        ImageIcon regRes = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/Resept.png"));
+        ImageIcon regRes = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/resept.png"));
 
         regPasient = new JButton(regPas);
         regPasient.setFocusPainted(false);
