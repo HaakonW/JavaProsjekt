@@ -13,8 +13,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import norskreseptregister.HovedVindu;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.LegeRegister;
@@ -34,6 +41,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
     private Lege lege;
     private RegisterSystem system;
     private LegeRegister legeRegister;
+    private HovedVindu hovedvindu;
 
     public LegeInfoGUI(RegisterSystem system)
     {
@@ -191,7 +199,7 @@ public class LegeInfoGUI extends JPanel implements ActionListener
 
         else if (e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "HJELP LEGEINFO");
+            hovedvindu.visBrukerveiledning();
         }
     }
 }//end of class LegeInfoGUI

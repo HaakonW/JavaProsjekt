@@ -16,20 +16,24 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
-import javax.swing.*;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.info.InfoMainGUI;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
 // Klassen inneholder hovedvinduet som er det første du kommer til ved å kjøre programmet.
-public class hovedVindu2 extends JFrame implements ActionListener
+public class HovedVindu extends JFrame implements ActionListener
 {  
     private JLabel label1, label2, label3,tekstLabel;
     private JButton adminVindu, registreringVindu, infoVindu;
@@ -39,7 +43,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
     private JMenu valg,hjelp;
     private JMenuItem lagreValg, adminValg,regValg, infoValg, avsluttValg, omValg,brukerValg;
     
-    public hovedVindu2(final RegisterSystem system, final Medisinliste medisinliste)
+    public HovedVindu(final RegisterSystem system, final Medisinliste medisinliste)
     {  
         this.system = system;
         this.medisinliste = medisinliste;
@@ -119,10 +123,6 @@ public class hovedVindu2 extends JFrame implements ActionListener
         menylinje.add(valg);
         menylinje.add(hjelp);
         
-        /*valg.setMnemonic(KeyEvent.VK_E);
-        valg.getAccessibleContext().setAccessibleDescription(
-        "The only menu in this program that has menu items");*/
-        
         //Menyalternativer
         
         lagreValg = new JMenuItem("Lagre");
@@ -174,7 +174,6 @@ public class hovedVindu2 extends JFrame implements ActionListener
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         
-        
         Thread t = new Thread() {
             public void run() {
                 skrivTilFil();
@@ -183,14 +182,31 @@ public class hovedVindu2 extends JFrame implements ActionListener
         Runtime.getRuntime().addShutdownHook(t);
     }
     
-    //
+    // Metode for å skrive til fil
     private void skrivTilFil()
     {
         system.SkrivTilFil();
         medisinliste.SkrivTilFil();
     }
     
-    //Metode for å et av et vindu av valgt component ( registreringsvindu eller infovindu)
+    // Metode for å vise brukerveiledningen i pdf
+    public void visBrukerveiledning()
+    {
+        if (Desktop.isDesktopSupported())
+        {
+            try
+            {
+                File myFile = new File("src/brukerveiledning.pdf");
+                Desktop.getDesktop().open(myFile);
+            }
+            catch (IOException ex)
+            {
+                JOptionPane.showMessageDialog(null, "Systemet ditt støtter ikke visning av pdf-filer.");
+            }
+        }
+    }
+    
+    // Metode for å et av et vindu av valgt component ( registreringsvindu eller infovindu)
     private void visGUI(Component component) throws HeadlessException
     {
         JFrame frame = new JFrame();
@@ -220,18 +236,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
         }
         else if (e.getSource() == brukerValg)
         {
-            if (Desktop.isDesktopSupported())
-            {
-                try
-                {
-                    File myFile = new File("src/brukerveiledning.pdf");
-                    Desktop.getDesktop().open(myFile);
-                } 
-                catch (IOException ex)
-                {
-                    JOptionPane.showMessageDialog(null, "Systemet ditt støtter ikke visning av pdf-filer.");
-                }
-            }
+            visBrukerveiledning();
         }
         else if (e.getSource() == avsluttValg)
         {

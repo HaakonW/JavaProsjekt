@@ -26,7 +26,7 @@ import norskreseptregister.gui.AdminMain;
 import norskreseptregister.gui.info.InfoMainGUI;
 import norskreseptregister.gui.regGUI.RegMainGUI;
 
-public class hovedVindu extends JFrame
+public class HovedVindu2 extends JFrame
 {
     private JDesktopPane hovedvindu;
     JInternalFrame inFrame = new JInternalFrame(); 
@@ -46,7 +46,7 @@ public class hovedVindu extends JFrame
     private final Medisinliste medisinliste;
 
     //Konstruktør
-    public hovedVindu(final RegisterSystem system, Medisinliste medisinliste)
+    public HovedVindu2(final RegisterSystem system, Medisinliste medisinliste)
     {
         this.system = system;
         this.medisinliste = medisinliste;

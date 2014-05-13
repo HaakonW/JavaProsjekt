@@ -7,7 +7,10 @@ package norskreseptregister.gui.regGUI;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /*
  RegMainHjemGUI er siden du kommer til ved å trykke på registrering i hovedprogrammet. 

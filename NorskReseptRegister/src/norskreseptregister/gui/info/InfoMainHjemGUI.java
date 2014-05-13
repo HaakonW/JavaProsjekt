@@ -7,7 +7,10 @@ package norskreseptregister.gui.info;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.LegeLisensGUI;
 

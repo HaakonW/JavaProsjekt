@@ -21,7 +21,7 @@ public class NorskReseptRegister
                 RegisterSystem system = new RegisterSystem();
                 system.LesFraFil();
                 Medisinliste medisinliste = Medisinliste.lesObjektFraFil();
-                hovedVindu2 vindu = new hovedVindu2(system, medisinliste);
+                HovedVindu vindu = new HovedVindu(system, medisinliste);
             }
         });
     }

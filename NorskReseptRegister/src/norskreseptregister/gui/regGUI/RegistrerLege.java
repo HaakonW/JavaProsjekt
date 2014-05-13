@@ -7,8 +7,7 @@ package norskreseptregister.gui.regGUI;
 
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.List;
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.Reg.LegeRegister;
 
