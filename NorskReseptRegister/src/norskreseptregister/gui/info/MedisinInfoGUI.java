@@ -1,6 +1,6 @@
 /*
  Filen inneholder klassen LegeInfoGUI
- Laget av Henrik Fischer Bjelland, Haakon Winther
+ Laget av Henrik Fischer Bjelland, Haakon Winther, Peter Wilhelmsen
  Sist endret 11-05-2014 
  */
 package norskreseptregister.gui.info;
@@ -11,6 +11,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ToolTipManager;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.ObjektKlasser.Resept;
@@ -64,11 +67,19 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         visLeger.setToolTipText("Trykk for å vise leger");
         visLeger.addActionListener(this);
 
-        hjelp = new JButton("?");
-        hjelp.setToolTipText("Trykk her for å få hjelp");
+        hjelp = new JButton("?"); 
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
-
+        hjelp.addMouseListener(new MouseAdapter(){
+            public void mouseEntered(MouseEvent e){
+                ToolTipManager.sharedInstance().setDismissDelay(6500);
+            }
+        });
+        hjelp.setToolTipText("<html>" + "Velg medisin med ...knappen.<br>"
+                            + "Velg om du vil vise pasienter som har fått <br>"
+                            + "eller leger som har skrevet ut valgt medisin.<br>"
+                            + "Mer hjelp,se brukerveiledning s.");
+        
         utskrift = new JTextArea(20, 20);
         utskrift.setEditable(false);
         utskrift.setLineWrap(true);
@@ -184,7 +195,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "HJELP Medisininfo");
+            //HER MÅ KODE FOR BRUKERVEILEDNING INN
         }
     }
 

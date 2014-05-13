@@ -11,6 +11,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -22,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ToolTipManager;
 import norskreseptregister.ObjektKlasser.Pasient;
 import norskreseptregister.ObjektKlasser.Resept;
 import norskreseptregister.Reg.PasientRegister;
@@ -68,9 +71,18 @@ public class PasientInfoGUI extends JPanel implements ActionListener
         c = new JCheckBox("C", true);
 
         hjelp = new JButton("?");
-        hjelp.setToolTipText("Trykk for hjelp");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
+        hjelp.addMouseListener(new MouseAdapter(){
+            public void mouseEntered(MouseEvent e){
+                ToolTipManager.sharedInstance().setDismissDelay(6500);
+            }
+        });
+        hjelp.setToolTipText("<html>" + "Velg pasient med ...knappen.<br>"
+                            + "Endre visning av resepter ved å velge ønskede"
+                            + "grupper.<br>"
+                            + "Få liste over alle pasienter.<br>"
+                            + "Mer hjelp,se brukerveiledning s.");
 
         velgPasient = new JButton("...");
         velgPasient.setToolTipText("Trykk for å vise over pasienter");

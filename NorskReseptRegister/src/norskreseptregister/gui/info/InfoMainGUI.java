@@ -5,15 +5,8 @@
  */
 package norskreseptregister.gui.info;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import java.io.*;
-import javax.imageio.*;
 import javax.swing.*;
 import norskreseptregister.ObjektKlasser.Medisinliste;
-import norskreseptregister.Reg.LegeRegister;
-import norskreseptregister.Reg.PasientRegister;
 import norskreseptregister.Reg.RegisterSystem;
 
 // InfoMainGUI er klassen er der tab'sene blir opprettet og infoklassene blir knyttet til disse.

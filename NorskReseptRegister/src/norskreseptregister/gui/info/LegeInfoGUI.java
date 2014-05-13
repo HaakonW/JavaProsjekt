@@ -1,6 +1,6 @@
 /*
  Filen inneholder klassen LegeInfoGUI
- Laget av Henrik Fischer Bjelland, Haakon Winther
+ Laget av Henrik Fischer Bjelland, Haakon Winther,Peter Wilhelmsen
  Sist endret 11-05-2014 
  */
 package norskreseptregister.gui.info;
@@ -11,6 +11,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -21,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ToolTipManager;
 import norskreseptregister.HovedVindu;
 import norskreseptregister.ObjektKlasser.Lege;
 import norskreseptregister.ObjektKlasser.Resept;
@@ -66,10 +69,19 @@ public class LegeInfoGUI extends JPanel implements ActionListener
         visResepteriGruppe.addActionListener(this);
 
         hjelp = new JButton("?");
-        hjelp.setToolTipText("Trykk for hjelp");
         hjelp.addActionListener(this);
         hjelp.setPreferredSize(new Dimension(20, 20));
-
+        hjelp.addMouseListener(new MouseAdapter(){
+            public void mouseEntered(MouseEvent e){
+                ToolTipManager.sharedInstance().setDismissDelay(6500);
+            }
+        });
+        hjelp.setToolTipText("<html>" + "Velg lege med ...knappen.<br>"
+                            + "Endre visning av resepter ved å velge ønskede"
+                            + "grupper.<br>"
+                            + "Få liste over alle godkjente leger.<br>"
+                            + "Mer hjelp,se brukerveiledning s.");
+        
         velgLege = new JButton("...");
         velgLege.setToolTipText("Trykk for å velge lege");
         velgLege.addActionListener(this);
