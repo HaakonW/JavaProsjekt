@@ -174,15 +174,6 @@ public class hovedVindu2 extends JFrame implements ActionListener
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         
-        //Dette er nå unødvendig siden addShutdownHook() gjør det samme
-        
-//        addWindowListener(new WindowAdapter()
-//        {
-//            public void windowClosing(WindowEvent winEvt)
-//            {
-//                skrivTilFil();
-//            }
-//        });
         
         Thread t = new Thread() {
             public void run() {
@@ -233,7 +224,7 @@ public class hovedVindu2 extends JFrame implements ActionListener
             {
                 try
                 {
-                    File myFile = new File("src/kravspesifikasjon.pdf");
+                    File myFile = new File("src/brukerveiledning.pdf");
                     Desktop.getDesktop().open(myFile);
                 } 
                 catch (IOException ex)

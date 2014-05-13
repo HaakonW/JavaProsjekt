@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen Person som er superklassen til Lege og Pasient.
  Laget av  Henrik Fischer Bjelland
- Sist endret 12-05-2014 
+ Sist endret 13-05-2014 
  */
 package norskreseptregister.ObjektKlasser;
 
@@ -49,8 +49,8 @@ public abstract class Person implements Serializable
     // toString-metoden returnerer en informativ tekst om den aktuelle personen
     public String toString()
     {
-        String tekst = "";
-        tekst += etternavn + " " + fornavn + ",\n";
-        return tekst;
+        StringBuilder tekst = new StringBuilder();
+        tekst.append(etternavn + " " + fornavn + ",\n");
+        return tekst.toString();
     }
 }//End of class Person

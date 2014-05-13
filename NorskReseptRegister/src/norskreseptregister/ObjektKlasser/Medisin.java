@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen Medisin.
  Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
- Sist endret 12-05-2014
+ Sist endret 13-05-2014
  */
 package norskreseptregister.ObjektKlasser;
 
@@ -87,28 +87,27 @@ public class Medisin implements Serializable
     // Metode for å hente ut hvilke gruppe medisinen er i.
     public String getGruppe()
     {
-        String medisinGruppe = "";
+        StringBuilder medisinGruppe = new StringBuilder();
         if (gruppeA)
         {
-            medisinGruppe += "A";
+            medisinGruppe.append("A");
         }
         else if (gruppeB)
         {
-            medisinGruppe += "B";
+            medisinGruppe.append("B");
         }
         else if (gruppeC)
         {
-            medisinGruppe += "C";
+            medisinGruppe.append("C");
         }
-        return medisinGruppe;
+        return medisinGruppe.toString();
     }
 
     // Denne metoden returnerer en informativ tekst om en medisin.
     public String toString()
     {
-        String tekst = "";
-        tekst += navn + " - " + atcNr
-                + " - Medisingruppe: " + getGruppe();
-        return tekst;
+        StringBuilder medisin = new StringBuilder();
+        medisin.append(navn + " - " + atcNr + " - Medisingruppe: " + getGruppe());
+        return medisin.toString();
     }
 }// end of class Medisin

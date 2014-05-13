@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen Respet.
  Laget av Haakon Winther, Henrik Fischer Bjelland
- Sist endret 12-05-2014
+ Sist endret 13-05-2014
  */
 package norskreseptregister.ObjektKlasser;
 
@@ -86,14 +86,13 @@ public class Resept implements Serializable
     // toString-metoden returnerer en informativ tekst og en resept
     public String toString()
     {
-        String tekst = "";
-        tekst += "Utskrevet dato: " + dato
-                + "\nPasient: " + pasient
-                + "\nLege: " + lege
-                + "\nMedisin: " + medisin.getNavn()
-                + "\nMengde: " + mengde
-                + //"\n Kategori: " + kategori + 
-                "\nAnvisning: " + anvisning;
-        return tekst;
+        StringBuilder resept = new StringBuilder();
+        resept.append("Utskrevet dato: " + dato);
+        resept.append("\nPasient: " + pasient);
+        resept.append("\nLege: " + lege);
+        resept.append("\nMedisin: " + medisin.getNavn());
+        resept.append("\nMengde: " + mengde);
+        resept.append("\nAnvisning: " + anvisning);
+        return resept.toString();
     }
 } // End of class Resept

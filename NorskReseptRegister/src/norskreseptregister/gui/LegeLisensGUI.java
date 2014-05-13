@@ -189,16 +189,22 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     {
         if ( lege != null)
         {
-            if (system.getLegeRegister().SlettEttObjekt(lege))
+            int bekreft = JOptionPane.showConfirmDialog(null, "Du vil slette legen: "
+                    + "\n" + lege.getNavn(), "Slett lege", JOptionPane.YES_NO_OPTION);
+            if (bekreft == JOptionPane.YES_OPTION)
             {
-                utskrift.setText("Legen" + lege.getNavn() + 
-                        "\n er nå slettet.");
-            } 
+                system.getLegeRegister().SlettEttObjekt(lege);
+                    utskrift.setText("Legen" + lege.getNavn() + 
+                            "\ner nå slettet."); 
+            }
         }
         else
         {
             utskrift.setText("Du må velge en lege først");
         }
+
+        
+
     }
     // Metodene som lytter på knappene og utfører de forskjellige metodene i programmet.
     public void actionPerformed(ActionEvent e)

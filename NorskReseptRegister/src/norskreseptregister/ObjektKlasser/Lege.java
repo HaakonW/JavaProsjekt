@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen Lege, som er subklassen til Person.
  Laget av Peter Wilhelmsen, Henrik Fischer Bjelland
- Sist endret 12-05-2014 
+ Sist endret 13-05-2014 
  */
 package norskreseptregister.ObjektKlasser;
 
@@ -75,20 +75,20 @@ public class Lege extends Person implements Serializable
     // Denne metoden henter og skriver den valgte bevillingen for en lege i en String variabel.
     public String getBevilling()
     {
-        String bevilling = "";
+        StringBuilder bevilling = new StringBuilder();
         if (bevillingA)
         {
-            bevilling += "A ";
+            bevilling.append("A ");
         }
         if (bevillingB)
         {
-            bevilling += "B ";
+            bevilling.append("B ");
         }
         if (bevillingC)
         {
-            bevilling += "C";
+            bevilling.append("C");
         }
-        return bevilling;
+        return bevilling.toString();
     }
     
     // Metode som returnerer navn og arbeidsted til en lege
@@ -101,9 +101,9 @@ public class Lege extends Person implements Serializable
     // Denne metoden returnerer en informativ tekst om legen som blir opprettet.
     public String toString()
     {
-        String bevilling = getBevilling();
-        String tekst = getNavnOgArbeidsSted();
-        tekst+= "\nBevilling for medisingruppe: " + bevilling + "\n";
-        return tekst;
+        StringBuilder legeinfo = new StringBuilder();
+        legeinfo.append(getNavnOgArbeidsSted());
+        legeinfo.append("\nBevilling for medisingruppe: "+ getBevilling() + "\n");
+        return legeinfo.toString();
     }
 } //End of class Lege

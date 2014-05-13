@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen Pasient som er subklassen til Person.
  Laget av Henrik Fischer Bjelland
- Sist endret 12-05-2014
+ Sist endret 13-05-2014
  */
 package norskreseptregister.ObjektKlasser;
 
@@ -37,9 +37,10 @@ public class Pasient extends Person implements Serializable
     // toString-metoden returnerer en informativ tekst om en spesifikk pasient
     public String toString()
     {
-        String tekst = super.toString();
-        tekst += "Fødselsdato: " + fodselsdato;
-        return tekst;
+        StringBuilder pasientinfo = new StringBuilder();
+        pasientinfo.append(super.toString());
+        pasientinfo.append("Fødselsdato: " + fodselsdato);
+        return pasientinfo.toString();
     }
 
 }//End of class Pasient
