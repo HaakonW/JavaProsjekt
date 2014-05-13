@@ -12,8 +12,17 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ToolTipManager;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.ObjektKlasser.Resept;
@@ -56,6 +65,16 @@ public class StatistikkGUI extends JPanel implements ActionListener
         hjelp = new JButton("?");
         hjelp.addActionListener(this);        
         hjelp.setPreferredSize(new Dimension(20, 20));
+        hjelp.addMouseListener(new MouseAdapter(){
+            public void mouseEntered(MouseEvent e){
+                ToolTipManager.sharedInstance().setDismissDelay(6500);
+            }
+        });
+        hjelp.setToolTipText("<html>" + "Her kan du se statistikk.<br>"
+                            + "Skriv inn ønsket årstall. Velg et eller flere"
+                            + " legemidler <br> ved å holde "
+                            + "inne CTRL-tasten.<br>"
+                            + "Mer hjelp, se brukerveiledning s.");
         
         velgAar = new JLabel("Velg år");
         utskrift = new JTextArea(20, 20);
@@ -197,11 +216,7 @@ public class StatistikkGUI extends JPanel implements ActionListener
         }
         else if (e.getSource() == hjelp)
         {
-            JOptionPane.showMessageDialog(null, "Dette er statestikkfanen. Her velger man et legemiddel"
-                                                 + "\nog velger hvilket år man ønsker å se statestikk fra." 
-                                                  + "\nUnder velg legemiddel er det mulighet for å velge flere"
-                                                    + "\nlegemiddel ved å holde inne CTRL knappen."
-                                                 + "\nFor mer informasjon sjekk brukerveiledningen.");
+           //HER MÅ KODE FOR BRUKERVEILEDNING INN
         }
         
     }
