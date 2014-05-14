@@ -16,6 +16,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -63,9 +64,11 @@ public class StatistikkGUI extends JPanel implements ActionListener
         visStatistikk.setPreferredSize(new Dimension(200, 40));
         visStatistikk.addActionListener(this);
         
-        hjelp = new JButton("?");
+        ClassLoader cl = this.getClass().getClassLoader();
+        ImageIcon hjelpikon = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/hjelp.png"));
+        hjelp = new JButton(hjelpikon);
         hjelp.addActionListener(this);        
-        hjelp.setPreferredSize(new Dimension(30, 20));
+        hjelp.setPreferredSize(new Dimension(35, 35));
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
                 ToolTipManager.sharedInstance().setDismissDelay(6500);

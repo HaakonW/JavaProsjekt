@@ -13,7 +13,6 @@ import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
 import norskreseptregister.gui.AdminMain;
 import java.awt.Desktop;
-import java.awt.Dimension;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -105,7 +104,7 @@ public class LoggInn extends JFrame
             JFrame frame = new JFrame();
             frame.getContentPane().add(new AdminMain(system, medisinliste));
             frame.pack();
-            frame.setSize(740, 460);
+            frame.setSize(760, 480);
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
             dispose();

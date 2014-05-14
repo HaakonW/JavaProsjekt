@@ -23,6 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -138,9 +139,11 @@ public class RegistrerResept extends JPanel implements ActionListener
         velgMedisin.setPreferredSize(new Dimension(20, 20));
         velgMedisin.addKeyListener(new Knappelytter());
 
-        hjelp = new JButton("?");
+        ClassLoader cl = this.getClass().getClassLoader();
+        ImageIcon hjelpikon = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/hjelp.png"));
+        hjelp = new JButton(hjelpikon);
         hjelp.addActionListener(this);
-        hjelp.setPreferredSize(new Dimension(30, 20));
+        hjelp.setPreferredSize(new Dimension(35, 35));
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
                 ToolTipManager.sharedInstance().setDismissDelay(6500);

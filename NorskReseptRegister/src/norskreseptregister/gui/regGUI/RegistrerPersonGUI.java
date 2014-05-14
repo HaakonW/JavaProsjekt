@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -49,8 +50,10 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         reg.setToolTipText("Trykk her for å registrere");
         reg.addActionListener(this);
 
-        hjelp = new JButton("?");
-        hjelp.setPreferredSize(new Dimension(30, 20));
+        ClassLoader cl = this.getClass().getClassLoader();
+        ImageIcon hjelpikon = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/hjelp.png"));
+        hjelp = new JButton(hjelpikon);
+        hjelp.setPreferredSize(new Dimension(35, 35));
         hjelp.addActionListener(this);
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){

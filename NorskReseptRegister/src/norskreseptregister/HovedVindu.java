@@ -64,7 +64,7 @@ public class HovedVindu extends JFrame implements ActionListener
         registreringVindu.addActionListener(this);
         infoVindu.addActionListener(this);
         
-        tekstLabel = new JLabel("Velkommen til Norsk Reseptregister");
+        tekstLabel = new JLabel("Velkommen til Norsk ReseptRegister");
         tekstLabel.setFont(new Font ("PT Serif", Font.PLAIN, 17));
         
         label1 = new JLabel("Admin");
@@ -202,8 +202,9 @@ public class HovedVindu extends JFrame implements ActionListener
             try
             {
                 ClassLoader cl = HovedVindu.class.getClassLoader();
-                URL url = cl.getResource("norskreseptregister/brukerveiledning.pdf");
+                URL url = cl.getResource("brukerveiledning.pdf");
                 URI uri = url.toURI();
+                Desktop.getDesktop().browse(uri); // hvis det er ønskelig å vise pdf i nettleser
                 File brukerVeiledning = new File(uri);
                 Desktop.getDesktop().open(brukerVeiledning);
             }
@@ -213,7 +214,7 @@ public class HovedVindu extends JFrame implements ActionListener
             }
             catch (URISyntaxException ex)
             {
-                //Logger.getLogger(HovedVindu.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Systemet ditt støtter ikke visning av pdf-filer.");
             }
         }
     }
@@ -224,7 +225,7 @@ public class HovedVindu extends JFrame implements ActionListener
         JFrame frame = new JFrame();
         frame.getContentPane().add(component);
         frame.pack();
-        frame.setSize(740, 500);
+        frame.setSize(800, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }

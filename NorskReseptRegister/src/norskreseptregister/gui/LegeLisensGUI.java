@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -45,7 +46,6 @@ public class LegeLisensGUI extends JPanel implements ActionListener
     public LegeLisensGUI(RegisterSystem system)
     {
         this.system = system;
-        
         velgLege = new JButton("...");
         velgLege.addActionListener(this);
         velgLege.setToolTipText("Velg lege");
@@ -58,9 +58,11 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         endreLisens = new JButton("Endre bevilling");
         endreLisens.addActionListener(this);
         
-        hjelp = new JButton("?");
+        ClassLoader cl = this.getClass().getClassLoader();
+        ImageIcon hjelpikon = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/hjelp.png"));
+        hjelp = new JButton(hjelpikon);
         hjelp.addActionListener(this);
-        hjelp.setPreferredSize(new Dimension(30, 20));
+        hjelp.setPreferredSize(new Dimension(35, 35));
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
                 ToolTipManager.sharedInstance().setDismissDelay(6500);
