@@ -18,6 +18,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -198,14 +201,19 @@ public class HovedVindu extends JFrame implements ActionListener
         {
             try
             {
-                //ClassLoader cl = this.getClass().getClassLoader();
-                //cl.getResource("norskreseptregister/brukerveiledning.pdf"))
-                File myFile = new File("src/norskreseptregister/brukerveiledning.pdf");
-                Desktop.getDesktop().open(myFile);
+                ClassLoader cl = HovedVindu.class.getClassLoader();
+                URL url = cl.getResource("norskreseptregister/brukerveiledning.pdf");
+                URI uri = url.toURI();
+                File brukerVeiledning = new File(uri);
+                Desktop.getDesktop().open(brukerVeiledning);
             }
             catch (IOException ex)
             {
                 JOptionPane.showMessageDialog(null, "Systemet ditt støtter ikke visning av pdf-filer.");
+            }
+            catch (URISyntaxException ex)
+            {
+                //Logger.getLogger(HovedVindu.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
