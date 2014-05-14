@@ -206,20 +206,18 @@ public class HovedVindu extends JFrame implements ActionListener
                 ClassLoader cl = HovedVindu.class.getClassLoader();
                 URL url = cl.getResource("norskreseptregister/gui/bilder/brukerveiledning.pdf");
                 URI uri = url.toURI();
-                // Desktop.getDesktop().browse(uri); // hvis det er ønskelig å vise pdf i nettleser
+                Desktop.getDesktop().browse(uri); // hvis det er ønskelig å vise pdf i nettleser
                 File brukerveiledning = new File(uri);
                 Desktop.getDesktop().open(brukerveiledning);
-                String filsti = brukerveiledning.getAbsolutePath();
-                JOptionPane.showMessageDialog(null, filsti);
-                
             }
             catch (IOException ex)
             {
-                JOptionPane.showMessageDialog(null, "Systemet ditt støtter ikke visning av pdf-filer.");
+                JOptionPane.showMessageDialog(null, ex.toString() + "Systemet ditt støtter ikke visning av pdf-filer.");
+                
             }
             catch (URISyntaxException ex)
             {
-                JOptionPane.showMessageDialog(null, "URISyntax.");
+                JOptionPane.showMessageDialog(null, ex.toString() + "Uri");
             }
         }
     }
@@ -230,7 +228,7 @@ public class HovedVindu extends JFrame implements ActionListener
         JFrame frame = new JFrame();
         frame.getContentPane().add(component);
         frame.pack();
-        frame.setSize(820, 480);
+        frame.setSize(800, 505);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
