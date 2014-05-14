@@ -1,7 +1,7 @@
 /*
  Filen inneholder klassen HovedVindu.
  Laget av Peter Wilhelmsen, Henrik Fischer Bjelland, Haakon Winther
- Sist endret 12/05/14
+ Sist endret 14/05/14
  */
 
 package norskreseptregister;
@@ -20,9 +20,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -189,7 +186,7 @@ public class HovedVindu extends JFrame implements ActionListener
             }
         };
         Runtime.getRuntime().addShutdownHook(t);
-    }
+    } // end of konstruktør HovedVindu
     
     // Metode for å skrive til fil
     private void skrivTilFil()
@@ -228,7 +225,7 @@ public class HovedVindu extends JFrame implements ActionListener
                 JOptionPane.showMessageDialog(null, ex);
             }
         }
-    }
+    } // end of visBrukerveiledning
     
     
     // Metode for å et av et vindu av valgt component ( registreringsvindu eller infovindu)
@@ -275,5 +272,5 @@ public class HovedVindu extends JFrame implements ActionListener
         {
             skrivTilFil();
         }
-    }
-}
+    }// end of actionPerformed
+} // end of class HovedVindu
