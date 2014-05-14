@@ -73,7 +73,7 @@ public class MedisinInfoGUI extends JPanel implements ActionListener
         ImageIcon hjelpikon = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/hjelp.png"));
         hjelp = new JButton(hjelpikon);
         hjelp.addActionListener(this);
-        hjelp.setPreferredSize(new Dimension(21, 25));
+        hjelp.setPreferredSize(new Dimension(18, 25));
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
                 ToolTipManager.sharedInstance().setDismissDelay(6500);

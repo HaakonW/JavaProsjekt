@@ -62,7 +62,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         ImageIcon hjelpikon = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/hjelp.png"));
         hjelp = new JButton(hjelpikon);
         hjelp.addActionListener(this);
-        hjelp.setPreferredSize(new Dimension(19, 25));
+        hjelp.setPreferredSize(new Dimension(18, 25));
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
                 ToolTipManager.sharedInstance().setDismissDelay(6500);
@@ -184,7 +184,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         lege.setBevillingB(b.isSelected());
         lege.setBevillingC(c.isSelected());
         utskrift.setText("Bevilling er nå endret. \n" + 
-        "Legen: " + lege.getNavn() + "\nHar nå bevilling i følgede reseptgrupper: \n"+ 
+        "Legen: " + lege.getNavn() + "\nHar nå bevilling i følgende reseptgrupper: \n"+ 
         lege.getBevilling());
     }
     

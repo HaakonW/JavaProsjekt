@@ -227,7 +227,7 @@ public class HovedVindu extends JFrame implements ActionListener
         JFrame frame = new JFrame();
         frame.getContentPane().add(component);
         frame.pack();
-        frame.setSize(820, 500);
+        frame.setSize(820, 480);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }

@@ -53,7 +53,7 @@ public abstract class RegistrerPersonGUI extends JPanel implements ActionListene
         ClassLoader cl = this.getClass().getClassLoader();
         ImageIcon hjelpikon = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/hjelp.png"));
         hjelp = new JButton(hjelpikon);
-        hjelp.setPreferredSize(new Dimension(21, 25));
+        hjelp.setPreferredSize(new Dimension(18, 25));
         hjelp.addActionListener(this);
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
