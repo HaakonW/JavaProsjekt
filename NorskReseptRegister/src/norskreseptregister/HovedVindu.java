@@ -209,6 +209,9 @@ public class HovedVindu extends JFrame implements ActionListener
                 // Desktop.getDesktop().browse(uri); // hvis det er ønskelig å vise pdf i nettleser
                 File brukerveiledning = new File(uri);
                 Desktop.getDesktop().open(brukerveiledning);
+                String filsti = brukerveiledning.getAbsolutePath();
+                JOptionPane.showMessageDialog(null, filsti);
+                
             }
             catch (IOException ex)
             {
@@ -216,7 +219,7 @@ public class HovedVindu extends JFrame implements ActionListener
             }
             catch (URISyntaxException ex)
             {
-                JOptionPane.showMessageDialog(null, "Systemet ditt støtter ikke visning av pdf-filer.");
+                JOptionPane.showMessageDialog(null, "URISyntax.");
             }
         }
     }
