@@ -206,6 +206,7 @@ public class HovedVindu extends JFrame implements ActionListener
             try
             {
                 ClassLoader cl = HovedVindu.class.getClassLoader();
+<<<<<<< HEAD
                 File brukerVeiledning = new File("brukerveiledning.pdf");
                 if (!brukerVeiledning.exists())
                 {
@@ -226,6 +227,22 @@ public class HovedVindu extends JFrame implements ActionListener
             catch (IOException ex)
             {
                 JOptionPane.showMessageDialog(null, ex);
+=======
+                URL url = cl.getResource("norskreseptregister/gui/bilder/brukerveiledning.pdf");
+                URI uri = url.toURI();
+                Desktop.getDesktop().browse(uri); // hvis det er ønskelig å vise pdf i nettleser
+                File brukerveiledning = new File(uri);
+                Desktop.getDesktop().open(brukerveiledning);
+            }
+            catch (IOException ex)
+            {
+                JOptionPane.showMessageDialog(null, ex.toString() + "Systemet ditt støtter ikke visning av pdf-filer.");
+                
+            }
+            catch (URISyntaxException ex)
+            {
+                JOptionPane.showMessageDialog(null, ex.toString() + "Uri");
+>>>>>>> FETCH_HEAD
             }
         }
     }
@@ -236,7 +253,7 @@ public class HovedVindu extends JFrame implements ActionListener
         JFrame frame = new JFrame();
         frame.getContentPane().add(component);
         frame.pack();
-        frame.setSize(820, 480);
+        frame.setSize(800, 505);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
