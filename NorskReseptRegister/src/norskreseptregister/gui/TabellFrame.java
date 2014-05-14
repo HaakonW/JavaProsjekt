@@ -22,9 +22,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
-/* 
-Klassen har metoder for ...
-*/
+// Klassen er ment som skjellettet til statistikktabellen
 public class TabellFrame extends JPanel
 {
     public Radalterneringstabell tabellet;
@@ -102,7 +100,7 @@ class Radalterneringstabell extends JTable
         getColumnModel().getColumn(12).setPreferredWidth(70);
     }
     
-    // 
+    // Printer ut tabellen
     public void print(Graphics g)
     {
         printUt = true;
@@ -116,7 +114,10 @@ class Radalterneringstabell extends JTable
         }
     }
     
-    //
+    /* 
+    Metode for å sette annehver rad i forskjellige farge og en rad blir 
+    orange hvis det er klikket på.
+    */
     public Component prepareRenderer(
         TableCellRenderer rendrer, int rad, int kolonne)
     {

@@ -10,7 +10,9 @@ import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.*;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 import norskreseptregister.Reg.RegisterSystem;
@@ -19,10 +21,10 @@ import norskreseptregister.Reg.RegisterSystem;
 public class AdminMain extends JPanel
 {
     private JTabbedPane tabbedPane;
-    private AdminMainHjemGUI panel1;
-    private final LegeLisensGUI panel3;
-    private RegistrerMedisinGUI panel4;
-    private StatistikkGUI panel5;
+    private AdminMainHjemGUI hjempanel;
+    private final LegeLisensGUI legepanel;
+    private RegistrerMedisinGUI medisinpanel;
+    private StatistikkGUI statistikkpanel;
     private RegisterSystem system;
     private Medisinliste medisinliste;
     private MedisinTabell medisintabell;
@@ -32,10 +34,10 @@ public class AdminMain extends JPanel
     {
         this.system = system;
         this.medisinliste = medisinliste;
-        panel1 = new AdminMainHjemGUI(this);
-        panel3 = new LegeLisensGUI(system);
-        panel4 = new RegistrerMedisinGUI(medisinliste);
-        panel5 = new StatistikkGUI(system, medisinliste, medisintabell);
+        hjempanel = new AdminMainHjemGUI(this);
+        legepanel = new LegeLisensGUI(system);
+        medisinpanel = new RegistrerMedisinGUI(medisinliste);
+        statistikkpanel = new StatistikkGUI(system, medisinliste, medisintabell);
         tabbedPane = new JTabbedPane();
         
         ClassLoader cl = this.getClass().getClassLoader();
@@ -44,12 +46,11 @@ public class AdminMain extends JPanel
         ImageIcon epille = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/ikonpille.png"));
         ImageIcon statistikk = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/ikonstatistikk.png"));
 
-        tabbedPane.addTab("Hjem", hjem, panel1, "Hjem");
-        tabbedPane.addTab("Endre Lisens for lege", elege, panel3, "Endre lisens for Lege");
-        tabbedPane.addTab("Registrer medisin", epille, panel4, "Registrer Medisin");
-        tabbedPane.addTab("Statistikk", statistikk, panel5, "Statistikk");
+        tabbedPane.addTab("Hjem", hjem, hjempanel, "Hjem");
+        tabbedPane.addTab("Endre Lisens for lege", elege, legepanel, "Endre lisens for Lege");
+        tabbedPane.addTab("Registrer medisin", epille, medisinpanel, "Registrer Medisin");
+        tabbedPane.addTab("Statistikk", statistikk, statistikkpanel, "Statistikk");
         add(tabbedPane);
-
     }
 
     // Get metode for TabbedPane

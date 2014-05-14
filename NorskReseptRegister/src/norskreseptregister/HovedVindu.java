@@ -17,7 +17,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -204,22 +206,26 @@ public class HovedVindu extends JFrame implements ActionListener
             try
             {
                 ClassLoader cl = HovedVindu.class.getClassLoader();
-                URL url = cl.getResource("norskreseptregister/gui/bilder/brukerveiledning.pdf");
-                URI uri = url.toURI();
-                // Desktop.getDesktop().browse(uri); // hvis det er ønskelig å vise pdf i nettleser
-                File brukerveiledning = new File(uri);
-                Desktop.getDesktop().open(brukerveiledning);
-                String filsti = brukerveiledning.getAbsolutePath();
-                JOptionPane.showMessageDialog(null, filsti);
-                
+                File brukerVeiledning = new File("brukerveiledning.pdf");
+                if (!brukerVeiledning.exists())
+                {
+                    InputStream inputStream = cl.getResourceAsStream("brukerveiledning.pdf");
+                    FileOutputStream outputStream = new FileOutputStream(brukerVeiledning);
+                    int read = 0;
+                    byte[] bytes = new byte[1024];
+ 
+                    while ((read = inputStream.read(bytes)) != -1)
+                    {
+			outputStream.write(bytes, 0, read);
+                    }
+                    inputStream.close();
+                    outputStream.close();
+                }
+                Desktop.getDesktop().open(brukerVeiledning);
             }
             catch (IOException ex)
             {
-                JOptionPane.showMessageDialog(null, "Systemet ditt støtter ikke visning av pdf-filer.");
-            }
-            catch (URISyntaxException ex)
-            {
-                JOptionPane.showMessageDialog(null, "URISyntax.");
+                JOptionPane.showMessageDialog(null, ex);
             }
         }
     }

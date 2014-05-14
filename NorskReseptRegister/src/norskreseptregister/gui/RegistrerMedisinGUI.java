@@ -22,7 +22,7 @@ import norskreseptregister.HovedVindu;
 import norskreseptregister.ObjektKlasser.Medisin;
 import norskreseptregister.ObjektKlasser.Medisinliste;
 
-//RegistrerMedisinGUi er for å kunne registere en medisin og legge de i en egenopprettet liste.
+// RegistrerMedisinGUi er for å kunne registere en medisin og legge de i en egenopprettet liste.
 public class RegistrerMedisinGUI extends JPanel implements ActionListener
 {
     private Medisinliste medisinliste;
