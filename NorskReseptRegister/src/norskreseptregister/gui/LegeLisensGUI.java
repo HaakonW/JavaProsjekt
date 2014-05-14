@@ -62,7 +62,7 @@ public class LegeLisensGUI extends JPanel implements ActionListener
         ImageIcon hjelpikon = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/hjelp.png"));
         hjelp = new JButton(hjelpikon);
         hjelp.addActionListener(this);
-        hjelp.setPreferredSize(new Dimension(35, 35));
+        hjelp.setPreferredSize(new Dimension(19, 25));
         hjelp.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e){
                 ToolTipManager.sharedInstance().setDismissDelay(6500);

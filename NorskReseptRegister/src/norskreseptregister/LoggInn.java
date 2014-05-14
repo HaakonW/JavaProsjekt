@@ -73,7 +73,7 @@ public class LoggInn extends JFrame
         panel.add(feilmeldinglabel);
 
         getContentPane().add(panel);
-        setSize(300, 200);
+        setSize(300, 220);
         setLocation(500, 280);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -104,7 +104,7 @@ public class LoggInn extends JFrame
             JFrame frame = new JFrame();
             frame.getContentPane().add(new AdminMain(system, medisinliste));
             frame.pack();
-            frame.setSize(760, 480);
+            frame.setSize(790, 480);
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
             dispose();

@@ -55,6 +55,8 @@ public class HovedVindu extends JFrame implements ActionListener
         ImageIcon admin = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/Admin.png"));
         ImageIcon register = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/register.png"));
         ImageIcon info = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/info.png"));
+        ImageIcon logo = new ImageIcon(cl.getResource("norskreseptregister/gui/bilder/pille.png"));
+        setIconImage(logo.getImage());
         
         adminVindu = new JButton(admin);
         registreringVindu = new JButton(register);
@@ -174,7 +176,7 @@ public class HovedVindu extends JFrame implements ActionListener
         hjelp.add(omValg);
         hjelp.add(brukerValg);
         
-        setSize(740, 400);
+        setSize(780, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -202,11 +204,11 @@ public class HovedVindu extends JFrame implements ActionListener
             try
             {
                 ClassLoader cl = HovedVindu.class.getClassLoader();
-                URL url = cl.getResource("brukerveiledning.pdf");
+                URL url = cl.getResource("norskreseptregister/gui/bilder/brukerveiledning.pdf");
                 URI uri = url.toURI();
-                Desktop.getDesktop().browse(uri); // hvis det er ønskelig å vise pdf i nettleser
-                File brukerVeiledning = new File(uri);
-                Desktop.getDesktop().open(brukerVeiledning);
+                // Desktop.getDesktop().browse(uri); // hvis det er ønskelig å vise pdf i nettleser
+                File brukerveiledning = new File(uri);
+                Desktop.getDesktop().open(brukerveiledning);
             }
             catch (IOException ex)
             {
@@ -225,7 +227,7 @@ public class HovedVindu extends JFrame implements ActionListener
         JFrame frame = new JFrame();
         frame.getContentPane().add(component);
         frame.pack();
-        frame.setSize(800, 500);
+        frame.setSize(820, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }

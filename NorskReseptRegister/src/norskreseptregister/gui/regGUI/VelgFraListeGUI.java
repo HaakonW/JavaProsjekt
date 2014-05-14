@@ -68,7 +68,7 @@ public class VelgFraListeGUI extends JDialog
         listepanel.add(new JLabel(listeOver));
         listepanel.add(Box.createRigidArea(new Dimension(0, 5)));
         JScrollPane listeskroller = new JScrollPane(navneliste);
-        listeskroller.setPreferredSize(new Dimension(350, 500));
+        listeskroller.setPreferredSize(new Dimension(350, 320));
         listeskroller.setMinimumSize(new Dimension(250, 80));
         listeskroller.setAlignmentX(LEFT_ALIGNMENT);
         //ønsker venstrejustering
